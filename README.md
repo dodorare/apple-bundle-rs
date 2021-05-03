@@ -7,10 +7,10 @@ An [AppleBundleResources] serializer and deserializer for Rust. This library wil
 ```toml
 # Cargo.toml
 [dependencies]
-apple_bundle = "1.0"
+apple-bundle = "*"
 ```
 
-# License
+### License
 
 This project is licensed under Apache License, Version 2.0, ([LICENSE](LICENSE) or http://www.apache.org/licenses/LICENSE-2.0).
 
