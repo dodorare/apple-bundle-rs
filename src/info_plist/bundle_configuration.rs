@@ -6,6 +6,8 @@
 /// The file describes fundamental features, like whether the bundle contains an app, a framework, or something else.
 /// It also includes identifying characteristics of the bundle, like an identifier, a human-readable name, and a version.
 ///
+/// ## Framework
+/// * Bundle Resources
 use super::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
@@ -18,12 +20,27 @@ pub struct Categorization {
     /// For apps, the code is APPL, for frameworks, it's FMWK, and for bundles,
     /// it's BNDL. The default value is derived from the bundle extension or,
     /// if it can't be derived, the default value is BNDL.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundlePackageType"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_package_type: Option<String>,
     /// The category that best describes your app for the App Store.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+
+    /// ## Framework
+    /// Core Services
     #[serde(
         rename(serialize = "LSApplicationCategoryType"),
         skip_serializing_if = "Option::is_none",
@@ -41,12 +58,27 @@ pub struct Identification {
     /// The bundle ID string must contain only alphanumeric characters (A-Z, a-z, and 0-9),
     /// hyphens (-), and periods (.). The string should be in reverse-DNS format.
     /// Bundle IDs are case sensitive.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(rename(serialize = "CFBundleIdentifier"))]
     pub bundle_identifier: String,
     /// The bundle ID of the watchOS app.
     ///
     /// This key is automatically included in your WatchKit extension’s
     /// information property list when you create a watchOS project from a template.
+    ///
+    /// ## Availability
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * WatchKit
     #[serde(
         rename(serialize = "WKAppBundleIdentifier"),
         skip_serializing_if = "Option::is_none"
@@ -57,6 +89,12 @@ pub struct Identification {
     /// Xcode automatically includes this key in the WatchKit app’s information
     /// property list when you create a watchOS project from a template.
     /// The value should be the same as the iOS app’s CFBundleIdentifier.
+    ///
+    /// ## Availability
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * WatchKit
     #[serde(
         rename(serialize = "WKCompanionAppBundleIdentifier"),
         skip_serializing_if = "Option::is_none"
@@ -71,17 +109,44 @@ pub struct Naming {
     ///
     /// This name can contain up to 15 characters. The system may display
     /// it to users if CFBundleDisplayName isn't set.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(rename(serialize = "CFBundleName"))]
     pub bundle_name: Option<String>,
     /// The user-visible name for the bundle, used by Siri and visible on the iOS Home screen.
     ///
     /// Use this key if you want a product name that's longer than CFBundleName.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleDisplayName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_display_name: Option<String>,
     /// A replacement for the app name in text-to-speech operations.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleSpokenName"),
         skip_serializing_if = "Option::is_none"
@@ -108,6 +173,15 @@ pub struct BundleVersion {
     /// For example, 0 specifies 0.0.0, 10 specifies 10.0.0, and 10.5 specifies 10.5.0.
     /// This key is required by the App Store and is used throughout the system to identify the version of the build.
     /// For macOS apps, increment the build version before you distribute a build.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleVersion"),
         skip_serializing_if = "Option::is_none"
@@ -124,6 +198,15 @@ pub struct BundleVersion {
     /// - Patch: A maintenance release number.
     ///
     /// This key is used throughout the system to identify the version of the bundle.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleShortVersionString"),
         skip_serializing_if = "Option::is_none"
@@ -132,12 +215,27 @@ pub struct BundleVersion {
     /// The current version of the Information Property List structure.
     ///
     /// Xcode adds this key automatically. Don’t change the value.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleInfoDictionaryVersion"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_info_dictionary_version: Option<String>,
     /// A human-readable copyright notice for the bundle.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSHumanReadableCopyright"),
         skip_serializing_if = "Option::is_none"
@@ -152,12 +250,24 @@ pub struct OperatingSystemVersion {
     ///
     /// The Mac App Store uses this key to indicate the OS releases on
     /// which your app can run and show compatibility with the user’s Mac.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "LSMinimumSystemVersion"),
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_system_version: Option<String>,
     /// The minimum version of macOS required for the app to run on a set of architectures.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "LSMinimumSystemVersionByArchitecture"),
         skip_serializing_if = "Option::is_none"
@@ -166,12 +276,26 @@ pub struct OperatingSystemVersion {
     /// The minimum operating system version required for the app to run on iOS, tvOS, and watchOS.
     ///
     /// The App Store uses this key to indicate the OS releases on which your app can run.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "MinimumOSVersion"),
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_os_version: Option<String>,
     /// A Boolean value indicating whether the app must run in iOS.
+    ///
+    /// ## Availability
+    /// * iOS 12.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "LSRequiresIPhoneOS"),
         skip_serializing_if = "Option::is_none"
@@ -181,6 +305,12 @@ pub struct OperatingSystemVersion {
     ///
     /// Xcode automatically includes this key in the WatchKit app’s information
     /// property list when you create a watchOS project from a template.
+    ///
+    /// ## Availability
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * WatchKit
     #[serde(
         rename(serialize = "WKWatchKitApp"),
         skip_serializing_if = "Option::is_none"
@@ -203,18 +333,45 @@ pub struct Localization {
     ///
     /// To specify a script, combine a language designator with a script designator separated by a hyphen,
     /// as in az-Arab for Azerbaijani in the Arabic script.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleDevelopmentRegion"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_development_region: Option<String>,
     /// The localizations handled manually by your app.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleLocalizations"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_localizations: Option<Vec<String>>,
     /// A Boolean value that indicates whether the bundle supports the retrieval of localized strings from frameworks.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleAllowMixedLocalizations"),
         skip_serializing_if = "Option::is_none"
@@ -228,6 +385,12 @@ pub struct Localization {
     ///
     /// After implementing the key, users can enable or disable this functionality by modifying
     /// the “Use Caps Lock to switch to and from” preference, which can be found in System Preferences > Keyboard > Input Sources.
+    ///
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * AppKit
     #[serde(
         rename(serialize = "TICapsLockLanguageSwitchCapable"),
         skip_serializing_if = "Option::is_none"
@@ -239,18 +402,36 @@ pub struct Localization {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Help {
     /// The name of the bundle’s HTML help file.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFAppleHelpAnchor"),
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_help_anchor: Option<String>,
     /// The name of the help file that will be opened in Help Viewer.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleHelpBookName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_help_book_name: Option<String>,
     /// The name of the folder containing the bundle’s help files.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleHelpBookFolder"),
         skip_serializing_if = "Option::is_none"
