@@ -654,6 +654,34 @@ pub struct QuickLook {
     pub thumbnail_minimum_size: Option<f32>,
 }
 
+/// Deprecated Keys.
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct DeprecatedKeys {
+    /// A dictionary containing information about launch images.
+    ///
+    /// ## Availability
+    /// * iOS 7.0–13.0
+    /// * tvOS 9.0–13.0
+    ///
+    /// ## Framework
+    /// * UIKit
+    #[deprecated(
+        since = "iOS 7.0–13.0, tvOS 9.0–13.0",
+        note = "UILaunchImages has been deprecated; use Xcode launch storyboards instead."
+    )]
+    #[serde(
+        rename(serialize = "UILaunchImages"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub launch_images: Option<Vec<LaunchImage>>,
+}
+
+/// Default Dictionary.
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct LaunchImage {
+    pub default: String,
+}
+
 /// GPU Eject Policy.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
