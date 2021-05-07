@@ -1,6 +1,4 @@
-use super::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Authentication {
@@ -21,4 +19,21 @@ pub struct Authentication {
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_fill_credential_provider: Option<bool>,
+    /// An entitlement that lets your app use Sign in with Apple.
+    ///
+    /// To add this entitlement to your app with the correct associated value, enable the Sign in with Apple capability in Xcode.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    /// * macOS 10.15+
+    /// * tvOS 13.0+
+    /// * watchOS 6.0+
+    ///
+    /// ## Framework
+    /// * Authentication Services
+    #[serde(
+        rename(serialize = "com.apple.developer.applesignin"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub sign_in_with_apple: Option<Vec<String>>,
 }
