@@ -37,4 +37,49 @@ pub struct Hypervisor {
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_hypervisor: Option<bool>,
+    /// A Boolean value that indicates whether the app captures USB devices and uses them in the guest-operating system.
+    ///
+    /// The entitlement is required to use the IOUSBHost APIs for USB device capture.
+    ///
+    /// ## Availability
+    /// * macOS 10.10+
+    ///
+    /// ## Framework
+    /// * Hypervisor
+    #[serde(
+        rename(serialize = "com.apple.vm.device-access"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub vm_device_access: Option<bool>,
+    /// A Boolean that indicates whether the app manages virtual network interfaces without escalating privileges to the root user.
+    ///
+    /// The entitlement is required to use the vmnet APIs.
+    ///
+    /// This entitlement is restricted to developers of virtualization software.
+    /// To request this entitlement, contact your Apple representative.
+    ///
+    /// ## Availability
+    /// * macOS 10.10+
+    ///
+    /// ## Framework
+    /// * Hypervisor
+    #[serde(
+        rename(serialize = "com.apple.vm.networking"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub vm_networking: Option<bool>,
+    /// A Boolean that indicates whether the app can use the Virtualization framework.
+    ///
+    /// Read the value of isSupported to check for the presence of both this entitlement and the hardware support needed for virtualization.
+    ///
+    /// ## Availability
+    /// * macOS 11.0+
+    ///
+    /// ## Framework
+    /// * Hypervisor
+    #[serde(
+        rename(serialize = "com.apple.security.virtualization"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub security_virtualization: Option<bool>,
 }

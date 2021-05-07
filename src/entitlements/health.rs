@@ -21,11 +21,11 @@ pub struct Health {
     /// The HealthKit Capabilities Entitlement provides access to these data types.
     ///
     /// To add this entitlement to your app, first enable the HealthKit capability in Xcode, and then check any values that you want to add to the HealthKit Capabilities Entitlement.
-    /// 
+    ///
     /// Only add values for data types that your app needs to access.
     /// App Review may reject apps that don’t use the data appropriately.
     /// For more information, see the Health and Health Research section of the App Store Review Guidelines.
-    /// 
+    ///
     /// ## Availability
     /// * iOS 8.0+
     ///
@@ -37,4 +37,3 @@ pub struct Health {
     )]
     pub healthkit_access: Option<Vec<String>>,
 }
-545

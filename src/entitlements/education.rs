@@ -1,3 +1,4 @@
+use super::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
@@ -18,9 +19,10 @@ pub struct Education {
     /// * ClassKit
     #[serde(
         rename(serialize = "com.apple.developer.ClassKit-environment"),
-        skip_serializing_if = "Option::is_none"
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_enum_option"
     )]
-    pub classkit_environment: Option<String>,
+    pub classkit_environment: Option<ClassKitEnvironment>,
     /// A Boolean value that indicates whether an app may create an assessment session.
     ///
     /// Use an AEAssessmentSession instance to put a device into a state that prevents users from accessing certain system features during high-stakes assessment activities, such as administering an exam.
@@ -47,4 +49,14 @@ pub struct Education {
     )]
     pub automatic_assessment_configuration: Option<bool>,
 }
-67678
+
+/// ClassKit Environment Entitlement
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+pub enum ClassKitEnvironment {
+    /// The environment used to develop and test your app locally, without requiring a Managed Apple ID issued by an educational institution.
+    #[serde(rename = "development")]
+    Development,
+    /// The environment used by customers of your app who have a Managed Apple ID. This enviroment enables teachers and students to share data through iCloud.
+    #[serde(rename = "production")]
+    Production,
+}
