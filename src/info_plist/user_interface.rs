@@ -1,15 +1,16 @@
-/// User Interface.
-///
-/// Configure an app's scenes, storyboards, icons, fonts, and other user interface elements.
-///
-/// You define the user interface that your app presents during normal operation with a combination of code and storyboards.
-/// However, the system needs to know a few things about your app’s user interface before execution begins. For example,
-/// on some platforms, you have to specify what device orientations your app supports and what the system should display
-/// while your app launches. You add keys to your app’s Information Property List file to control certain aspects of its user interface.
-///
-/// ## Framework
-/// * Bundle Resources
-use super::{serialize_enum_option, serialize_vec_enum_option};
+//! # User Interface.
+//!
+//! Configure an app's scenes, storyboards, icons, fonts, and other user interface elements.
+//!
+//! You define the user interface that your app presents during normal operation with a combination of code and storyboards.
+//! However, the system needs to know a few things about your app’s user interface before execution begins. For example,
+//! on some platforms, you have to specify what device orientations your app supports and what the system should display
+//! while your app launches. You add keys to your app’s Information Property List file to control certain aspects of its user interface.
+//!
+//! ## Framework
+//! * Bundle Resources
+
+use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr};
 

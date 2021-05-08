@@ -1,4 +1,4 @@
-//! Information Property List.
+//! # Information Property List.
 //!
 //! A resource containing key-value pairs that identify and configure a bundle.
 //!
@@ -19,6 +19,14 @@
 //!
 //! Official documentation: https://developer.apple.com/documentation/bundleresources/information_property_list
 //!
+//! ## Availability
+//! * iOS 2.0+
+//! * macOS 10.0+
+//! * tvOS 9.0+
+//! * watchOS 2.0+
+//!
+//! ## Framework
+//! Bundle Resources
 
 pub mod app_execution;
 pub mod bundle_configuration;
@@ -31,30 +39,7 @@ pub mod prelude {
 }
 
 use prelude::*;
-use serde::{ser::SerializeSeq, Deserialize, Serialize, Serializer};
-
-fn serialize_enum_option<S: Serializer, T: Serialize>(
-    value: &Option<T>,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&serde_plain::to_string(value).unwrap())
-}
-
-fn serialize_vec_enum_option<S: Serializer, T: Serialize>(
-    value: &Option<Vec<T>>,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    match value {
-        Some(ref val) => {
-            let mut seq = s.serialize_seq(Some(val.len()))?;
-            for element in val.iter() {
-                seq.serialize_element(&serde_plain::to_string(element).unwrap())?;
-            }
-            seq.end()
-        }
-        None => panic!("unsupported"),
-    }
-}
+use serde::{Deserialize, Serialize};
 
 /// Information property list.
 /// https://developer.apple.com/documentation/bundleresources/information_property_list

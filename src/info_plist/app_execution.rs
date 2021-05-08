@@ -1,13 +1,16 @@
-/// App Execution.
-///
-/// Control app launch, execution, and termination.
-///
-/// Your app interacts with the system during normal execution by calling system APIs.
-/// However, you need to communicate information about how to execute your app before you have access to these API calls.
-/// For example, you may need to specify under what conditions your app can launch, the environment that it should launch into,
-/// and what should happen when it terminates. You add keys to your app’s Information Property List file to manage its execution.
-///
-use super::{serialize_enum_option, serialize_vec_enum_option};
+//! # App Execution.
+//!
+//! Control app launch, execution, and termination.
+//!
+//! Your app interacts with the system during normal execution by calling system APIs.
+//! However, you need to communicate information about how to execute your app before you have access to these API calls.
+//! For example, you may need to specify under what conditions your app can launch, the environment that it should launch into,
+//! and what should happen when it terminates. You add keys to your app’s Information Property List file to manage its execution.
+//!
+//! ## Framework
+//! * Bundle Resources
+
+use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 

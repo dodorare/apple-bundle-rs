@@ -1,5 +1,6 @@
-use super::*;
+use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
+
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Icloud {
     /// The container identifiers for the iCloud development environment.

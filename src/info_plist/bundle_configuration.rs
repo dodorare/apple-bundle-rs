@@ -1,14 +1,15 @@
-/// Bundle Configuration.
-///
-/// Define basic characteristics of a bundle, like its name, type, and version.
-///
-/// The Information Property List file associated with a bundle tells you how to interpret the bundle’s contents.
-/// The file describes fundamental features, like whether the bundle contains an app, a framework, or something else.
-/// It also includes identifying characteristics of the bundle, like an identifier, a human-readable name, and a version.
-///
-/// ## Framework
-/// * Bundle Resources
-use super::serialize_enum_option;
+//! # Bundle Configuration.
+//!
+//! Define basic characteristics of a bundle, like its name, type, and version.
+//!
+//! The Information Property List file associated with a bundle tells you how to interpret the bundle’s contents.
+//! The file describes fundamental features, like whether the bundle contains an app, a framework, or something else.
+//! It also includes identifying characteristics of the bundle, like an identifier, a human-readable name, and a version.
+//!
+//! ## Framework
+//! * Bundle Resources
+
+use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Categorization.

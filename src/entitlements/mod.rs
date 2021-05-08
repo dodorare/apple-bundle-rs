@@ -1,8 +1,6 @@
-//! Entitlements
+//! # Entitlements
 //!
 //! Key-value pairs that grant an executable permission to use a service or technology.
-//!
-//! Bundle Resources
 //!
 //! An entitlement is a right or privilege that grants an executable particular capabilities. For example, an app needs
 //! the HomeKit Entitlement — along with explicit user consent — to access a user’s home automation network. An app stores
@@ -15,6 +13,14 @@
 //!
 //! Official documentation: https://developer.apple.com/documentation/bundleresources/entitlements
 //!
+//! ## Availability
+//! * iOS 2.0+
+//! * macOS 10.7+
+//! * tvOS 9.0+
+//! * watchOS 2.0+
+//!
+//! ## Framework
+//! Bundle Resources
 
 pub mod app_clips;
 pub mod authentication;
@@ -58,33 +64,11 @@ pub mod prelude {
     pub use super::system::*;
     pub use super::tv::*;
     pub use super::wallet::*;
+    pub use super::Entitlements;
 }
 
 use prelude::*;
-use serde::{ser::SerializeSeq, Deserialize, Serialize, Serializer};
-
-fn serialize_enum_option<S: Serializer, T: Serialize>(
-    value: &Option<T>,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    s.serialize_str(&serde_plain::to_string(value).unwrap())
-}
-
-fn serialize_vec_enum_option<S: Serializer, T: Serialize>(
-    value: &Option<Vec<T>>,
-    s: S,
-) -> Result<S::Ok, S::Error> {
-    match value {
-        Some(ref val) => {
-            let mut seq = s.serialize_seq(Some(val.len()))?;
-            for element in val.iter() {
-                seq.serialize_element(&serde_plain::to_string(element).unwrap())?;
-            }
-            seq.end()
-        }
-        None => panic!("unsupported"),
-    }
-}
+use serde::{Deserialize, Serialize};
 
 /// Entitlements.
 /// https://developer.apple.com/documentation/bundleresources/entitlements
