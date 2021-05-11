@@ -1,13 +1,16 @@
-/// User Interface.
-///
-/// Configure an app's scenes, storyboards, icons, fonts, and other user interface elements.
-///
-/// You define the user interface that your app presents during normal operation with a combination of code and storyboards.
-/// However, the system needs to know a few things about your app’s user interface before execution begins. For example,
-/// on some platforms, you have to specify what device orientations your app supports and what the system should display
-/// while your app launches. You add keys to your app’s Information Property List file to control certain aspects of its user interface.
-///
-use super::{serialize_enum_option, serialize_vec_enum_option};
+//! # User Interface.
+//!
+//! Configure an app's scenes, storyboards, icons, fonts, and other user interface elements.
+//!
+//! You define the user interface that your app presents during normal operation with a combination of code and storyboards.
+//! However, the system needs to know a few things about your app’s user interface before execution begins. For example,
+//! on some platforms, you have to specify what device orientations your app supports and what the system should display
+//! while your app launches. You add keys to your app’s Information Property List file to control certain aspects of its user interface.
+//!
+//! ## Framework
+//! * Bundle Resources
+
+use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr};
 
@@ -18,6 +21,12 @@ pub struct MainUserInterface {
     ///
     /// The presence of this key indicates that the app supports scenes and does not
     /// use an app delegate object to manage transitions to and from the foreground or background.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         flatten,
         rename(serialize = "UIApplicationSceneManifest"),
@@ -25,24 +34,52 @@ pub struct MainUserInterface {
     )]
     pub application_scene_manifest: Option<ApplicationSceneManifest>,
     /// The name of an app's storyboard resource file.
+    ///
+    /// ## Availability
+    /// * macOS 10.10+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSMainStoryboardFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard_resource_file_base_name: Option<String>,
     /// The name of the app’s main storyboard file.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * tvOS 9.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIMainStoryboardFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard_file_base_name: Option<String>,
     /// The name of an app’s main user interface file.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSMainNibFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub main_nib_file_base_name: Option<String>,
     /// A Boolean value indicating whether the app is an agent app that runs in the background and doesn't appear in the Dock.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "LSUIElement"),
         skip_serializing_if = "Option::is_none"
@@ -58,6 +95,12 @@ pub struct LaunchInterface {
     /// You use this key to define the launch screen that the system displays while your app launches.
     /// If you need to provide different launch screens in response to being launched by different
     /// URL schemes, use UILaunchScreens instead.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UILaunchScreen"),
         skip_serializing_if = "Option::is_none"
@@ -76,6 +119,12 @@ pub struct LaunchInterface {
     /// To map from URL schemes to a launch screens, create a dictionary of schemes and identifiers,
     /// and store it as the value for the UIURLToLaunchScreenAssociations key. Additionally,
     /// indicate a default launch screen by setting a value for the UIDefaultLaunchScreen key.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UILaunchScreens"),
         skip_serializing_if = "Option::is_none"
@@ -87,12 +136,26 @@ pub struct LaunchInterface {
     /// of your storyboard is LaunchScreen.storyboard, specify "LaunchScreen" as the value for this key.
     ///
     /// If you prefer to configure your app’s launch screen without storyboards, use UILaunchScreen instead.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UILaunchStoryboardName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboard_name: Option<String>,
     /// The launch storyboards.
+    ///
+    /// ## Availability
+    /// * iOS 9.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UILaunchStoryboards"),
         skip_serializing_if = "Option::is_none"
@@ -101,6 +164,12 @@ pub struct LaunchInterface {
     /// The initial user-interface mode for the app.
     ///
     /// Possible Values: 0, 1, 2, 3, 4
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "LSUIPresentationMode"),
         skip_serializing_if = "Option::is_none"
@@ -112,30 +181,69 @@ pub struct LaunchInterface {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Icons {
     /// Information about all of the icons used by the app.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleIcons"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_icons: Option<BundleIcons>,
     /// The names of the bundle’s icon image files.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleIconFiles"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_icon_files: Option<Vec<String>>,
     /// The file containing the bundle's icon.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleIconFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_icon_file: Option<String>,
     /// The name of the asset that represents the app icon.
+    ///
+    /// ## Availability
+    /// * macOS 10.13+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleIconName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_icon_name: Option<String>,
     /// A Boolean value indicating whether the app’s icon already contains a shine effect.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIPrerenderedIcon"),
         skip_serializing_if = "Option::is_none"
@@ -147,6 +255,12 @@ pub struct Icons {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Orientation {
     /// The initial orientation of the app’s user interface.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIInterfaceOrientation"),
         skip_serializing_if = "Option::is_none",
@@ -154,6 +268,12 @@ pub struct Orientation {
     )]
     pub interface_orientation: Option<InterfaceOrientation>,
     /// The initial orientation of the app’s user interface.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UISupportedInterfaceOrientations"),
         skip_serializing_if = "Option::is_none",
@@ -166,6 +286,13 @@ pub struct Orientation {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Styling {
     /// The user interface style for the app.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    /// * tvOS 10.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIUserInterfaceStyle"),
         skip_serializing_if = "Option::is_none",
@@ -174,12 +301,26 @@ pub struct Styling {
     pub user_interface_style: Option<UserInterfaceStyle>,
     /// A Boolean value indicating whether Core Animation layers use antialiasing when
     /// drawing a layer that's not aligned to pixel boundaries.
+    ///
+    /// ## Availability
+    /// * iOS 3.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIViewEdgeAntialiasing"),
         skip_serializing_if = "Option::is_none"
     )]
     pub view_edge_antialiasing: Option<bool>,
     /// The app’s white point adaptivity style, enabled on devices with True Tone displays.
+    ///
+    /// ## Availability
+    /// * iOS 9.3+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIWhitePointAdaptivityStyle"),
         skip_serializing_if = "Option::is_none",
@@ -187,12 +328,26 @@ pub struct Styling {
     )]
     pub white_point_adaptivity_style: Option<WhitePointAdaptivityStyle>,
     /// A Boolean value indicating whether Core Animation sublayers inherit the opacity of their superlayer.
+    ///
+    /// ## Availability
+    /// * iOS 3.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIViewGroupOpacity"),
         skip_serializing_if = "Option::is_none"
     )]
     pub view_group_opacity: Option<bool>,
     /// A Boolean value indicating whether the app requires fullscreen or not.
+    ///
+    /// ## Availability
+    /// * iOS 9.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIRequiresFullScreen"),
         skip_serializing_if = "Option::is_none"
@@ -207,6 +362,15 @@ pub struct Styling {
     /// Name build setting (in the Asset Catalog Compiler - Options section) of the target. Set the value of the build
     /// setting to the name of the Color Set in the asset catalog. Xcode automatically sets NSAccentColorName to the appropriate
     /// value in the Info.plist file when building your project.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * macOS 11.0+
+    /// * tvOS 14.0+
+    /// * watchOS 7.0+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSAccentColorName"),
         skip_serializing_if = "Option::is_none"
@@ -220,6 +384,13 @@ pub struct Styling {
     /// Name build setting (in the Asset Catalog Compiler - Options section) of the widget extension target. Set the value
     /// of the build setting to the name of the Color Set in the asset catalog. Xcode automatically sets NSWidgetBackgroundColorName
     /// to the appropriate value in the Info.plist file when building your project.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * macOS 11.0+
+    ///
+    /// ## Framework
+    /// * WidgetKit
     #[serde(
         rename(serialize = "NSWidgetBackgroundColorName"),
         skip_serializing_if = "Option::is_none"
@@ -231,12 +402,26 @@ pub struct Styling {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Fonts {
     /// The location of a font file or directory of fonts in the bundle’s Resources folder.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
     #[serde(
         rename(serialize = "ATSApplicationFontsPath"),
         skip_serializing_if = "Option::is_none"
     )]
     pub application_fonts_path: Option<String>,
     /// App-specific font files located in the bundle and that the system loads at runtime.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIAppFonts"),
         skip_serializing_if = "Option::is_none"
@@ -248,12 +433,24 @@ pub struct Fonts {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct StatusBar {
     /// A Boolean value indicating whether the status bar is initially hidden when the app launches.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIStatusBarHidden"),
         skip_serializing_if = "Option::is_none"
     )]
     pub status_bar_hidden: Option<bool>,
     /// The style of the status bar as the app launches.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIStatusBarStyle"),
         skip_serializing_if = "Option::is_none",
@@ -261,6 +458,14 @@ pub struct StatusBar {
     )]
     pub status_bar_style: Option<StatusBarStyle>,
     /// The status bar tint.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIStatusBarTintParameters"),
         skip_serializing_if = "Option::is_none"
@@ -268,6 +473,12 @@ pub struct StatusBar {
     pub status_bar_tint_parameters: Option<StatusBarTintParameters>,
     /// A Boolean value indicating whether the status bar appearance is based on the style
     /// preferred for the current view controller.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIViewControllerBasedStatusBarAppearance"),
         skip_serializing_if = "Option::is_none"
@@ -279,12 +490,24 @@ pub struct StatusBar {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Preferences {
     /// The name of an image file used to represent a preference pane in the System Preferences app.
+    ///
+    /// ## Availability
+    /// * macOS 10.1+
+    ///
+    /// ## Framework
+    /// * Preference Panes
     #[serde(
         rename(serialize = "NSPrefPaneIconFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub pref_pane_icon_file: Option<String>,
     /// The name of a preference pane displayed beneath the preference pane icon in the System Preferences app.
+    ///
+    /// ## Availability
+    /// * macOS 10.1+
+    ///
+    /// ## Framework
+    /// * Preference Panes
     #[serde(
         rename(serialize = "NSPrefPaneIconLabel"),
         skip_serializing_if = "Option::is_none"
@@ -296,24 +519,51 @@ pub struct Preferences {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Graphics {
     /// A Boolean value indicating whether the app supports HDR mode on Apple TV 4K.
+    ///
+    /// ## Availability
+    /// * tvOS 11.2+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIAppSupportsHDR"),
         skip_serializing_if = "Option::is_none"
     )]
     pub app_supports_hdr: Option<bool>,
     /// A Boolean value indicating whether the Cocoa app supports high-resolution displays.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * macOS 10.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSHighResolutionCapable"),
         skip_serializing_if = "Option::is_none"
     )]
     pub high_resolution_capable: Option<bool>,
     /// A Boolean value indicating whether an OpenGL app may utilize the integrated GPU.
+    ///
+    /// ## Availability
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Foundation
     #[serde(
         rename(serialize = "NSSupportsAutomaticGraphicsSwitching"),
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_automatic_graphics_switching: Option<bool>,
     /// The preferred system action when an external GPU is connected from the system.
+    ///
+    /// ## Availability
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Metal
     #[serde(
         rename(serialize = "GPUEjectPolicy"),
         skip_serializing_if = "Option::is_none",
@@ -321,6 +571,12 @@ pub struct Graphics {
     )]
     pub gpu_eject_policy: Option<GpuEjectPolicy>,
     /// The app's preference for whether it wants to use external graphics processors.
+    ///
+    /// ## Availability
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Metal
     #[serde(
         rename(serialize = "GPUSelectionPolicy"),
         skip_serializing_if = "Option::is_none",
@@ -333,35 +589,98 @@ pub struct Graphics {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct QuickLook {
     /// A Boolean value indicating whether a Quick Look app's generator can be run in threads other than the main thread.
+    ///
+    /// ## Availability
+    /// * iOS 4.0+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * QuickLook
     #[serde(
         rename(serialize = "QLNeedsToBeRunInMainThread"),
         skip_serializing_if = "Option::is_none"
     )]
     pub needs_to_be_run_in_main_thread: Option<bool>,
     /// A hint at the height, in points, of a Quick Look app's previews.
+    ///
+    /// ## Availability
+    /// * iOS 4.0+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * QuickLook
     #[serde(
         rename(serialize = "QLPreviewHeight"),
         skip_serializing_if = "Option::is_none"
     )]
     pub preview_height: Option<f32>,
     /// A hint at the width, in points, of a Quick Look app's previews.
+    ///
+    /// ## Availability
+    /// * iOS 4.0+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * QuickLook
     #[serde(
         rename(serialize = "QLPreviewWidth"),
         skip_serializing_if = "Option::is_none"
     )]
     pub preview_width: Option<f32>,
     /// A Boolean value indicating whether a Quick Look app's generator can handle concurrent thumbnail and preview requests.
+    ///
+    /// ## Availability
+    /// * iOS 4.0+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * QuickLook
     #[serde(
         rename(serialize = "QLSupportsConcurrentRequests"),
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_concurrent_requests: Option<bool>,
     /// The minimum size, in points, along one dimension of thumbnails for a Quick Look app's generator.
+    ///
+    /// ## Availability
+    /// * iOS 4.0+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * QuickLook
     #[serde(
         rename(serialize = "QLThumbnailMinimumSize"),
         skip_serializing_if = "Option::is_none"
     )]
     pub thumbnail_minimum_size: Option<f32>,
+}
+
+/// Deprecated Keys.
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct DeprecatedKeys {
+    /// A dictionary containing information about launch images.
+    ///
+    /// ## Availability
+    /// * iOS 7.0–13.0
+    /// * tvOS 9.0–13.0
+    ///
+    /// ## Framework
+    /// * UIKit
+    #[deprecated(
+        since = "iOS 7.0–13.0, tvOS 9.0–13.0",
+        note = "UILaunchImages has been deprecated; use Xcode launch storyboards instead."
+    )]
+    #[serde(
+        rename(serialize = "UILaunchImages"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub launch_images: Option<Vec<LaunchImage>>,
+}
+
+/// Default Dictionary.
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct LaunchImage {
+    pub default: String,
 }
 
 /// GPU Eject Policy.
@@ -405,6 +724,14 @@ pub enum GpuSelectionPolicy {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct StatusBarTintParameters {
     /// The initial navigation bar’s style and translucency.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UINavigationBar"),
         skip_serializing_if = "Option::is_none"
@@ -422,6 +749,14 @@ pub struct NavigationBar {
     #[serde(rename(serialize = "Translucent"))]
     pub translucent: bool,
     /// The tint color to apply to the background of the navigation bar.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "TintColor"),
         skip_serializing_if = "Option::is_none"
@@ -531,12 +866,28 @@ impl FromStr for InterfaceOrientation {
 /// Bundle Icons.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BundleIcons {
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleAlternateIcons"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_alternate_icons: Option<BTreeMap<String, AppIconReferenceName>>,
     /// The primary icon for the Home screen and Settings app, among others.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(rename(serialize = "CFBundlePrimaryIcon"))]
     pub bundle_primary_icon: BundlePrimaryIcon,
 }
@@ -560,18 +911,40 @@ pub struct AppIconReferenceName {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BundlePrimaryIcon {
     /// The names of a bundle’s icon files.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(rename(serialize = "CFBundleIconFiles"))]
     pub bundle_icon_files: Vec<String>,
     /// The name of a symbol from SF Symbols.
     ///
     /// Action extensions use template images for their icons. To use a symbol from SF Symbols
     /// as the icon, set the value of CFBundleSymbolName to the symbol’s name.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
     #[serde(
         rename(serialize = "CFBundleSymbolName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_symbol_name: Option<String>,
     /// A Boolean value indicating whether the icon files already incorporate a shine effect.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(rename(serialize = "UIPrerenderedIcon"))]
     pub prerendered_icon: bool,
 }
@@ -587,6 +960,12 @@ pub struct LaunchScreen {
     ///
     /// If you don’t set a color, the system uses a default of systemBackground, which varies according to whether
     /// the user has selected the light appearance or Dark Mode for the device.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIColorName"),
         skip_serializing_if = "Option::is_none"
@@ -600,12 +979,24 @@ pub struct LaunchScreen {
     ///
     /// If you don’t specify an image, the display shows the background color, as given by the UIColorName key.
     /// The background color may also show through any transparency in your image.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIImageName"),
         skip_serializing_if = "Option::is_none"
     )]
     pub image_name: Option<String>,
     /// A Boolean that specifies whether the launch image should respect the safe area insets.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIImageRespectsSafeAreaInsets"),
         skip_serializing_if = "Option::is_none"
@@ -618,6 +1009,12 @@ pub struct LaunchScreen {
     /// You can optionally set the dictionary’s UIImageName key to define a custom image for the navigation bar.
     ///
     /// Omit this key if you don’t want to display a navigation bar during launch.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UINavigationBar"),
         skip_serializing_if = "Option::is_none"
@@ -629,6 +1026,12 @@ pub struct LaunchScreen {
     /// You can optionally set the dictionary’s UIImageName key to define a custom image for the tab bar.
     ///
     /// Omit this key if you don’t want to display a tab bar during launch.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UITabBar"),
         skip_serializing_if = "Option::is_none"
@@ -638,6 +1041,12 @@ pub struct LaunchScreen {
     /// You can optionally set the dictionary’s UIImageName key to define a custom image for the toolbar.
     ///
     /// Omit this key if you don’t want to display a toolbar during launch.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIToolbar"),
         skip_serializing_if = "Option::is_none"
@@ -652,6 +1061,12 @@ pub struct Bar {
     ///
     /// Provide a value for this key that’s the name of an image in your asset catalog. You use the same string for
     /// the value that you might use when calling the init(named:) initializer of UIImage.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIImageName"),
         skip_serializing_if = "Option::is_none"
@@ -669,6 +1084,12 @@ pub struct LaunchScreens {
     /// with the addition of a UILaunchScreenIdentifier key that provides a unique identifier for the dictionary.
     /// You use that identifier when associating to the dictionary with a URL scheme in the UIURLToLaunchScreenAssociations
     /// array, or to indicate it as the default launch screen with the UIDefaultLaunchScreen key.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UILaunchScreenDefinitions"),
         skip_serializing_if = "Option::is_none"
@@ -682,6 +1103,12 @@ pub struct LaunchScreens {
     /// of one of the launch screen definitions in your UILaunchScreenDefinitions array.
     ///
     /// Any Key - A URL scheme. Set one of the configuration identifiers as the value.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIURLToLaunchScreenAssociations"),
         skip_serializing_if = "Option::is_none"
@@ -693,6 +1120,12 @@ pub struct LaunchScreens {
     /// definitions in your UILaunchScreenDefinitions array. The system displays the named launch screen
     /// when launching your app in response to a URL scheme that you don’t enumerate in the
     /// UIURLToLaunchStoryboardAssociations dictionary, or when the user launches your app directly.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(
         rename(serialize = "UIDefaultLaunchScreen"),
         skip_serializing_if = "Option::is_none"
@@ -714,6 +1147,12 @@ pub struct LaunchScreenDefinitions {
     )]
     pub color_name: Option<String>,
     /// Launch Storyboards.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SwiftUI
     #[serde(flatten)]
     pub launch_screen: LaunchScreen,
 }
@@ -766,12 +1205,24 @@ pub struct ApplicationSceneManifest {
     /// if two scenes access the same shared resource, you must synchronize access to that resource
     /// using a serial dispatch queue or some other mechanism. Failure to do so may lead
     /// to corrupted data or unexpected behavior from your app.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UIApplicationSupportsMultipleScenes"),
         skip_serializing_if = "Option::is_none"
     )]
     pub enable_multiple_windows: Option<bool>,
     /// The default configuration details for UIKit to use when creating new scenes.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         flatten,
         rename(serialize = "UISceneConfigurations"),
@@ -788,6 +1239,12 @@ pub struct SceneConfigurations {
     /// Use this key to specify the scene configurations for your app.
     /// Each scene corresponds to one you use for content you display on the device's main screen.
     /// Make your app's default scene the first entry in the array.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         flatten,
         rename(serialize = "UIWindowSceneSessionRoleApplication"),
@@ -798,6 +1255,12 @@ pub struct SceneConfigurations {
     ///
     /// Use this key to specify the scene configurations you use when displaying content on an
     /// external display. Make the default scene the first entry in the array.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         flatten,
         rename(serialize = "UIWindowSceneSessionRoleExternalDisplay"),
@@ -810,6 +1273,12 @@ pub struct SceneConfigurations {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct WindowSceneSessionRole {
     /// The app-specific name you use to identify the scene.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UISceneConfigurationName"),
         skip_serializing_if = "Option::is_none"
@@ -818,6 +1287,12 @@ pub struct WindowSceneSessionRole {
     /// The name of the scene class you want UIKit to instantiate.
     ///
     /// Specify UIWindowScene for scenes meant for your app or an external display. Do not specify UIScene.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UISceneClassName"),
         skip_serializing_if = "Option::is_none"
@@ -828,6 +1303,12 @@ pub struct WindowSceneSessionRole {
     /// The class you specify for this key must adopt the UISceneDelegate protocol.
     /// If the class you specify for the UISceneClassName key is UIWindowScene,
     /// your class must adopt the UIWindowSceneDelegate protocol.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UISceneDelegateClassName"),
         skip_serializing_if = "Option::is_none"
@@ -837,6 +1318,12 @@ pub struct WindowSceneSessionRole {
     ///
     /// Specify the name of the storyboard file without the filename extension. For example,
     /// if the filename of your storyboard is Main.storyboard, specify Main as the value for this key.
+    ///
+    /// ## Availability
+    /// * iOS 13.0+
+    ///
+    /// ## Framework
+    /// * UIKit
     #[serde(
         rename(serialize = "UISceneStoryboardFile"),
         skip_serializing_if = "Option::is_none"
