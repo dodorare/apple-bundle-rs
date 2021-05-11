@@ -42,6 +42,7 @@ pub mod siri;
 pub mod system;
 pub mod tv;
 pub mod wallet;
+pub mod wireless_interfaces;
 
 pub mod prelude {
     pub use super::app_clips::*;
@@ -64,6 +65,7 @@ pub mod prelude {
     pub use super::system::*;
     pub use super::tv::*;
     pub use super::wallet::*;
+    pub use super::wireless_interfaces::*;
     pub use super::Entitlements;
 }
 
@@ -77,4 +79,64 @@ pub struct Entitlements {
     /// Authentication
     #[serde(flatten)]
     pub authentication: Authentication,
+    /// App Clips
+    #[serde(flatten)]
+    pub app_clips: AppClips,
+    /// Car Play
+    #[serde(flatten)]
+    pub car_play: CarPlay,
+    /// Contacts
+    #[serde(flatten)]
+    pub contacts: Contacts,
+    /// Education
+    #[serde(flatten)]
+    pub education: Education,
+    /// Exposure Notification
+    #[serde(flatten)]
+    pub exposure_notification: ExposureNotification,
+    /// Games
+    #[serde(flatten)]
+    pub games: Games,
+    /// Health
+    #[serde(flatten)]
+    pub health: Health,
+    /// Home Automation
+    #[serde(flatten)]
+    pub home_automation: HomeAutomation,
+    /// Hypervisor
+    #[serde(flatten)]
+    pub hypervisor: Hypervisor,
+    /// iCloud
+    #[serde(flatten)]
+    pub icloud: Icloud,
+    /// Networking
+    #[serde(flatten)]
+    pub networking: Networking,
+    /// Push Notifications
+    #[serde(flatten)]
+    pub push_notifications: PushNotifications,
+    /// Security
+    #[serde(flatten)]
+    pub security: Security,
+    /// Sensors
+    #[serde(flatten)]
+    pub sensors: Sensors,
+    /// Siri
+    #[serde(flatten)]
+    pub siri: Siri,
+    /// System
+    #[serde(flatten)]
+    pub system: System,
+    /// TV
+    #[serde(flatten)]
+    pub tv: TV,
+    /// Wallet
+    #[serde(flatten)]
+    pub wallet: Wallet,
+    /// Wireless Interfaces
+    #[serde(flatten)]
+    pub wireless_interfaces: WirelessInterfaces,
+    /// Deprecated Entitlements
+    #[serde(flatten)]
+    pub deprecated_entitlements: DeprecatedEntitlements,
 }
