@@ -848,8 +848,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename(serialize = "NSExtensionPrincipalClass"),
-        skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        skip_serializing_if = "Option::is_none"
     )]
     pub extension_principal_class: Option<String>,
     /// The content scripts for a Safari extension.

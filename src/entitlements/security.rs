@@ -1,13 +1,142 @@
+use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
-/// ### App Sandbox
-///
-/// Restrict access to system resources and user data in macOS apps to contain damage if an app becomes compromised.
-///
-/// App Sandbox provides protection to system resources and user data by limiting your app’s access to resources requested through entitlements.
-///
-/// ### Important
-/// To distribute a macOS app through the Mac App Store, you must enable the App Sandbox capability.
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+pub struct Security {
+    /// Restrict access to system resources and user data in macOS apps to contain damage if an app becomes compromised.
+    ///
+    /// App Sandbox provides protection to system resources and user data by limiting your app’s access to resources requested through entitlements.
+    ///
+    /// ### Important
+    /// To distribute a macOS app through the Mac App Store, you must enable the App Sandbox capability.
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "AppSandbox"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub app_sandbox: Option<AppSandbox>,
+    /// Manage security protections and resource access for your macOS apps.
+    ///
+    /// The Hardened Runtime, along with System Integrity Protection (SIP), protects the runtime integrity of your software by preventing certain classes of exploits, like code injection, dynamically linked library (DLL) hijacking, and process memory space tampering.
+    /// To enable the Hardened Runtime for your app, navigate in Xcode to your target’s Signing & Capabilities information and click the + button.
+    /// In the window that appears, choose Hardened Runtime.
+    ///
+    /// The Hardened Runtime doesn’t affect the operation of most apps, but it does disallow certain less common capabilities, like just-in-time (JIT) compilation.
+    /// If your app relies on a capability that the Hardened Runtime restricts, add an entitlement to disable an individual protection.
+    /// You add an entitlement by enabling one of the runtime exceptions or access permissions listed in Xcode.
+    /// Make sure to use only the entitlements that are absolutely necessary for your app’s functionality.
+    ///
+    /// You add entitlements only to executables.
+    /// Shared libraries, frameworks, and in-process plug-ins inherit the entitlements of their host executable.
+    ///
+    /// ### Important
+    /// To upload a macOS app to be notarized, you must enable the Hardened Runtime capability.
+    /// For more information about notarization, see Notarizing macOS Software Before Distribution.
+    #[serde(
+        rename(serialize = "HardenedRuntime"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub hardened_runtime: Option<HardenedRuntime>,
+    /// A list of identifiers specifying the groups your app belongs to.
+    ///
+    /// App groups allow multiple apps produced by a single development team to access shared containers and communicate using interprocess communication (IPC).
+    /// Apps may belong to one or more app groups.
+    ///
+    /// Apps within an app group share access to a group container. For more information about container creation, location, and deletion, see containerURL(forSecurityApplicationGroupIdentifier:).
+    ///
+    /// Apps within a group can communicate with other members in the group using IPC mechanisms including Mach IPC, POSIX semaphores and shared memory, and UNIX domain sockets.
+    /// In macOS, use app groups to enable IPC communication between two sandboxed apps, or between a sandboxed app and a non-sandboxed app.
+    ///
+    /// App groups also act as keychain access groups.
+    /// For more information about the relationship between app groups and keychain access groups, see Sharing Access to Keychain Items Among a Collection of Apps.
+    ///
+    /// To add this entitlement to your app, enable the App Groups capability in Xcode, and add the groups your app belongs to.
+    ///
+    /// ## Availability
+    /// * iOS 3.0+
+    /// * macOS 10.7+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Foundation
+    #[serde(
+        rename(serialize = "com.apple.security.application-groups"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub app_groups: Option<Vec<String>>,
+    /// The identifiers for the keychain groups that the app may share items with.
+    ///
+    /// To add this entitlement to your app, enable the Keychain Sharing capability in Xcode.
+    ///
+    /// ## Availability
+    /// * iOS 3.0+
+    /// * macOS 10.7+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "keychain-access-groups"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub keychain_access_groups: Option<Vec<String>>,
+    /// The level of data protection for sensitive user data when an app accesses it on a device.
+    ///
+    /// To add this entitlement to your app, enable the Data Protection capability in Xcode.
+    ///
+    /// ## Availability
+    /// * iOS 3.0+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * Foundation
+    #[serde(
+        rename(serialize = "com.apple.developer.default-data-protection"),
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_enum_option"
+    )]
+    pub data_protection: Option<DataProtection>,
+    /// The environment for an app that uses the App Attest service to validate itself
+    ///
+    /// To add this entitlement to your app, add the key to your app’s entitlements file manually, choose the String type, and set the associated value to either development or production.
+    /// If you omit the entitlement during development, your app uses the App Attest sandbox servers by default.
+    /// You can test your app during development against the App Attest production servers by setting the entitlement to production.
+    ///
+    /// After distributing your app through TestFlight, the App Store, or the Apple Developer Enterprise Program, your app ignores the entitlement you set and uses the production environment.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * DeviceCheck
+    #[serde(
+        rename(serialize = "com.apple.developer.devicecheck.appattest-environment"),
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_enum_option"
+    )]
+    pub devicecheck_appattest: Option<DevicecheckAppattest>,
+    /// A Boolean that indicates whether your app has access to smart card slots and smart cards.
+    ///
+    /// Add this entitlement to your app with a value of true if you want to use the TKSmartCardSlotManager class.
+    /// For an app without the entitlement, the slot manager’s default value is nil.
+    /// The system also requires this entitlement for sandboxed applications that access smart cards using legacy PCSC framework APIs.
+    ///
+    /// ## Availability
+    /// * macOS 10.10+
+    ///
+    /// ## Framework
+    /// * CryptoTokenKit
+    #[serde(
+        rename(serialize = "com.apple.security.smartcard"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub security_smartcard: Option<bool>,
+}
+
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct AppSandbox {
     /// A Boolean value that indicates whether the app may use access control technology to contain damage to the system and user data if an app is compromised.
@@ -313,24 +442,6 @@ pub struct AppSandbox {
     pub all_files: Option<bool>,
 }
 
-/// ### Hardened Runtime
-/// Manage security protections and resource access for your macOS apps.
-///
-/// The Hardened Runtime, along with System Integrity Protection (SIP), protects the runtime integrity of your software by preventing certain classes of exploits, like code injection, dynamically linked library (DLL) hijacking, and process memory space tampering.
-/// To enable the Hardened Runtime for your app, navigate in Xcode to your target’s Signing & Capabilities information and click the + button.
-/// In the window that appears, choose Hardened Runtime.
-///
-/// The Hardened Runtime doesn’t affect the operation of most apps, but it does disallow certain less common capabilities, like just-in-time (JIT) compilation.
-/// If your app relies on a capability that the Hardened Runtime restricts, add an entitlement to disable an individual protection.
-/// You add an entitlement by enabling one of the runtime exceptions or access permissions listed in Xcode.
-/// Make sure to use only the entitlements that are absolutely necessary for your app’s functionality.
-///
-/// You add entitlements only to executables.
-/// Shared libraries, frameworks, and in-process plug-ins inherit the entitlements of their host executable.
-///
-/// ### Important
-/// To upload a macOS app to be notarized, you must enable the Hardened Runtime capability.
-/// For more information about notarization, see Notarizing macOS Software Before Distribution.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct HardenedRuntime {
     /// A Boolean value that indicates whether the app may create writable and executable memory using the MAP_JIT flag.
@@ -577,4 +688,27 @@ pub struct HardenedRuntime {
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_events: Option<bool>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+pub enum DataProtection {
+    #[serde(rename(serialize = "NSFileProtectionCompleteUnlessOpen"))]
+    FileProtectionCompleteUnlessOpen,
+    #[serde(rename(serialize = "NSFileProtectionCompleteUntilFirstUserAuthentication"))]
+    FileProtectionCompleteUntilFirstUserAuthentication,
+    #[serde(rename(serialize = "NSFileProtectionNone"))]
+    NSFileProtectionNone,
+    #[serde(rename(serialize = "NSFileProtectionComplete"))]
+    NSFileProtectionComplete,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+pub enum DevicecheckAppattest {
+    /// The App Attest sandbox environment that you use to test a device without affecting its risk metrics.
+    /// Keys you create in the sandbox environment don’t work in the production environment.
+    #[serde(rename(serialize = "development"))]
+    Development,
+    /// The App Attest production environment. Keys you create in the production environment don’t work in the sandbox environment.
+    #[serde(rename(serialize = "production"))]
+    Production,
 }
