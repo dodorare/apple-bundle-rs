@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-/// Extend the capabilities of macOS from user space.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct System {
     /// A Boolean value that indicates whether your app has permission to activate or deactivate system extensions.

@@ -1,7 +1,6 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
-/// Extend the capabilities of macOS from user space.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct TV {
     /// The entitlement for distinguishing between multiple user accounts on Apple TV.

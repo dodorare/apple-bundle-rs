@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-/// Extend the capabilities of macOS from user space.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Wallet {
     /// A list of identifiers that specify pass types that your app can access in Wallet.

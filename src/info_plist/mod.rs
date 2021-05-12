@@ -30,11 +30,13 @@
 
 pub mod app_execution;
 pub mod bundle_configuration;
+pub mod services;
 pub mod user_interface;
 
 pub mod prelude {
     pub use super::app_execution::*;
     pub use super::bundle_configuration::*;
+    pub use super::services::*;
     pub use super::user_interface::*;
 }
 
