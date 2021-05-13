@@ -1,4 +1,3 @@
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// Bluetooth
@@ -381,4 +380,603 @@ pub struct Health {
         skip_serializing_if = "Option::is_none"
     )]
     pub health_clinical_health_records_share_usage_description: Option<String>,
+    /// A message to the user that explains why the app requested permission to read samples from the HealthKit store.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that access the user’s heath data.
+    ///
+    /// ## Availability
+    /// * iOS 8.0+
+    ///
+    /// ## Framework
+    /// * HealthKit
+    #[serde(
+        rename(serialize = "NSHealthShareUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub health_share_usage_description: Option<String>,
+    /// A message to the user that explains why the app requested permission to save samples to the HealthKit store.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that update the user’s health data.
+    ///
+    /// ## Availability
+    /// * iOS 8.0+
+    ///
+    /// ## Framework
+    /// * HealthKit
+    #[serde(
+        rename(serialize = "NSHealthUpdateUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub health_update_usage_description: Option<String>,
+    /// The clinical record data types that your app must get permission to read.
+    ///
+    /// Use this key to indicate that your app requires access to specific clinical record data types to function properly.
+    /// Set the value to an array of strings containing the type identifiers for your required types.
+    /// For a list of type identifiers, see HKClinicalTypeIdentifier.
+    ///
+    /// To protect the user’s privacy, you must specify three or more required clinical record types.
+    /// If the user denies authorization to any of the types, authorization fails with an HKError.Code.errorRequiredAuthorizationDenied error.
+    /// Your app is not told the record types to which the user denied access.
+    ///
+    /// ## Availability
+    /// * iOS 12.0+
+    ///
+    /// ## Framework
+    /// * HealthKit
+    #[serde(
+        rename(serialize = "NSHealthRequiredReadAuthorizationTypeIdentifiers"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub health_required_read_authorization_type_identifiers: Option<Vec<String>>,
+}
+
+/// Home
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Home {
+    /// A message that tells the user why the app is requesting access to the user’s HomeKit configuration data.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that access the user’s HomeKit configuration data.
+    ///
+    /// For more information about using HomeKit in your app, see Enabling HomeKit in Your App.
+    ///
+    /// ## Availability
+    /// * iOS 8.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * HomeKit
+    #[serde(
+        rename(serialize = "NSHomeKitUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub home_kit_usage_description: Option<String>,
+}
+
+/// Location
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Location {
+    /// A message that tells the user why the app is requesting access to the user’s location information at all times.
+    ///
+    /// Use this key if your iOS app accesses location information while running in the background.
+    /// If your app only needs location information when in the foreground, use NSLocationWhenInUseUsageDescription instead.
+    /// For more information, see Choosing the Location Services Authorization to Request.
+    ///
+    /// If you need location information in a macOS app, use NSLocationUsageDescription instead.
+    /// If your iOS app deploys to versions earlier than iOS 11, see NSLocationAlwaysUsageDescription.
+    ///
+    /// ### Important
+    /// This key is required if your iOS app uses APIs that access the user’s location information at all times.
+    ///
+    /// ## Availability
+    /// * iOS 11.0+
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[serde(
+        rename(serialize = "NSLocationAlwaysAndWhenInUseUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_always_and_when_in_use_usage_description: Option<String>,
+    /// A message that tells the user why the app is requesting access to the user’s location information.
+    ///
+    /// Use this key in a macOS app that accesses the user’s location information.
+    /// In an iOS app, use NSLocationWhenInUseUsageDescription or NSLocationAlwaysAndWhenInUseUsageDescription instead.
+    ///
+    /// ### Important
+    /// This key is required if your macOS app uses APIs that access the user’s location information.
+    ///
+    /// ## Availability
+    /// * iOS 6.0–8.0
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[deprecated(since = "iOS 6.0–8.0")]
+    #[serde(
+        rename(serialize = "NSLocationUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_usage_description: Option<String>,
+    /// A message that tells the user why the app is requesting access to the user’s location information while the app is running in the foreground.
+    ///
+    /// Use this key if your iOS app accesses location information only when running in the foreground.
+    /// If your app needs location information when in the background, use NSLocationAlwaysAndWhenInUseUsageDescription instead.
+    /// For more information, see Choosing the Location Services Authorization to Request.
+    ///
+    /// If you need location information in a macOS app, use NSLocationUsageDescription instead.
+    ///
+    /// ### Important
+    /// This key is required if your iOS app uses APIs that access the user’s location information while the app is in use.
+    ///
+    /// ## Availability
+    /// * iOS 11.0+
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[serde(
+        rename(serialize = "NSLocationWhenInUseUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_when_in_use_usage_description: Option<String>,
+    /// A collection of messages that explain why the app is requesting temporary access to the user’s location.
+    ///
+    /// Use this key if your app needs temporary access to full accuracy location information.
+    /// Provide a dictionary of messages that address different use cases, keyed by strings that you define.
+    /// For example, if your app suggests nearby coffee shops in one part of the app, and finds nearby friends in another, you could include two entries
+    ///
+    /// When you request access, select among the messages at run time by providing the associated key to the requestTemporaryFullAccuracyAuthorization(withPurposeKey:) method:
+    /// ```swift
+    /// // Request location access to find coffee shops.
+    /// manager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "coffee")
+    /// ````
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * macOS 11.0+
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[serde(
+        rename(serialize = "NSLocationTemporaryUsageDescriptionDictionary"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_temporary_usage_description_dictionary: Option<DefaultDictionary>,
+    /// A message that tells the user why the app is requesting access to the user's location at all times.
+    ///
+    /// Use this key if your iOS app accesses location information in the background, and you deploy to a target earlier than iOS 11.
+    /// In that case, add both this key and NSLocationAlwaysAndWhenInUseUsageDescription to your app’s Info.plist file with the same message.
+    /// Apps running on older versions of the OS use the message associated with NSLocationAlwaysUsageDescription, while apps running on later versions use the one associated with NSLocationAlwaysAndWhenInUseUsageDescription.
+    ///
+    /// If your app only needs location information when in the foreground, use NSLocationWhenInUseUsageDescription instead.
+    /// For more information, see Choosing the Location Services Authorization to Request.
+    ///
+    /// If you need location information in a macOS app, use NSLocationUsageDescription instead.
+    ///
+    /// ### Important
+    /// This key is required if your iOS app uses APIs that access the user’s location at all times and deploys to targets earlier than iOS 11.
+    ///
+    /// ## Availability
+    /// * iOS 8.0–10.0
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[deprecated(
+        since = "iOS 8.0–10.0",
+        note = "For apps deployed to targets in iOS 11 and later, use NSLocationAlwaysAndWhenInUseUsageDescription instead."
+    )]
+    #[serde(
+        rename(serialize = "NSLocationAlwaysUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_always_usage_description: Option<String>,
+    /// A Boolean value that indicates a widget uses the user’s location information.
+    ///
+    /// To access the user’s location information from a widget, set the value to true in the widget extension’s Info.plist file.
+    ///
+    /// Before a widget can access location information, the containing app must request authorization from the user.
+    /// The containing app’s Info.plist file must also contain relevant purpose strings.
+    /// For more information, see Requesting Authorization for Location Services.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * macOS 11.0+
+    ///
+    /// ## Framework
+    /// * WidgetKit
+    #[serde(
+        rename(serialize = "NSWidgetWantsLocation"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub widget_wants_location: Option<bool>,
+    /// A Boolean value that indicates whether the app requests reduced location accuracy by default.
+    ///
+    /// Include this key in your information property list to set your app’s default behavior for location accuracy when it calls the Core Location framework.
+    /// Set the key value to true to prompt the user for reduced accuracy by default; set it to false to prompt for full location accuracy.
+    /// If you don't include that key in your Info.plist, that's equivalent to setting it to false.
+    ///
+    /// Include the key pair in your Info.plist file as shown:
+    ///
+    /// <!-- Info.plist -->
+    /// <key>NSLocationDefaultAccuracyReduced</key>
+    /// <true/>
+    ///
+    /// When this key is set to true, all Core Location services (location updates, visit monitoring, significant location change, fence monitoring) receive service at the reduced-accuracy service level.
+    /// Users will see that your app is asking for reduced accuracy because the location authorization prompt will show a map with an approximate location, and your app will have the Precise Location toggled off in Settings > Privacy > Location Services .
+    /// These indicators of an app's improved privacy are ones that users may value.
+    ///
+    /// If you want to leverage the reduced-accuracy feature to improve privacy in a particular operation without setting this key, use the desiredAccuracy constant kCLLocationAccuracyReduced.
+    /// This constant causes startUpdatingLocation() to deliver results as if the app were authorized for approximate location until you change the desiredAccuracy constant again.
+    ///
+    /// Setting NSLocationDefaultAccuracyReduced determines the default type of authorization your app gets, but users can override it any time in Settings.
+    /// Users always control the level of location accuracy they want to share, and can change precision settings in Settings > Privacy > Location Services by selecting Precise Location for your app.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * watchOS 7.0+
+    ///
+    /// ## Framework
+    /// * Core Location
+    #[serde(
+        rename(serialize = "NSLocationDefaultAccuracyReduced"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_default_accuracy_reduced: Option<bool>,
+}
+
+/// DefaultDictionary
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct DefaultDictionary {
+    pub default: String,
+}
+
+/// Media Player
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct MediaPlayer {
+    /// A message that tells the user why the app is requesting access to the user’s media library.
+    ///
+    /// Set the value of this key to a user-readable description of how you intend to use the user's media library.
+    /// The first time your app access the user's media library, the system prompts the user to grant or deny authorization for your app to do so.
+    /// The system includes this key's description in the dialog it displays to the user.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that access the user’s media library.
+    ///
+    /// ## Availability
+    /// * iOS 2.0+
+    ///
+    /// ## Framework
+    /// * Media Player
+    #[serde(
+        rename(serialize = "NSLocationAlwaysAndWhenInUseUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub location_always_and_when_in_use_usage_description: Option<String>,
+}
+
+/// Motion
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Motion {
+    /// A message that tells the user why the app is requesting access to the device’s motion data.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that access the device’s motion data, including CMSensorRecorder, CMPedometer, CMMotionActivityManager, and CMMovementDisorderManager.
+    /// If you don’t include this key, your app will crash when it attempts to access motion data.
+    ///
+    /// ## Availability
+    /// * iOS 7.0+
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * Core Motion
+    #[serde(
+        rename(serialize = "NSMotionUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub motion_usage_description: Option<String>,
+    /// A message to the user that explains the app’s request for permission to access fall detection event data.
+    ///
+    /// ### Important
+    /// If your app uses the CMFallDetectionManager, the app requires this key.
+    ///
+    /// ## Availability
+    /// * watchOS 7.2+
+    ///
+    /// ## Framework
+    /// * Core Motion
+    #[serde(
+        rename(serialize = "NSFallDetectionUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fall_detection_usage_description: Option<String>,
+}
+
+/// Networking
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Networking {
+    /// A message that tells the user why the app is requesting access to the local network.
+    ///
+    /// Any app that uses the local network, directly or indirectly, should include this description.
+    /// This includes apps that use Bonjour and services implemented with Bonjour, as well as direct unicast or multicast connections to local hosts.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * macOS 11.0+
+    /// * tvOS 14.0+
+    ///
+    /// ## Framework
+    /// * Network
+    #[serde(
+        rename(serialize = "NSLocalNetworkUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub local_network_usage_description: Option<String>,
+    /// A request for user permission to begin an interaction session with nearby devices.
+    ///
+    /// Before an app starts an interaction session, the system requests permission to share the user’s relative distance and direction with a nearby peer.
+    /// The framework presents a prompt that displays the string value of this key contained in your project’s Info.plist.
+    /// Define text that explains your interaction session's purpose to the user.
+    /// For more information, see Initiating and Maintaining a Session.
+    ///
+    /// This property is localizable.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * Nearby Interaction
+    #[serde(
+        rename(serialize = "NSNearbyInteractionAllowOnceUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub nearby_interaction_allow_once_usage_description: Option<String>,
+}
+
+/// NFC
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct NFC {
+    /// A message that tells the user why the app is requesting access to the device’s NFC hardware.
+    ///
+    /// ### Important
+    /// You’re required to provide this key if your app uses APIs that access the NFC hardware.
+    ///
+    /// ## Availability
+    /// * iOS 11.0+
+    ///
+    /// ## Framework
+    /// * Core NFC
+    #[serde(
+        rename(serialize = "NFCReaderUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub nfc_reader_usage_description: Option<String>,
+}
+
+/// Photos
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Photos {
+    /// A message that tells the user why the app is requesting add-only access to the user’s photo library.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that have write access to the user’s photo library.
+    ///
+    /// ## Availability
+    /// * iOS 11.0+
+    ///
+    /// ## Framework
+    /// * Photos
+    #[serde(
+        rename(serialize = "NSPhotoLibraryAddUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub photo_library_add_usage_description: Option<String>,
+    /// A message that tells the user why the app is requesting access to the user’s photo library.
+    ///
+    /// If your app only adds assets to the photo library and does not read assets, use the NSPhotoLibraryAddUsageDescription key instead.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that have read or write access to the user’s photo library.
+    ///
+    /// ## Availability
+    /// * iOS 6.0+
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Photos
+    #[serde(
+        rename(serialize = "NSPhotoLibraryUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub photo_library_usage_description: Option<String>,
+}
+
+/// Scripting
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Scripting {
+    /// A Boolean value indicating whether AppleScript is enabled.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Foundation
+    #[serde(
+        rename(serialize = "NSAppleScriptEnabled"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub apple_script_enabled: Option<bool>,
+}
+
+/// Security
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Security {
+    /// A message that informs the user why an app is requesting permission to use data for tracking the user or the device.
+    ///
+    /// If your app calls the App Tracking Transparency API, you must provide custom text, known as a usage-description string, which displays as a system-permission alert request.
+    /// The usage-description string tells the user why the app is requesting permission to use data for tracking the user or the device.
+    /// The user has the option to grant or deny the authorization request.
+    /// If you don’t include a usage-description string, your app may crash when a user first launches it.
+    ///
+    /// Make sure your app requests permission to track sometime before tracking occurs.
+    /// This could be at first launch or when using certain features in your app.
+    /// For example, when signing on with a third-party SSO.
+    ///
+    /// Set the NSUserTrackingUsageDescription key in the Information Property List (Info.plist):
+    ///
+    /// 1. Select your project’s Info.plist file in Xcode Project navigator.
+    ///
+    /// 2. Modify the file using the Xcode Property List Editor: Privacy - Tracking Usage Description.
+    ///
+    /// * Use sentence-style capitalization and appropriate ending punctuation.
+    /// Keep the text short and specific.
+    /// You don’t need to include your app name because the system already identifies your app.
+    ///
+    /// * If the title is a sentence fragment, don’t add ending punctuation.
+    ///
+    /// See Apple’s Human Interface Guidelines for example usage descriptions.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    /// * tvOS 14.0+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "NSUserTrackingUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub user_tracking_usage_description: Option<String>,
+    /// A message that tells the user why the app is requesting the ability to send Apple events.
+    ///
+    /// An app using Apple events to control another app might be able to gain access to sensitive user data.
+    /// For example, the Mail app stores a lot of personal information in its local database that other apps can’t access directly.
+    /// But because Mail can be automated with Apple events, other apps can use Mail to gain access to the data indirectly.
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that send Apple events.
+    ///
+    /// ## Availability
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "NSAppleEventsUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub apple_events_usage_description: Option<String>,
+    /// A message in macOS that tells the user why the app is requesting to manipulate the system configuration.
+    ///
+    /// Use this key if your app uses certain APIs that manipulate system configuration, like ODRecordSetValue(_:_:_:_:).
+    ///
+    /// ### Important
+    /// This key is required if your app uses APIs that manipulate the system configuration.
+    ///
+    /// ## Availability
+    /// * macOS 10.14+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "NSSystemAdministrationUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub system_administration_usage_description: Option<String>,
+    /// A Boolean value indicating whether the app uses encryption.
+    ///
+    /// Set the value for this key to NO in your app’s Information Property List file to indicate that your app—including any third-party libraries you link against—either uses no encryption, or only uses encryption that’s exempt from export compliance requirements, as described in Determine your export compliance requirements.
+    /// Set the value to YES to indicate that your app uses non-exempt encryption.
+    ///
+    /// If you set the value to YES, you typically also provide a value for the ITSEncryptionExportComplianceCode key.
+    /// You set that key’s value using a code Apple provides after successfully reviewing your export compliance documentation.
+    ///
+    /// If you don’t have the ITSAppUsesNonExemptEncryption key in your app’s Info.plist file, App Store Connect walks you through an export compliance questionnaire every time you upload a new version of your app.
+    /// Including the key streamlines the app submission process.
+    ///
+    /// For additional information, see Complying with Encryption Export Regulations.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "ITSAppUsesNonExemptEncryption"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub app_uses_non_exempt_encryption: Option<bool>,
+    /// The export compliance code provided by App Store Connect for apps that require it.
+    ///
+    /// Include this key in your app’s Information Property List file if you set the ITSAppUsesNonExemptEncryption key’s value to YES.
+    /// Set the value for this key to the code that Apple sends you after successfully reviewing export compliance documentation that you provide through App Store Connect.
+    ///
+    /// For additional information, see Complying with Encryption Export Regulations.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "ITSEncryptionExportComplianceCode"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub encryption_export_compliance_code: Option<String>,
+}
+
+/// Sensors
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Sensors {
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SensorKit
+    #[serde(
+        rename(serialize = "NSSensorKitUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub sensor_kit_usage_description: Option<String>,
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SensorKit
+    #[serde(
+        rename(serialize = "NSSensorKitUsageDetail"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub sensor_kit_usage_detail: Option<DefaultDictionary>,
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * SensorKit
+    #[serde(
+        rename(serialize = "NSSensorKitPrivacyPolicyURL"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub sensor_kit_privacy_policy_url: Option<String>,
+}
+
+/// Siri
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+pub struct Siri {
+    /// A message that tells the user why the app is requesting to send user data to Siri.
+    ///
+    /// ### important
+    /// This key is required if your app uses APIs that send user data to Siri
+    ///
+    /// ## Availability
+    /// * iOS 10.0+
+    ///
+    /// ## Framework
+    /// * Intents
+    #[serde(
+        rename(serialize = "NSSensorKitUsageDescription"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub siri_usage_description: Option<String>,
 }
