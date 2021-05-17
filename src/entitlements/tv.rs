@@ -2,7 +2,7 @@ use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
-pub struct TV {
+pub struct Tv {
     /// The entitlement for distinguishing between multiple user accounts on Apple TV.
     ///
     /// To configure the entitlement, add the User Management capability on your app’s target in Xcode and select the checkbox for each privilege your app requires.

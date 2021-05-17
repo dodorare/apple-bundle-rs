@@ -1,3 +1,12 @@
+/// ## Protected Resources
+///
+/// Control an app’s access to protected system services and user data.
+///
+/// ### Overview
+/// Before your app can access certain protected resources, like the Bluetooth interface, location information, or the user’s photos, the system asks the user for permission on behalf of your app.
+/// To signal that your app needs the access, you add a UsageDescription key to your app’s Information Property List.
+/// You set the value associated with the key to a string that explains why your app needs access.
+/// The system displays this string when prompting the user, as described in Requesting Access to Protected Resources.
 use serde::{Deserialize, Serialize};
 
 /// Bluetooth
@@ -699,6 +708,52 @@ pub struct Health {
 }
 
 /// Home
+///
+/// ## Enabling HomeKit in Your App
+/// Declare your app’s intention to use HomeKit, and get permission from the user to access home automation accessories.
+///
+/// ### Overview
+/// To access the devices in the user’s home automation network, you enable the HomeKit capability for your app.
+/// You also provide a usage description that explains to the user why the app needs access, and handle the case where the user denies access.
+///
+/// ### Enable the HomeKit Capability
+/// To ready your app to work with HomeKit, enable the HomeKit capability for your app in Xcode.
+/// Open your project, select the app target, and choose the Signing & Capabilities pane.
+/// Then click the + button.
+/// In the window that appears, choose HomeKit.
+///
+/// When you enable the HomeKit capability, Xcode automatically adds the HomeKit Entitlement to your entitlements file.
+/// It also adds the corresponding feature to your App ID and links the HomeKit framework.
+///
+/// ### Explain Why Your App Needs Access to the User’s Home Network
+/// A user’s home automation network is a sensitive resource.
+/// Apps with access can collect sensor data and change the state of physical objects in the real world.
+/// To protect users, the first time your app uses the HomeKit framework—typically, when you create a HMHomeManager instance—the system prompts the user for permission.
+///
+/// You provide a message for this prompt called a purpose string or a usage description by setting a string value for the NSHomeKitUsageDescription that you add to your app’s Information Property List file.
+/// Find and select your project’s Info.plist file in Xcode’s project navigator.
+///
+/// The system automatically generates the prompt’s title, which includes the name of your app.
+/// Your usage description—in this case, “Configure accessories from Kilgo Devices, Inc.”—indicates the reason that your app needs the access.
+///
+/// Accurately and concisely explaining to the user why your app needs access to the home network, typically in one complete sentence, lets the user make an informed decision and improves the chances that they’ll grant access.
+///
+/// ### Important
+/// If you don’t include a purpose string, your app crashes when you first try to use HomeKit.
+///
+/// ### Handle Permission Denial Gracefully
+/// If the user grants permission, the system remembers the user’s choice and doesn’t prompt again.
+/// If the user denies permission, the access attempt that initiated the prompt and any further attempts fail.
+/// Look for a homeAccessNotAuthorized error in your completion handlers to detect this condition.
+/// Alternatively, you can inspect the home manager’s authorizationStatus property.
+///
+/// Be aware that even if the user allows the initial access, they can revoke permission at any time in the Settings app.
+/// Your app should handle both initial and subsequent access denials gracefully.
+///
+/// If home automation is a secondary function of your app—like an alarm app that plays an audible alert on the device and can also turn the house lights on when the alarm triggers—respect the user’s choice and work around denied access.
+/// For example, you can omit unavailable features from the user interface.
+///  
+/// If your app can’t provide meaningful functionality without HomeKit access, you can display a message to the user saying so, directing them to change the privacy setting for your app to continue.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Home {
     /// A message that tells the user why the app is requesting access to the user’s HomeKit configuration data.
@@ -899,6 +954,47 @@ pub struct DefaultDictionary {
 }
 
 /// Media Player
+///
+/// ## Requesting Access to Apple Music Library
+///
+/// Prompt the user to authorize access to Apple Music library.
+///
+/// ### Overview
+/// Your app must obtain permission from the user before accessing Apple Music Library.
+///
+/// ### Provide a Purpose String in Info.plist
+/// Provide a purpose string or usage description that describes how your app intends to use the user’s iCloud Music library or Apple Music catalog.
+/// Add the NSAppleMusicUsageDescription key to your app’s Info.plist.
+/// Set its value to a string that explains why your app needs access to Apple Music library.
+/// The system displays the string to the user when prompting them for authorization.
+///
+/// ### Important
+/// This key is required for apps that access the user’s music library. Apps crash when the key is absent.
+///
+/// See Requesting Access to Protected Resources for more details.
+///
+/// Request Authorization
+///
+/// The user determines whether apps can play items from the Apple Music catalog or add tracks to their iCloud Music library.
+/// They can grant or deny access when your app requests authorization.
+/// Because the user can change your app’s authorization status in Settings > Privacy > Media and Apple Music, be sure to call SKCloudServiceController’s authorizationStatus() before attempting to access their Apple Music library.
+///
+/// ```swift
+/// guard SKCloudServiceController.authorizationStatus() == .notDetermined else { return }
+/// ```
+///
+/// If the authorization status is SKCloudServiceAuthorizationStatus.notDetermined, call SKCloudServiceController’s requestAuthorization(_:) to prompt the user for access.
+///
+/// ```swift
+/// SKCloudServiceController.requestAuthorization {(status: SKCloudServiceAuthorizationStatus) in
+///   switch status {
+///       case .denied, .restricted: disableAppleMusicBasedFeatures()
+///       case .authorized: enableAppleMusicBasedFeatures()
+///       default: break
+///       }
+///   }
+/// ```
+/// The system remembers the user’s answer so that subsequent calls to requestAuthorization(_:) don’t prompt them again.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct MediaPlayer {
     /// A message that tells the user why the app is requesting access to the user’s media library.
@@ -1002,7 +1098,7 @@ pub struct Networking {
 
 /// NFC
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct NFC {
+pub struct Nfc {
     /// A message that tells the user why the app is requesting access to the device’s NFC hardware.
     ///
     /// ### Important
@@ -1021,6 +1117,122 @@ pub struct NFC {
 }
 
 /// Photos
+///
+/// ## Delivering a Great Privacy Experience in Your Photos App
+///
+/// Adopt the latest privacy enhancements to deliver a private and trusted experience to your users.
+///
+/// ### OVerview
+/// A user’s photos and videos are some of the most personal and private data they store on their devices.
+/// Due to built-in privacy protections, an app may only access the user’s Photos library if they explicitly authorize it to do so.
+/// Starting in iOS 14, PhotoKit further enhances user privacy controls with the addition of the limited Photos library, which lets users select specific assets and resources to share with an app.
+/// Adopt the latest PhotoKit APIs to use the limited library and deliver a great privacy experience in your app.
+///
+/// ### Important
+/// The limited Photos library affects all apps that use PhotoKit in iOS 14, including those already published to the App Store.
+/// Evaluate your app’s behavior to ensure it performs as expected when running in limited library mode.
+///
+/// Determine Your App’s Access Needs
+/// With the many privacy enhancements added in iOS 14, it’s a good time to evaluate how and why your app uses PhotoKit to access the user’s library.
+/// Many apps may only need read-only access to retrieve images to share on the internet or embed in a document or email.
+/// For these purposes, the simplest way to provide a great user experience is to use PHPickerViewController to access the Photos library.
+///
+/// PHPickerViewController is a new picker that replaces UIImagePickerController.
+/// Its user interface matches that of the Photos app, supports search and multiple selection of photos and videos, and provides fluid zooming of content.
+/// Because the system manages its life cycle, it’s private by default.
+///
+/// The user doesn’t need to explicitly authorize your app to select photos, which results in a simpler and more streamlined user experience.
+/// To learn how to use PHPickerViewController in your app, see WWDC 20 Session: Meet the New Photos Picker.
+///
+/// ### Describe Your Appʼs Photo Library Use
+/// If your app requires PhotoKit’s more advanced features, like retrieving assets and collections, or updating the library, the user must explicitly authorize it to access those features.
+/// Provide a localizable message that describes how your app will interact with the Photos library.
+/// The system presents this message to the user when it prompts them to authorize your app for access.
+/// Attempting to access the Photos library without a valid usage description causes your app to crash.
+///
+/// Add an entry to your Info.plist file with the appropriate key.
+/// If your app only adds to the library, use the NSPhotoLibraryAddUsageDescription key.
+/// For all other cases, use NSPhotoLibraryUsageDescription.
+/// The following shows an example Info.plist entry for an app that requires read/write access.
+///
+/// ### Determine and Request Authorization
+/// To determine if the user has already authorized your app to access the library, query PHPhotoLibrary to check your app’s current authorization status.
+///
+/// ```swift
+/// // Check the app's authorization status (either read/write or add-only access).
+/// let readWriteStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+/// ```
+/// The above call returns a PHAuthorizationStatus value that specifies the app’s current authorization status for the requested access level.
+/// A status value of PHAuthorizationStatus.notDetermined indicates the user hasn’t yet authorized your app for access.
+///
+/// The first time your app performs an operation that requires authorization, the system automatically and asynchronously prompts the user for it.
+/// Avoid making PhotoKit calls when your app first launches, to avoid interrupting its startup or onboarding process.
+/// Instead, make these calls in response to direct user action.
+/// Timing the authorization prompt to coincide with a user action provides greater context to the user about why your app is requesting access.
+///
+/// You may also programmatically request authorization, which lets you control the timing of the prompt and determine the user’s response.
+/// Request authorization only for the level of access required.
+/// The following example shows how to request read/write access, but if your app only adds photos to the library, request add-only access instead.
+///
+/// ```swift
+// Request read-write access to the user's photo library.
+/// PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+///     switch status {
+///     case .notDetermined:
+///         // The user hasn't determined this app's access.
+///     case .restricted:
+///         // The system restricted this app's access.
+///     case .denied:
+///         // The user explicitly denied this app's access.
+///     case .authorized:
+///         // The user authorized this app to access Photos data.
+///     case .limited:
+///         // The user authorized this app for limited Photos access.
+///     @unknown default:
+///         fatalError()
+///     }
+/// }
+/// ```
+/// After the user sets the app’s authorization status, the system remembers their choice and won’t prompt them again.
+/// However, the user can change this choice at any time using the Settings app.
+/// Prepare your app to respond appropriately when a user changes your appʼs access.
+///
+/// Important
+/// The authorizationStatus() and requestAuthorization(_:) methods aren’t compatible with the limited library and return PHAuthorizationStatus.authorized when the user authorizes your app for limited access only.
+/// To determine if the user has authorized your app for limited access, use authorizationStatus(for:) and requestAuthorization(for:handler:) instead.
+///
+/// ### Work with the Limited Library
+/// In previous iOS releases, users could either allow or disallow full access to their library.
+/// Most users don’t want to give apps full access to their private data, and starting in iOS 14, they have the ability to share a limited subset of their photos and videos.
+/// When the app requests authorization, the system prompts the user with a dialog like the one shown below.
+///
+/// In addition to the buttons to allow or disallow all access, there’s a new Select Photos option the user can tap to open the limited-library management interface.
+/// This interface lets the user select the assets to share with your app.
+/// The selected items represent the user’s limited library selection, and it’s only these assets and resources that your app can access.
+///
+/// The PhotoKit APIs largely function the same regardless of whether your app interacts with the full Photos library or only the user’s limited library selection.
+/// However, be aware of the following exceptions:
+/// * The system automatically adds assets that your app creates with a PHAssetCreationRequest to the user’s limited library selection.
+/// * You can’t create or fetch user albums.
+/// If your app requires this functionality, you’ll need to update its behavior and user interface appropriately when your app’s authorization status is PHAuthorizationStatus.limited.
+///
+/// ### Present the Limited-Library Selection Interface
+/// By default, the system automatically prompts the user to update their limited library selection once per app life cycle.
+/// This automatic presentation isn’t the preferred user experience for most apps.
+/// Instead, apps should suppress the automatic prompt and present it programmatically.
+///
+/// To suppress the prompt, add the following key and value to your app’s Info.plist file.
+///
+/// To present the limited library picker programmatically, add an affordance in your user interface for the user to update their limited library selection.
+/// When the user taps this interface, present the limited library picker as shown in the following code.
+///
+/// ```swift
+/// // Present the limited-library selection interface.
+/// let viewController = // The UIViewController to present the picker from.
+/// PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: viewController)
+/// ```
+/// To monitor changes to the user’s limited library selection, use the standard change observer API as described in Observing Changes in the Photo Library.
+/// Register your app to receive notifications and update your user interface as the system notifies it of state changes.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Photos {
     /// A message that tells the user why the app is requesting add-only access to the user’s photo library.
@@ -1228,6 +1440,37 @@ pub struct Sensors {
 }
 
 /// Siri
+///
+/// ## Requesting Authorization to Use SiriKit
+/// Request permission from the user so that Siri and Maps can communicate with your Intents app extension.
+///
+/// ### Overview
+/// Siri and Maps can’t interact with your Intents app extension until the user authorizes them to do so. You request authorization from your iOS app, not your extension. The permissions granted by the user apply to both your iOS app and your watchOS app.
+///
+/// ### Note
+/// Don't request authorization if your app only supports Siri Shortcuts.
+///
+/// To request authorization:
+/// 1. Enable the Siri capability.
+/// Your iOS app or WatchKit extension must have the Siri capability enabled for authorization to succeed.
+/// For information about how to enable the Siri capability, see Creating an Intents App Extension.
+///
+/// 2. Configure your Info.plist file. Include the NSSiriUsageDescription key in your iOS app’s Info.plist file.
+/// The value for this key is a string that describes what information your app shares with SiriKit.
+/// For example, a workout app might set the value to the string “Workout information will be sent to Siri.”
+/// Inclusion of this key is required.
+///
+/// 3. Request authorization from your iOS app.
+/// Call the requestSiriAuthorization(_:) class method of INPreferences at some point during your iOS app’s execution.
+///
+/// When your app’s authorization state isn’t determined, calling the requestSiriAuthorization(_:) method from your iOS app causes the system to prompt the user to authorize your app.
+/// The alert includes the usage description string you provided in the NSSiriUsageDescription key of your app’s Info.plist file.
+/// The user can approve or deny your app’s request for authorization, and can change your app’s authorization status later in the Settings app.
+/// The system remembers your app’s authorization status so that subsequent calls to the requestSiriAuthorization(_:) method don’t prompt the user again.
+///
+/// ### Note
+/// Siri and Maps may assist in the authorization of your Intents extension when the user first tries to use it.
+/// Specifically, if the user interacts with your extension and its authorization status hasn’t yet determined, Maps requests authorization automatically on your extension’s behalf.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Siri {
     /// A message that tells the user why the app is requesting to send user data to Siri.
@@ -1248,6 +1491,88 @@ pub struct Siri {
 }
 
 /// Speech
+///
+/// ## Asking Permission to Use Speech Recognition
+///
+/// Ask the user’s permission to perform speech recognition using Apple’s servers.
+///
+/// ### Overview
+/// The speech recognition process involves capturing audio of the user’s voice and sending that data to Apple’s servers for processing.
+/// The audio you capture constitutes sensitive user data, and you must make every effort to protect it.
+/// You must also obtain the user’s permission before sending that data across the network to Apple’s servers.
+/// You request authorization using the APIs of the Speech framework.
+///
+/// ### Add the Privacy Key to Your Info.plist File
+/// In Xcode, add the “Privacy - Speech Recognition Usage Description” key to your app’s Info.plist file.
+/// The raw name of this key is NSSpeechRecognitionUsageDescription.
+/// Set the value of this key to a string that explains how you plan to use any recognized speech.
+/// When your app request authorization later, the system displays the value of this key to the user as part of the system prompt.
+///
+/// Take the opportunity to build trust with the user through your usage description.
+/// The quality of your usage description can significantly impact the user’s decision.
+/// For example, users are more likely to deny authorization if the usage description is unclear or misleading.
+/// Good descriptions explain precisely how you intend to use speech recognition, and may also include a link to your app’s privacy policy.
+/// For example
+/// * "The app uses speech recognition for dictating notes."
+/// * "Lets you mark an item as finished by saying Done."
+/// * "The app listens for specific verbal commands, such as "Start", "Stop", and "Pause".
+/// For a complete list of commands, see http://myapp.example.com".
+///
+/// ### Important
+/// You must include the NSSpeechRecognitionUsageDescription key in your app’s Info.plist file.
+/// If this key is not present, your app will crash when it attempts to request authorization or use the APIs of the Speech framework.
+///
+/// ### Request Authorization at First Use
+/// Before using the APIs of the Speech framework, you must call requestAuthorization(_:) on the SFSpeechRecognizer object.
+/// The method executes asynchronously and delivers the results to a block you provide.
+/// Use that block to determine whether the user granted or rejected your request.
+///
+/// ### Note
+/// Do not request access to speech recognition if you do not intend to use the feature right away.
+/// Instead, delay requests until the user interacts with the portion of your app that uses such features.
+///
+/// The first time your app requests authorization to use speech recognition, the system prompts the user to accept or deny that request.
+/// The system records the user’s selection so that subsequent requests do not prompt the user again. Instead, subsequent requests return almost immediately with the previously recorded results.
+///
+/// Listing 1 shows the authorization request for an app that transcribes spoken phrases and displays them onscreen.
+/// Because the app’s interface is dependent on speech recognition, it requests authorization as soon as that interface is visible. In addition, the app disables portions of the interface if the user or system prevents access to speech recognition.
+///
+/// ```swift
+/// override public func viewDidAppear(_ animated: Bool) {
+///     // Configure the SFSpeechRecognizer object already
+///     // stored in a local member variable.
+///     speechRecognizer.delegate = self
+///  
+///     // Make the authorization request      
+///     SFSpeechRecognizer.requestAuthorization { authStatus in
+///  
+///     // The authorization status results in changes to the
+///     // app’s interface, so process the results on the app’s
+///     // main queue.
+///        OperationQueue.main.addOperation {
+///           switch authStatus {
+///              case .authorized:
+///                 self.recordButton.isEnabled = true
+///  
+///              case .denied:
+///                 self.recordButton.isEnabled = false
+///                 self.recordButton.setTitle("User denied access
+///                             to speech recognition", for: .disabled)
+///  
+///              case .restricted:
+///                 self.recordButton.isEnabled = false
+///                 self.recordButton.setTitle("Speech recognition
+///                         restricted on this device", for: .disabled)
+///  
+///              case .notDetermined:
+///                 self.recordButton.isEnabled = false
+///                 self.recordButton.setTitle("Speech recognition not yet
+///                                        authorized", for: .disabled)
+///           }
+///        }
+///     }
+///  }
+/// ```
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Speech {
     /// A message that tells the user why the app is requesting to send user data to Apple’s speech recognition servers.
@@ -1270,7 +1595,7 @@ pub struct Speech {
 
 /// TV
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct TV {
+pub struct TVResource {
     /// A message that tells the user why the app is requesting access to the user’s TV provider account.
     ///
     /// ### important

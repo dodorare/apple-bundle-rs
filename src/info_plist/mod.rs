@@ -30,13 +30,15 @@
 
 pub mod app_execution;
 pub mod bundle_configuration;
-pub mod services;
+pub mod data_and_storage;
+pub mod protected_resources;
 pub mod user_interface;
 
 pub mod prelude {
     pub use super::app_execution::*;
     pub use super::bundle_configuration::*;
-    pub use super::services::*;
+    pub use super::data_and_storage::*;
+    pub use super::protected_resources::*;
     pub use super::user_interface::*;
 }
 
@@ -100,4 +102,49 @@ pub struct InfoPlist {
     pub plugin_configuration: PluginConfiguration,
     #[serde(flatten)]
     pub termination: Termination,
+    // Protected Resources
+    #[serde(flatten)]
+    pub bluetooth: Bluetooth,
+    #[serde(flatten)]
+    pub calendar_and_reminders: CalendarAndReminders,
+    #[serde(flatten)]
+    pub camera_and_microphone: CameraAndMicrophone,
+    #[serde(flatten)]
+    pub contacts: Contacts,
+    #[serde(flatten)]
+    pub face_id: FaceID,
+    #[serde(flatten)]
+    pub files_and_folders: FilesAndFolders,
+    #[serde(flatten)]
+    pub game_center: GameCenter,
+    #[serde(flatten)]
+    pub health: Health,
+    #[serde(flatten)]
+    pub home: Home,
+    #[serde(flatten)]
+    pub location: Location,
+    #[serde(flatten)]
+    pub media_player: MediaPlayer,
+    #[serde(flatten)]
+    pub motion: Motion,
+    #[serde(flatten)]
+    pub networking: Networking,
+    #[serde(flatten)]
+    pub nfc: Nfc,
+    #[serde(flatten)]
+    pub photos: Photos,
+    #[serde(flatten)]
+    pub scripting: Scripting,
+    #[serde(flatten)]
+    pub security: Security,
+    #[serde(flatten)]
+    pub sensors: Sensors,
+    #[serde(flatten)]
+    pub siri: Siri,
+    #[serde(flatten)]
+    pub speech: Speech,
+    #[serde(flatten)]
+    pub tv_resource: TVResource,
+    #[serde(flatten)]
+    pub wi_fi: WiFI,
 }
