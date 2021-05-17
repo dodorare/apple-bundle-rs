@@ -147,4 +147,9 @@ pub struct InfoPlist {
     pub tv_resource: TVResource,
     #[serde(flatten)]
     pub wi_fi: WiFI,
+    // Data and Storage
+    #[serde(flatten)]
+    pub documents: Documents,
+    #[serde(flatten)]
+    pub url_schemes: URLSchemes,
 }
