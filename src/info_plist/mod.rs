@@ -29,6 +29,7 @@
 //! Bundle Resources
 
 pub mod app_execution;
+pub mod app_services;
 pub mod bundle_configuration;
 pub mod data_and_storage;
 pub mod protected_resources;
@@ -36,6 +37,7 @@ pub mod user_interface;
 
 pub mod prelude {
     pub use super::app_execution::*;
+    pub use super::app_services::*;
     pub use super::bundle_configuration::*;
     pub use super::data_and_storage::*;
     pub use super::protected_resources::*;
@@ -152,4 +154,14 @@ pub struct InfoPlist {
     pub documents: Documents,
     #[serde(flatten)]
     pub url_schemes: URLSchemes,
+    #[serde(flatten)]
+    pub universal_type_identifiers: UniversalTypeIdentifiers,
+    #[serde(flatten)]
+    pub network: Network,
+    #[serde(flatten)]
+    pub storage: Storage,
+    #[serde(flatten)]
+    pub core_ml_models: CoreMLModels,
+    #[serde(flatten)]
+    pub java: Java,
 }

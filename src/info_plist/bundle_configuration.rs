@@ -39,7 +39,7 @@ pub struct Categorization {
     ///
     /// ## Availability
     /// * macOS 10.0+
-
+    ///
     /// ## Framework
     /// Core Services
     #[serde(

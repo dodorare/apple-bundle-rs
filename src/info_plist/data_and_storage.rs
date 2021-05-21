@@ -1,5 +1,5 @@
-use crate::{serialize_enum_option, serialize_vec_enum_option};
-/// ## Data nad Storage
+use crate::serialize_enum_option;
+/// ## Data and Storage
 ///
 /// Regulate documents, URLs, and other kinds of data movement and storage.
 ///
@@ -953,4 +953,202 @@ pub struct SPKISHA256BASE64 {
         skip_serializing_if = "Option::is_none"
     )]
     pub spki_sha256_base64: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+pub struct Storage {
+    /// Describes the files or directories the app installs on the system.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(rename(serialize = "APFiles"), skip_serializing_if = "Option::is_none")]
+    pub files: Option<Files>,
+    /// The base path to the files or directories the app installs.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(
+        rename(serialize = "APInstallerURL"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub installer_url: Option<String>,
+    /// A Boolean value indicating whether the app continues working if the system purges the local storage.
+    ///
+    /// ## Availability
+    /// * iOS 9.3+
+    ///
+    /// ## Framework
+    /// * Foundation
+    #[serde(
+        rename(serialize = "NSSupportsPurgeableLocalStorage"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub supports_purgeable_local_storage: Option<bool>,
+    /// A Boolean value indicating whether the files this app creates are quarantined by default.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Services
+    #[serde(
+        rename(serialize = "LSFileQuarantineEnabled"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub file_quarantine_enabled: Option<bool>,
+    /// A Boolean value indicating whether the app shares files through iTunes.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * tvOS 9.0+
+    /// * watchOS 2.0+
+    ///
+    /// ## Framework
+    /// * UIKit
+    #[serde(
+        rename(serialize = "UIFileSharingEnabled"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub file_sharing_enabled: Option<bool>,
+    /// A Boolean value indicating whether the app's resources files should be mapped into memory.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Core Foundation
+    #[serde(
+        rename(serialize = "CSResourcesFileMapped"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub resources_file_mapped: Option<bool>,
+    /// A Boolean value that indicates whether the system should download documents before handing them over to the app.
+    ///
+    /// By default, the system displays the download progress.
+    /// Set the value to YES if you want your app to display a custom download progress indicator instead.
+    ///
+    /// ## Availability
+    /// * macOS 11.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(
+        rename(serialize = "NSDownloadsUbiquitousContents"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub downloads_ubiquitous_contents: Option<bool>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+pub struct Files {
+    /// A Boolean value indicating whether the file or a folder icon is displayed in the Info window.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(
+        rename(serialize = "APDisplayedAsContainer"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub displayed_as_container: Option<bool>,
+    /// A short description of the file or folder that appears in the Info window.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(rename(serialize = "APFileDescriptionKey"))]
+    pub file_description_key: String,
+    /// The path to use when installing the file or folder, relative to the app bundle.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(rename(serialize = "APFileDestinationPath"))]
+    pub file_destination_path: String,
+    /// The name of the file or folder to install.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(rename(serialize = "APFileName"))]
+    pub file_name: String,
+    /// The path to the file or folder in the app package, relative to the installer path.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(rename(serialize = "APFileSourcePath"))]
+    pub file_source_path: String,
+    /// The action to take on the file or folder.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * AppKit
+    #[serde(
+        rename(serialize = "APInstallAction"),
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_enum_option"
+    )]
+    pub install_action: Option<InstallAction>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+pub enum InstallAction {
+    #[serde(rename(serialize = "Copy"))]
+    Copy,
+    #[serde(rename(serialize = "Open"))]
+    Open,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+pub struct CoreMLModels {
+    /// A Boolean value indicating whether the app contains a Core ML model to optimize loading the model.
+    ///
+    /// ## Availability
+    /// * iOS 12.0+
+    /// * macOS 10.0+
+    /// * tvOS 12.0+
+    /// * watchOS 5.0+
+    ///
+    /// ## Framework
+    /// * Core Services
+    #[serde(
+        rename(serialize = "LSBundleContainsCoreMLmlmodelc"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub bundle_contains_core_ml_mlmodelc: Option<bool>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+pub struct Java {
+    /// The root directory for the app’s Java class files.
+    ///
+    /// ## Availability
+    /// * macOS 10.0+
+    ///
+    /// ## Framework
+    /// * Foundation
+    #[serde(
+        rename(serialize = "NSJavaRoot"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub java_root: Option<String>,
 }
