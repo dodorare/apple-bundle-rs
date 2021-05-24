@@ -436,7 +436,7 @@ pub enum DirectionsApplicationSupportedModes {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct NFC {
+pub struct NfcAppServices {
     /// A list of FeliCa system codes that the app supports.
     ///
     /// Each system code must be a discrete value. The wild card value (0xFF) isn't allowed.

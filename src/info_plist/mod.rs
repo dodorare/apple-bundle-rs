@@ -32,6 +32,7 @@ pub mod app_execution;
 pub mod app_services;
 pub mod bundle_configuration;
 pub mod data_and_storage;
+pub mod kernel_and_drivers;
 pub mod protected_resources;
 pub mod user_interface;
 
@@ -40,6 +41,7 @@ pub mod prelude {
     pub use super::app_services::*;
     pub use super::bundle_configuration::*;
     pub use super::data_and_storage::*;
+    pub use super::kernel_and_drivers::*;
     pub use super::protected_resources::*;
     pub use super::user_interface::*;
 }
@@ -164,4 +166,36 @@ pub struct InfoPlist {
     pub core_ml_models: CoreMLModels,
     #[serde(flatten)]
     pub java: Java,
+    // App Services
+    #[serde(flatten)]
+    pub carplay: CarPlay,
+    #[serde(flatten)]
+    pub exposure_notification: ExposureNotification,
+    #[serde(flatten)]
+    pub pointer_interactions: PointerInteractions,
+    #[serde(flatten)]
+    pub games: Games,
+    #[serde(flatten)]
+    pub intents: Intents,
+    #[serde(flatten)]
+    pub maps: Maps,
+    #[serde(flatten)]
+    pub nfc_app_services: NfcAppServices,
+    #[serde(flatten)]
+    pub authentication: Authentication,
+    #[serde(flatten)]
+    pub external_accessories: ExternalAccessories,
+    #[serde(flatten)]
+    pub service_management: ServiceManagement,
+    #[serde(flatten)]
+    pub interprocess_communication: InterprocessCommunication,
+    #[serde(flatten)]
+    pub store: Store,
+    // Kernel and Drivers
+    #[serde(flatten)]
+    pub driver_personalities: DriverPersonalities,
+    #[serde(flatten)]
+    pub kext_dependencies: KextDependencies,
+    #[serde(flatten)]
+    pub thunderbolt_compatibility: ThunderboltCompatibility,
 }
