@@ -67,7 +67,7 @@ pub struct CarPlay {
     ///
     /// ## Framework
     /// * CarPlay
-    #[deprecated(since = "iOS 12.0–14.0", note = "")]
+    #[deprecated(since = "iOS 12.0–14.0")]
     #[serde(
         rename(serialize = "com.apple.developer.carplay-messaging"),
         skip_serializing_if = "Option::is_none"
@@ -78,7 +78,7 @@ pub struct CarPlay {
     ///
     /// ## Framework
     /// * CarPlay
-    #[deprecated(since = "iOS 12.0–14.0", note = "")]
+    #[deprecated(since = "iOS 12.0–14.0")]
     #[serde(
         rename(serialize = "com.apple.developer.playable-content"),
         skip_serializing_if = "Option::is_none"

@@ -4,11 +4,10 @@ use serde::{Deserialize, Serialize};
 pub struct AppClips {
     /// A list of parent application identifiers for an App Clip with exactly one entry.
     ///
-    /// The Parent Application Identifiers entitlement establishes a secure association between an App Clip
-    /// and its corresponding app
+    /// The Parent Application Identifiers entitlement establishes a secure association between an App Clip and its corresponding app
     /// Add it only to an App Clip target.
     ///
-    /// ## Note
+    /// ### Note
     /// When you add an App Clip target to your project as described in Creating an App Clip with Xcode,
     /// Xcode creates this entitlement and adds the correct value.
     ///
@@ -45,13 +44,10 @@ pub struct AppClips {
     /// Next, open the Terminal app and run codesign -d --entitlements :- /path/to/ExampleApp.app/AppClips/ExampleAppClip.app.
     ///
     /// ## Availability
-    /// * iOS 13.0+
-    /// * macOS 10.15+
-    /// * tvOS 13.0+
-    /// * watchOS 6.0+
+    /// * iOS 14.0+
     ///
     /// ## Framework
-    /// * Authentication Services
+    /// * App Clip
     #[serde(
         rename(serialize = "com.apple.developer.on-demand-install-capable"),
         skip_serializing_if = "Option::is_none"

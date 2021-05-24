@@ -1,8 +1,8 @@
+use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Health {
-    /// A Boolean value that indicates whether the app may request user authorization to access
-    /// health and activity data that appears in the Health app.
+    /// A Boolean value that indicates whether the app may request user authorization to access health and activity data that appears in the Health app.
     ///
     /// To add this entitlement to your app, enable the HealthKit capability in Xcode.
     ///
@@ -36,7 +36,15 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename(serialize = "com.apple.developer.healthkit.access"),
-        skip_serializing_if = "Option::is_none"
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_vec_enum_option"
     )]
-    pub healthkit_access: Option<Vec<String>>,
+    pub healthkit_access: Option<Vec<HealthKitCapabilities>>,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+pub enum HealthKitCapabilities {
+    /// The app can request access to FHIR-backed clinical records.
+    #[serde(rename(serialize = "health-records"))]
+    HealthRecords,
 }

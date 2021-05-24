@@ -1,3 +1,4 @@
+use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -36,7 +37,15 @@ pub struct Authentication {
     /// * Authentication Services
     #[serde(
         rename(serialize = "com.apple.developer.applesignin"),
-        skip_serializing_if = "Option::is_none"
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_vec_enum_option"
     )]
-    pub sign_in_with_apple: Option<Vec<String>>,
+    pub sign_in_with_apple: Option<Vec<SignInWithAppleEntitlement>>,
+}
+
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+pub enum SignInWithAppleEntitlement {
+    /// The value used for normal operation.
+    #[serde(rename(serialize = "Default"))]
+    Default,
 }

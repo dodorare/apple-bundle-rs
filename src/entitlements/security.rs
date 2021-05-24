@@ -9,6 +9,7 @@ pub struct Security {
     ///
     /// ### Important
     /// To distribute a macOS app through the Mac App Store, you must enable the App Sandbox capability.
+    ///
     /// ## Framework
     /// * Security
     #[serde(
@@ -33,6 +34,9 @@ pub struct Security {
     /// ### Important
     /// To upload a macOS app to be notarized, you must enable the Hardened Runtime capability.
     /// For more information about notarization, see Notarizing macOS Software Before Distribution.
+    ///
+    /// ## Framework
+    /// * Security
     #[serde(
         rename(serialize = "HardenedRuntime"),
         skip_serializing_if = "Option::is_none"
@@ -42,6 +46,16 @@ pub struct Security {
     ///
     /// App groups allow multiple apps produced by a single development team to access shared containers and communicate using interprocess communication (IPC).
     /// Apps may belong to one or more app groups.
+    ///
+    /// For iOS, format the identifier as follows:
+    /// ```swift
+    /// group.<group name>
+    /// ```
+    ///
+    /// For macOS:
+    /// ```swift
+    /// <team identifier>.<group name>
+    /// ```
     ///
     /// Apps within an app group share access to a group container. For more information about container creation, location, and deletion, see containerURL(forSecurityApplicationGroupIdentifier:).
     ///
@@ -205,6 +219,9 @@ pub struct AppSandbox {
     ///
     /// To add this entitlement to your app, first enable the App Sandbox or Hardened Runtime capability in Xcode, and then select Camera.
     ///
+    /// In macOS 10.14 and later, the user must explicitly grant permission for each app to access cameras.
+    /// See Requesting Authorization for Media Capture on macOS.
+    ///
     /// ## Availability
     /// * macOS 10.7+
     ///
@@ -273,6 +290,20 @@ pub struct AppSandbox {
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth: Option<bool>,
+    /// A Boolean value that indicates whether the app may have read-write access to contacts in the user's address book.
+    ///
+    /// To add this entitlement to your app, enable the App Sandbox capability in Xcode and then select Contacts, or enable the Hardened Runtime capability and then select Address Book.
+    ///
+    /// ## Availability
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "com.apple.security.personal-information.addressbook"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub address_book: Option<bool>,
     /// A Boolean value that indicates whether the app may access location information from Location Services.
     ///
     /// To add this entitlement to your app, first enable the App Sandbox or Hardened Runtime capability in Xcode, and then select Location.
@@ -399,6 +430,20 @@ pub struct AppSandbox {
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_music_read_only: Option<bool>,
+    /// A Boolean value that indicates whether the app may have read-write access to the Music folder.
+    ///
+    /// To add this entitlement to your app, enable the App Sandbox capability in Xcode and set Music Folder to Read/Write.
+    ///
+    /// ## Availability
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Security
+    #[serde(
+        rename(serialize = "com.apple.security.assets.music.read-write"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub assets_music_read_write: Option<bool>,
     /// A Boolean value that indicates whether the app may have read-only access to the Movies folder.
     ///
     /// To add this entitlement to your app, enable the App Sandbox capability in Xcode and set Movies Folder to Read Only.
@@ -442,6 +487,26 @@ pub struct AppSandbox {
     pub all_files: Option<bool>,
 }
 
+/// # Hardened Runtime
+///
+/// Manage security protections and resource access for your macOS apps.
+///
+/// ## Overview
+/// The Hardened Runtime, along with System Integrity Protection (SIP), protects the runtime integrity of your software by preventing certain classes of exploits, like code injection, dynamically linked library (DLL) hijacking, and process memory space tampering.
+/// To enable the Hardened Runtime for your app, navigate in Xcode to your target’s Signing & Capabilities information and click the + button.
+/// In the window that appears, choose Hardened Runtime.
+///
+/// The Hardened Runtime doesn’t affect the operation of most apps, but it does disallow certain less common capabilities, like just-in-time (JIT) compilation.
+/// If your app relies on a capability that the Hardened Runtime restricts, add an entitlement to disable an individual protection.
+/// You add an entitlement by enabling one of the runtime exceptions or access permissions listed in Xcode.
+/// Make sure to use only the entitlements that are absolutely necessary for your app’s functionality.
+///
+/// You add entitlements only to executables.
+/// Shared libraries, frameworks, and in-process plug-ins inherit the entitlements of their host executable.
+///
+/// ### Important
+/// To upload a macOS app to be notarized, you must enable the Hardened Runtime capability.
+/// For more information about notarization, see Notarizing macOS Software Before Distribution.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct HardenedRuntime {
     /// A Boolean value that indicates whether the app may create writable and executable memory using the MAP_JIT flag.
