@@ -14,10 +14,10 @@ pub struct Tv {
     /// You can enable runs-as-current-user if your app’s minimum version is earlier than tvOS 14, but the app will behave as if the privilege isn’t set when running on the earlier version.
     ///
     /// ## Availability
-    /// * macOS 10.15+
+    /// * tvOS 13.0+
     ///
     /// ## Framework
-    /// * System Extensions
+    /// * TV Services
     #[serde(
         rename(serialize = "com.apple.developer.user-management"),
         skip_serializing_if = "Option::is_none",
