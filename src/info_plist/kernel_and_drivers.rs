@@ -4,6 +4,7 @@ use super::DefaultDictionary;
 /// Configure device drivers provided by the app.
 use serde::{Deserialize, Serialize};
 
+/// Driver Personalities
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct DriverPersonalities {
     /// One or more groups of attributes that tell the system about the devices your driver supports.
@@ -222,6 +223,7 @@ pub struct KitPersonalities {
     pub match_category: Option<String>,
 }
 
+/// Kext Dependencies
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct KextDependencies {
     /// The backward limit of compatibility for the current driver.
@@ -269,6 +271,7 @@ pub struct KextDependencies {
     pub bundle_libraries: Option<DefaultDictionary>,
 }
 
+/// Thunderbolt Compatibility
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ThunderboltCompatibility {
     /// A Boolean value that indicates whether your driver supports Thunderbolt devices.

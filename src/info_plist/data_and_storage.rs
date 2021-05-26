@@ -529,6 +529,7 @@ pub struct DefaultDictionary {
     pub default: String,
 }
 
+/// Network
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Network {
     /// The URL where Private Click Measurement sends event attribution information.
@@ -1054,6 +1055,7 @@ pub struct SPKISHA256BASE64 {
     pub spki_sha256_base64: Option<String>,
 }
 
+/// Storage
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Storage {
     /// Describes the files or directories the app installs on the system.
@@ -1236,6 +1238,7 @@ pub struct CoreMLModels {
     pub bundle_contains_core_ml_mlmodelc: Option<bool>,
 }
 
+/// Java
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Java {
     /// The root directory for the app’s Java class files.

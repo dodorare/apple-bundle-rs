@@ -11,6 +11,7 @@ use super::DefaultDictionary;
 use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
+/// Car Play
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct CarPlay {
     /// ## Availability
@@ -121,6 +122,7 @@ impl Default for TemplateApplication {
     }
 }
 
+/// Exposure Notification
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ExposureNotification {
     /// A number that specifies the version of the API to use.
@@ -175,6 +177,7 @@ pub enum Version {
     Two,
 }
 
+/// Pointer Interactions
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct PointerInteractions {
     /// A Boolean value indicating that the app generally supports indirect input mechanisms.
@@ -210,6 +213,7 @@ pub struct PointerInteractions {
     pub application_supports_indirect_input_events: Option<bool>,
 }
 
+/// Games
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Games {
     /// A Boolean value indicating whether GameKit can add badges to a turn-based game icon.
@@ -290,6 +294,7 @@ pub enum ProfileName {
     MicroGamepad,
 }
 
+/// Intents
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Intents {
     /// The names of the intent classes your app handles directly.
@@ -389,6 +394,7 @@ pub enum SupportedMediaCategories {
     INMediaCategoryRadio,
 }
 
+/// Maps
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Maps {
     /// The modes of transportation for which the app is capable of giving directions.
@@ -435,6 +441,7 @@ pub enum DirectionsApplicationSupportedModes {
     MKDirectionsModeOther,
 }
 
+/// NFC
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct NfcAppServices {
     /// A list of FeliCa system codes that the app supports.
@@ -465,6 +472,7 @@ pub struct NfcAppServices {
     pub nfc_readersession_iso7816_select_identifiers: Option<Vec<String>>,
 }
 
+/// Authentication
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Authentication {
     /// A Boolean value that indicates the system shouldn’t show security recommendation prompts when users sign in using the app.
@@ -560,6 +568,7 @@ pub struct ExternalAccessories {
     pub supported_external_accessory_protocols: Option<Vec<String>>,
 }
 
+/// Service Management
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ServiceManagement {
     /// The Service Management clients authorized to add and remove tools.
@@ -594,6 +603,7 @@ pub struct ServiceManagement {
     pub privileged_executables: Option<DefaultDictionary>,
 }
 
+/// Interprocess Communication
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct InterprocessCommunication {
     /// ## Availability
@@ -651,6 +661,7 @@ pub enum ServiceType {
     Application,
 }
 
+/// Store
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Store {
     /// An array of dictionaries containing a list of ad network identifiers.
