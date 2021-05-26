@@ -29,10 +29,10 @@ pub struct Documents {
     /// A Boolean value indicating whether the app is a document-based app.
     ///
     /// ## Availability
-    /// * iOS 11.0+
+    /// * iOS 12.0+
     ///
     /// ## Framework
-    /// * UIKit
+    /// * Core Services
     #[serde(
         rename(serialize = "UISupportsDocumentBrowser"),
         skip_serializing_if = "Option::is_none"
@@ -321,6 +321,7 @@ pub struct BundleURLTypes {
     pub bundle_url_schemes: Option<Vec<String>>,
 }
 
+/// Universal Type Identifiers
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct UniversalTypeIdentifiers {
     /// The uniform type identifiers owned and exported by the app.
@@ -353,37 +354,86 @@ pub struct UniversalTypeIdentifiers {
 
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ExportedTypeDeclarations {
-    /// The Uniform Type Identifier types that this type conforms to.  
+    /// The Uniform Type Identifier types that this type conforms to.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services  
     #[serde(rename(serialize = "UTTypeConformsTo"))]
     pub type_conforms_to: Vec<String>,
     /// A description for this type.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
-        rename(serialize = "UTTypeConformsTo"),
+        rename(serialize = "UTTypeDescription"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeIconFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeIconFiles"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(rename(serialize = "UTTypeIdentifier"))]
     pub type_identifier: String,
     /// The webpage for a reference document that describes this type.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeReferenceURL"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
+    ///
+    /// ## Availability
+    /// * iOS 5.0+
+    /// * macOS 10.7+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(rename(serialize = "UTTypeTagSpecification"))]
     pub type_tag_specification: DefaultDictionary,
 }
@@ -391,36 +441,85 @@ pub struct ExportedTypeDeclarations {
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ImportedTypeDeclarations {
     /// The Uniform Type Identifier types that this type conforms to.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(rename(serialize = "UTTypeConformsTo"))]
     pub type_conforms_to: Vec<String>,
     /// A description for this type.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeDescription"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeIconFile"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeIconFiles"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(rename(serialize = "UTTypeIdentifier"))]
     pub type_identifier: String,
     /// The webpage for a reference document that describes this type.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(
         rename(serialize = "UTTypeReferenceURL"),
         skip_serializing_if = "Option::is_none"
     )]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    /// * macOS 10.5+
+    ///
+    /// ## Framework
+    /// * Core Services
     #[serde(rename(serialize = "UTTypeTagSpecification"))]
     pub type_tag_specification: DefaultDictionary,
 }
