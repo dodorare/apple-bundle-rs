@@ -9,7 +9,7 @@
 //! ## Framework
 //! * Bundle Resources
 
-use crate::serialize_enum_option;
+use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// Categorization.
@@ -279,7 +279,7 @@ pub struct OperatingSystemVersion {
     /// The App Store uses this key to indicate the OS releases on which your app can run.
     ///
     /// ## Availability
-    /// * macOS 10.0+
+    /// * macOS 3.0+
     /// * tvOS 9.0+
     /// * watchOS 2.0+
     ///
@@ -360,9 +360,10 @@ pub struct Localization {
     /// Core Foundation
     #[serde(
         rename(serialize = "CFBundleLocalizations"),
-        skip_serializing_if = "Option::is_none"
+        skip_serializing_if = "Option::is_none",
+        serialize_with = "serialize_vec_enum_option"
     )]
-    pub bundle_localizations: Option<Vec<String>>,
+    pub bundle_localizations: Option<Vec<BundleLocalizations>>,
     /// A Boolean value that indicates whether the bundle supports the retrieval of localized strings from frameworks.
     ///
     /// ## Availability
@@ -543,4 +544,26 @@ impl Default for MinimumSystemVersionByArchitecture {
             x86_64: "10.0.0".to_owned(),
         }
     }
+}
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
+pub enum BundleLocalizations {
+    #[serde(rename(serialize = "zh"))]
+    Zh,
+    #[serde(rename(serialize = "zh_CN"))]
+    ZhCN,
+    #[serde(rename(serialize = "zh_TW"))]
+    ZhTW,
+    #[serde(rename(serialize = "en"))]
+    En,
+    #[serde(rename(serialize = "fr"))]
+    Fr,
+    #[serde(rename(serialize = "de"))]
+    De,
+    #[serde(rename(serialize = "it"))]
+    It,
+    #[serde(rename(serialize = "ja"))]
+    Ja,
+    #[serde(rename(serialize = "ko"))]
+    Ko,
 }
