@@ -224,6 +224,8 @@ pub struct KitPersonalities {
 
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct KextDependencies {
+    /// The backward limit of compatibility for the current driver.
+    ///
     /// Specify a previous version for the current driver, or the driver’s current version.
     /// Format this string the same way you format the value of the CFBundleVersion key.
     /// The combination of this value and the value in the CFBundleVersion key define the range of versions that offers the same level of compatibility.
@@ -234,7 +236,7 @@ pub struct KextDependencies {
     /// At that time, set the new value to the current version of your driver.
     ///
     /// ## Availability
-    /// * macOS 10.10+
+    /// * macOS 10.0+
     ///
     /// ## Framework
     /// * Kernel
@@ -256,7 +258,7 @@ pub struct KextDependencies {
     /// Don’t include this key for codeless kexts.
     ///
     /// ## Availability
-    /// * macOS 10.10+
+    /// * macOS 10.0+
     ///
     /// ## Framework
     /// * Kernel
@@ -274,7 +276,7 @@ pub struct ThunderboltCompatibility {
     /// Include this key in the personality dictionary of your driver if that personality supports Thunderbolt devices.
     ///
     /// ## Availability
-    /// * macOS 10.10+
+    /// * macOS 10.0+
     ///
     /// ## Framework
     /// * PCIDriverKit
