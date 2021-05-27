@@ -11,10 +11,8 @@ pub struct Networking {
     /// 1. In the Certificates, Identifiers and Profiles section of the developer site, enable the Network
     /// Extension capability for your Developer ID–signed app. Generate a new provisioning profile and download it.
     /// 2. On your Mac, drag the downloaded provisioning profile to Xcode to install it.
-    /// 3. In your Xcode project, enable manual signing and select the provisioning profile downloaded earlier
-    /// and its associated certificate.
-    /// 4. Update the project’s entitlements.plist to include the com.apple.developer.networking.networkextension
-    /// key and the values of the entitlement.
+    /// 3. In your Xcode project, enable manual signing and select the provisioning profile downloaded earlier and its associated certificate.
+    /// 4. Update the project’s entitlements.plist to include the com.apple.developer.networking.networkextension key and the values of the entitlement.
     ///
     /// ## Availability
     /// * iOS 9.0+
@@ -30,11 +28,9 @@ pub struct Networking {
     pub network_extensions: Option<Vec<NetworkExtensions>>,
     /// The API an app can use to create and control a custom system VPN configuration.
     ///
-    /// With the Personal VPN Entitlement enabled, your app can use the NEVPNManager class to manage
-    /// a Personal VPN configuration.
+    /// With the Personal VPN Entitlement enabled, your app can use the NEVPNManager class to manage a Personal VPN configuration.
     ///
-    /// To add this entitlement to your app, enable the Personal VPN capability in Xcode. When the
-    /// entitlement is enabled, Xcode sets the value to allow-vpn.
+    /// To add this entitlement to your app, enable the Personal VPN capability in Xcode. When the entitlement is enabled, Xcode sets the value to allow-vpn.
     ///
     /// ## Availability
     /// * iOS 8.0+
@@ -52,7 +48,9 @@ pub struct Networking {
     ///
     /// This key specifies a list of domains for each service enabled. Add an associated domain to the list
     /// in the following format:
+    /// ```swift
     /// <service>:<fully qualified domain>
+    /// ```
     ///
     /// ### Services include:
     /// * webcredentials
@@ -78,7 +76,9 @@ pub struct Networking {
     /// While developing your app, if you use a private web server that’s unreachable from the public internet,
     /// you can use the alternate mode feature to bypass the CDN and connect directly to your private domain.
     /// Add a query string to your associated domains entitlement as follows:
+    /// ```swift
     /// <service>:<fully qualified domain>?mode=<alternate mode>
+    /// ```
     ///
     /// Where alternate mode is one of the following:
     /// * developer
@@ -114,7 +114,7 @@ pub struct Networking {
     /// A Boolean value that indicates whether an app can send or receive IP multicast traffic.
     ///
     /// Your app must have this entitlement to send or receive IP multicast or broadcast on iOS.
-    ///  It also allows your app to browse and advertise arbitrary Bonjour service types.
+    /// It also allows your app to browse and advertise arbitrary Bonjour service types.
     ///
     /// This entitlement requires permission from Apple before you can use it in your app.
     /// Request permission from the Multicast Networking Entitlement Request page.
@@ -144,44 +144,46 @@ pub struct Networking {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NetworkExtensions {
     /// The APIs you use to proxy DNS queries.
-    #[serde(rename = "dns-proxy")]
+    #[serde(rename(serialize = "dns-proxy"))]
     DnsProxy,
     /// The APIs you use to proxy TCP and UDP connections.
-    #[serde(rename = "app-proxy-provider")]
+    #[serde(rename(serialize = "app-proxy-provider"))]
     AppProxyProvider,
     /// The filter APIs you use to allow or deny network connections created by other apps on the system.
-    #[serde(rename = "content-filter-provider")]
+    #[serde(rename(serialize = "content-filter-provider"))]
     ContentFilterProvider,
     /// The APIs you use to tunnel IP packets to a remote network using any custom tunneling protocol.
-    #[serde(rename = "packet-tunnel-provider")]
+    #[serde(rename(serialize = "packet-tunnel-provider"))]
     PacketTunnelProvider,
     /// The APIs you use to proxy DNS queries, when signed with a Developer ID profile.
-    #[serde(rename = "dns-proxy-systemextension")]
+    #[serde(rename(serialize = "dns-proxy-systemextension"))]
     DnsProxySystemextension,
     /// The APIs you use to proxy TCP and UDP connections, when signed with a Developer ID profile.
-    #[serde(rename = "app-proxy-provider-systemextension")]
+    #[serde(rename(serialize = "app-proxy-provider-systemextension"))]
     AppProxyProviderSystemextension,
     /// The filter APIs you use to allow or deny network connections created by other apps on the system,
     /// when signed with a Developer ID profile.
-    #[serde(rename = "content-filter-provider-systemextension")]
+    #[serde(rename(serialize = "content-filter-provider-systemextension"))]
     ContentFilterProviderSystemExtensions,
     /// The APIs you use to tunnel IP packets to a remote network using any custom tunneling protocol,
     /// when signed with a Developer ID profile.
-    #[serde(rename = "packet-tunnel-provider-systemextension")]
+    #[serde(rename(serialize = "packet-tunnel-provider-systemextension"))]
     PacketTunnelProviderSystemExtension,
     /// The APIs you use to create and manage a system-wide DNS configuration.
-    #[serde(rename = "dns-settings")]
+    #[serde(rename(serialize = "dns-settings"))]
     DnsSettings,
     /// The APIs you use for providing functionality similar to Apple Push Notification Service when
     /// access to the wider internet is unavailable.
-    #[serde(rename = "app-push-provider")]
+    #[serde(rename(serialize = "app-push-provider"))]
     AppPushProvider,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersonalVPN {
-    #[serde(rename = "allow-vpn")]
+    #[serde(rename(serialize = "allow-vpn"))]
     AllowVpn,
 }

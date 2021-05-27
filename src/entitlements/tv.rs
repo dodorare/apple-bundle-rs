@@ -1,9 +1,8 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
-/// Extend the capabilities of macOS from user space.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
-pub struct TV {
+pub struct Tv {
     /// The entitlement for distinguishing between multiple user accounts on Apple TV.
     ///
     /// To configure the entitlement, add the User Management capability on your app’s target in Xcode and select the checkbox for each privilege your app requires.
@@ -15,10 +14,10 @@ pub struct TV {
     /// You can enable runs-as-current-user if your app’s minimum version is earlier than tvOS 14, but the app will behave as if the privilege isn’t set when running on the earlier version.
     ///
     /// ## Availability
-    /// * macOS 10.15+
+    /// * tvOS 13.0+
     ///
     /// ## Framework
-    /// * System Extensions
+    /// * TV Services
     #[serde(
         rename(serialize = "com.apple.developer.user-management"),
         skip_serializing_if = "Option::is_none",
@@ -52,6 +51,7 @@ pub struct TV {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UserManagement {
     /// The value that grants access to TVUserManager, so you can map your own profiles to users in the system.
     #[serde(rename(serialize = "get-current-user"))]

@@ -2,6 +2,8 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Contacts {
+    /// A Boolean value that indicates whether the app may access the notes stored in contacts.
+    ///
     /// When your app loads one or more entries from the user’s contacts—for example, by calling the
     /// unifiedContacts(matching:keysToFetch:) method—you provide a list of keys specifying what fields to fetch.
     /// If your app links against iOS 13 or later, the app must have the com.apple.developer.contacts.notes

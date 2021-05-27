@@ -81,7 +81,7 @@ pub struct Launch {
         rename(serialize = "LSEnvironment"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub environment: Option<Vec<String>>,
+    pub environment: Option<DefaultDictionary>,
     /// Application shortcut items.
     ///
     /// ## Availability
@@ -219,10 +219,10 @@ pub struct LaunchConditions {
     /// doesn’t need its iOS companion app to operate properly. Users can choose to install the iOS app, the watchOS app, or both.
     ///
     /// ## Availability
-    /// * macOS 10.1+
+    /// * watchOS 6.0+
     ///
     /// ## Framework
-    /// * Core Services
+    /// * WatchKit
     #[serde(
         rename(serialize = "WKRunsIndependentlyOfCompanionApp"),
         skip_serializing_if = "Option::is_none"
@@ -771,7 +771,7 @@ pub struct Extension {
     /// A Boolean value indicating whether the Action extension is presented in full screen.
     ///
     /// ## Availability
-    /// * iOS 14.0+
+    /// * iOS 8.0+
     ///
     /// ## Framework
     /// * Foundation
@@ -1360,7 +1360,7 @@ pub struct ExtensionAttributes {
         rename(serialize = "NSExtensionMainStoryboard"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub main_storyboard: Option<bool>,
+    pub main_storyboard: Option<String>,
     /// A Boolean value indicating whether the app extension ignores appearance changes made by the host app.
     ///
     /// ## Availability
@@ -1871,7 +1871,7 @@ pub struct ActivationRule {
         rename(serialize = "NSExtensionActivationSupportsText"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub supports_text: Option<i32>,
+    pub supports_text: Option<bool>,
     /// The maximum number of webpages that the app extension supports.
     ///
     /// ## Availability

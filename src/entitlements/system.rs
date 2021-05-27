@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 
-/// Extend the capabilities of macOS from user space.
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct System {
     /// A Boolean value that indicates whether your app has permission to activate or deactivate system extensions.
@@ -12,12 +11,40 @@ pub struct System {
     /// * macOS 10.15+
     ///
     /// ## Framework
-    /// * System Extensions
+    /// * Bundle resources
     #[serde(
-        rename(serialize = "com.apple.developer.system-extension.install"),
+        rename(serialize = "System Extensions"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub system_extension: Option<bool>,
+    pub system_extension: Option<SystemExtensions>,
+    /// A Boolean that indicates whether the app can act as a user’s default mail client.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * Core Services
+    #[serde(
+        rename(serialize = "com.apple.developer.mail-client"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub mail_client: Option<bool>,
+    /// A Boolean that indicates whether the app can act as the user’s default web browser.
+    ///
+    /// ## Availability
+    /// * iOS 14.0+
+    ///
+    /// ## Framework
+    /// * Core Services
+    #[serde(
+        rename(serialize = "com.apple.developer.web-browser"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub web_browser: Option<bool>,
+}
+
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+pub struct SystemExtensions {
     /// A Boolean value that indicates whether other development teams may distribute a system extension you create.
     ///
     /// Add this entitlement to a system extension that you create and sign using your development team credentials, but which other development teams distribute in their apps.
@@ -115,6 +142,11 @@ pub struct System {
     /// You can provide several matching values for a key, separated by spaces.
     /// You can also specify an optional mask for the configuration register value by putting the mask after the value, prepended with an & character.
     ///
+    /// Examples:
+    /// * Key = IOPCIMatch. Value = 0x00261011. Result = Matches a device whose vendor ID is 0x1011, and device ID is 0x0026, including subsystem IDs.
+    /// * Key = IOPCIMatch. Value = 0x00789004&0x00ffffff 0x78009004&0x0xff00ffff. Result = Matches with any device with a vendor ID of 0x9004, and a device ID of 0xzz78 or 0x78zz, where ‘z’ is any hexadecimal digit.
+    /// * Key = IOPCIClassMatch. Value = 0x02000000&0xffff0000. Result = Matches a device whose class code is 0x0200zz (where ‘z’ is any hexadecimal digit), an ethernet device.
+    ///
     /// ### Note
     /// You also use the keys defined by this entitlement in your app’s Info.plist, to identify which devices your driver loads on.
     ///
@@ -127,7 +159,7 @@ pub struct System {
         rename(serialize = "com.apple.developer.driverkit.transport.pci"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub driverkit_transport_pci: Option<Vec<DefaultDictionary>>,
+    pub driverkit_transport_pci: Option<Vec<DriverkitTransportPci>>,
     /// An array of dictionaries that identify the USB devices the driver supports.
     ///
     /// Each element in the array is a dictionary whose keys and values identify a specific type of supported device.
@@ -142,7 +174,7 @@ pub struct System {
         rename(serialize = "com.apple.developer.driverkit.transport.usb"),
         skip_serializing_if = "Option::is_none"
     )]
-    pub driverkit_transport_usb: Option<Vec<DefaultDictionary>>,
+    pub driverkit_transport_usb: Option<Vec<DriverkitTransportUsb>>,
     /// An array of strings that represent driver extensions which may communicate with other DriverKit services.
     ///
     /// Add this entitlement to your app that opens the IOUserClient.
@@ -211,8 +243,196 @@ pub struct System {
     pub hid_virtual_device: Option<bool>,
 }
 
-/// Default Dictionary.
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct DefaultDictionary {
-    pub default: String,
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+pub struct DriverkitTransportPci {
+    /// A key to match PCI devices by vendor and device ID registers or subsystem registers.
+    ///
+    /// This value of this key matches the vendor and device ID (0x00) register, or the subsystem register (0x2c).
+    ///
+    /// ## Availability
+    /// * macOS 10.15.4+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "IOPCIMatch"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub pci_match: Option<String>,
+    /// A key to match PCI devices by vendor and device ID registers.
+    ///
+    /// This value of this key matches the vendor and device ID (0x00) register.
+    ///
+    /// ## Availability
+    /// * macOS 10.15.4+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "IOPCIPrimaryMatch"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub primary_match: Option<String>,
+    /// A key to match PCI devices by subsystem vendor ID and device ID registers.
+    ///
+    /// This value of this key matches the subsystem register (0x2c).
+    ///
+    /// ## Availability
+    /// * macOS 10.15.4+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "IOPCISecondaryMatch"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub secondary_match: Option<String>,
+    /// A key to match PCI devices by class code register.
+    ///
+    /// This value of this key matches the class code register (0x08). The default mask for this register is 0xffffff00.
+    ///
+    /// ## Availability
+    /// * macOS 10.15.4+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "IOPCIClassMatch"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub class_match: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+pub struct DriverkitTransportUsb {
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bConfigurationValue"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub configuration_value: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bDeviceClass"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub device_class: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bDeviceProtocol"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub device_protocol: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bDeviceSubClass"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub device_sub_class: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bInterfaceClass"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub interface_class: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bInterfaceNumber"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub interface_number: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bInterfaceProtocol"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub interface_protocol: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bInterfaceSubClass"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub interface_sub_class: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "bcdDevice"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub device: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "idProduct"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub product: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "idProductArray"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub product_array: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "idProductMask"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub product_mask: Option<String>,
+    /// ## Availability
+    /// * macOS 10.15+
+    ///
+    /// ## Framework
+    /// * DriverKit
+    #[serde(
+        rename(serialize = "idVendor"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub vendor: Option<i32>,
 }

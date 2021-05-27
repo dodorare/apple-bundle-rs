@@ -86,6 +86,7 @@ pub struct WirelessInterfaces {
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NearFieldCommunicationTagReaderSessionFormats {
     /// Allows read and write access to a tag using NFCTagReaderSession.
     #[serde(rename(serialize = "TAG"))]

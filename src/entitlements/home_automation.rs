@@ -3,11 +3,9 @@ use serde::{Deserialize, Serialize};
 pub struct HomeAutomation {
     /// A Boolean value that indicates whether users of the app may manage HomeKit-compatible accessories.
     ///
-    /// This key Indicates whether the users of an app may manage HomeKit-compatible accessories,
-    /// such as switches, lights, fans, locks, and thermostats.
+    /// This key Indicates whether the users of an app may manage HomeKit-compatible accessories,such as switches, lights, fans, locks, and thermostats.
     ///
-    /// To add this entitlement to your app, enable the HomeKit capability in Xcode. For more
-    /// information, see Enabling HomeKit in Your App.
+    /// To add this entitlement to your app, enable the HomeKit capability in Xcode. For more information, see Enabling HomeKit in Your App.
     ///
     /// ## Availability
     /// * iOS 8.0+

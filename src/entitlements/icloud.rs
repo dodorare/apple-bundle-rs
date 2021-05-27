@@ -89,17 +89,19 @@ pub struct Icloud {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum IcloudContainerEnvironment {
-    #[serde(rename = "Development")]
+    #[serde(rename(serialize = "Development"))]
     Development,
-    #[serde(rename = "Production")]
+    #[serde(rename(serialize = "Production"))]
     Production,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum IcloudServices {
-    #[serde(rename = "CloudDocuments")]
+    #[serde(rename(serialize = "CloudDocuments"))]
     CloudDocuments,
-    #[serde(rename = "CloudKit")]
+    #[serde(rename(serialize = "CloudKit"))]
     CloudKit,
 }

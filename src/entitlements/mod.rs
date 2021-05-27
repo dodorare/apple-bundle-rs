@@ -129,7 +129,7 @@ pub struct Entitlements {
     pub system: System,
     /// TV
     #[serde(flatten)]
-    pub tv: TV,
+    pub tv: Tv,
     /// Wallet
     #[serde(flatten)]
     pub wallet: Wallet,

@@ -2,6 +2,9 @@
 name = "apple-bundle"
 version = "0.0.1"
 authors = ["DodoRare Team <dodonotrare@gmail.com>"]
+description = "Apple BundleResources serializer and deserializer for Rust"
+repository = "https://github.com/dodorare/apple-bundle-rs"
+license = "Apache-2.0"
 edition = "2018"
 
 [dependencies]

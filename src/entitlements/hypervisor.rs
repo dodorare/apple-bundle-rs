@@ -6,10 +6,9 @@ pub struct Hypervisor {
     ///
     /// The entitlement is required to use the Hypervisor APIs in any process.
     ///
-    /// ## Important
+    /// ### Important
     ///
-    /// If your app has a deployment target of macOS 10.15 or earlier, add the com.apple.vm.hypervisor
-    /// entitlement to your app in addition to this entitlement.
+    /// If your app has a deployment target of macOS 10.15 or earlier, add the com.apple.vm.hypervisor entitlement to your app in addition to this entitlement.
     ///
     /// ## Availability
     /// * macOS 11.0+
@@ -54,11 +53,11 @@ pub struct Hypervisor {
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_device_access: Option<bool>,
-    /// A Boolean that indicates whether the app manages virtual network interfaces without
-    /// escalating privileges to the root user.
+    /// A Boolean that indicates whether the app manages virtual network interfaces without escalating privileges to the root user.
     ///
     /// The entitlement is required to use the vmnet APIs.
     ///
+    /// ### Note
     /// This entitlement is restricted to developers of virtualization software.
     /// To request this entitlement, contact your Apple representative.
     ///
@@ -74,8 +73,7 @@ pub struct Hypervisor {
     pub vm_networking: Option<bool>,
     /// A Boolean that indicates whether the app can use the Virtualization framework.
     ///
-    /// Read the value of isSupported to check for the presence of both this entitlement
-    /// and the hardware support needed for virtualization.
+    /// Read the value of isSupported to check for the presence of both this entitlement and the hardware support needed for virtualization.
     ///
     /// ## Availability
     /// * macOS 11.0+
