@@ -80,6 +80,7 @@ pub struct Documents {
 }
 /// PersistentStoreTypeKey
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersistentStoreTypeKey {
     #[serde(rename(serialize = "SQLite"))]
     SQLite,
@@ -235,6 +236,7 @@ pub struct BundleDocumentTypes {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BundleTypeRole {
     #[serde(rename(serialize = "Editor"))]
     Editor,
@@ -249,6 +251,7 @@ pub enum BundleTypeRole {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HandlerRank {
     #[serde(rename(serialize = "Owner"))]
     Owner,
@@ -956,6 +959,7 @@ pub struct ExceptionDomains {
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExceptionMinimumTLSVersion {
     /// Require a minimum TLS version of 1.0.
     #[serde(rename(serialize = "TLSv1.0"))]
@@ -1212,6 +1216,7 @@ pub struct Files {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum InstallAction {
     #[serde(rename(serialize = "Copy"))]
     Copy,

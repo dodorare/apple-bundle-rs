@@ -756,6 +756,7 @@ pub struct HardenedRuntime {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DataProtection {
     #[serde(rename(serialize = "NSFileProtectionCompleteUnlessOpen"))]
     FileProtectionCompleteUnlessOpen,
@@ -768,6 +769,7 @@ pub enum DataProtection {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DevicecheckAppattest {
     /// The App Attest sandbox environment that you use to test a device without affecting its risk metrics.
     /// Keys you create in the sandbox environment don’t work in the production environment.

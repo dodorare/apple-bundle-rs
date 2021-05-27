@@ -18,6 +18,7 @@ pub struct Sensors {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SensorkitReaderAllow {
     #[serde(rename(serialize = "on-wrist"))]
     OnWrist,

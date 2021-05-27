@@ -44,6 +44,7 @@ pub struct Authentication {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SignInWithAppleEntitlement {
     /// The value used for normal operation.
     #[serde(rename(serialize = "Default"))]

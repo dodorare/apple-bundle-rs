@@ -1122,6 +1122,7 @@ pub struct WiFI {
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HealthKitCapabilities {
     /// The app can request access to FHIR-backed clinical records.
     #[serde(rename(serialize = "health-records"))]

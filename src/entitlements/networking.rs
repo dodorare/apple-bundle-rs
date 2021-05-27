@@ -144,6 +144,7 @@ pub struct Networking {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NetworkExtensions {
     /// The APIs you use to proxy DNS queries.
     #[serde(rename(serialize = "dns-proxy"))]
@@ -181,6 +182,7 @@ pub enum NetworkExtensions {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersonalVPN {
     #[serde(rename(serialize = "allow-vpn"))]
     AllowVpn,

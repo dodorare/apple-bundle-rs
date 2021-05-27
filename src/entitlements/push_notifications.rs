@@ -102,6 +102,7 @@ pub struct PushNotifications {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum APSEnvironment {
     /// The APNs development environment.
     #[serde(rename(serialize = "development"))]

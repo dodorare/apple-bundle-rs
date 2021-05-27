@@ -54,6 +54,7 @@ pub struct Education {
 
 /// ClassKit Environment Entitlement
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ClassKitEnvironment {
     /// The environment used to develop and test your app locally, without requiring a Managed Apple ID issued
     /// by an educational institution.

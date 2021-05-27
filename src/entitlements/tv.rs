@@ -51,6 +51,7 @@ pub struct Tv {
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UserManagement {
     /// The value that grants access to TVUserManager, so you can map your own profiles to users in the system.
     #[serde(rename(serialize = "get-current-user"))]
