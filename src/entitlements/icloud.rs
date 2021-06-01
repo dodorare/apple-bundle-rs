@@ -1,8 +1,9 @@
 use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
+/// iCloud
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
-pub struct Icloud {
+pub struct ICloud {
     /// The container identifiers for the iCloud development environment.
     ///
     /// ## Availability
@@ -35,7 +36,7 @@ pub struct Icloud {
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
-    pub icloud_container_environment: Option<IcloudContainerEnvironment>,
+    pub icloud_container_environment: Option<ICloudContainerEnvironment>,
     /// The container identifiers for the iCloud production environment.
     ///
     /// ## Availability
@@ -68,7 +69,7 @@ pub struct Icloud {
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
-    pub icloud_services: Option<Vec<IcloudServices>>,
+    pub icloud_services: Option<Vec<ICloudServices>>,
     /// The container identifier to use for iCloud key-value storage.
     ///
     /// To add this entitlement to your app, enable the iCloud capability and “Key-value storage” service in Xcode.
@@ -88,18 +89,20 @@ pub struct Icloud {
     pub icloud_key_value_store: Option<String>,
 }
 
+/// iCloud Container Environment
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
-pub enum IcloudContainerEnvironment {
+pub enum ICloudContainerEnvironment {
     #[serde(rename(serialize = "Development"))]
     Development,
     #[serde(rename(serialize = "Production"))]
     Production,
 }
 
+/// iCloud Services
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
-pub enum IcloudServices {
+pub enum ICloudServices {
     #[serde(rename(serialize = "CloudDocuments"))]
     CloudDocuments,
     #[serde(rename(serialize = "CloudKit"))]

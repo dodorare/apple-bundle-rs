@@ -9,10 +9,12 @@
 //! Official documentation: https://developer.apple.com/documentation/bundleresources
 
 /// Entitlements
+///
 /// Key-value pairs that grant an executable permission to use a service or technology.
 pub mod entitlements;
 
 /// Information Property List
+///
 /// A resource containing key-value pairs that identify and configure a bundle.
 pub mod info_plist;
 

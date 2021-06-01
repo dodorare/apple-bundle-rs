@@ -12,7 +12,7 @@
 use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
-/// Categorization.
+/// Categorization
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Categorization {
     /// The type of bundle.
@@ -50,7 +50,7 @@ pub struct Categorization {
     pub application_category_type: Option<AppCategoryType>,
 }
 
-/// Identification.
+/// Identification
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Identification {
     /// A unique identifier for a bundle.
@@ -103,7 +103,7 @@ pub struct Identification {
     pub companion_app_bundle_identifier: Option<String>,
 }
 
-/// Naming.
+/// Naming
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Naming {
     /// A user-visible short name for the bundle.
@@ -155,7 +155,7 @@ pub struct Naming {
     pub bundle_spoken_name: Option<String>,
 }
 
-/// Bundle Version.
+/// Bundle Version
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BundleVersion {
     /// The version of the build that identifies an iteration of the bundle.
@@ -244,7 +244,7 @@ pub struct BundleVersion {
     pub human_readable_copyright: Option<String>,
 }
 
-/// Operating System Version.
+/// Operating System Version
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct OperatingSystemVersion {
     /// The minimum operating system version required for the app to run.
@@ -319,7 +319,7 @@ pub struct OperatingSystemVersion {
     pub watch_kit_app: Option<bool>,
 }
 
-/// Localization.
+/// Localization
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Localization {
     /// The default language and region for the bundle, as a language ID.
@@ -400,7 +400,7 @@ pub struct Localization {
     pub caps_lock_language_switch_capable: Option<bool>,
 }
 
-/// Help.
+/// Help
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Help {
     /// The name of the bundle’s HTML help file.
@@ -441,6 +441,7 @@ pub struct Help {
     pub bundle_help_book_folder: Option<String>,
 }
 
+/// App Category Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum AppCategoryType {
@@ -526,7 +527,7 @@ pub enum AppCategoryType {
     Weather,
 }
 
-/// Operating System Version.
+/// Operating System Version
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 pub struct MinimumSystemVersionByArchitecture {
     pub i386: String,
@@ -545,6 +546,8 @@ impl Default for MinimumSystemVersionByArchitecture {
         }
     }
 }
+
+/// Bundle Localizations
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BundleLocalizations {

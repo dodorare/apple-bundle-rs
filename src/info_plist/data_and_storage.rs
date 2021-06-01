@@ -1,11 +1,12 @@
+//! # Data and Storage
+//!
+//! Regulate documents, URLs, and other kinds of data movement and storage.
+//!
+//! ### Overview
+//! The system needs to know what kinds of data your app stores, provides, or consumes.
+//! Add keys to your app’s Information Property List that declare your app’s data management capabilities.
+
 use crate::serialize_enum_option;
-/// # Data and Storage
-///
-/// Regulate documents, URLs, and other kinds of data movement and storage.
-///
-/// ### Overview
-/// The system needs to know what kinds of data your app stores, provides, or consumes.
-/// Add keys to your app’s Information Property List that declare your app’s data management capabilities.
 use serde::{Deserialize, Serialize};
 
 /// Documents
@@ -78,7 +79,7 @@ pub struct Documents {
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
 }
-/// PersistentStoreTypeKey
+/// Persistent Store Type Key
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersistentStoreTypeKey {
@@ -112,6 +113,7 @@ pub struct URLSchemes {
     pub bundle_url_types: Option<Vec<BundleURLTypes>>,
 }
 
+/// Bundle Document Types
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BundleDocumentTypes {
     /// The icon to associate with the document type.
@@ -235,6 +237,7 @@ pub struct BundleDocumentTypes {
     pub exportable_types: Option<Vec<String>>,
 }
 
+/// Bundle Type Role
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BundleTypeRole {
@@ -250,6 +253,7 @@ pub enum BundleTypeRole {
     None,
 }
 
+/// Handler Rank
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HandlerRank {
@@ -263,6 +267,7 @@ pub enum HandlerRank {
     None,
 }
 
+/// Bundle URL Types
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct BundleURLTypes {
     /// The app’s role with respect to the type.
@@ -355,6 +360,7 @@ pub struct UniversalTypeIdentifiers {
     pub imported_type_declarations: Option<Vec<ImportedTypeDeclarations>>,
 }
 
+/// Exported Type Declarations
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ExportedTypeDeclarations {
     /// The Uniform Type Identifier types that this type conforms to.
@@ -441,6 +447,7 @@ pub struct ExportedTypeDeclarations {
     pub type_tag_specification: DefaultDictionary,
 }
 
+/// Imported Type Declarations
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ImportedTypeDeclarations {
     /// The Uniform Type Identifier types that this type conforms to.
@@ -527,6 +534,7 @@ pub struct ImportedTypeDeclarations {
     pub type_tag_specification: DefaultDictionary,
 }
 
+/// Default Dictionary
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct DefaultDictionary {
     pub default: String,
@@ -652,6 +660,7 @@ pub struct Network {
     pub sharing_supported: Option<bool>,
 }
 
+/// App Transport Security
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct AppTransportSecurity {
     /// A Boolean value indicating whether App Transport Security restrictions are disabled for all network connections.
@@ -845,6 +854,7 @@ pub struct AppTransportSecurity {
     pub pinned_domains: Option<PinnedDomains>,
 }
 
+/// Exception Domains
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct ExceptionDomains {
     /// A Boolean value that indicates whether to extend the configuration to subdomains of the given domain.
@@ -958,6 +968,7 @@ pub struct ExceptionDomains {
     pub requires_certificate_transparency: Option<bool>,
 }
 
+/// Exception Minimum TLS Version
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExceptionMinimumTLSVersion {
@@ -975,6 +986,7 @@ pub enum ExceptionMinimumTLSVersion {
     TlSv13,
 }
 
+/// Pinned Domains
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct PinnedDomains {
     /// A Boolean value that indicates whether to extend the configuration to subdomains of the given domain.
@@ -1031,6 +1043,7 @@ pub struct PinnedDomains {
     pub pinned_ca_identities: Option<Vec<SPKISHA256BASE64>>,
 }
 
+/// SPKI-SHA256-BASE64
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct SPKISHA256BASE64 {
     /// The digest of an X.509 certificate’s Subject Public Key Info structure.
@@ -1150,6 +1163,7 @@ pub struct Storage {
     pub downloads_ubiquitous_contents: Option<bool>,
 }
 
+/// Files
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct Files {
     /// A Boolean value indicating whether the file or a folder icon is displayed in the Info window.
@@ -1215,6 +1229,7 @@ pub struct Files {
     pub install_action: Option<InstallAction>,
 }
 
+/// Install Action
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum InstallAction {
@@ -1224,6 +1239,7 @@ pub enum InstallAction {
     Open,
 }
 
+/// Core ML Models
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct CoreMLModels {
     /// A Boolean value indicating whether the app contains a Core ML model to optimize loading the model.

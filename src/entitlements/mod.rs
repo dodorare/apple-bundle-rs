@@ -108,7 +108,7 @@ pub struct Entitlements {
     pub hypervisor: Hypervisor,
     /// iCloud
     #[serde(flatten)]
-    pub icloud: Icloud,
+    pub icloud: ICloud,
     /// Networking
     #[serde(flatten)]
     pub networking: Networking,

@@ -1,7 +1,8 @@
+//! # Kernel and Drivers
+//!
+//! Configure device drivers provided by the app.
+
 use super::DefaultDictionary;
-/// # Kernel and Drivers
-///
-/// Configure device drivers provided by the app.
 use serde::{Deserialize, Serialize};
 
 /// Driver Personalities
@@ -57,6 +58,7 @@ pub struct DriverPersonalities {
     pub kit_personalities: Option<KitPersonalities>,
 }
 
+/// Kit Personalities
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
 pub struct KitPersonalities {
     /// The name of your driver’s main class, which is the entry point for interacting with your driver’s code.

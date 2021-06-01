@@ -1,5 +1,7 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
+
+/// Health
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Health {
     /// A Boolean value that indicates whether the app may request user authorization to access health and activity data that appears in the Health app.
@@ -42,6 +44,7 @@ pub struct Health {
     pub healthkit_access: Option<Vec<HealthKitCapabilities>>,
 }
 
+/// Health Kit Capabilities
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HealthKitCapabilities {

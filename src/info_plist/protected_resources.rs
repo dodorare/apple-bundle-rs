@@ -1,13 +1,14 @@
+//! # Protected Resources
+//!
+//! Control an app’s access to protected system services and user data.
+//!
+//! ### Overview
+//! Before your app can access certain protected resources, like the Bluetooth interface, location information, or the user’s photos, the system asks the user for permission on behalf of your app.
+//! To signal that your app needs the access, you add a UsageDescription key to your app’s Information Property List.
+//! You set the value associated with the key to a string that explains why your app needs access.
+//! The system displays this string when prompting the user, as described in Requesting Access to Protected Resources.
+
 use crate::serialize_vec_enum_option;
-/// # Protected Resources
-///
-/// Control an app’s access to protected system services and user data.
-///
-/// ### Overview
-/// Before your app can access certain protected resources, like the Bluetooth interface, location information, or the user’s photos, the system asks the user for permission on behalf of your app.
-/// To signal that your app needs the access, you add a UsageDescription key to your app’s Information Property List.
-/// You set the value associated with the key to a string that explains why your app needs access.
-/// The system displays this string when prompting the user, as described in Requesting Access to Protected Resources.
 use serde::{Deserialize, Serialize};
 
 /// Bluetooth
@@ -55,7 +56,7 @@ pub struct Bluetooth {
     pub bluetooth_peripheral_usage_description: Option<String>,
 }
 
-/// # Calendar and Reminders
+/// Calendar and Reminders
 ///
 /// [Accessing the Event Store](https://developer.apple.com/documentation/eventkit/accessing_the_event_store)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -94,7 +95,7 @@ pub struct CalendarAndReminders {
     pub reminders_usage_description: Option<String>,
 }
 
-/// # Camera and Microphone
+/// Camera and Microphone
 ///
 /// ## Articles
 /// * [Requesting Authorization for Media Capture on iOS](https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/requesting_authorization_for_media_capture_on_ios)
@@ -136,7 +137,7 @@ pub struct CameraAndMicrophone {
     pub microphone_usage_description: Option<String>,
 }
 
-/// # Contacts
+/// Contacts
 ///
 /// [Requesting Authorization to Access Contacts](https://developer.apple.com/documentation/contacts/requesting_authorization_to_access_contacts)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -393,7 +394,7 @@ pub struct GameCenter {
     pub friend_list_usage_description: Option<String>,
 }
 
-/// # Health
+/// Health
 ///
 /// [Setting Up HealthKit](https://developer.apple.com/documentation/healthkit/setting_up_healthkit)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -502,7 +503,7 @@ pub struct Health {
     pub health_required_read_authorization_type_identifiers: Option<Vec<String>>,
 }
 
-/// # Home
+/// Home
 ///
 /// [Enabling HomeKit in Your App](https://developer.apple.com/documentation/homekit/enabling_homekit_in_your_app)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -527,7 +528,7 @@ pub struct Home {
     pub home_kit_usage_description: Option<String>,
 }
 
-/// # Location
+/// Location
 ///
 /// [Choosing the Location Services Authorization to Request](https://developer.apple.com/documentation/corelocation/choosing_the_location_services_authorization_to_request)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -706,7 +707,7 @@ pub struct DefaultDictionary {
     pub default: String,
 }
 
-/// # Media Player
+/// Media Player
 ///
 /// [Requesting Access to Apple Music Library](https://developer.apple.com/documentation/storekit/skcloudservicecontroller/requesting_access_to_apple_music_library)
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
@@ -1084,7 +1085,7 @@ pub struct Speech {
     pub speech_recognition_usage_description: Option<String>,
 }
 
-/// TV
+/// TV Resource
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct TVResource {
     /// A message that tells the user why the app is requesting access to the user’s TV provider account.
@@ -1121,6 +1122,7 @@ pub struct WiFI {
     pub requires_persistent_wifi: Option<bool>,
 }
 
+/// Health Kit Capabilities
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HealthKitCapabilities {

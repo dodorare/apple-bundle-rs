@@ -1,6 +1,7 @@
 use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Push Notifications
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct PushNotifications {
     /// The environment for push notifications.
@@ -101,6 +102,7 @@ pub struct PushNotifications {
     pub usernotifications_filtering: Option<bool>,
 }
 
+/// APS Environment
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum APSEnvironment {

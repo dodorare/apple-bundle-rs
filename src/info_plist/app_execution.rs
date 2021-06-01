@@ -14,7 +14,7 @@ use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
-/// Launch.
+/// Launch
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Launch {
     /// The name of the bundle’s main executable class.
@@ -96,7 +96,7 @@ pub struct Launch {
     pub application_shortcut_items: Option<Vec<ApplicationShortcutItem>>,
 }
 
-/// Application Shortcut Item.
+/// Application Shortcut Item
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ApplicationShortcutItem {
     #[serde(
@@ -130,7 +130,7 @@ pub struct ApplicationShortcutItem {
     pub user_info: Option<BTreeMap<String, String>>,
 }
 
-/// Launch Conditions.
+/// Launch Conditions
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchConditions {
     /// The device-related features that your app requires to run.
@@ -276,7 +276,7 @@ pub struct LaunchConditions {
     pub complication_supported_families: Option<Vec<ComplicationSupportedFamilies>>,
 }
 
-/// Extensions and Services.
+/// Extensions and Services
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ExtensionsAndServices {
     /// The properties of an app extension.
@@ -336,7 +336,7 @@ pub struct ExtensionsAndServices {
     pub application_shortcut_widget: Option<String>,
 }
 
-/// App Clips.
+/// App Clips
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AppClips {
     /// A collection of keys that an App Clip uses to get additional capabilities.
@@ -353,7 +353,7 @@ pub struct AppClips {
     pub app_clip: Option<AppClip>,
 }
 
-/// Background Execution.
+/// Background Execution
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BackgroundExecution {
     /// Services provided by an app that require it to run in the background.
@@ -414,7 +414,7 @@ pub struct BackgroundExecution {
     pub background_only: Option<bool>,
 }
 
-/// Endpoint Security.
+/// Endpoint Security
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct EndpointSecurity {
     ///
@@ -441,7 +441,7 @@ pub struct EndpointSecurity {
     pub endpoint_security_reboot_required: Option<bool>,
 }
 
-/// Plugin Support.
+/// Plugin Support
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct PluginSupport {
     /// The name of the app's plugin bundle.
@@ -458,7 +458,7 @@ pub struct PluginSupport {
     pub dock_tile_plugin: Option<String>,
 }
 
-/// Plugin Configuration.
+/// Plugin Configuration
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct PluginConfiguration {
     /// The function to use when dynamically registering a plugin.
@@ -523,7 +523,7 @@ pub struct PluginConfiguration {
     pub plugin_unload_function: Option<String>,
 }
 
-/// Termination.
+/// Termination
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Termination {
     /// A Boolean value indicating whether the app is notified when a child process dies.
@@ -571,7 +571,7 @@ pub struct Termination {
     pub application_exits_on_suspend: Option<bool>,
 }
 
-/// WK Background Mode.
+/// WK Background Mode
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum WkBackgroundMode {
@@ -592,7 +592,7 @@ pub enum WkBackgroundMode {
     Alarm,
 }
 
-/// UI Background Mode.
+/// UI Background Mode
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UiBackgroundMode {
@@ -616,7 +616,7 @@ pub enum UiBackgroundMode {
     Processing,
 }
 
-/// App Clip.
+/// App Clip
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AppClip {
     /// A Boolean value that indicates whether an App Clip can schedule or receive notifications for a limited amount of time.
@@ -650,7 +650,7 @@ pub struct AppClip {
     pub request_location_confirmation: Option<bool>,
 }
 
-/// Extension.
+/// Extension
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Extension {
     /// The names of the intents that an extension supports.
@@ -913,7 +913,7 @@ pub struct Extension {
     pub safari_website_access: Option<SafariWebsiteAccess>,
 }
 
-/// Safari Website Access.
+/// Safari Website Access
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SafariWebsiteAccess {
     /// The domains that a Safari extension is allowed access to.
@@ -939,6 +939,7 @@ pub struct SafariWebsiteAccess {
     pub level: Option<SafariWebsiteAccessLevel>,
 }
 
+/// Safari Website Access Level
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SafariWebsiteAccessLevel {
@@ -950,7 +951,7 @@ pub enum SafariWebsiteAccessLevel {
     Some,
 }
 
-/// Safari Toolbar Item.
+/// Safari Toolbar Item
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SafariToolbarItem {
     /// The properties of an app extension's toolbar item that's been added to the Safari window.
@@ -994,7 +995,7 @@ pub struct SafariToolbarItem {
     pub label: Option<String>,
 }
 
-/// Safari Style Sheet.
+/// Safari Style Sheet
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SafariStyleSheet {
     /// The webpages that the script can be injected into.
@@ -1035,7 +1036,7 @@ pub struct SafariStyleSheet {
     pub style_sheet: Option<String>,
 }
 
-/// The context menu items for a Safari extension.
+/// The context menu items for a Safari extension
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SafariContextMenu {
     /// The command to send to the app extension when the user selects the context menu item.
@@ -1058,7 +1059,7 @@ pub struct SafariContextMenu {
     pub text: Option<String>,
 }
 
-/// Safari Content Script.
+/// Safari Content Script
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SafariContentScript {
     /// The webpages that the script can be injected into.
@@ -1096,7 +1097,7 @@ pub struct SafariContentScript {
     pub script: Option<String>,
 }
 
-/// Extension Point Identifier.
+/// Extension Point Identifier
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExtensionPointIdentifier {
@@ -1172,7 +1173,7 @@ pub enum ExtensionPointIdentifier {
     ExtensionSourceEditor,
 }
 
-/// Extension Attributes.
+/// Extension Attributes
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ExtensionAttributes {
     /// A Boolean value indicating whether the extension appears in the Finder Preview pane and Quick Actions menu.
@@ -1688,7 +1689,7 @@ pub struct ExtensionAttributes {
     pub notification_extension_user_interaction_enabled: Option<bool>,
 }
 
-/// Document Picker Modes.
+/// Document Picker Modes
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DocumentPickerModes {
@@ -1702,6 +1703,7 @@ pub enum DocumentPickerModes {
     MoveToService,
 }
 
+/// File Provider Action
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct FileProviderAction {
     /// A predicate that determines whether a File Provider extension action appears in the context menu.
@@ -1742,7 +1744,7 @@ pub struct FileProviderAction {
     pub name: Option<String>,
 }
 
-/// Context Messages.
+/// Context Messages
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ContextMessages {
@@ -1752,7 +1754,7 @@ pub enum ContextMessages {
     Media,
 }
 
-/// Media Types.
+/// Media Types
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum MediaTypes {
@@ -1762,7 +1764,7 @@ pub enum MediaTypes {
     Video,
 }
 
-/// Media Categories.
+/// Media Categories
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum MediaCategories {
@@ -1778,7 +1780,7 @@ pub enum MediaCategories {
     Radio,
 }
 
-/// Activation Rule.
+/// Activation Rule
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ActivationRule {
     /// The version of the parent extension-activation rule dictionary.
@@ -1913,7 +1915,7 @@ pub struct ActivationRule {
     pub uses_strict_matching: Option<bool>,
 }
 
-/// Extension Service Role Type.
+/// Extension Service Role Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExtensionServiceRoleType {
@@ -1923,7 +1925,7 @@ pub enum ExtensionServiceRoleType {
     Viewer,
 }
 
-/// Service.
+/// Service
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Service {
     /// A keyboard shortcut that invokes the service menu command.
@@ -2018,13 +2020,13 @@ pub struct Service {
     pub user_data: Option<BTreeMap<String, String>>,
 }
 
-/// Default Dictionary.
+/// Default Dictionary
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct DefaultDictionary {
     pub default: String,
 }
 
-/// Complication Supported Families.
+/// Complication Supported Families
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ComplicationSupportedFamilies {
@@ -2052,7 +2054,7 @@ pub enum ComplicationSupportedFamilies {
     GraphicRectangular,
 }
 
-/// Architecture Priority.
+/// Architecture Priority
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ArchitecturePriority {
@@ -2070,7 +2072,7 @@ pub enum ArchitecturePriority {
     Arm64e,
 }
 
-/// Device Capabilities.
+/// Device Capabilities
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DeviceCapabilities {

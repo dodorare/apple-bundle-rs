@@ -49,11 +49,12 @@ pub mod prelude {
 use prelude::*;
 use serde::{Deserialize, Serialize};
 
-/// Information property list.
+/// Information property list
+///
 /// https://developer.apple.com/documentation/bundleresources/information_property_list
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct InfoPlist {
-    // Bundle Configuration.
+    // Bundle Configuration
     #[serde(flatten)]
     pub categorization: Categorization,
     #[serde(flatten)]
@@ -68,7 +69,7 @@ pub struct InfoPlist {
     pub localization: Localization,
     #[serde(flatten)]
     pub help: Help,
-    // User Interface.
+    // User Interface
     #[serde(flatten)]
     pub main_user_interface: MainUserInterface,
     #[serde(flatten)]
@@ -87,7 +88,7 @@ pub struct InfoPlist {
     pub graphics: Graphics,
     #[serde(flatten)]
     pub quick_look: QuickLook,
-    // App Execution.
+    // App Execution
     #[serde(flatten)]
     pub launch: Launch,
     #[serde(flatten)]

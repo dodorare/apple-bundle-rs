@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// App Clips
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AppClips {
     /// A list of parent application identifiers for an App Clip with exactly one entry.

@@ -1,6 +1,7 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// TV
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Tv {
     /// The entitlement for distinguishing between multiple user accounts on Apple TV.
@@ -50,6 +51,7 @@ pub struct Tv {
     pub smoot_subscriptionservice: Option<bool>,
 }
 
+/// User Management
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UserManagement {

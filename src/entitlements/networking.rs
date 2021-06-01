@@ -1,6 +1,7 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Networking
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Networking {
     /// The APIs an app can use to customize networking features.
@@ -143,6 +144,7 @@ pub struct Networking {
     pub associated_domains_applinks_read_write: Option<bool>,
 }
 
+/// Network Extensions
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NetworkExtensions {
@@ -181,6 +183,7 @@ pub enum NetworkExtensions {
     AppPushProvider,
 }
 
+/// Personal VPN
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersonalVPN {

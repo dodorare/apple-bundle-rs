@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Hypervisor
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Hypervisor {
     /// A Boolean value that indicates whether the app creates and manages virtual machines.

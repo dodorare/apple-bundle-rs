@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// System
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct System {
     /// A Boolean value that indicates whether your app has permission to activate or deactivate system extensions.
@@ -43,6 +44,7 @@ pub struct System {
     pub web_browser: Option<bool>,
 }
 
+/// System Extensions
 #[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
 pub struct SystemExtensions {
     /// A Boolean value that indicates whether other development teams may distribute a system extension you create.
@@ -243,6 +245,7 @@ pub struct SystemExtensions {
     pub hid_virtual_device: Option<bool>,
 }
 
+/// Driver Kit Transport PCI
 #[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
 pub struct DriverkitTransportPci {
     /// A key to match PCI devices by vendor and device ID registers or subsystem registers.

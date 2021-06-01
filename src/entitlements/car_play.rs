@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Car Play
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct CarPlay {
     /// ## Availability

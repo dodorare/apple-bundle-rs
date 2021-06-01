@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Contacts
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Contacts {
     /// A Boolean value that indicates whether the app may access the notes stored in contacts.

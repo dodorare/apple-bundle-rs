@@ -46,6 +46,7 @@ pub struct CarPlay {
     pub template_application_scene_session_role: Option<Vec<TemplateApplicationSceneSessionRole>>,
 }
 
+/// Template Application Dashboard
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct TemplateApplicationDashboard {
     /// ## Availability
@@ -71,6 +72,7 @@ pub struct TemplateApplicationDashboard {
     pub scene_delegate_class_name: String,
 }
 
+/// Class Name
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ClassName {
@@ -84,6 +86,7 @@ impl Default for ClassName {
     }
 }
 
+/// Template Application Scene Session Role
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct TemplateApplicationSceneSessionRole {
     /// ## Availability
@@ -109,6 +112,7 @@ pub struct TemplateApplicationSceneSessionRole {
     pub scene_delegate_class_name: String,
 }
 
+/// Template Application
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum TemplateApplication {
@@ -166,6 +170,7 @@ pub struct ExposureNotification {
     pub developer_region: Option<String>,
 }
 
+/// Version
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum Version {
@@ -374,6 +379,7 @@ pub struct Intents {
     pub supported_media_categories: Option<Vec<SupportedMediaCategories>>,
 }
 
+/// Supported Media Categories
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SupportedMediaCategories {
@@ -412,6 +418,7 @@ pub struct Maps {
     pub directions_application_supported_modes: Option<Vec<DirectionsApplicationSupportedModes>>,
 }
 
+/// Directions Application Supported Modes
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DirectionsApplicationSupportedModes {
@@ -507,6 +514,7 @@ pub struct Authentication {
         Option<WebAuthenticationSession>,
 }
 
+/// Web Authentication Session
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct WebAuthenticationSession {
     /// A Boolean that indicates whether the app acts as a browser that supports authentication sessions.
@@ -547,6 +555,7 @@ pub struct WebAuthenticationSession {
     pub ephemeral_browser_session_is_supported: Option<bool>,
 }
 
+/// External Accessories
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ExternalAccessories {
     /// The protocols that the app uses to communicate with external accessory hardware.
@@ -621,6 +630,7 @@ pub struct InterprocessCommunication {
     pub service: Option<Service>,
 }
 
+/// Service
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Service {
     #[serde(
@@ -645,6 +655,7 @@ pub struct Service {
     pub service_type: Option<ServiceType>,
 }
 
+/// Run Loop Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum RunLoopType {
@@ -654,6 +665,7 @@ pub enum RunLoopType {
     RunLoop,
 }
 
+/// Service Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ServiceType {
@@ -686,6 +698,7 @@ pub struct Store {
     pub ad_network_items: Option<Vec<AdNetworkItems>>,
 }
 
+/// Ad Network Items
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AdNetworkItems {
     /// A string that contains an ad network identifier.
