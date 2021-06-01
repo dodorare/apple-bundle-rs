@@ -14,7 +14,7 @@ use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr};
 
-/// Main User Interface.
+/// Main User Interface
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct MainUserInterface {
     /// The information about the app's scene-based life-cycle support.
@@ -87,7 +87,7 @@ pub struct MainUserInterface {
     pub application_is_agent: Option<bool>,
 }
 
-/// Launch Interface.
+/// Launch Interface
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchInterface {
     /// The user interface to show while an app launches.
@@ -177,7 +177,7 @@ pub struct LaunchInterface {
     pub presentation_mode: Option<u8>,
 }
 
-/// Icons.
+/// Icons
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Icons {
     /// Information about all of the icons used by the app.
@@ -251,7 +251,7 @@ pub struct Icons {
     pub prerendered_icon: Option<bool>,
 }
 
-/// Orientation.
+/// Orientation
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Orientation {
     /// The initial orientation of the app’s user interface.
@@ -282,7 +282,7 @@ pub struct Orientation {
     pub supported_interface_orientations: Option<Vec<InterfaceOrientation>>,
 }
 
-/// Styling.
+/// Styling
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Styling {
     /// The user interface style for the app.
@@ -398,7 +398,7 @@ pub struct Styling {
     pub widget_background_color_name: Option<String>,
 }
 
-/// Fonts.
+/// Fonts
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Fonts {
     /// The location of a font file or directory of fonts in the bundle’s Resources folder.
@@ -429,7 +429,7 @@ pub struct Fonts {
     pub app_fonts: Option<Vec<String>>,
 }
 
-/// StatusBar.
+/// Status Bar
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct StatusBar {
     /// A Boolean value indicating whether the status bar is initially hidden when the app launches.
@@ -486,7 +486,7 @@ pub struct StatusBar {
     pub view_controller_based_status_bar_appearance: Option<bool>,
 }
 
-/// Preferences.
+/// Preferences
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Preferences {
     /// The name of an image file used to represent a preference pane in the System Preferences app.
@@ -515,7 +515,7 @@ pub struct Preferences {
     pub pref_pane_icon_label: Option<String>,
 }
 
-/// Graphics.
+/// Graphics
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Graphics {
     /// A Boolean value indicating whether the app supports HDR mode on Apple TV 4K.
@@ -585,7 +585,7 @@ pub struct Graphics {
     pub gpu_selection_policy: Option<GpuSelectionPolicy>,
 }
 
-/// QuickLook.
+/// Quick Look
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct QuickLook {
     /// A Boolean value indicating whether a Quick Look app's generator can be run in threads other than the main thread.
@@ -655,7 +655,7 @@ pub struct QuickLook {
     pub thumbnail_minimum_size: Option<f32>,
 }
 
-/// Deprecated Keys.
+/// Deprecated Keys
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct DeprecatedKeys {
     /// A dictionary containing information about launch images.
@@ -677,13 +677,13 @@ pub struct DeprecatedKeys {
     pub launch_images: Option<Vec<LaunchImage>>,
 }
 
-/// Default Dictionary.
+/// Default Dictionary
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchImage {
     pub default: String,
 }
 
-/// GPU Eject Policy.
+/// GPU Eject Policy
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum GpuEjectPolicy {
@@ -706,7 +706,7 @@ pub enum GpuEjectPolicy {
     Ignore,
 }
 
-/// GPU Selection Policy.
+/// GPU Selection Policy
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum GpuSelectionPolicy {
@@ -720,7 +720,7 @@ pub enum GpuSelectionPolicy {
     PreferRemovable,
 }
 
-/// NavigationBar.
+/// NavigationBar
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct StatusBarTintParameters {
     /// The initial navigation bar’s style and translucency.
@@ -739,7 +739,7 @@ pub struct StatusBarTintParameters {
     pub navigation_bar: Option<NavigationBar>,
 }
 
-/// NavigationBar.
+/// Navigation Bar
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct NavigationBar {
     #[serde(rename(serialize = "BackgroundImage"))]
@@ -764,7 +764,7 @@ pub struct NavigationBar {
     pub tint_color: Option<TintColor>,
 }
 
-/// Bar Style.
+/// Bar Style
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BarStyle {
@@ -780,7 +780,7 @@ impl Default for BarStyle {
     }
 }
 
-/// TintColor.
+/// Tint Color
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct TintColor {
     #[serde(rename(serialize = "Blue"))]
@@ -791,6 +791,7 @@ pub struct TintColor {
     pub red: f32,
 }
 
+/// Status Bar Style
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum StatusBarStyle {
@@ -802,6 +803,7 @@ pub enum StatusBarStyle {
     BlackOpaque,
 }
 
+/// White Point Adaptivity Style
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum WhitePointAdaptivityStyle {
@@ -817,6 +819,7 @@ pub enum WhitePointAdaptivityStyle {
     Game,
 }
 
+/// User Interface Style
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UserInterfaceStyle {
@@ -831,6 +834,7 @@ pub enum UserInterfaceStyle {
     Dark,
 }
 
+/// Interface Orientation
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum InterfaceOrientation {
@@ -863,7 +867,7 @@ impl FromStr for InterfaceOrientation {
     }
 }
 
-/// Bundle Icons.
+/// Bundle Icons
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BundleIcons {
     ///
@@ -892,7 +896,7 @@ pub struct BundleIcons {
     pub bundle_primary_icon: BundlePrimaryIcon,
 }
 
-/// App Icon Reference Name.
+/// App Icon Reference Name
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AppIconReferenceName {
     #[serde(
@@ -907,7 +911,7 @@ pub struct AppIconReferenceName {
     pub prerendered_icon: Option<bool>,
 }
 
-/// Bundle Primary Icon.
+/// Bundle Primary Icon
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct BundlePrimaryIcon {
     /// The names of a bundle’s icon files.
@@ -949,7 +953,7 @@ pub struct BundlePrimaryIcon {
     pub prerendered_icon: bool,
 }
 
-/// Launch Screen.
+/// Launch Screen
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchScreen {
     // Main Interface.
@@ -1054,7 +1058,7 @@ pub struct LaunchScreen {
     pub toolbar: Option<Bar>,
 }
 
-/// Application Scene Manifest.
+/// Application Scene Manifest
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Bar {
     /// A custom image that replaces the navigation/tab/tool bar during launch.
@@ -1074,7 +1078,7 @@ pub struct Bar {
     pub image_name: Option<String>,
 }
 
-/// Launch Screens.
+/// Launch Screens
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchScreens {
     // Launch Screen Definitions.
@@ -1133,7 +1137,7 @@ pub struct LaunchScreens {
     pub default_launch_screen: Option<String>,
 }
 
-/// Launch Screen Definitions.
+/// Launch Screen Definitions
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchScreenDefinitions {
     /// A unique name for the launch screen configuration.
@@ -1157,7 +1161,7 @@ pub struct LaunchScreenDefinitions {
     pub launch_screen: LaunchScreen,
 }
 
-/// Launch Storyboards.
+/// Launch Storyboards
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchStoryboards {
     #[serde(
@@ -1177,7 +1181,7 @@ pub struct LaunchStoryboards {
     pub url_to_launch_storyboard_associations: Option<BTreeMap<String, String>>,
 }
 
-/// Launch Storyboard Definition.
+/// Launch Storyboard Definition
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct LaunchStoryboardDefinition {
     #[serde(
@@ -1192,7 +1196,7 @@ pub struct LaunchStoryboardDefinition {
     pub launch_storyboard_identifier: Option<String>,
 }
 
-/// Application Scene Manifest.
+/// Application Scene Manifest
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ApplicationSceneManifest {
     /// A Boolean value indicating whether the app supports two or more scenes simultaneously.
@@ -1231,7 +1235,7 @@ pub struct ApplicationSceneManifest {
     pub scene_configurations: Option<SceneConfigurations>,
 }
 
-/// Scene Configurations.
+/// Scene Configurations
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct SceneConfigurations {
     /// Scenes that you use to display content on the device's main screen and respond to user interactions.
@@ -1269,7 +1273,7 @@ pub struct SceneConfigurations {
     pub external_display_session_role: Option<WindowSceneSessionRole>,
 }
 
-/// Window Scene Session Role.
+/// Window Scene Session Role
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct WindowSceneSessionRole {
     /// The app-specific name you use to identify the scene.

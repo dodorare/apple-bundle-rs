@@ -1,6 +1,7 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Authentication
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Authentication {
     /// A Boolean value that indicates whether the app may, with user permission, provide user names and
@@ -43,6 +44,7 @@ pub struct Authentication {
     pub sign_in_with_apple: Option<Vec<SignInWithAppleEntitlement>>,
 }
 
+/// Sign in with Apple Entitlement
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SignInWithAppleEntitlement {

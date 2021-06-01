@@ -1,6 +1,7 @@
 use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Education
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Education {
     /// The ClassKit development or production environment for an education app that works with the Schoolwork app.

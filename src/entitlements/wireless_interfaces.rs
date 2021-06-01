@@ -1,6 +1,7 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Wireless Interfaces
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct WirelessInterfaces {
     /// A Boolean value indicating whether your app can access information about the connected Wi-Fi network.
@@ -85,6 +86,7 @@ pub struct WirelessInterfaces {
         Option<Vec<NearFieldCommunicationTagReaderSessionFormats>>,
 }
 
+/// Near Field Communication Tag Reader Session Formats
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NearFieldCommunicationTagReaderSessionFormats {

@@ -1,9 +1,9 @@
 use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Sensors
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Sensors {
-    ///
     /// ## Availability
     /// * iOS 14.0+
     ///
@@ -17,6 +17,7 @@ pub struct Sensors {
     pub sensorkit_reader_allow: Option<Vec<SensorkitReaderAllow>>,
 }
 
+/// Sensor Kit Reader Allow
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SensorkitReaderAllow {

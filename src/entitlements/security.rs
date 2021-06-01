@@ -1,6 +1,7 @@
 use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
+/// Security
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct Security {
     /// Restrict access to system resources and user data in macOS apps to contain damage if an app becomes compromised.
@@ -132,7 +133,7 @@ pub struct Security {
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
-    pub devicecheck_appattest: Option<DevicecheckAppattest>,
+    pub devicecheck_appattest: Option<DeviceCheckAppAttest>,
     /// A Boolean that indicates whether your app has access to smart card slots and smart cards.
     ///
     /// Add this entitlement to your app with a value of true if you want to use the TKSmartCardSlotManager class.
@@ -151,6 +152,7 @@ pub struct Security {
     pub security_smartcard: Option<bool>,
 }
 
+/// App Sandbox
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct AppSandbox {
     /// A Boolean value that indicates whether the app may use access control technology to contain damage to the system and user data if an app is compromised.
@@ -487,26 +489,7 @@ pub struct AppSandbox {
     pub all_files: Option<bool>,
 }
 
-/// # Hardened Runtime
-///
-/// Manage security protections and resource access for your macOS apps.
-///
-/// ## Overview
-/// The Hardened Runtime, along with System Integrity Protection (SIP), protects the runtime integrity of your software by preventing certain classes of exploits, like code injection, dynamically linked library (DLL) hijacking, and process memory space tampering.
-/// To enable the Hardened Runtime for your app, navigate in Xcode to your target’s Signing & Capabilities information and click the + button.
-/// In the window that appears, choose Hardened Runtime.
-///
-/// The Hardened Runtime doesn’t affect the operation of most apps, but it does disallow certain less common capabilities, like just-in-time (JIT) compilation.
-/// If your app relies on a capability that the Hardened Runtime restricts, add an entitlement to disable an individual protection.
-/// You add an entitlement by enabling one of the runtime exceptions or access permissions listed in Xcode.
-/// Make sure to use only the entitlements that are absolutely necessary for your app’s functionality.
-///
-/// You add entitlements only to executables.
-/// Shared libraries, frameworks, and in-process plug-ins inherit the entitlements of their host executable.
-///
-/// ### Important
-/// To upload a macOS app to be notarized, you must enable the Hardened Runtime capability.
-/// For more information about notarization, see Notarizing macOS Software Before Distribution.
+/// Hardened Runtime
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct HardenedRuntime {
     /// A Boolean value that indicates whether the app may create writable and executable memory using the MAP_JIT flag.
@@ -755,6 +738,7 @@ pub struct HardenedRuntime {
     pub apple_events: Option<bool>,
 }
 
+/// Data Protection
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DataProtection {
@@ -768,9 +752,10 @@ pub enum DataProtection {
     NSFileProtectionComplete,
 }
 
+/// Device Check App Attest
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
 #[serde(rename_all(deserialize = "kebab-case"))]
-pub enum DevicecheckAppattest {
+pub enum DeviceCheckAppAttest {
     /// The App Attest sandbox environment that you use to test a device without affecting its risk metrics.
     /// Keys you create in the sandbox environment don’t work in the production environment.
     #[serde(rename(serialize = "development"))]

@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+/// Deprecated Entitlements
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct DeprecatedEntitlements {
     /// A Boolean value that indicates whether the app may provide directions beyond what Maps supports, such as subway routes, hiking trails, and bike paths.
