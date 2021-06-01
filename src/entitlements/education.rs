@@ -20,7 +20,7 @@ pub struct Education {
     /// ## Framework
     /// * ClassKit
     #[serde(
-        rename(serialize = "com.apple.developer.ClassKit-environment"),
+        rename = "com.apple.developer.ClassKit-environment",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -47,7 +47,7 @@ pub struct Education {
     /// ## Framework
     /// * Automatic Assessment Configuration
     #[serde(
-        rename(serialize = "com.apple.developer.automatic-assessment-configuration"),
+        rename = "com.apple.developer.automatic-assessment-configuration",
         skip_serializing_if = "Option::is_none"
     )]
     pub automatic_assessment_configuration: Option<bool>,
@@ -55,14 +55,13 @@ pub struct Education {
 
 /// ClassKit Environment Entitlement
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ClassKitEnvironment {
     /// The environment used to develop and test your app locally, without requiring a Managed Apple ID issued
     /// by an educational institution.
-    #[serde(rename(serialize = "development"))]
+    #[serde(rename = "development")]
     Development,
     /// The environment used by customers of your app who have a Managed Apple ID. This enviroment enables
     /// teachers and students to share data through iCloud.
-    #[serde(rename(serialize = "production"))]
+    #[serde(rename = "production")]
     Production,
 }

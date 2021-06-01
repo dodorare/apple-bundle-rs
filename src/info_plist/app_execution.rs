@@ -29,10 +29,7 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "NSPrincipalClass"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSPrincipalClass", skip_serializing_if = "Option::is_none")]
     pub principal_class: Option<String>,
     /// The name of the class that implements the complication data source protocol.
     ///
@@ -45,7 +42,7 @@ pub struct Launch {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "CLKComplicationPrincipalClass"),
+        rename = "CLKComplicationPrincipalClass",
         skip_serializing_if = "Option::is_none"
     )]
     pub complication_principal_class: Option<Vec<String>>,
@@ -65,10 +62,7 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleExecutable"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleExecutable", skip_serializing_if = "Option::is_none")]
     pub bundle_executable: Option<String>,
     /// Environment variables to set before launching the app.
     ///
@@ -77,10 +71,7 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "LSEnvironment"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSEnvironment", skip_serializing_if = "Option::is_none")]
     pub environment: Option<DefaultDictionary>,
     /// Application shortcut items.
     ///
@@ -90,7 +81,7 @@ pub struct Launch {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIApplicationShortcutItems"),
+        rename = "UIApplicationShortcutItems",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_shortcut_items: Option<Vec<ApplicationShortcutItem>>,
@@ -100,31 +91,31 @@ pub struct Launch {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct ApplicationShortcutItem {
     #[serde(
-        rename(serialize = "UIApplicationShortcutItemIconFile"),
+        rename = "UIApplicationShortcutItemIconFile",
         skip_serializing_if = "Option::is_none"
     )]
     pub icon_file: Option<String>,
     #[serde(
-        rename(serialize = "UIApplicationShortcutItemIconSymbolName"),
+        rename = "UIApplicationShortcutItemIconSymbolName",
         skip_serializing_if = "Option::is_none"
     )]
     pub symbol_name: Option<String>,
     #[serde(
-        rename(serialize = "UIApplicationShortcutItemIconType"),
+        rename = "UIApplicationShortcutItemIconType",
         skip_serializing_if = "Option::is_none"
     )]
     pub icon_type: Option<String>,
     #[serde(
-        rename(serialize = "UIApplicationShortcutItemSubtitle"),
+        rename = "UIApplicationShortcutItemSubtitle",
         skip_serializing_if = "Option::is_none"
     )]
     pub subtitle: Option<String>,
-    #[serde(rename(serialize = "UIApplicationShortcutItemTitle"))]
+    #[serde(rename = "UIApplicationShortcutItemTitle")]
     pub title: String,
-    #[serde(rename(serialize = "UIApplicationShortcutItemType"))]
+    #[serde(rename = "UIApplicationShortcutItemType")]
     pub item_type: String,
     #[serde(
-        rename(serialize = "UIApplicationShortcutItemUserInfo"),
+        rename = "UIApplicationShortcutItemUserInfo",
         skip_serializing_if = "Option::is_none"
     )]
     pub user_info: Option<BTreeMap<String, String>>,
@@ -159,7 +150,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIRequiredDeviceCapabilities"),
+        rename = "UIRequiredDeviceCapabilities",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -172,7 +163,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSMultipleInstancesProhibited"),
+        rename = "LSMultipleInstancesProhibited",
         skip_serializing_if = "Option::is_none"
     )]
     pub multiple_instances_prohibited: Option<bool>,
@@ -190,7 +181,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSArchitecturePriority"),
+        rename = "LSArchitecturePriority",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -208,7 +199,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSRequiresNativeExecution"),
+        rename = "LSRequiresNativeExecution",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_native_execution: Option<bool>,
@@ -224,7 +215,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "WKRunsIndependentlyOfCompanionApp"),
+        rename = "WKRunsIndependentlyOfCompanionApp",
         skip_serializing_if = "Option::is_none"
     )]
     pub runs_independently_of_companion_app: Option<bool>,
@@ -239,10 +230,7 @@ pub struct LaunchConditions {
     ///
     /// ## Framework
     /// * WatchKit
-    #[serde(
-        rename(serialize = "WKWatchOnly"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "WKWatchOnly", skip_serializing_if = "Option::is_none")]
     pub watch_only: Option<bool>,
     /// A Boolean value that indicates whether a watchOS app should opt out of automatically launching when its companion iOS
     /// app starts playing audio content.
@@ -256,7 +244,7 @@ pub struct LaunchConditions {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "PUICAutoLaunchAudioOptOut"),
+        rename = "PUICAutoLaunchAudioOptOut",
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_launch_audio_opt_out: Option<bool>,
@@ -269,7 +257,7 @@ pub struct LaunchConditions {
         note = "In watchOS 7 and later, use getComplicationDescriptors(handler:) to define the supported complication families."
     )]
     #[serde(
-        rename(serialize = "CLKComplicationSupportedFamilies"),
+        rename = "CLKComplicationSupportedFamilies",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -287,10 +275,7 @@ pub struct ExtensionsAndServices {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "NSExtension"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSExtension", skip_serializing_if = "Option::is_none")]
     pub extension: Option<Extension>,
     /// The services provided by an app.
     ///
@@ -299,10 +284,7 @@ pub struct ExtensionsAndServices {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSServices"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSServices", skip_serializing_if = "Option::is_none")]
     pub services: Option<Vec<Service>>,
     /// The name of your watchOS app’s extension delegate.
     ///
@@ -316,7 +298,7 @@ pub struct ExtensionsAndServices {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "WKExtensionDelegateClassName"),
+        rename = "WKExtensionDelegateClassName",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_delegate_class_name: Option<String>,
@@ -330,7 +312,7 @@ pub struct ExtensionsAndServices {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIApplicationShortcutWidget"),
+        rename = "UIApplicationShortcutWidget",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_shortcut_widget: Option<String>,
@@ -346,10 +328,7 @@ pub struct AppClips {
     ///
     /// ## Framework
     /// * App Clip
-    #[serde(
-        rename(serialize = "NSAppClip"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSAppClip", skip_serializing_if = "Option::is_none")]
     pub app_clip: Option<AppClip>,
 }
 
@@ -365,7 +344,7 @@ pub struct BackgroundExecution {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIBackgroundModes"),
+        rename = "UIBackgroundModes",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -382,7 +361,7 @@ pub struct BackgroundExecution {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "WKBackgroundModes"),
+        rename = "WKBackgroundModes",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -396,7 +375,7 @@ pub struct BackgroundExecution {
     /// ## Framework
     /// * Background Tasks
     #[serde(
-        rename(serialize = "BGTaskSchedulerPermittedIdentifiers"),
+        rename = "BGTaskSchedulerPermittedIdentifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub task_scheduler_permitted_identifiers: Option<Vec<String>>,
@@ -407,10 +386,7 @@ pub struct BackgroundExecution {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "LSBackgroundOnly"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSBackgroundOnly", skip_serializing_if = "Option::is_none")]
     pub background_only: Option<bool>,
 }
 
@@ -424,7 +400,7 @@ pub struct EndpointSecurity {
     /// ## Framework
     /// * Endpoint Security
     #[serde(
-        rename(serialize = "NSEndpointSecurityEarlyBoot"),
+        rename = "NSEndpointSecurityEarlyBoot",
         skip_serializing_if = "Option::is_none"
     )]
     pub endpoint_security_early_boot: Option<bool>,
@@ -435,7 +411,7 @@ pub struct EndpointSecurity {
     /// ## Framework
     /// * Endpoint Security
     #[serde(
-        rename(serialize = "NSEndpointSecurityRebootRequired"),
+        rename = "NSEndpointSecurityRebootRequired",
         skip_serializing_if = "Option::is_none"
     )]
     pub endpoint_security_reboot_required: Option<bool>,
@@ -451,10 +427,7 @@ pub struct PluginSupport {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSDockTilePlugIn"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSDockTilePlugIn", skip_serializing_if = "Option::is_none")]
     pub dock_tile_plugin: Option<String>,
 }
 
@@ -469,7 +442,7 @@ pub struct PluginConfiguration {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFPlugInDynamicRegisterFunction"),
+        rename = "CFPlugInDynamicRegisterFunction",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_dynamic_register_function: Option<String>,
@@ -481,7 +454,7 @@ pub struct PluginConfiguration {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFPlugInDynamicRegistration"),
+        rename = "CFPlugInDynamicRegistration",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_dynamic_registration: Option<bool>,
@@ -492,10 +465,7 @@ pub struct PluginConfiguration {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFPlugInFactories"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFPlugInFactories", skip_serializing_if = "Option::is_none")]
     pub plugin_factories: Option<BTreeMap<String, String>>,
     /// One or more groups of interfaces supported by the plugin for static registration.
     ///
@@ -504,10 +474,7 @@ pub struct PluginConfiguration {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFPlugInTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFPlugInTypes", skip_serializing_if = "Option::is_none")]
     pub plugin_types: Option<BTreeMap<String, String>>,
     /// The name of the function to call to unload the plugin code from memory.
     ///
@@ -517,7 +484,7 @@ pub struct PluginConfiguration {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFPlugInUnloadFunction"),
+        rename = "CFPlugInUnloadFunction",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_unload_function: Option<String>,
@@ -533,10 +500,7 @@ pub struct Termination {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "LSGetAppDiedEvents"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSGetAppDiedEvents", skip_serializing_if = "Option::is_none")]
     pub get_app_died_events: Option<bool>,
     /// A Boolean value indicating whether the system may terminate the app to log out or shut down more quickly.
     ///
@@ -546,7 +510,7 @@ pub struct Termination {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSSupportsSuddenTermination"),
+        rename = "NSSupportsSuddenTermination",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_sudden_termination: Option<bool>,
@@ -565,7 +529,7 @@ pub struct Termination {
                 For more information, see About the Background Execution Sequence."
     )]
     #[serde(
-        rename(serialize = "UIApplicationExitsOnSuspend"),
+        rename = "UIApplicationExitsOnSuspend",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_exits_on_suspend: Option<bool>,
@@ -573,46 +537,44 @@ pub struct Termination {
 
 /// WK Background Mode
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum WkBackgroundMode {
     /// Allows an active workout session to run in the background.
-    #[serde(rename(serialize = "workout-processing"))]
+    #[serde(rename = "workout-processing")]
     WorkoutProcessing,
     /// Enables extended runtime sessions for brief activities focusing on health or emotional well-being.
-    #[serde(rename(serialize = "self-care"))]
+    #[serde(rename = "self-care")]
     SelfCare,
     /// Enables extended runtime sessions for silent meditation.
-    #[serde(rename(serialize = "mindfulness"))]
+    #[serde(rename = "mindfulness")]
     Mindfulness,
     /// Enables extended runtime sessions for stretching, strengthening, or range-of-motion exercises.
-    #[serde(rename(serialize = "physical-therapy"))]
+    #[serde(rename = "physical-therapy")]
     PhysicalTherapy,
     /// Enables extended runtime sessions for smart alarms.
-    #[serde(rename(serialize = "alarm"))]
+    #[serde(rename = "alarm")]
     Alarm,
 }
 
 /// UI Background Mode
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UiBackgroundMode {
-    #[serde(rename(serialize = "audio"))]
+    #[serde(rename = "audio")]
     Audio,
-    #[serde(rename(serialize = "location"))]
+    #[serde(rename = "location")]
     Location,
-    #[serde(rename(serialize = "voip"))]
+    #[serde(rename = "voip")]
     Voip,
-    #[serde(rename(serialize = "external-accessory"))]
+    #[serde(rename = "external-accessory")]
     ExternalAccessory,
-    #[serde(rename(serialize = "bluetooth-central"))]
+    #[serde(rename = "bluetooth-central")]
     BluetoothCentral,
-    #[serde(rename(serialize = "bluetooth-peripheral"))]
+    #[serde(rename = "bluetooth-peripheral")]
     BluetoothPeripheral,
-    #[serde(rename(serialize = "fetch"))]
+    #[serde(rename = "fetch")]
     Fetch,
-    #[serde(rename(serialize = "remote-notification"))]
+    #[serde(rename = "remote-notification")]
     RemoteNotification,
-    #[serde(rename(serialize = "processing"))]
+    #[serde(rename = "processing")]
     Processing,
 }
 
@@ -630,7 +592,7 @@ pub struct AppClip {
     /// ## Framework
     /// * App Clip
     #[serde(
-        rename(serialize = "NSAppClipRequestEphemeralUserNotification"),
+        rename = "NSAppClipRequestEphemeralUserNotification",
         skip_serializing_if = "Option::is_none"
     )]
     pub request_ephemeral_user_notification: Option<bool>,
@@ -644,7 +606,7 @@ pub struct AppClip {
     /// ## Framework
     /// * App Clip
     #[serde(
-        rename(serialize = "NSAppClipRequestLocationConfirmation"),
+        rename = "NSAppClipRequestLocationConfirmation",
         skip_serializing_if = "Option::is_none"
     )]
     pub request_location_confirmation: Option<bool>,
@@ -660,10 +622,7 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "IntentsSupported"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "IntentsSupported", skip_serializing_if = "Option::is_none")]
     pub intents_supported: Option<Vec<String>>,
     /// A dictionary that specifies the minimum size of the floating window in which Final Cut Pro hosts the extension view.
     ///
@@ -673,7 +632,7 @@ pub struct Extension {
     /// ## Framework
     /// * ProExtension
     #[serde(
-        rename(serialize = "ProExtensionAttributes"),
+        rename = "ProExtensionAttributes",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_attributes: Option<BTreeMap<String, String>>,
@@ -689,7 +648,7 @@ pub struct Extension {
     /// ## Framework
     /// * ProExtension
     #[serde(
-        rename(serialize = "ProExtensionPrincipalClass"),
+        rename = "ProExtensionPrincipalClass",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_principal_class: Option<String>,
@@ -706,7 +665,7 @@ pub struct Extension {
     /// ## Framework
     /// * ProExtension
     #[serde(
-        rename(serialize = "ProExtensionPrincipalViewControllerClass"),
+        rename = "ProExtensionPrincipalViewControllerClass",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_principal_view_controller_class: Option<String>,
@@ -724,10 +683,7 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * ProExtension
-    #[serde(
-        rename(serialize = "ProExtensionUUID"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "ProExtensionUUID", skip_serializing_if = "Option::is_none")]
     pub pro_extension_uuid: Option<String>,
     /// Account Authentication Modification. The rules the system satisfies when generating a strong password for your
     /// extension during an automatic upgrade.
@@ -738,7 +694,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "ASAccountAuthenticationModificationPasswordGenerationRequirements"),
+        rename = "ASAccountAuthenticationModificationPasswordGenerationRequirements",
         skip_serializing_if = "Option::is_none"
     )]
     pub password_generation_requirements: Option<String>,
@@ -751,7 +707,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "ASAccountAuthenticationModificationSupportsStrongPasswordUpgrade"),
+        rename = "ASAccountAuthenticationModificationSupportsStrongPasswordUpgrade",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_strong_password_upgrade: Option<bool>,
@@ -764,7 +720,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "ASAccountAuthenticationModificationSupportsUpgradeToSignInWithApple"),
+        rename = "ASAccountAuthenticationModificationSupportsUpgradeToSignInWithApple",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_upgrade_to_sign_in_with_apple: Option<bool>,
@@ -776,7 +732,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActionWantsFullScreenPresentation"),
+        rename = "NSExtensionActionWantsFullScreenPresentation",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_action_wants_full_screen_presentation: Option<bool>,
@@ -789,7 +745,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionAttributes"),
+        rename = "NSExtensionAttributes",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_attributes: Option<ExtensionAttributes>,
@@ -805,7 +761,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionMainStoryboard"),
+        rename = "NSExtensionMainStoryboard",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_main_storyboard: Option<String>,
@@ -817,7 +773,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionOverridesHostUIAppearance"),
+        rename = "NSExtensionOverridesHostUIAppearance",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_overrides_host_ui_appearance: Option<bool>,
@@ -830,7 +786,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionPointIdentifier"),
+        rename = "NSExtensionPointIdentifier",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -847,7 +803,7 @@ pub struct Extension {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionPrincipalClass"),
+        rename = "NSExtensionPrincipalClass",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_principal_class: Option<String>,
@@ -859,7 +815,7 @@ pub struct Extension {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "SFSafariContentScript"),
+        rename = "SFSafariContentScript",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_content_script: Option<Vec<SafariContentScript>>,
@@ -871,7 +827,7 @@ pub struct Extension {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "SFSafariContextMenu"),
+        rename = "SFSafariContextMenu",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_context_menu: Option<Vec<SafariContextMenu>>,
@@ -882,10 +838,7 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(
-        rename(serialize = "SFSafariStyleSheet"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "SFSafariStyleSheet", skip_serializing_if = "Option::is_none")]
     pub safari_style_sheet: Option<Vec<SafariStyleSheet>>,
     /// The items to add to the toolbar for a Safari extension.
     ///
@@ -895,7 +848,7 @@ pub struct Extension {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "SFSafariToolbarItem"),
+        rename = "SFSafariToolbarItem",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_toolbar_item: Option<SafariToolbarItem>,
@@ -907,7 +860,7 @@ pub struct Extension {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "SFSafariWebsiteAccess"),
+        rename = "SFSafariWebsiteAccess",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_website_access: Option<SafariWebsiteAccess>,
@@ -923,10 +876,7 @@ pub struct SafariWebsiteAccess {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(
-        rename(serialize = "Allowed Domains"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "Allowed Domains", skip_serializing_if = "Option::is_none")]
     pub allowed_domains: Option<Vec<String>>,
     /// The level of a Safari extension’s website access.
     ///
@@ -935,19 +885,18 @@ pub struct SafariWebsiteAccess {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Level"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Level", skip_serializing_if = "Option::is_none")]
     pub level: Option<SafariWebsiteAccessLevel>,
 }
 
 /// Safari Website Access Level
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SafariWebsiteAccessLevel {
-    #[serde(rename(serialize = "None"))]
+    #[serde(rename = "None")]
     None,
-    #[serde(rename(serialize = "All"))]
+    #[serde(rename = "All")]
     All,
-    #[serde(rename(serialize = "Some"))]
+    #[serde(rename = "Some")]
     Some,
 }
 
@@ -961,7 +910,7 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Action"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Action", skip_serializing_if = "Option::is_none")]
     pub action: Option<String>,
     /// The identifier for a Safari extension's toolbar item.
     ///
@@ -970,10 +919,7 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(
-        rename(serialize = "Identifier"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "Identifier", skip_serializing_if = "Option::is_none")]
     pub identifier: Option<String>,
     /// An image that represents a Safari extension's toolbar item.
     ///
@@ -982,7 +928,7 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Image"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Image", skip_serializing_if = "Option::is_none")]
     pub image: Option<String>,
     /// The label for the Safari extension's toolbar item.
     ///
@@ -991,7 +937,7 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Label"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Label", skip_serializing_if = "Option::is_none")]
     pub label: Option<String>,
 }
 
@@ -1006,7 +952,7 @@ pub struct SafariStyleSheet {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "Allowed URL Patterns"),
+        rename = "Allowed URL Patterns",
         skip_serializing_if = "Option::is_none"
     )]
     pub allowed_url_patterns: Option<Vec<String>>,
@@ -1018,7 +964,7 @@ pub struct SafariStyleSheet {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "Excluded URL Patterns"),
+        rename = "Excluded URL Patterns",
         skip_serializing_if = "Option::is_none"
     )]
     pub excluded_url_patterns: Option<Vec<String>>,
@@ -1029,10 +975,7 @@ pub struct SafariStyleSheet {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(
-        rename(serialize = "Style Sheet"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "Style Sheet", skip_serializing_if = "Option::is_none")]
     pub style_sheet: Option<String>,
 }
 
@@ -1046,7 +989,7 @@ pub struct SafariContextMenu {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Command"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Command", skip_serializing_if = "Option::is_none")]
     pub command: Option<String>,
     /// The text to display for the context menu item.
     ///
@@ -1055,7 +998,7 @@ pub struct SafariContextMenu {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Text"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Text", skip_serializing_if = "Option::is_none")]
     pub text: Option<String>,
 }
 
@@ -1070,7 +1013,7 @@ pub struct SafariContentScript {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "Allowed URL Patterns"),
+        rename = "Allowed URL Patterns",
         skip_serializing_if = "Option::is_none"
     )]
     pub allowed_url_patterns: Option<Vec<String>>,
@@ -1082,7 +1025,7 @@ pub struct SafariContentScript {
     /// ## Framework
     /// * Safari Services
     #[serde(
-        rename(serialize = "Excluded URL Patterns"),
+        rename = "Excluded URL Patterns",
         skip_serializing_if = "Option::is_none"
     )]
     pub excluded_url_patterns: Option<Vec<String>>,
@@ -1093,83 +1036,80 @@ pub struct SafariContentScript {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename(serialize = "Script"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "Script", skip_serializing_if = "Option::is_none")]
     pub script: Option<String>,
 }
 
 /// Extension Point Identifier
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExtensionPointIdentifier {
-    #[serde(rename(serialize = "com.apple.ui-services"))]
+    #[serde(rename = "com.apple.ui-services")]
     UiServices,
-    #[serde(rename(serialize = "com.apple.services"))]
+    #[serde(rename = "com.apple.services")]
     Services,
-    #[serde(rename(serialize = "com.apple.keyboard-service"))]
+    #[serde(rename = "com.apple.keyboard-service")]
     KeyboardService,
-    #[serde(rename(serialize = "com.apple.fileprovider-nonui"))]
+    #[serde(rename = "com.apple.fileprovider-nonui")]
     FileproviderNonui,
-    #[serde(rename(serialize = "com.apple.fileprovider-actionsui"))]
+    #[serde(rename = "com.apple.fileprovider-actionsui")]
     FileproviderActionsui,
-    #[serde(rename(serialize = "com.apple.FinderSync"))]
+    #[serde(rename = "com.apple.FinderSync")]
     FinderSync,
-    #[serde(rename(serialize = "com.apple.identitylookup.message-filter"))]
+    #[serde(rename = "com.apple.identitylookup.message-filter")]
     IdentityLookupMessageFilter,
-    #[serde(rename(serialize = "com.apple.photo-editing"))]
+    #[serde(rename = "com.apple.photo-editing")]
     PhotoEditing,
-    #[serde(rename(serialize = "com.apple.share-services"))]
+    #[serde(rename = "com.apple.share-services")]
     ShareServices,
-    #[serde(rename(serialize = "com.apple.callkit.call-directory"))]
+    #[serde(rename = "com.apple.callkit.call-directory")]
     CallkitCallDirectory,
-    #[serde(rename(
-        serialize = "com.apple.authentication-services-account-authentication-modification-ui"
-    ))]
+    #[serde(rename = "com.apple.authentication-services-account-authentication-modification-ui")]
     AuthenticationServicesAccountAuthenticationModificationUi,
-    #[serde(rename(serialize = "com.apple.AudioUnit-UI"))]
+    #[serde(rename = "com.apple.AudioUnit-UI")]
     AudioUnitUi,
-    #[serde(rename(serialize = "com.apple.AppSSO.idp-extension"))]
+    #[serde(rename = "com.apple.AppSSO.idp-extension")]
     AppSsoIdpExtension,
-    #[serde(rename(serialize = "com.apple.authentication-services-credential-provider-ui"))]
+    #[serde(rename = "com.apple.authentication-services-credential-provider-ui")]
     AuthenticationServicesCredentialProviderUi,
-    #[serde(rename(serialize = "com.apple.broadcast-services-setupui"))]
+    #[serde(rename = "com.apple.broadcast-services-setupui")]
     BroadcastServicesSetupui,
-    #[serde(rename(serialize = "com.apple.broadcast-services-upload"))]
+    #[serde(rename = "com.apple.broadcast-services-upload")]
     BroadcastServicesUpload,
-    #[serde(rename(serialize = "com.apple.classkit.context-provider"))]
+    #[serde(rename = "com.apple.classkit.context-provider")]
     ClasskitContextProvider,
-    #[serde(rename(serialize = "com.apple.Safari.content-blocker"))]
+    #[serde(rename = "com.apple.Safari.content-blocker")]
     SafariContentBlocker,
-    #[serde(rename(serialize = "com.apple.message-payload-provider"))]
+    #[serde(rename = "com.apple.message-payload-provider")]
     MessagePayloadProvider,
-    #[serde(rename(serialize = "com.apple.intents-service"))]
+    #[serde(rename = "com.apple.intents-service")]
     IntentsService,
-    #[serde(rename(serialize = "com.apple.intents-ui-service"))]
+    #[serde(rename = "com.apple.intents-ui-service")]
     IntentsUiService,
-    #[serde(rename(serialize = "com.apple.networkextension.app-proxy"))]
+    #[serde(rename = "com.apple.networkextension.app-proxy")]
     NetworkExtensionAppProxy,
-    #[serde(rename(serialize = "com.apple.usernotifications.content-extension"))]
+    #[serde(rename = "com.apple.usernotifications.content-extension")]
     UsernotificationsContentExtension,
-    #[serde(rename(serialize = "com.apple.usernotifications.service"))]
+    #[serde(rename = "com.apple.usernotifications.service")]
     UsernotificationsService,
-    #[serde(rename(serialize = "com.apple.ctk-tokens"))]
+    #[serde(rename = "com.apple.ctk-tokens")]
     CtkTokens,
-    #[serde(rename(serialize = "com.apple.photo-project"))]
+    #[serde(rename = "com.apple.photo-project")]
     PhotoProject,
-    #[serde(rename(serialize = "com.apple.quicklook.preview"))]
+    #[serde(rename = "com.apple.quicklook.preview")]
     QuicklookPreview,
-    #[serde(rename(serialize = "com.apple.Safari.extension"))]
+    #[serde(rename = "com.apple.Safari.extension")]
     SafariExtension,
-    #[serde(rename(serialize = "com.apple.spotlight.index"))]
+    #[serde(rename = "com.apple.spotlight.index")]
     SpotlightIndex,
-    #[serde(rename(serialize = "com.apple.quicklook.thumbnail"))]
+    #[serde(rename = "com.apple.quicklook.thumbnail")]
     QuicklookThumbnail,
-    #[serde(rename(serialize = "com.apple.tv-top-shelf"))]
+    #[serde(rename = "com.apple.tv-top-shelf")]
     TvTopShelf,
-    #[serde(rename(serialize = "com.apple.identitylookup.classification-ui"))]
+    #[serde(rename = "com.apple.identitylookup.classification-ui")]
     ClassificationUi,
-    #[serde(rename(serialize = "com.apple.widgetkit-extension"))]
+    #[serde(rename = "com.apple.widgetkit-extension")]
     WidgetkitExtension,
-    #[serde(rename(serialize = "com.apple.dt.Xcode.extension.source-editor"))]
+    #[serde(rename = "com.apple.dt.Xcode.extension.source-editor")]
     ExtensionSourceEditor,
 }
 
@@ -1184,7 +1124,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceAllowsFinderPreviewItem"),
+        rename = "NSExtensionServiceAllowsFinderPreviewItem",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_finder_preview_item: Option<bool>,
@@ -1196,7 +1136,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceAllowsToolbarItem"),
+        rename = "NSExtensionServiceAllowsToolbarItem",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_toolbar_item: Option<bool>,
@@ -1208,7 +1148,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceAllowsTouchBarItem"),
+        rename = "NSExtensionServiceAllowsTouchBarItem",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_touch_bar_item: Option<bool>,
@@ -1227,7 +1167,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceFinderPreviewIconName"),
+        rename = "NSExtensionServiceFinderPreviewIconName",
         skip_serializing_if = "Option::is_none"
     )]
     pub finder_preview_icon_name: Option<String>,
@@ -1243,7 +1183,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceFinderPreviewLabel"),
+        rename = "NSExtensionServiceFinderPreviewLabel",
         skip_serializing_if = "Option::is_none"
     )]
     pub finder_preview_label: Option<String>,
@@ -1255,7 +1195,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceRoleType"),
+        rename = "NSExtensionServiceRoleType",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -1268,7 +1208,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceToolbarIconFile"),
+        rename = "NSExtensionServiceToolbarIconFile",
         skip_serializing_if = "Option::is_none"
     )]
     pub toolbar_icon_file: Option<String>,
@@ -1280,7 +1220,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceToolbarPaletteLabel"),
+        rename = "NSExtensionServiceToolbarPaletteLabel",
         skip_serializing_if = "Option::is_none"
     )]
     pub toolbar_palette_label: Option<String>,
@@ -1297,7 +1237,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceTouchBarBezelColorName"),
+        rename = "NSExtensionServiceTouchBarBezelColorName",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_bezel_color_name: Option<String>,
@@ -1316,7 +1256,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceTouchBarIconName"),
+        rename = "NSExtensionServiceTouchBarIconName",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_icon_name: Option<String>,
@@ -1332,7 +1272,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSExtensionServiceTouchBarLabel"),
+        rename = "NSExtensionServiceTouchBarLabel",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_label: Option<String>,
@@ -1344,7 +1284,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActionWantsFullScreenPresentation"),
+        rename = "NSExtensionActionWantsFullScreenPresentation",
         skip_serializing_if = "Option::is_none"
     )]
     pub action_wants_full_screen_presentation: Option<bool>,
@@ -1358,7 +1298,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionMainStoryboard"),
+        rename = "NSExtensionMainStoryboard",
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard: Option<String>,
@@ -1370,7 +1310,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionOverridesHostUIAppearance"),
+        rename = "NSExtensionOverridesHostUIAppearance",
         skip_serializing_if = "Option::is_none"
     )]
     pub overrides_host_ui_appearance: Option<bool>,
@@ -1383,7 +1323,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionPointIdentifier"),
+        rename = "NSExtensionPointIdentifier",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -1398,7 +1338,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionPrincipalClass"),
+        rename = "NSExtensionPrincipalClass",
         skip_serializing_if = "Option::is_none"
     )]
     pub principal_class: Option<String>,
@@ -1411,7 +1351,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationRule"),
+        rename = "NSExtensionActivationRule",
         skip_serializing_if = "Option::is_none"
     )]
     pub activation_rule: Option<ActivationRule>,
@@ -1424,7 +1364,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionJavaScriptPreprocessingFile"),
+        rename = "NSExtensionJavaScriptPreprocessingFile",
         skip_serializing_if = "Option::is_none"
     )]
     pub java_script_preprocessing_file: Option<String>,
@@ -1435,10 +1375,7 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "IntentsSupported"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "IntentsSupported", skip_serializing_if = "Option::is_none")]
     pub intents_supported: Option<Vec<String>>,
     /// Types of media supported by an app extension’s media-playing intents.
     ///
@@ -1454,7 +1391,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "SupportedMediaCategories"),
+        rename = "SupportedMediaCategories",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_media_categories: Option<Vec<MediaCategories>>,
@@ -1466,7 +1403,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Photos
     #[serde(
-        rename(serialize = "PHProjectExtensionDefinesProjectTypes"),
+        rename = "PHProjectExtensionDefinesProjectTypes",
         skip_serializing_if = "Option::is_none"
     )]
     pub project_extension_defines_project_types: Option<bool>,
@@ -1478,7 +1415,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * Photos
     #[serde(
-        rename(serialize = "PHSupportedMediaTypes"),
+        rename = "PHSupportedMediaTypes",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_media_types: Option<Vec<MediaTypes>>,
@@ -1490,7 +1427,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "IDMessageFilterExtensionNetworkURL"),
+        rename = "IDMessageFilterExtensionNetworkURL",
         skip_serializing_if = "Option::is_none"
     )]
     pub id_message_filter_extension_network_url: Option<String>,
@@ -1502,7 +1439,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "ILClassificationExtensionSMSReportDestination"),
+        rename = "ILClassificationExtensionSMSReportDestination",
         skip_serializing_if = "Option::is_none"
     )]
     pub classification_extension_sms_report_destination: Option<String>,
@@ -1513,10 +1450,7 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(
-        rename(serialize = "IsASCIICapable"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "IsASCIICapable", skip_serializing_if = "Option::is_none")]
     pub is_ascii_capable: Option<String>,
     /// The contexts that an iMessage app or sticker pack supports.
     ///
@@ -1526,7 +1460,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "MSMessagesAppPresentationContextMessages"),
+        rename = "MSMessagesAppPresentationContextMessages",
         skip_serializing_if = "Option::is_none"
     )]
     pub messages_app_presentation_context_messages: Option<Vec<ContextMessages>>,
@@ -1538,7 +1472,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderActions"),
+        rename = "NSExtensionFileProviderActions",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_actions: Option<Vec<FileProviderAction>>,
@@ -1550,7 +1484,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderDocumentGroup"),
+        rename = "NSExtensionFileProviderDocumentGroup",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_document_group: Option<String>,
@@ -1562,7 +1496,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderSupportsEnumeration"),
+        rename = "NSExtensionFileProviderSupportsEnumeration",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_supports_enumeration: Option<bool>,
@@ -1573,10 +1507,7 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(
-        rename(serialize = "PrefersRightToLeft"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "PrefersRightToLeft", skip_serializing_if = "Option::is_none")]
     pub prefers_right_to_left: Option<bool>,
     /// The primary language for a keyboard extension.
     ///
@@ -1585,10 +1516,7 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(
-        rename(serialize = "PrimaryLanguage"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "PrimaryLanguage", skip_serializing_if = "Option::is_none")]
     pub primary_language: Option<String>,
     /// A Boolean value indicating whether a custom keyboard uses a shared container and accesses the network.
     ///
@@ -1597,10 +1525,7 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(
-        rename(serialize = "RequestsOpenAccess"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "RequestsOpenAccess", skip_serializing_if = "Option::is_none")]
     pub requests_open_access: Option<bool>,
     /// The modes that a Document Picker extension supports.
     ///
@@ -1610,7 +1535,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIDocumentPickerModes"),
+        rename = "UIDocumentPickerModes",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -1623,7 +1548,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIDocumentPickerSupportedFileTypes"),
+        rename = "UIDocumentPickerSupportedFileTypes",
         skip_serializing_if = "Option::is_none"
     )]
     pub document_picker_supported_file_types: Option<Vec<String>>,
@@ -1635,7 +1560,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UNNotificationExtensionCategory"),
+        rename = "UNNotificationExtensionCategory",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_category: Option<String>,
@@ -1647,7 +1572,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UNNotificationExtensionDefaultContentHidden"),
+        rename = "UNNotificationExtensionDefaultContentHidden",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_default_content_hidden: Option<bool>,
@@ -1659,7 +1584,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UNNotificationExtensionInitialContentSizeRatio"),
+        rename = "UNNotificationExtensionInitialContentSizeRatio",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_initial_content_size_ratio: Option<f32>,
@@ -1671,7 +1596,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UNNotificationExtensionOverridesDefaultTitle"),
+        rename = "UNNotificationExtensionOverridesDefaultTitle",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_overrides_default_title: Option<bool>,
@@ -1683,7 +1608,7 @@ pub struct ExtensionAttributes {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UNNotificationExtensionUserInteractionEnabled"),
+        rename = "UNNotificationExtensionUserInteractionEnabled",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_user_interaction_enabled: Option<bool>,
@@ -1691,15 +1616,14 @@ pub struct ExtensionAttributes {
 
 /// Document Picker Modes
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DocumentPickerModes {
-    #[serde(rename(serialize = "UIDocumentPickerModeImport"))]
+    #[serde(rename = "UIDocumentPickerModeImport")]
     Import,
-    #[serde(rename(serialize = "UIDocumentPickerModeOpen"))]
+    #[serde(rename = "UIDocumentPickerModeOpen")]
     Open,
-    #[serde(rename(serialize = "UIDocumentPickerModeExportToService"))]
+    #[serde(rename = "UIDocumentPickerModeExportToService")]
     ExportToService,
-    #[serde(rename(serialize = "UIDocumentPickerModeMoveToService"))]
+    #[serde(rename = "UIDocumentPickerModeMoveToService")]
     MoveToService,
 }
 
@@ -1714,7 +1638,7 @@ pub struct FileProviderAction {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderActionActivationRule"),
+        rename = "NSExtensionFileProviderActionActivationRule",
         skip_serializing_if = "Option::is_none"
     )]
     pub activation_rule: Option<String>,
@@ -1726,7 +1650,7 @@ pub struct FileProviderAction {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderActionIdentifier"),
+        rename = "NSExtensionFileProviderActionIdentifier",
         skip_serializing_if = "Option::is_none"
     )]
     pub identifier: Option<String>,
@@ -1738,7 +1662,7 @@ pub struct FileProviderAction {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSExtensionFileProviderActionName"),
+        rename = "NSExtensionFileProviderActionName",
         skip_serializing_if = "Option::is_none"
     )]
     pub name: Option<String>,
@@ -1746,37 +1670,34 @@ pub struct FileProviderAction {
 
 /// Context Messages
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ContextMessages {
-    #[serde(rename(serialize = "MSMessagesAppPresentationContextMessages"))]
+    #[serde(rename = "MSMessagesAppPresentationContextMessages")]
     Messages,
-    #[serde(rename(serialize = "MSMessagesAppPresentationContextMedia"))]
+    #[serde(rename = "MSMessagesAppPresentationContextMedia")]
     Media,
 }
 
 /// Media Types
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum MediaTypes {
-    #[serde(rename(serialize = "Image"))]
+    #[serde(rename = "Image")]
     Image,
-    #[serde(rename(serialize = "Video"))]
+    #[serde(rename = "Video")]
     Video,
 }
 
 /// Media Categories
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum MediaCategories {
-    #[serde(rename(serialize = "INMediaCategoryAudiobooks"))]
+    #[serde(rename = "INMediaCategoryAudiobooks")]
     Audiobooks,
-    #[serde(rename(serialize = "INMediaCategoryMusic"))]
+    #[serde(rename = "INMediaCategoryMusic")]
     Music,
-    #[serde(rename(serialize = "INMediaCategoryGeneral"))]
+    #[serde(rename = "INMediaCategoryGeneral")]
     General,
-    #[serde(rename(serialize = "INMediaCategoryPodcasts"))]
+    #[serde(rename = "INMediaCategoryPodcasts")]
     Podcasts,
-    #[serde(rename(serialize = "INMediaCategoryRadio"))]
+    #[serde(rename = "INMediaCategoryRadio")]
     Radio,
 }
 
@@ -1792,7 +1713,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationDictionaryVersion"),
+        rename = "NSExtensionActivationDictionaryVersion",
         skip_serializing_if = "Option::is_none"
     )]
     pub dictionary_version: Option<i32>,
@@ -1805,7 +1726,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsAttachmentsWithMaxCount"),
+        rename = "NSExtensionActivationSupportsAttachmentsWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_attachments_with_max_count: Option<i32>,
@@ -1818,7 +1739,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsAttachmentsWithMinCount"),
+        rename = "NSExtensionActivationSupportsAttachmentsWithMinCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_attachments_with_min_count: Option<i32>,
@@ -1831,7 +1752,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsFileWithMaxCount"),
+        rename = "NSExtensionActivationSupportsFileWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_file_with_max_count: Option<i32>,
@@ -1844,7 +1765,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsImageWithMaxCount"),
+        rename = "NSExtensionActivationSupportsImageWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_image_with_max_count: Option<i32>,
@@ -1857,7 +1778,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsMovieWithMaxCount"),
+        rename = "NSExtensionActivationSupportsMovieWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_movie_with_max_count: Option<i32>,
@@ -1870,7 +1791,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsText"),
+        rename = "NSExtensionActivationSupportsText",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_text: Option<bool>,
@@ -1883,7 +1804,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsWebPageWithMaxCount"),
+        rename = "NSExtensionActivationSupportsWebPageWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_web_page_with_max_count: Option<i32>,
@@ -1896,7 +1817,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationSupportsWebURLWithMaxCount"),
+        rename = "NSExtensionActivationSupportsWebURLWithMaxCount",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_web_url_with_max_count: Option<i32>,
@@ -1909,7 +1830,7 @@ pub struct ActivationRule {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSExtensionActivationUsesStrictMatching"),
+        rename = "NSExtensionActivationUsesStrictMatching",
         skip_serializing_if = "Option::is_none"
     )]
     pub uses_strict_matching: Option<bool>,
@@ -1917,11 +1838,10 @@ pub struct ActivationRule {
 
 /// Extension Service Role Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExtensionServiceRoleType {
-    #[serde(rename(serialize = "Editor"))]
+    #[serde(rename = "Editor")]
     Editor,
-    #[serde(rename(serialize = "Viewer"))]
+    #[serde(rename = "Viewer")]
     Viewer,
 }
 
@@ -1935,10 +1855,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSKeyEquivalent"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSKeyEquivalent", skip_serializing_if = "Option::is_none")]
     pub key_equivalent: Option<DefaultDictionary>,
     /// Text for a Services menu item.
     ///
@@ -1947,7 +1864,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "NSMenuItem"))]
+    #[serde(rename = "NSMenuItem")]
     pub menu_item: DefaultDictionary,
     /// An instance method that invokes the service.
     ///
@@ -1956,7 +1873,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "NSMessage"))]
+    #[serde(rename = "NSMessage")]
     pub message: String,
     /// The port that the service monitors for incoming requests.
     ///
@@ -1965,10 +1882,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSPortName"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSPortName", skip_serializing_if = "Option::is_none")]
     pub port_name: Option<String>,
     /// The data types that the service returns.
     ///
@@ -1977,10 +1891,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSReturnTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSReturnTypes", skip_serializing_if = "Option::is_none")]
     pub return_types: Option<Vec<String>>,
     /// The data types that the service can read.
     ///
@@ -1989,10 +1900,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSSendTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSSendTypes", skip_serializing_if = "Option::is_none")]
     pub send_types: Option<Vec<String>>,
     /// The amount of time, in milliseconds, that the system waits for a response from the service.
     ///
@@ -2001,10 +1909,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSTimeout"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSTimeout", skip_serializing_if = "Option::is_none")]
     pub timeout: Option<String>,
     /// A service-specific string value.
     ///
@@ -2013,10 +1918,7 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "NSUserData"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSUserData", skip_serializing_if = "Option::is_none")]
     pub user_data: Option<BTreeMap<String, String>>,
 }
 
@@ -2028,146 +1930,143 @@ pub struct DefaultDictionary {
 
 /// Complication Supported Families
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ComplicationSupportedFamilies {
-    #[serde(rename(serialize = "CLKComplicationFamilyModularSmall"))]
+    #[serde(rename = "CLKComplicationFamilyModularSmall")]
     ModularSmall,
-    #[serde(rename(serialize = "CLKComplicationFamilyModularLarge"))]
+    #[serde(rename = "CLKComplicationFamilyModularLarge")]
     ModularLarge,
-    #[serde(rename(serialize = "CLKComplicationFamilyUtilitarianSmall"))]
+    #[serde(rename = "CLKComplicationFamilyUtilitarianSmall")]
     UtilitarianSmall,
-    #[serde(rename(serialize = "CLKComplicationFamilyUtilitarianSmallFlat"))]
+    #[serde(rename = "CLKComplicationFamilyUtilitarianSmallFlat")]
     UtilitarianSmallFlat,
-    #[serde(rename(serialize = "CLKComplicationFamilyUtilitarianLarge"))]
+    #[serde(rename = "CLKComplicationFamilyUtilitarianLarge")]
     UtilitarianLarge,
-    #[serde(rename(serialize = "CLKComplicationFamilyCircularSmall"))]
+    #[serde(rename = "CLKComplicationFamilyCircularSmall")]
     CircularSmall,
-    #[serde(rename(serialize = "CLKComplicationFamilyExtraLarge"))]
+    #[serde(rename = "CLKComplicationFamilyExtraLarge")]
     ExtraLarge,
-    #[serde(rename(serialize = "CLKComplicationFamilyGraphicCorner"))]
+    #[serde(rename = "CLKComplicationFamilyGraphicCorner")]
     GraphicCorner,
-    #[serde(rename(serialize = "CLKComplicationFamilyGraphicBezel"))]
+    #[serde(rename = "CLKComplicationFamilyGraphicBezel")]
     GraphicBezel,
-    #[serde(rename(serialize = "CLKComplicationFamilyGraphicCircular"))]
+    #[serde(rename = "CLKComplicationFamilyGraphicCircular")]
     GraphicCircular,
-    #[serde(rename(serialize = "CLKComplicationFamilyGraphicRectangular"))]
+    #[serde(rename = "CLKComplicationFamilyGraphicRectangular")]
     GraphicRectangular,
 }
 
 /// Architecture Priority
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ArchitecturePriority {
     /// The 32-bit Intel architecture.
-    #[serde(rename(serialize = "i386"))]
+    #[serde(rename = "i386")]
     I386,
     /// The 64-bit Intel architecture.
-    #[serde(rename(serialize = "x86_64"))]
+    #[serde(rename = "x86_64")]
     X86_64,
     /// The 64-bit ARM architecture.
-    #[serde(rename(serialize = "arm64"))]
+    #[serde(rename = "arm64")]
     Arm64,
     /// The 64-bit ARM architecture with pointer authentication code support.
-    #[serde(rename(serialize = "arm64e"))]
+    #[serde(rename = "arm64e")]
     Arm64e,
 }
 
 /// Device Capabilities
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DeviceCapabilities {
     /// The presence of accelerometers. Use the Core Motion framework to receive accelerometer events. You don’t need to
     /// include this value if your app detects only device orientation changes. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "accelerometer"))]
+    #[serde(rename = "accelerometer")]
     Accelerometer,
     /// Support for ARKit. Available in iOS 11.0 and later.
-    #[serde(rename(serialize = "arkit"))]
+    #[serde(rename = "arkit")]
     Arkit,
     /// Compilation for the armv7 instruction set, or as a 32/64-bit universal app. Available in iOS 3.1 and later.
-    #[serde(rename(serialize = "armv7"))]
+    #[serde(rename = "armv7")]
     Armv7,
     /// Compilation for the arm64 instruction set. Include this key for all 64-bit apps and embedded bundles, like
     /// extensions and frameworks. Available in iOS 8.0 and later.
-    #[serde(rename(serialize = "arm64"))]
+    #[serde(rename = "arm64")]
     Arm64,
     /// Autofocus capabilities in the device’s still camera. You might need to include this value if your app supports
     /// macro photography or requires sharper images to perform certain image-processing tasks. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "auto-focus-camera"))]
+    #[serde(rename = "auto-focus-camera")]
     AutoFocusCamera,
     /// Bluetooth low-energy hardware. Available in iOS 5.0 and later.
-    #[serde(rename(serialize = "bluetooth-le"))]
+    #[serde(rename = "bluetooth-le")]
     BluetoothLe,
     /// A camera flash. Use the cameraFlashMode property of a UIImagePickerController instance to control the camera’s
     /// flash. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "camera-flash"))]
+    #[serde(rename = "camera-flash")]
     CameraFlash,
     /// A forward-facing camera. Use the cameraDevice property of a UIImagePickerController instance to select the
     /// device’s camera. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "front-facing-camera"))]
+    #[serde(rename = "front-facing-camera")]
     FrontFacingCamera,
     /// Access to the Game Center service. Enable the Game Center capability in Xcode to add this value to your app.
     /// Available in iOS 4.1 and later.
-    #[serde(rename(serialize = "gamekit"))]
+    #[serde(rename = "gamekit")]
     Gamekit,
     /// GPS (or AGPS) hardware for tracking locations. If you include this value, you should also include the
     /// location-services value. Require GPS only if your app needs location data more accurate than the cellular or Wi-Fi
     /// radios provide. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "gps"))]
+    #[serde(rename = "gps")]
     Gps,
     /// A gyroscope. Use the Core Motion framework to retrieve information from gyroscope hardware. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "gyroscope"))]
+    #[serde(rename = "gyroscope")]
     Gyroscope,
     /// Support for HealthKit. Available in iOS 8.0 and later.
-    #[serde(rename(serialize = "healthkit"))]
+    #[serde(rename = "healthkit")]
     Healthkit,
     /// Performance and capabilities of the A12 Bionic and later chips. Available in iOS 12.0 and later.
-    #[serde(rename(serialize = "iphone-ipad-minimum-performance-a12"))]
+    #[serde(rename = "iphone-ipad-minimum-performance-a12")]
     IphoneIpadMinimumPerformanceA12,
     /// Access to the device’s current location using the Core Location framework. This value refers to the general location
     /// services feature. If you specifically need GPS-level accuracy, also include the gps feature. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "location-services"))]
+    #[serde(rename = "location-services")]
     LocationServices,
     /// Magnetometer hardware. Apps use this hardware to receive heading-related events through the Core Location framework.
     /// Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "magnetometer"))]
+    #[serde(rename = "magnetometer")]
     Magnetometer,
     // Support for graphics processing with Metal. Available in iOS 8.0 and later.
-    #[serde(rename(serialize = "metal"))]
+    #[serde(rename = "metal")]
     Metal,
     /// The built-in microphone or accessories that provide a microphone. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "microphone"))]
+    #[serde(rename = "microphone")]
     Microphone,
     /// Near Field Communication (NFC) tag detection and access to messages that contain NFC Data Exchange Format data.
     /// Use the Core NFC framework to detect and read NFC tags. Available in iOS 11.0 and later.
-    #[serde(rename(serialize = "nfc"))]
+    #[serde(rename = "nfc")]
     Nfc,
     /// The OpenGL ES 1.1 interface. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "opengles-1"))]
+    #[serde(rename = "opengles-1")]
     Opengles1,
     /// The OpenGL ES 2.0 interface. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "opengles-2"))]
+    #[serde(rename = "opengles-2")]
     Opengles2,
     /// The OpenGL ES 3.0 interface. Available in iOS 7.0 and later.
-    #[serde(rename(serialize = "opengles-2"))]
+    #[serde(rename = "opengles-2")]
     Opengles3,
     /// Peer-to-peer connectivity over a Bluetooth network. Available in iOS 3.1 and later.
-    #[serde(rename(serialize = "peer-peer"))]
+    #[serde(rename = "peer-peer")]
     PeerPeer,
     /// The Messages app. You might require this feature if your app opens URLs with the sms scheme. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "sms"))]
+    #[serde(rename = "sms")]
     Sms,
     /// A camera on the device. Use the UIImagePickerController interface to capture images from the device’s still camera.
     /// Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "still-camera"))]
+    #[serde(rename = "still-camera")]
     StillCamera,
     /// The Phone app. You might require this feature if your app opens URLs with the tel scheme. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "telephony"))]
+    #[serde(rename = "telephony")]
     Telephony,
     /// A camera with video capabilities on the device. Use the UIImagePickerController interface to capture video from the
     /// device’s camera. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "video-camera"))]
+    #[serde(rename = "video-camera")]
     VideoCamera,
     /// Networking features related to Wi-Fi access. Available in iOS 3.0 and later.
-    #[serde(rename(serialize = "wifi"))]
+    #[serde(rename = "wifi")]
     Wifi,
 }

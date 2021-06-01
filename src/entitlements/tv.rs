@@ -20,7 +20,7 @@ pub struct Tv {
     /// ## Framework
     /// * TV Services
     #[serde(
-        rename(serialize = "com.apple.developer.user-management"),
+        rename = "com.apple.developer.user-management",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -33,7 +33,7 @@ pub struct Tv {
     /// ## Framework
     /// * Video Subscriber Account
     #[serde(
-        rename(serialize = "com.apple.developer.video-subscriber-single-sign-on"),
+        rename = "com.apple.developer.video-subscriber-single-sign-on",
         skip_serializing_if = "Option::is_none"
     )]
     pub video_subscriber_single_sign_on: Option<bool>,
@@ -45,7 +45,7 @@ pub struct Tv {
     /// ## Framework
     /// * Video Subscriber Account
     #[serde(
-        rename(serialize = "com.apple.smoot.subscriptionservice"),
+        rename = "com.apple.smoot.subscriptionservice",
         skip_serializing_if = "Option::is_none"
     )]
     pub smoot_subscriptionservice: Option<bool>,
@@ -53,13 +53,12 @@ pub struct Tv {
 
 /// User Management
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum UserManagement {
     /// The value that grants access to TVUserManager, so you can map your own profiles to users in the system.
-    #[serde(rename(serialize = "get-current-user"))]
+    #[serde(rename = "get-current-user")]
     GetCurrentUser,
     /// The value that grants access to a separate set of data for your app for each user from GameCenter, iCloud, and local storage.
     /// Available in tvOS 14 or later.
-    #[serde(rename(serialize = "runs-as-current-user"))]
+    #[serde(rename = "runs-as-current-user")]
     RunsAsCurrentUser,
 }

@@ -29,7 +29,7 @@ pub struct Bluetooth {
     /// ## Framework
     /// * Core Bluetooth
     #[serde(
-        rename(serialize = "NSBluetoothAlwaysUsageDescription"),
+        rename = "NSBluetoothAlwaysUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth_always_usage_description: Option<String>,
@@ -50,7 +50,7 @@ pub struct Bluetooth {
     /// * Core Bluetooth
     #[deprecated(since = "iOS 6.0–13.0")]
     #[serde(
-        rename(serialize = "NSBluetoothPeripheralUsageDescription"),
+        rename = "NSBluetoothPeripheralUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth_peripheral_usage_description: Option<String>,
@@ -73,7 +73,7 @@ pub struct CalendarAndReminders {
     /// ## Framework
     /// * EventKit
     #[serde(
-        rename(serialize = "NSCalendarsUsageDescription"),
+        rename = "NSCalendarsUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars_usage_description: Option<String>,
@@ -89,7 +89,7 @@ pub struct CalendarAndReminders {
     /// ## Framework
     /// * EventKit
     #[serde(
-        rename(serialize = "NSRemindersUsageDescription"),
+        rename = "NSRemindersUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub reminders_usage_description: Option<String>,
@@ -114,7 +114,7 @@ pub struct CameraAndMicrophone {
     /// ## Framework
     /// * AVFoundation
     #[serde(
-        rename(serialize = "NSCameraUsageDescription"),
+        rename = "NSCameraUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera_usage_description: Option<String>,
@@ -131,7 +131,7 @@ pub struct CameraAndMicrophone {
     /// ## Framework
     /// * AVFoundation
     #[serde(
-        rename(serialize = "NSMicrophoneUsageDescription"),
+        rename = "NSMicrophoneUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub microphone_usage_description: Option<String>,
@@ -154,7 +154,7 @@ pub struct Contacts {
     /// ## Framework
     /// * Contacts
     #[serde(
-        rename(serialize = "NSContactsUsageDescription"),
+        rename = "NSContactsUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub contacts_usage_description: Option<String>,
@@ -174,7 +174,7 @@ pub struct FaceID {
     /// ## Framework
     /// * Local Authentication
     #[serde(
-        rename(serialize = "NSFaceIDUsageDescription"),
+        rename = "NSFaceIDUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub face_id_usage_description: Option<String>,
@@ -208,7 +208,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSDesktopFolderUsageDescription"),
+        rename = "NSDesktopFolderUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub desktop_folder_usage_description: Option<String>,
@@ -238,7 +238,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSDocumentsFolderUsageDescription"),
+        rename = "NSDocumentsFolderUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub documents_folder_usage_description: Option<String>,
@@ -268,7 +268,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSDownloadsFolderUsageDescription"),
+        rename = "NSDownloadsFolderUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_folder_usage_description: Option<String>,
@@ -295,7 +295,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSNetworkVolumesUsageDescription"),
+        rename = "NSNetworkVolumesUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub network_volumes_usage_description: Option<String>,
@@ -321,7 +321,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSRemovableVolumesUsageDescription"),
+        rename = "NSRemovableVolumesUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub removable_volumes_usage_description: Option<String>,
@@ -344,7 +344,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSFileProviderPresenceUsageDescription"),
+        rename = "NSFileProviderPresenceUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_presence_usage_description: Option<String>,
@@ -371,7 +371,7 @@ pub struct FilesAndFolders {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSFileProviderDomainUsageDescription"),
+        rename = "NSFileProviderDomainUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_domain_usage_description: Option<String>,
@@ -388,7 +388,7 @@ pub struct GameCenter {
     /// ## Framework
     /// * GameKit
     #[serde(
-        rename(serialize = "NSGKFriendListUsageDescription"),
+        rename = "NSGKFriendListUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub friend_list_usage_description: Option<String>,
@@ -409,7 +409,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "com.apple.developer.healthkit"),
+        rename = "com.apple.developer.healthkit",
         skip_serializing_if = "Option::is_none"
     )]
     pub healthkit: Option<bool>,
@@ -431,7 +431,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "com.apple.developer.healthkit.access"),
+        rename = "com.apple.developer.healthkit.access",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -447,7 +447,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "NSHealthClinicalHealthRecordsShareUsageDescription"),
+        rename = "NSHealthClinicalHealthRecordsShareUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_clinical_health_records_share_usage_description: Option<String>,
@@ -462,7 +462,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "NSHealthShareUsageDescription"),
+        rename = "NSHealthShareUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_share_usage_description: Option<String>,
@@ -477,7 +477,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "NSHealthUpdateUsageDescription"),
+        rename = "NSHealthUpdateUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_update_usage_description: Option<String>,
@@ -497,7 +497,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "NSHealthRequiredReadAuthorizationTypeIdentifiers"),
+        rename = "NSHealthRequiredReadAuthorizationTypeIdentifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_required_read_authorization_type_identifiers: Option<Vec<String>>,
@@ -522,7 +522,7 @@ pub struct Home {
     /// ## Framework
     /// * HomeKit
     #[serde(
-        rename(serialize = "NSHomeKitUsageDescription"),
+        rename = "NSHomeKitUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub home_kit_usage_description: Option<String>,
@@ -551,7 +551,7 @@ pub struct Location {
     /// ## Framework
     /// * Core Location
     #[serde(
-        rename(serialize = "NSLocationAlwaysAndWhenInUseUsageDescription"),
+        rename = "NSLocationAlwaysAndWhenInUseUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_always_and_when_in_use_usage_description: Option<String>,
@@ -571,7 +571,7 @@ pub struct Location {
     /// * Core Location
     #[deprecated(since = "iOS 6.0–8.0")]
     #[serde(
-        rename(serialize = "NSLocationUsageDescription"),
+        rename = "NSLocationUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_usage_description: Option<String>,
@@ -592,7 +592,7 @@ pub struct Location {
     /// ## Framework
     /// * Core Location
     #[serde(
-        rename(serialize = "NSLocationWhenInUseUsageDescription"),
+        rename = "NSLocationWhenInUseUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_when_in_use_usage_description: Option<String>,
@@ -615,7 +615,7 @@ pub struct Location {
     /// ## Framework
     /// * Core Location
     #[serde(
-        rename(serialize = "NSLocationTemporaryUsageDescriptionDictionary"),
+        rename = "NSLocationTemporaryUsageDescriptionDictionary",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_temporary_usage_description_dictionary: Option<DefaultDictionary>,
@@ -643,7 +643,7 @@ pub struct Location {
         note = "For apps deployed to targets in iOS 11 and later, use NSLocationAlwaysAndWhenInUseUsageDescription instead."
     )]
     #[serde(
-        rename(serialize = "NSLocationAlwaysUsageDescription"),
+        rename = "NSLocationAlwaysUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_always_usage_description: Option<String>,
@@ -662,7 +662,7 @@ pub struct Location {
     /// ## Framework
     /// * WidgetKit
     #[serde(
-        rename(serialize = "NSWidgetWantsLocation"),
+        rename = "NSWidgetWantsLocation",
         skip_serializing_if = "Option::is_none"
     )]
     pub widget_wants_location: Option<bool>,
@@ -695,7 +695,7 @@ pub struct Location {
     /// ## Framework
     /// * Core Location
     #[serde(
-        rename(serialize = "NSLocationDefaultAccuracyReduced"),
+        rename = "NSLocationDefaultAccuracyReduced",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_default_accuracy_reduced: Option<bool>,
@@ -727,7 +727,7 @@ pub struct MediaPlayer {
     /// ## Framework
     /// * Media Player
     #[serde(
-        rename(serialize = "NSAppleMusicUsageDescription"),
+        rename = "NSAppleMusicUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_music_usage_description: Option<String>,
@@ -749,7 +749,7 @@ pub struct Motion {
     /// ## Framework
     /// * Core Motion
     #[serde(
-        rename(serialize = "NSMotionUsageDescription"),
+        rename = "NSMotionUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub motion_usage_description: Option<String>,
@@ -764,7 +764,7 @@ pub struct Motion {
     /// ## Framework
     /// * Core Motion
     #[serde(
-        rename(serialize = "NSFallDetectionUsageDescription"),
+        rename = "NSFallDetectionUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub fall_detection_usage_description: Option<String>,
@@ -786,7 +786,7 @@ pub struct Networking {
     /// ## Framework
     /// * Network
     #[serde(
-        rename(serialize = "NSLocalNetworkUsageDescription"),
+        rename = "NSLocalNetworkUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub local_network_usage_description: Option<String>,
@@ -805,7 +805,7 @@ pub struct Networking {
     /// ## Framework
     /// * Nearby Interaction
     #[serde(
-        rename(serialize = "NSNearbyInteractionAllowOnceUsageDescription"),
+        rename = "NSNearbyInteractionAllowOnceUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub nearby_interaction_allow_once_usage_description: Option<String>,
@@ -825,7 +825,7 @@ pub struct Nfc {
     /// ## Framework
     /// * Core NFC
     #[serde(
-        rename(serialize = "NFCReaderUsageDescription"),
+        rename = "NFCReaderUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_reader_usage_description: Option<String>,
@@ -847,7 +847,7 @@ pub struct Photos {
     /// ## Framework
     /// * Photos
     #[serde(
-        rename(serialize = "NSPhotoLibraryAddUsageDescription"),
+        rename = "NSPhotoLibraryAddUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub photo_library_add_usage_description: Option<String>,
@@ -865,7 +865,7 @@ pub struct Photos {
     /// ## Framework
     /// * Photos
     #[serde(
-        rename(serialize = "NSPhotoLibraryUsageDescription"),
+        rename = "NSPhotoLibraryUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub photo_library_usage_description: Option<String>,
@@ -882,7 +882,7 @@ pub struct Scripting {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSAppleScriptEnabled"),
+        rename = "NSAppleScriptEnabled",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_script_enabled: Option<bool>,
@@ -923,7 +923,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSUserTrackingUsageDescription"),
+        rename = "NSUserTrackingUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub user_tracking_usage_description: Option<String>,
@@ -942,7 +942,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAppleEventsUsageDescription"),
+        rename = "NSAppleEventsUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_events_usage_description: Option<String>,
@@ -959,7 +959,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSSystemAdministrationUsageDescription"),
+        rename = "NSSystemAdministrationUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub system_administration_usage_description: Option<String>,
@@ -982,7 +982,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "ITSAppUsesNonExemptEncryption"),
+        rename = "ITSAppUsesNonExemptEncryption",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_uses_non_exempt_encryption: Option<bool>,
@@ -999,7 +999,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "ITSEncryptionExportComplianceCode"),
+        rename = "ITSEncryptionExportComplianceCode",
         skip_serializing_if = "Option::is_none"
     )]
     pub encryption_export_compliance_code: Option<String>,
@@ -1014,7 +1014,7 @@ pub struct Sensors {
     /// ## Framework
     /// * SensorKit
     #[serde(
-        rename(serialize = "NSSensorKitUsageDescription"),
+        rename = "NSSensorKitUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_usage_description: Option<String>,
@@ -1024,7 +1024,7 @@ pub struct Sensors {
     /// ## Framework
     /// * SensorKit
     #[serde(
-        rename(serialize = "NSSensorKitUsageDetail"),
+        rename = "NSSensorKitUsageDetail",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_usage_detail: Option<DefaultDictionary>,
@@ -1034,7 +1034,7 @@ pub struct Sensors {
     /// ## Framework
     /// * SensorKit
     #[serde(
-        rename(serialize = "NSSensorKitPrivacyPolicyURL"),
+        rename = "NSSensorKitPrivacyPolicyURL",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_privacy_policy_url: Option<String>,
@@ -1056,7 +1056,7 @@ pub struct Siri {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "NSSiriUsageDescription"),
+        rename = "NSSiriUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub siri_usage_description: Option<String>,
@@ -1079,7 +1079,7 @@ pub struct Speech {
     /// ## Framework
     /// * Speech
     #[serde(
-        rename(serialize = "NSSpeechRecognitionUsageDescription"),
+        rename = "NSSpeechRecognitionUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub speech_recognition_usage_description: Option<String>,
@@ -1099,7 +1099,7 @@ pub struct TVResource {
     /// ## Framework
     /// * TVUIKit
     #[serde(
-        rename(serialize = "NSVideoSubscriberAccountUsageDescription"),
+        rename = "NSVideoSubscriberAccountUsageDescription",
         skip_serializing_if = "Option::is_none"
     )]
     pub video_subscriber_account_usage_description: Option<String>,
@@ -1116,7 +1116,7 @@ pub struct WiFI {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIRequiresPersistentWiFi"),
+        rename = "UIRequiresPersistentWiFi",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_persistent_wifi: Option<bool>,
@@ -1124,9 +1124,8 @@ pub struct WiFI {
 
 /// Health Kit Capabilities
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HealthKitCapabilities {
     /// The app can request access to FHIR-backed clinical records.
-    #[serde(rename(serialize = "health-records"))]
+    #[serde(rename = "health-records")]
     HealthRecords,
 }

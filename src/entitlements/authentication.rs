@@ -17,9 +17,7 @@ pub struct Authentication {
     /// ## Framework
     /// * Authentication Services
     #[serde(
-        rename(
-            serialize = "com.apple.developer.authentication-services.autofill-credential-provider"
-        ),
+        rename = "com.apple.developer.authentication-services.autofill-credential-provider",
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_fill_credential_provider: Option<bool>,
@@ -37,7 +35,7 @@ pub struct Authentication {
     /// ## Framework
     /// * Authentication Services
     #[serde(
-        rename(serialize = "com.apple.developer.applesignin"),
+        rename = "com.apple.developer.applesignin",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -46,9 +44,8 @@ pub struct Authentication {
 
 /// Sign in with Apple Entitlement
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SignInWithAppleEntitlement {
     /// The value used for normal operation.
-    #[serde(rename(serialize = "Default"))]
+    #[serde(rename = "Default")]
     Default,
 }

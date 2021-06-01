@@ -23,7 +23,7 @@ pub struct Documents {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleDocumentTypes"),
+        rename = "CFBundleDocumentTypes",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_document_types: Option<Vec<BundleDocumentTypes>>,
@@ -35,7 +35,7 @@ pub struct Documents {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "UISupportsDocumentBrowser"),
+        rename = "UISupportsDocumentBrowser",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_document_browser: Option<bool>,
@@ -47,7 +47,7 @@ pub struct Documents {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSSupportsOpeningDocumentsInPlace"),
+        rename = "LSSupportsOpeningDocumentsInPlace",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_opening_documents_in_place: Option<bool>,
@@ -59,7 +59,7 @@ pub struct Documents {
     /// ## Framework
     /// * Core Data
     #[serde(
-        rename(serialize = "NSPersistentStoreTypeKey"),
+        rename = "NSPersistentStoreTypeKey",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -74,22 +74,21 @@ pub struct Documents {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSDownloadsUbiquitousContents"),
+        rename = "NSDownloadsUbiquitousContents",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
 }
 /// Persistent Store Type Key
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersistentStoreTypeKey {
-    #[serde(rename(serialize = "SQLite"))]
+    #[serde(rename = "SQLite")]
     SQLite,
-    #[serde(rename(serialize = "XML"))]
+    #[serde(rename = "XML")]
     Xml,
-    #[serde(rename(serialize = "Binary"))]
+    #[serde(rename = "Binary")]
     Binary,
-    #[serde(rename(serialize = "InMemory"))]
+    #[serde(rename = "InMemory")]
     InMemory,
 }
 
@@ -106,10 +105,7 @@ pub struct URLSchemes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleURLTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleURLTypes", skip_serializing_if = "Option::is_none")]
     pub bundle_url_types: Option<Vec<BundleURLTypes>>,
 }
 
@@ -127,7 +123,7 @@ pub struct BundleDocumentTypes {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleTypeIconFile"),
+        rename = "CFBundleTypeIconFile",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_type_icon_file: Option<String>,
@@ -141,7 +137,7 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename(serialize = "CFBundleTypeName"))]
+    #[serde(rename = "CFBundleTypeName")]
     pub bundle_type_name: String,
     /// The app's role with respect to the document type.
     ///
@@ -154,7 +150,7 @@ pub struct BundleDocumentTypes {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleTypeRole"),
+        rename = "CFBundleTypeRole",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -170,7 +166,7 @@ pub struct BundleDocumentTypes {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "LSHandlerRank"),
+        rename = "LSHandlerRank",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -185,10 +181,7 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "LSItemContentTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSItemContentTypes", skip_serializing_if = "Option::is_none")]
     pub item_content_types: Option<Vec<String>>,
     /// A Boolean value indicating whether the document is distributed as a bundle.
     ///
@@ -200,10 +193,7 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "LSTypeIsPackage"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSTypeIsPackage", skip_serializing_if = "Option::is_none")]
     pub type_is_package: Option<bool>,
     /// The subclass used to create instances of this document.
     ///
@@ -215,10 +205,7 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "NSDocumentClass"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSDocumentClass", skip_serializing_if = "Option::is_none")]
     pub document_class: Option<String>,
     /// The file types that this document can be exported to.
     ///
@@ -230,40 +217,35 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "NSExportableTypes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSExportableTypes", skip_serializing_if = "Option::is_none")]
     pub exportable_types: Option<Vec<String>>,
 }
 
 /// Bundle Type Role
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BundleTypeRole {
-    #[serde(rename(serialize = "Editor"))]
+    #[serde(rename = "Editor")]
     Editor,
-    #[serde(rename(serialize = "Viewer"))]
+    #[serde(rename = "Viewer")]
     Viewer,
-    #[serde(rename(serialize = "Shell"))]
+    #[serde(rename = "Shell")]
     Shell,
-    #[serde(rename(serialize = "QLGenerator"))]
+    #[serde(rename = "QLGenerator")]
     QLGenerator,
-    #[serde(rename(serialize = "None"))]
+    #[serde(rename = "None")]
     None,
 }
 
 /// Handler Rank
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HandlerRank {
-    #[serde(rename(serialize = "Owner"))]
+    #[serde(rename = "Owner")]
     Owner,
-    #[serde(rename(serialize = "Default"))]
+    #[serde(rename = "Default")]
     Default,
-    #[serde(rename(serialize = "Alternate"))]
+    #[serde(rename = "Alternate")]
     Alternate,
-    #[serde(rename(serialize = "None"))]
+    #[serde(rename = "None")]
     None,
 }
 
@@ -280,10 +262,7 @@ pub struct BundleURLTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleTypeRole"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleTypeRole", skip_serializing_if = "Option::is_none")]
     pub bundle_type_role: Option<BundleTypeRole>,
     /// The name of the icon image file, without the extension, to be used for this type.
     ///
@@ -296,7 +275,7 @@ pub struct BundleURLTypes {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleURLIconFile"),
+        rename = "CFBundleURLIconFile",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_url_icon_file: Option<String>,
@@ -310,7 +289,7 @@ pub struct BundleURLTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename(serialize = "CFBundleURLName"))]
+    #[serde(rename = "CFBundleURLName")]
     pub bundle_url_name: String,
     /// The URL schemes supported by this type.
     ///
@@ -322,10 +301,7 @@ pub struct BundleURLTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleURLSchemes"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleURLSchemes", skip_serializing_if = "Option::is_none")]
     pub bundle_url_schemes: Option<Vec<String>>,
 }
 
@@ -341,7 +317,7 @@ pub struct UniversalTypeIdentifiers {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "UTExportedTypeDeclarations"),
+        rename = "UTExportedTypeDeclarations",
         skip_serializing_if = "Option::is_none"
     )]
     pub exported_type_declarations: Option<Vec<ExportedTypeDeclarations>>,
@@ -354,7 +330,7 @@ pub struct UniversalTypeIdentifiers {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "UTImportedTypeDeclarations"),
+        rename = "UTImportedTypeDeclarations",
         skip_serializing_if = "Option::is_none"
     )]
     pub imported_type_declarations: Option<Vec<ImportedTypeDeclarations>>,
@@ -371,7 +347,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services  
-    #[serde(rename(serialize = "UTTypeConformsTo"))]
+    #[serde(rename = "UTTypeConformsTo")]
     pub type_conforms_to: Vec<String>,
     /// A description for this type.
     ///
@@ -381,10 +357,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeDescription"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeDescription", skip_serializing_if = "Option::is_none")]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
     ///
@@ -394,10 +367,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeIconFile"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeIconFile", skip_serializing_if = "Option::is_none")]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
     ///
@@ -407,10 +377,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeIconFiles"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeIconFiles", skip_serializing_if = "Option::is_none")]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
     ///
@@ -420,7 +387,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename(serialize = "UTTypeIdentifier"))]
+    #[serde(rename = "UTTypeIdentifier")]
     pub type_identifier: String,
     /// The webpage for a reference document that describes this type.
     ///
@@ -430,10 +397,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeReferenceURL"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeReferenceURL", skip_serializing_if = "Option::is_none")]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
     ///
@@ -443,7 +407,7 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename(serialize = "UTTypeTagSpecification"))]
+    #[serde(rename = "UTTypeTagSpecification")]
     pub type_tag_specification: DefaultDictionary,
 }
 
@@ -458,7 +422,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename(serialize = "UTTypeConformsTo"))]
+    #[serde(rename = "UTTypeConformsTo")]
     pub type_conforms_to: Vec<String>,
     /// A description for this type.
     ///
@@ -468,10 +432,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeDescription"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeDescription", skip_serializing_if = "Option::is_none")]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
     ///
@@ -481,10 +442,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeIconFile"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeIconFile", skip_serializing_if = "Option::is_none")]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
     ///
@@ -494,10 +452,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeIconFiles"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeIconFiles", skip_serializing_if = "Option::is_none")]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
     ///
@@ -507,7 +462,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename(serialize = "UTTypeIdentifier"))]
+    #[serde(rename = "UTTypeIdentifier")]
     pub type_identifier: String,
     /// The webpage for a reference document that describes this type.
     ///
@@ -517,10 +472,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "UTTypeReferenceURL"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "UTTypeReferenceURL", skip_serializing_if = "Option::is_none")]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
     ///
@@ -530,7 +482,7 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename(serialize = "UTTypeTagSpecification"))]
+    #[serde(rename = "UTTypeTagSpecification")]
     pub type_tag_specification: DefaultDictionary,
 }
 
@@ -560,7 +512,7 @@ pub struct Network {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "NSAdvertisingAttributionReportEndpoint"),
+        rename = "NSAdvertisingAttributionReportEndpoint",
         skip_serializing_if = "Option::is_none"
     )]
     pub advertising_attribution_report_endpoint: Option<String>,
@@ -606,7 +558,7 @@ pub struct Network {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAppTransportSecurity"),
+        rename = "NSAppTransportSecurity",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_transport_security: Option<AppTransportSecurity>,
@@ -623,10 +575,7 @@ pub struct Network {
     ///
     /// ## Framework
     /// * Network
-    #[serde(
-        rename(serialize = "NSBonjourServices"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSBonjourServices", skip_serializing_if = "Option::is_none")]
     pub bonjour_services: Option<Vec<String>>,
     /// A Boolean value that indicates your app supports CloudKit Sharing.
     ///
@@ -653,10 +602,7 @@ pub struct Network {
     ///
     /// ## Framework
     /// * CloudKit
-    #[serde(
-        rename(serialize = "CKSharingSupported"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CKSharingSupported", skip_serializing_if = "Option::is_none")]
     pub sharing_supported: Option<bool>,
 }
 
@@ -692,7 +638,7 @@ pub struct AppTransportSecurity {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAllowsArbitraryLoads"),
+        rename = "NSAllowsArbitraryLoads",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads: Option<bool>,
@@ -716,7 +662,7 @@ pub struct AppTransportSecurity {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAllowsArbitraryLoadsForMedia"),
+        rename = "NSAllowsArbitraryLoadsForMedia",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads_for_media: Option<bool>,
@@ -743,7 +689,7 @@ pub struct AppTransportSecurity {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAllowsArbitraryLoadsInWebContent"),
+        rename = "NSAllowsArbitraryLoadsInWebContent",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads_in_web_content: Option<bool>,
@@ -771,7 +717,7 @@ pub struct AppTransportSecurity {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSAllowsLocalNetworking"),
+        rename = "NSAllowsLocalNetworking",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_local_networking: Option<bool>,
@@ -811,10 +757,7 @@ pub struct AppTransportSecurity {
     ///
     /// ## Framework
     /// * Security
-    #[serde(
-        rename(serialize = "NSExceptionDomains"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSExceptionDomains", skip_serializing_if = "Option::is_none")]
     pub exception_domains: Option<ExceptionDomains>,
     /// A collection of certificates that App Transport Security expects when connecting to named domains.
     ///
@@ -847,10 +790,7 @@ pub struct AppTransportSecurity {
     ///
     /// ## Framework
     /// * Security
-    #[serde(
-        rename(serialize = "NSPinnedDomains"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSPinnedDomains", skip_serializing_if = "Option::is_none")]
     pub pinned_domains: Option<PinnedDomains>,
 }
 
@@ -875,7 +815,7 @@ pub struct ExceptionDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSIncludesSubdomains"),
+        rename = "NSIncludesSubdomains",
         skip_serializing_if = "Option::is_none"
     )]
     pub includes_subdomains: Option<bool>,
@@ -900,7 +840,7 @@ pub struct ExceptionDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSExceptionAllowsInsecureHTTPLoads"),
+        rename = "NSExceptionAllowsInsecureHTTPLoads",
         skip_serializing_if = "Option::is_none"
     )]
     pub exception_allows_insecure_http_loads: Option<bool>,
@@ -918,7 +858,7 @@ pub struct ExceptionDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSExceptionMinimumTLSVersion"),
+        rename = "NSExceptionMinimumTLSVersion",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -940,7 +880,7 @@ pub struct ExceptionDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSExceptionRequiresForwardSecrecy"),
+        rename = "NSExceptionRequiresForwardSecrecy",
         skip_serializing_if = "Option::is_none"
     )]
     pub exception_requires_forward_secrecy: Option<bool>,
@@ -962,7 +902,7 @@ pub struct ExceptionDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSRequiresCertificateTransparency"),
+        rename = "NSRequiresCertificateTransparency",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_certificate_transparency: Option<bool>,
@@ -970,19 +910,18 @@ pub struct ExceptionDomains {
 
 /// Exception Minimum TLS Version
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ExceptionMinimumTLSVersion {
     /// Require a minimum TLS version of 1.0.
-    #[serde(rename(serialize = "TLSv1.0"))]
+    #[serde(rename = "TLSv1.0")]
     TlSv10,
     /// Require a minimum TLS version of 1.1.
-    #[serde(rename(serialize = "TLSv1.1"))]
+    #[serde(rename = "TLSv1.1")]
     TlSv11,
     /// Require a minimum TLS version of 1.2.
-    #[serde(rename(serialize = "TLSv1.2"))]
+    #[serde(rename = "TLSv1.2")]
     TlSv12,
     /// Require a minimum TLS version of 1.3.
-    #[serde(rename(serialize = "TLSv1.3"))]
+    #[serde(rename = "TLSv1.3")]
     TlSv13,
 }
 
@@ -1008,7 +947,7 @@ pub struct PinnedDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSIncludesSubdomains"),
+        rename = "NSIncludesSubdomains",
         skip_serializing_if = "Option::is_none"
     )]
     pub includes_subdomains: Option<bool>,
@@ -1037,7 +976,7 @@ pub struct PinnedDomains {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "NSPinnedCAIdentities"),
+        rename = "NSPinnedCAIdentities",
         skip_serializing_if = "Option::is_none"
     )]
     pub pinned_ca_identities: Option<Vec<SPKISHA256BASE64>>,
@@ -1065,10 +1004,7 @@ pub struct SPKISHA256BASE64 {
     ///
     /// ## Framework
     /// * Security
-    #[serde(
-        rename(serialize = "SPKI-SHA256-BASE64"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "SPKI-SHA256-BASE64", skip_serializing_if = "Option::is_none")]
     pub spki_sha256_base64: Option<String>,
 }
 
@@ -1082,7 +1018,7 @@ pub struct Storage {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "APFiles"), skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "APFiles", skip_serializing_if = "Option::is_none")]
     pub files: Option<Files>,
     /// The base path to the files or directories the app installs.
     ///
@@ -1091,10 +1027,7 @@ pub struct Storage {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(
-        rename(serialize = "APInstallerURL"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "APInstallerURL", skip_serializing_if = "Option::is_none")]
     pub installer_url: Option<String>,
     /// A Boolean value indicating whether the app continues working if the system purges the local storage.
     ///
@@ -1104,7 +1037,7 @@ pub struct Storage {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSSupportsPurgeableLocalStorage"),
+        rename = "NSSupportsPurgeableLocalStorage",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_purgeable_local_storage: Option<bool>,
@@ -1116,7 +1049,7 @@ pub struct Storage {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSFileQuarantineEnabled"),
+        rename = "LSFileQuarantineEnabled",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_quarantine_enabled: Option<bool>,
@@ -1130,7 +1063,7 @@ pub struct Storage {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIFileSharingEnabled"),
+        rename = "UIFileSharingEnabled",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_sharing_enabled: Option<bool>,
@@ -1142,7 +1075,7 @@ pub struct Storage {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CSResourcesFileMapped"),
+        rename = "CSResourcesFileMapped",
         skip_serializing_if = "Option::is_none"
     )]
     pub resources_file_mapped: Option<bool>,
@@ -1157,7 +1090,7 @@ pub struct Storage {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "NSDownloadsUbiquitousContents"),
+        rename = "NSDownloadsUbiquitousContents",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
@@ -1174,7 +1107,7 @@ pub struct Files {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "APDisplayedAsContainer"),
+        rename = "APDisplayedAsContainer",
         skip_serializing_if = "Option::is_none"
     )]
     pub displayed_as_container: Option<bool>,
@@ -1185,7 +1118,7 @@ pub struct Files {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "APFileDescriptionKey"))]
+    #[serde(rename = "APFileDescriptionKey")]
     pub file_description_key: String,
     /// The path to use when installing the file or folder, relative to the app bundle.
     ///
@@ -1194,7 +1127,7 @@ pub struct Files {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "APFileDestinationPath"))]
+    #[serde(rename = "APFileDestinationPath")]
     pub file_destination_path: String,
     /// The name of the file or folder to install.
     ///
@@ -1203,7 +1136,7 @@ pub struct Files {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "APFileName"))]
+    #[serde(rename = "APFileName")]
     pub file_name: String,
     /// The path to the file or folder in the app package, relative to the installer path.
     ///
@@ -1212,7 +1145,7 @@ pub struct Files {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename(serialize = "APFileSourcePath"))]
+    #[serde(rename = "APFileSourcePath")]
     pub file_source_path: String,
     /// The action to take on the file or folder.
     ///
@@ -1222,7 +1155,7 @@ pub struct Files {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "APInstallAction"),
+        rename = "APInstallAction",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -1231,11 +1164,10 @@ pub struct Files {
 
 /// Install Action
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum InstallAction {
-    #[serde(rename(serialize = "Copy"))]
+    #[serde(rename = "Copy")]
     Copy,
-    #[serde(rename(serialize = "Open"))]
+    #[serde(rename = "Open")]
     Open,
 }
 
@@ -1253,7 +1185,7 @@ pub struct CoreMLModels {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSBundleContainsCoreMLmlmodelc"),
+        rename = "LSBundleContainsCoreMLmlmodelc",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_contains_core_ml_mlmodelc: Option<bool>,
@@ -1269,9 +1201,6 @@ pub struct Java {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "NSJavaRoot"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "NSJavaRoot", skip_serializing_if = "Option::is_none")]
     pub java_root: Option<String>,
 }

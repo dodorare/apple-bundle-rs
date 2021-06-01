@@ -16,7 +16,7 @@ pub struct WirelessInterfaces {
     /// ## Framework
     /// * System Configuration
     #[serde(
-        rename(serialize = "com.apple.developer.networking.wifi-info"),
+        rename = "com.apple.developer.networking.wifi-info",
         skip_serializing_if = "Option::is_none"
     )]
     pub access_wifi_information: Option<bool>,
@@ -32,7 +32,7 @@ pub struct WirelessInterfaces {
     /// ## Framework
     /// * External Accessory
     #[serde(
-        rename(serialize = "com.apple.external-accessory.wireless-configuration"),
+        rename = "com.apple.external-accessory.wireless-configuration",
         skip_serializing_if = "Option::is_none"
     )]
     pub wireless_accessory_configuration: Option<bool>,
@@ -48,7 +48,7 @@ pub struct WirelessInterfaces {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.networking.multipath"),
+        rename = "com.apple.developer.networking.multipath",
         skip_serializing_if = "Option::is_none"
     )]
     pub multipath: Option<bool>,
@@ -64,7 +64,7 @@ pub struct WirelessInterfaces {
     /// ## Framework
     /// * Network Extension
     #[serde(
-        rename(serialize = "com.apple.developer.networking.HotspotConfiguration"),
+        rename = "com.apple.developer.networking.HotspotConfiguration",
         skip_serializing_if = "Option::is_none"
     )]
     pub hotspot_configuration: Option<bool>,
@@ -78,7 +78,7 @@ pub struct WirelessInterfaces {
     /// ## Framework
     /// * Core NFC
     #[serde(
-        rename(serialize = "com.apple.developer.nfc.readersession.formats"),
+        rename = "com.apple.developer.nfc.readersession.formats",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -88,9 +88,8 @@ pub struct WirelessInterfaces {
 
 /// Near Field Communication Tag Reader Session Formats
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NearFieldCommunicationTagReaderSessionFormats {
     /// Allows read and write access to a tag using NFCTagReaderSession.
-    #[serde(rename(serialize = "TAG"))]
+    #[serde(rename = "TAG")]
     Tag,
 }

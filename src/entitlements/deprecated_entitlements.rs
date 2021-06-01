@@ -17,7 +17,7 @@ pub struct DeprecatedEntitlements {
         note = "Using Maps no longer requires an entitlement."
     )]
     #[serde(
-        rename(serialize = "com.apple.developer.maps"),
+        rename = "com.apple.developer.maps",
         skip_serializing_if = "Option::is_none"
     )]
     pub maps: Option<bool>,
@@ -36,9 +36,6 @@ pub struct DeprecatedEntitlements {
         since = "iOS 2.2–13.0",
         note = "Inter-App Audio is deprecated in iOS 13 and is unavailable when running iPad apps in macOS."
     )]
-    #[serde(
-        rename(serialize = "inter-app-audio"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "inter-app-audio", skip_serializing_if = "Option::is_none")]
     pub inter_app_audio: Option<bool>,
 }

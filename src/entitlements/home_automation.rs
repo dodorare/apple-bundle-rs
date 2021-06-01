@@ -17,7 +17,7 @@ pub struct HomeAutomation {
     /// ## Framework
     /// * HomeKit
     #[serde(
-        rename(serialize = "com.apple.developer.homekit"),
+        rename = "com.apple.developer.homekit",
         skip_serializing_if = "Option::is_none"
     )]
     pub homekit: Option<bool>,

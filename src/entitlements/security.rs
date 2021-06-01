@@ -13,10 +13,7 @@ pub struct Security {
     ///
     /// ## Framework
     /// * Security
-    #[serde(
-        rename(serialize = "AppSandbox"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "AppSandbox", skip_serializing_if = "Option::is_none")]
     pub app_sandbox: Option<AppSandbox>,
     /// Manage security protections and resource access for your macOS apps.
     ///
@@ -38,10 +35,7 @@ pub struct Security {
     ///
     /// ## Framework
     /// * Security
-    #[serde(
-        rename(serialize = "HardenedRuntime"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "HardenedRuntime", skip_serializing_if = "Option::is_none")]
     pub hardened_runtime: Option<HardenedRuntime>,
     /// A list of identifiers specifying the groups your app belongs to.
     ///
@@ -77,7 +71,7 @@ pub struct Security {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.security.application-groups"),
+        rename = "com.apple.security.application-groups",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_groups: Option<Vec<String>>,
@@ -94,7 +88,7 @@ pub struct Security {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "keychain-access-groups"),
+        rename = "keychain-access-groups",
         skip_serializing_if = "Option::is_none"
     )]
     pub keychain_access_groups: Option<Vec<String>>,
@@ -110,7 +104,7 @@ pub struct Security {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.default-data-protection"),
+        rename = "com.apple.developer.default-data-protection",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -129,7 +123,7 @@ pub struct Security {
     /// ## Framework
     /// * DeviceCheck
     #[serde(
-        rename(serialize = "com.apple.developer.devicecheck.appattest-environment"),
+        rename = "com.apple.developer.devicecheck.appattest-environment",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -146,7 +140,7 @@ pub struct Security {
     /// ## Framework
     /// * CryptoTokenKit
     #[serde(
-        rename(serialize = "com.apple.security.smartcard"),
+        rename = "com.apple.security.smartcard",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_smartcard: Option<bool>,
@@ -165,7 +159,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.app-sandbox"),
+        rename = "com.apple.security.app-sandbox",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_sandbox: Option<bool>,
@@ -189,7 +183,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.network.server"),
+        rename = "com.apple.security.network.server",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_network_server: Option<bool>,
@@ -213,7 +207,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.network.client"),
+        rename = "com.apple.security.network.client",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_network_client: Option<bool>,
@@ -230,7 +224,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.camera"),
+        rename = "com.apple.security.device.camera",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera: Option<bool>,
@@ -244,7 +238,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.microphone"),
+        rename = "com.apple.security.device.microphone",
         skip_serializing_if = "Option::is_none"
     )]
     pub device_microphone: Option<bool>,
@@ -260,7 +254,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.usb"),
+        rename = "com.apple.security.device.usb",
         skip_serializing_if = "Option::is_none"
     )]
     pub device_usb: Option<bool>,
@@ -274,7 +268,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.print"),
+        rename = "com.apple.security.print",
         skip_serializing_if = "Option::is_none"
     )]
     pub print: Option<bool>,
@@ -288,7 +282,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.bluetooth"),
+        rename = "com.apple.security.device.bluetooth",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth: Option<bool>,
@@ -302,7 +296,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.addressbook"),
+        rename = "com.apple.security.personal-information.addressbook",
         skip_serializing_if = "Option::is_none"
     )]
     pub address_book: Option<bool>,
@@ -316,7 +310,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.location"),
+        rename = "com.apple.security.personal-information.location",
         skip_serializing_if = "Option::is_none"
     )]
     pub location: Option<bool>,
@@ -330,7 +324,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.calendars"),
+        rename = "com.apple.security.personal-information.calendars",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars: Option<bool>,
@@ -344,7 +338,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.files.user-selected.read-only"),
+        rename = "com.apple.security.files.user-selected.read-only",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_user_selected_read_only: Option<bool>,
@@ -358,7 +352,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.files.user-selected.read-write"),
+        rename = "com.apple.security.files.user-selected.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_user_selected_read_write: Option<bool>,
@@ -372,7 +366,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.files.downloads.read-only"),
+        rename = "com.apple.security.files.downloads.read-only",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_downloads_read_only: Option<bool>,
@@ -386,7 +380,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.files.downloads.read-write"),
+        rename = "com.apple.security.files.downloads.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_downloads_read_write: Option<bool>,
@@ -400,7 +394,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.pictures.read-only"),
+        rename = "com.apple.security.assets.pictures.read-only",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_pictures_read_only: Option<bool>,
@@ -414,7 +408,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.pictures.read-write"),
+        rename = "com.apple.security.assets.pictures.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_pictures_read_write: Option<bool>,
@@ -428,7 +422,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.music.read-only"),
+        rename = "com.apple.security.assets.music.read-only",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_music_read_only: Option<bool>,
@@ -442,7 +436,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.music.read-write"),
+        rename = "com.apple.security.assets.music.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_music_read_write: Option<bool>,
@@ -456,7 +450,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.movies.read-only"),
+        rename = "com.apple.security.assets.movies.read-only",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_movies_read_only: Option<bool>,
@@ -470,7 +464,7 @@ pub struct AppSandbox {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.assets.movies.read-write"),
+        rename = "com.apple.security.assets.movies.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_movies_read_write: Option<bool>,
@@ -483,7 +477,7 @@ pub struct AppSandbox {
     /// * Security
     #[deprecated(since = "macOS 10.7–10.11")]
     #[serde(
-        rename(serialize = "com.apple.security.files.all"),
+        rename = "com.apple.security.files.all",
         skip_serializing_if = "Option::is_none"
     )]
     pub all_files: Option<bool>,
@@ -517,7 +511,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.allow-jit"),
+        rename = "com.apple.security.cs.allow-jit",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_execution_of_jit_compiled_code: Option<bool>,
@@ -538,7 +532,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.allow-unsigned-executable-memory"),
+        rename = "com.apple.security.cs.allow-unsigned-executable-memory",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_unsigned_executable_memory: Option<bool>,
@@ -559,7 +553,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.allow-dyld-environment-variables"),
+        rename = "com.apple.security.cs.allow-dyld-environment-variables",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_dyld_environment_variables: Option<bool>,
@@ -582,7 +576,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.disable-library-validation"),
+        rename = "com.apple.security.cs.disable-library-validation",
         skip_serializing_if = "Option::is_none"
     )]
     pub disable_library_validation: Option<bool>,
@@ -607,7 +601,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.disable-executable-page-protection"),
+        rename = "com.apple.security.cs.disable-executable-page-protection",
         skip_serializing_if = "Option::is_none"
     )]
     pub disable_executable_memory_protection: Option<bool>,
@@ -631,7 +625,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.cs.debugger"),
+        rename = "com.apple.security.cs.debugger",
         skip_serializing_if = "Option::is_none"
     )]
     pub debugging_tool: Option<bool>,
@@ -645,7 +639,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.audio-input"),
+        rename = "com.apple.security.device.audio-input",
         skip_serializing_if = "Option::is_none"
     )]
     pub audioinput: Option<bool>,
@@ -659,7 +653,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.device.camera"),
+        rename = "com.apple.security.device.camera",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera: Option<bool>,
@@ -673,7 +667,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.location"),
+        rename = "com.apple.security.personal-information.location",
         skip_serializing_if = "Option::is_none"
     )]
     pub location: Option<bool>,
@@ -687,7 +681,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.addressbook"),
+        rename = "com.apple.security.personal-information.addressbook",
         skip_serializing_if = "Option::is_none"
     )]
     pub address_book: Option<bool>,
@@ -701,7 +695,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.calendars"),
+        rename = "com.apple.security.personal-information.calendars",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars: Option<bool>,
@@ -716,7 +710,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.personal-information.photos-library"),
+        rename = "com.apple.security.personal-information.photos-library",
         skip_serializing_if = "Option::is_none"
     )]
     pub photos_library: Option<bool>,
@@ -732,7 +726,7 @@ pub struct HardenedRuntime {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.security.automation.apple-events"),
+        rename = "com.apple.security.automation.apple-events",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_events: Option<bool>,
@@ -740,27 +734,25 @@ pub struct HardenedRuntime {
 
 /// Data Protection
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DataProtection {
-    #[serde(rename(serialize = "NSFileProtectionCompleteUnlessOpen"))]
+    #[serde(rename = "NSFileProtectionCompleteUnlessOpen")]
     FileProtectionCompleteUnlessOpen,
-    #[serde(rename(serialize = "NSFileProtectionCompleteUntilFirstUserAuthentication"))]
+    #[serde(rename = "NSFileProtectionCompleteUntilFirstUserAuthentication")]
     FileProtectionCompleteUntilFirstUserAuthentication,
-    #[serde(rename(serialize = "NSFileProtectionNone"))]
+    #[serde(rename = "NSFileProtectionNone")]
     NSFileProtectionNone,
-    #[serde(rename(serialize = "NSFileProtectionComplete"))]
+    #[serde(rename = "NSFileProtectionComplete")]
     NSFileProtectionComplete,
 }
 
 /// Device Check App Attest
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DeviceCheckAppAttest {
     /// The App Attest sandbox environment that you use to test a device without affecting its risk metrics.
     /// Keys you create in the sandbox environment don’t work in the production environment.
-    #[serde(rename(serialize = "development"))]
+    #[serde(rename = "development")]
     Development,
     /// The App Attest production environment. Keys you create in the production environment don’t work in the sandbox environment.
-    #[serde(rename(serialize = "production"))]
+    #[serde(rename = "production")]
     Production,
 }

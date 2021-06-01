@@ -20,7 +20,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "CPSupportsDashboardNavigationScene"),
+        rename = "CPSupportsDashboardNavigationScene",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_dashboard_navigation_scene: Option<bool>,
@@ -30,7 +30,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "CPTemplateApplicationDashboardSceneSessionRoleApplication"),
+        rename = "CPTemplateApplicationDashboardSceneSessionRoleApplication",
         skip_serializing_if = "Option::is_none"
     )]
     pub template_application_dashboard: Option<Vec<TemplateApplicationDashboard>>,
@@ -40,7 +40,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "CPTemplateApplicationSceneSessionRoleApplication"),
+        rename = "CPTemplateApplicationSceneSessionRoleApplication",
         skip_serializing_if = "Option::is_none"
     )]
     pub template_application_scene_session_role: Option<Vec<TemplateApplicationSceneSessionRole>>,
@@ -54,29 +54,28 @@ pub struct TemplateApplicationDashboard {
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneClassName"))]
+    #[serde(rename = "UISceneClassName")]
     pub scene_class_name: ClassName,
     /// ## Availability
     /// * iOS 13.1+
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneConfigurationName"))]
+    #[serde(rename = "UISceneConfigurationName")]
     pub scene_configuration_name: String,
     /// ## Availability
     /// * iOS 13.1+
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneDelegateClassName"))]
+    #[serde(rename = "UISceneDelegateClassName")]
     pub scene_delegate_class_name: String,
 }
 
 /// Class Name
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ClassName {
-    #[serde(rename(serialize = "CPTemplateApplicationDashboardScene"))]
+    #[serde(rename = "CPTemplateApplicationDashboardScene")]
     TemplateApplicationDashboardScene,
 }
 
@@ -94,29 +93,28 @@ pub struct TemplateApplicationSceneSessionRole {
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneClassName"))]
+    #[serde(rename = "UISceneClassName")]
     pub scene_class_name: TemplateApplication,
     /// ## Availability
     /// * iOS 13.1+
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneConfigurationName"))]
+    #[serde(rename = "UISceneConfigurationName")]
     pub scene_configuration_name: String,
     /// ## Availability
     /// * iOS 13.1+
     ///
     /// ## Framework
     /// * CarPlay
-    #[serde(rename(serialize = "UISceneDelegateClassName"))]
+    #[serde(rename = "UISceneDelegateClassName")]
     pub scene_delegate_class_name: String,
 }
 
 /// Template Application
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum TemplateApplication {
-    #[serde(rename(serialize = "CPTemplateApplicationScene"))]
+    #[serde(rename = "CPTemplateApplicationScene")]
     Scene,
 }
 
@@ -144,7 +142,7 @@ pub struct ExposureNotification {
     /// ## Framework
     /// * Exposure Notification
     #[serde(
-        rename(serialize = "ENAPIVersion"),
+        rename = "ENAPIVersion",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -163,22 +161,18 @@ pub struct ExposureNotification {
     ///
     /// ## Framework
     /// * Exposure Notification
-    #[serde(
-        rename(serialize = "ENDeveloperRegion"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "ENDeveloperRegion", skip_serializing_if = "Option::is_none")]
     pub developer_region: Option<String>,
 }
 
 /// Version
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum Version {
     /// Use version 1 of the API.
-    #[serde(rename(serialize = "1"))]
+    #[serde(rename = "1")]
     One,
     /// Use version 2 of the API.
-    #[serde(rename(serialize = "2"))]
+    #[serde(rename = "2")]
     Two,
 }
 
@@ -212,7 +206,7 @@ pub struct PointerInteractions {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UIApplicationSupportsIndirectInputEvents"),
+        rename = "UIApplicationSupportsIndirectInputEvents",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_supports_indirect_input_events: Option<bool>,
@@ -229,7 +223,7 @@ pub struct Games {
     /// ## Framework
     /// * GameKit
     #[serde(
-        rename(serialize = "GKGameCenterBadgingDisabled"),
+        rename = "GKGameCenterBadgingDisabled",
         skip_serializing_if = "Option::is_none"
     )]
     pub game_center_badging_disabled: Option<bool>,
@@ -241,7 +235,7 @@ pub struct Games {
     /// ## Framework
     /// * GameKit
     #[serde(
-        rename(serialize = "GKShowChallengeBanners"),
+        rename = "GKShowChallengeBanners",
         skip_serializing_if = "Option::is_none"
     )]
     pub show_challenge_banners: Option<bool>,
@@ -255,7 +249,7 @@ pub struct Games {
     /// ## Framework
     /// * Game Controller
     #[serde(
-        rename(serialize = "GCSupportedGameControllers"),
+        rename = "GCSupportedGameControllers",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -272,7 +266,7 @@ pub struct Games {
     /// ## Framework
     /// * Game Controller
     #[serde(
-        rename(serialize = "GCSupportsControllerUserInteraction"),
+        rename = "GCSupportsControllerUserInteraction",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_controller_user_interaction: Option<bool>,
@@ -284,18 +278,17 @@ pub struct Games {
     /// ## Framework
     /// * Game Controller
     #[serde(
-        rename(serialize = "GCSupportsMultipleMicroGamepads"),
+        rename = "GCSupportsMultipleMicroGamepads",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_multiple_micro_gamepads: Option<bool>,
 }
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ProfileName {
-    #[serde(rename(serialize = "ExtendedGamepad"))]
+    #[serde(rename = "ExtendedGamepad")]
     ExtendedGamepad,
-    #[serde(rename(serialize = "MicroGamepad"))]
+    #[serde(rename = "MicroGamepad")]
     MicroGamepad,
 }
 
@@ -320,10 +313,7 @@ pub struct Intents {
     ///
     /// ## Framework
     /// * Intents
-    #[serde(
-        rename(serialize = "INIntentsSupported"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "INIntentsSupported", skip_serializing_if = "Option::is_none")]
     pub intents_supported: Option<Vec<String>>,
     /// The names of the intent classes your app can’t handle when the user locks the device.
     ///
@@ -337,7 +327,7 @@ pub struct Intents {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "INIntentsRestrictedWhileLocked"),
+        rename = "INIntentsRestrictedWhileLocked",
         skip_serializing_if = "Option::is_none"
     )]
     pub intents_restricted_while_locked: Option<Vec<String>>,
@@ -353,7 +343,7 @@ pub struct Intents {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "INIntentsRestrictedWhileProtectedDataUnavailable"),
+        rename = "INIntentsRestrictedWhileProtectedDataUnavailable",
         skip_serializing_if = "Option::is_none"
     )]
     pub intents_restricted_while_protected_data_unavailable: Option<Vec<String>>,
@@ -372,7 +362,7 @@ pub struct Intents {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "INSupportedMediaCategories"),
+        rename = "INSupportedMediaCategories",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -381,22 +371,21 @@ pub struct Intents {
 
 /// Supported Media Categories
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SupportedMediaCategories {
     /// Audiobooks
-    #[serde(rename(serialize = "INMediaCategoryAudiobooks"))]
+    #[serde(rename = "INMediaCategoryAudiobooks")]
     INMediaCategoryAudiobooks,
     /// Music
-    #[serde(rename(serialize = "INMediaCategoryMusic"))]
+    #[serde(rename = "INMediaCategoryMusic")]
     INMediaCategoryMusic,
     /// General
-    #[serde(rename(serialize = "INMediaCategoryGeneral"))]
+    #[serde(rename = "INMediaCategoryGeneral")]
     INMediaCategoryGeneral,
     /// Podcasts
-    #[serde(rename(serialize = "INMediaCategoryPodcasts"))]
+    #[serde(rename = "INMediaCategoryPodcasts")]
     INMediaCategoryPodcasts,
     /// Radio
-    #[serde(rename(serialize = "INMediaCategoryRadio"))]
+    #[serde(rename = "INMediaCategoryRadio")]
     INMediaCategoryRadio,
 }
 
@@ -411,7 +400,7 @@ pub struct Maps {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "MKDirectionsApplicationSupportedModes"),
+        rename = "MKDirectionsApplicationSupportedModes",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -420,31 +409,30 @@ pub struct Maps {
 
 /// Directions Application Supported Modes
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum DirectionsApplicationSupportedModes {
-    #[serde(rename(serialize = "MKDirectionsModePlane"))]
+    #[serde(rename = "MKDirectionsModePlane")]
     MKDirectionsModePlane,
-    #[serde(rename(serialize = "MKDirectionsModeBike"))]
+    #[serde(rename = "MKDirectionsModeBike")]
     MKDirectionsModeBike,
-    #[serde(rename(serialize = "MKDirectionsModeBus"))]
+    #[serde(rename = "MKDirectionsModeBus")]
     MKDirectionsModeBus,
-    #[serde(rename(serialize = "MKDirectionsModeCar"))]
+    #[serde(rename = "MKDirectionsModeCar")]
     MKDirectionsModeCar,
-    #[serde(rename(serialize = "MKDirectionsModeFerry"))]
+    #[serde(rename = "MKDirectionsModeFerry")]
     MKDirectionsModeFerry,
-    #[serde(rename(serialize = "MKDirectionsModePedestrian"))]
+    #[serde(rename = "MKDirectionsModePedestrian")]
     MKDirectionsModePedestrian,
-    #[serde(rename(serialize = "MKDirectionsModeRideShare"))]
+    #[serde(rename = "MKDirectionsModeRideShare")]
     MKDirectionsModeRideShare,
-    #[serde(rename(serialize = "MKDirectionsModeStreetCar"))]
+    #[serde(rename = "MKDirectionsModeStreetCar")]
     MKDirectionsModeStreetCar,
-    #[serde(rename(serialize = "MKDirectionsModeSubway"))]
+    #[serde(rename = "MKDirectionsModeSubway")]
     MKDirectionsModeSubway,
-    #[serde(rename(serialize = "MKDirectionsModeTaxi"))]
+    #[serde(rename = "MKDirectionsModeTaxi")]
     MKDirectionsModeTaxi,
-    #[serde(rename(serialize = "MKDirectionsModeTrain"))]
+    #[serde(rename = "MKDirectionsModeTrain")]
     MKDirectionsModeTrain,
-    #[serde(rename(serialize = "MKDirectionsModeOther"))]
+    #[serde(rename = "MKDirectionsModeOther")]
     MKDirectionsModeOther,
 }
 
@@ -461,7 +449,7 @@ pub struct NfcAppServices {
     /// ## Framework
     /// * Core NFC
     #[serde(
-        rename(serialize = "com.apple.developer.nfc.readersession.felica.systemcodes"),
+        rename = "com.apple.developer.nfc.readersession.felica.systemcodes",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_readersession_felica_systemcodes: Option<Vec<String>>,
@@ -473,7 +461,7 @@ pub struct NfcAppServices {
     /// ## Framework
     /// * Core NFC
     #[serde(
-        rename(serialize = "com.apple.developer.nfc.readersession.iso7816.select-identifiers"),
+        rename = "com.apple.developer.nfc.readersession.iso7816.select-identifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_readersession_iso7816_select_identifiers: Option<Vec<String>>,
@@ -492,7 +480,7 @@ pub struct Authentication {
     /// ## Framework
     /// * Authentication Services
     #[serde(
-        rename(serialize = "ASAccountAuthenticationModificationOptOutOfSecurityPromptsOnSignIn"),
+        rename = "ASAccountAuthenticationModificationOptOutOfSecurityPromptsOnSignIn",
         skip_serializing_if = "Option::is_none"
     )]
     pub account_authentication_modification_opt_out_of_security_prompts_on_sign_in: Option<bool>,
@@ -507,7 +495,7 @@ pub struct Authentication {
     /// ## Framework
     /// * Authentication Services
     #[serde(
-        rename(serialize = "ASWebAuthenticationSessionWebBrowserSupportCapabilities"),
+        rename = "ASWebAuthenticationSessionWebBrowserSupportCapabilities",
         skip_serializing_if = "Option::is_none"
     )]
     pub web_authentication_session_web_browser_support_capabilities:
@@ -527,10 +515,7 @@ pub struct WebAuthenticationSession {
     ///
     /// ## Framework
     /// * Authentication Services
-    #[serde(
-        rename(serialize = "IsSupported"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "IsSupported", skip_serializing_if = "Option::is_none")]
     pub is_supported: Option<bool>,
     /// A Boolean that indicates whether the app supports ephemeral browsing when conducting authentication sessions.
     ///
@@ -549,7 +534,7 @@ pub struct WebAuthenticationSession {
     /// ## Framework
     /// * Authentication Services
     #[serde(
-        rename(serialize = "EphemeralBrowserSessionIsSupported"),
+        rename = "EphemeralBrowserSessionIsSupported",
         skip_serializing_if = "Option::is_none"
     )]
     pub ephemeral_browser_session_is_supported: Option<bool>,
@@ -571,7 +556,7 @@ pub struct ExternalAccessories {
     /// ## Framework
     /// * UIKit
     #[serde(
-        rename(serialize = "UISupportedExternalAccessoryProtocols"),
+        rename = "UISupportedExternalAccessoryProtocols",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_external_accessory_protocols: Option<Vec<String>>,
@@ -591,7 +576,7 @@ pub struct ServiceManagement {
     /// ## Framework
     /// * Service Management
     #[serde(
-        rename(serialize = "SMAuthorizedClients"),
+        rename = "SMAuthorizedClients",
         skip_serializing_if = "Option::is_none"
     )]
     pub authorized_clients: Option<Vec<String>>,
@@ -606,7 +591,7 @@ pub struct ServiceManagement {
     /// ## Framework
     /// * Service Management
     #[serde(
-        rename(serialize = "SMPrivilegedExecutables"),
+        rename = "SMPrivilegedExecutables",
         skip_serializing_if = "Option::is_none"
     )]
     pub privileged_executables: Option<DefaultDictionary>,
@@ -623,10 +608,7 @@ pub struct InterprocessCommunication {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(
-        rename(serialize = "XPCService"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "XPCService", skip_serializing_if = "Option::is_none")]
     pub service: Option<Service>,
 }
 
@@ -634,42 +616,34 @@ pub struct InterprocessCommunication {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct Service {
     #[serde(
-        rename(serialize = "EnvironmentVariables"),
+        rename = "EnvironmentVariables",
         skip_serializing_if = "Option::is_none"
     )]
     pub environment_variables: Option<DefaultDictionary>,
     #[serde(
-        rename(serialize = "JoinExistingSession"),
+        rename = "JoinExistingSession",
         skip_serializing_if = "Option::is_none"
     )]
     pub join_existing_session: Option<bool>,
-    #[serde(
-        rename(serialize = "RunLoopType"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "RunLoopType", skip_serializing_if = "Option::is_none")]
     pub run_loop_type: Option<RunLoopType>,
-    #[serde(
-        rename(serialize = "ServiceType"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
     pub service_type: Option<ServiceType>,
 }
 
 /// Run Loop Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum RunLoopType {
-    #[serde(rename(serialize = "dispatch_main"))]
+    #[serde(rename = "dispatch_main")]
     DispatchMain,
-    #[serde(rename(serialize = "NSRunLoop"))]
+    #[serde(rename = "NSRunLoop")]
     RunLoop,
 }
 
 /// Service Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ServiceType {
-    #[serde(rename(serialize = "Application"))]
+    #[serde(rename = "Application")]
     Application,
 }
 
@@ -691,10 +665,7 @@ pub struct Store {
     ///
     /// ## Framework
     /// * StoreKit
-    #[serde(
-        rename(serialize = "SKAdNetworkItems"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "SKAdNetworkItems", skip_serializing_if = "Option::is_none")]
     pub ad_network_items: Option<Vec<AdNetworkItems>>,
 }
 
@@ -713,7 +684,7 @@ pub struct AdNetworkItems {
     /// ## Framework
     /// * StoreKit
     #[serde(
-        rename(serialize = "SKAdNetworkIdentifier"),
+        rename = "SKAdNetworkIdentifier",
         skip_serializing_if = "Option::is_none"
     )]
     pub ad_network_identifier: Option<String>,

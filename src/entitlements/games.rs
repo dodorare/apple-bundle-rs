@@ -13,7 +13,7 @@ pub struct Games {
     /// ## Framework
     /// * GameKit
     #[serde(
-        rename(serialize = "com.apple.developer.game-center"),
+        rename = "com.apple.developer.game-center",
         skip_serializing_if = "Option::is_none"
     )]
     pub game_center: Option<bool>,

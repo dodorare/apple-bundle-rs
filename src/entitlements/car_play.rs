@@ -9,7 +9,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-audio"),
+        rename = "com.apple.developer.carplay-audio",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_audio: Option<bool>,
@@ -19,7 +19,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-charging"),
+        rename = "com.apple.developer.carplay-charging",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_charging: Option<bool>,
@@ -29,7 +29,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-communication"),
+        rename = "com.apple.developer.carplay-communication",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_communication: Option<bool>,
@@ -39,7 +39,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-maps"),
+        rename = "com.apple.developer.carplay-maps",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_maps: Option<bool>,
@@ -49,7 +49,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-parking"),
+        rename = "com.apple.developer.carplay-parking",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_parking: Option<bool>,
@@ -59,7 +59,7 @@ pub struct CarPlay {
     /// ## Framework
     /// * CarPlay
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-quick-ordering"),
+        rename = "com.apple.developer.carplay-quick-ordering",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_quick_ordering: Option<bool>,
@@ -70,7 +70,7 @@ pub struct CarPlay {
     /// * CarPlay
     #[deprecated(since = "iOS 12.0–14.0")]
     #[serde(
-        rename(serialize = "com.apple.developer.carplay-messaging"),
+        rename = "com.apple.developer.carplay-messaging",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_messaging: Option<bool>,
@@ -81,7 +81,7 @@ pub struct CarPlay {
     /// * CarPlay
     #[deprecated(since = "iOS 12.0–14.0")]
     #[serde(
-        rename(serialize = "com.apple.developer.playable-content"),
+        rename = "com.apple.developer.playable-content",
         skip_serializing_if = "Option::is_none"
     )]
     pub playable_content: Option<bool>,

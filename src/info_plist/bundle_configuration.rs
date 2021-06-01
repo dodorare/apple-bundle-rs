@@ -31,7 +31,7 @@ pub struct Categorization {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundlePackageType"),
+        rename = "CFBundlePackageType",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_package_type: Option<String>,
@@ -43,7 +43,7 @@ pub struct Categorization {
     /// ## Framework
     /// Core Services
     #[serde(
-        rename(serialize = "LSApplicationCategoryType"),
+        rename = "LSApplicationCategoryType",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -68,7 +68,7 @@ pub struct Identification {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(rename(serialize = "CFBundleIdentifier"))]
+    #[serde(rename = "CFBundleIdentifier")]
     pub bundle_identifier: String,
     /// The bundle ID of the watchOS app.
     ///
@@ -81,7 +81,7 @@ pub struct Identification {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "WKAppBundleIdentifier"),
+        rename = "WKAppBundleIdentifier",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_bundle_identifier: Option<String>,
@@ -97,7 +97,7 @@ pub struct Identification {
     /// ## Framework
     /// * WatchKit
     #[serde(
-        rename(serialize = "WKCompanionAppBundleIdentifier"),
+        rename = "WKCompanionAppBundleIdentifier",
         skip_serializing_if = "Option::is_none"
     )]
     pub companion_app_bundle_identifier: Option<String>,
@@ -119,7 +119,7 @@ pub struct Naming {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(rename(serialize = "CFBundleName"))]
+    #[serde(rename = "CFBundleName")]
     pub bundle_name: Option<String>,
     /// The user-visible name for the bundle, used by Siri and visible on the iOS Home screen.
     ///
@@ -134,7 +134,7 @@ pub struct Naming {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleDisplayName"),
+        rename = "CFBundleDisplayName",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_display_name: Option<String>,
@@ -148,10 +148,7 @@ pub struct Naming {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleSpokenName"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleSpokenName", skip_serializing_if = "Option::is_none")]
     pub bundle_spoken_name: Option<String>,
 }
 
@@ -183,10 +180,7 @@ pub struct BundleVersion {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(
-        rename(serialize = "CFBundleVersion"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFBundleVersion", skip_serializing_if = "Option::is_none")]
     pub bundle_version: Option<String>,
     /// The release or version number of the bundle.
     ///
@@ -209,7 +203,7 @@ pub struct BundleVersion {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleShortVersionString"),
+        rename = "CFBundleShortVersionString",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_short_version_string: Option<String>,
@@ -226,7 +220,7 @@ pub struct BundleVersion {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleInfoDictionaryVersion"),
+        rename = "CFBundleInfoDictionaryVersion",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_info_dictionary_version: Option<String>,
@@ -238,7 +232,7 @@ pub struct BundleVersion {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "NSHumanReadableCopyright"),
+        rename = "NSHumanReadableCopyright",
         skip_serializing_if = "Option::is_none"
     )]
     pub human_readable_copyright: Option<String>,
@@ -258,7 +252,7 @@ pub struct OperatingSystemVersion {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSMinimumSystemVersion"),
+        rename = "LSMinimumSystemVersion",
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_system_version: Option<String>,
@@ -270,7 +264,7 @@ pub struct OperatingSystemVersion {
     /// ## Framework
     /// * Core Services
     #[serde(
-        rename(serialize = "LSMinimumSystemVersionByArchitecture"),
+        rename = "LSMinimumSystemVersionByArchitecture",
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_system_version_by_architecture: Option<MinimumSystemVersionByArchitecture>,
@@ -285,10 +279,7 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "MinimumOSVersion"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "MinimumOSVersion", skip_serializing_if = "Option::is_none")]
     pub minimum_os_version: Option<String>,
     /// A Boolean value indicating whether the app must run in iOS.
     ///
@@ -297,10 +288,7 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(
-        rename(serialize = "LSRequiresIPhoneOS"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "LSRequiresIPhoneOS", skip_serializing_if = "Option::is_none")]
     pub requires_iphone_os: Option<bool>,
     /// A Boolean value that indicates whether the bundle is a watchOS app.
     ///
@@ -312,10 +300,7 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * WatchKit
-    #[serde(
-        rename(serialize = "WKWatchKitApp"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "WKWatchKitApp", skip_serializing_if = "Option::is_none")]
     pub watch_kit_app: Option<bool>,
 }
 
@@ -344,7 +329,7 @@ pub struct Localization {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleDevelopmentRegion"),
+        rename = "CFBundleDevelopmentRegion",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_development_region: Option<String>,
@@ -359,7 +344,7 @@ pub struct Localization {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleLocalizations"),
+        rename = "CFBundleLocalizations",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -375,7 +360,7 @@ pub struct Localization {
     /// ## Framework
     /// Core Foundation
     #[serde(
-        rename(serialize = "CFBundleAllowMixedLocalizations"),
+        rename = "CFBundleAllowMixedLocalizations",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_allow_mixed_localizations: Option<bool>,
@@ -394,7 +379,7 @@ pub struct Localization {
     /// ## Framework
     /// * AppKit
     #[serde(
-        rename(serialize = "TICapsLockLanguageSwitchCapable"),
+        rename = "TICapsLockLanguageSwitchCapable",
         skip_serializing_if = "Option::is_none"
     )]
     pub caps_lock_language_switch_capable: Option<bool>,
@@ -410,10 +395,7 @@ pub struct Help {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(
-        rename(serialize = "CFAppleHelpAnchor"),
-        skip_serializing_if = "Option::is_none"
-    )]
+    #[serde(rename = "CFAppleHelpAnchor", skip_serializing_if = "Option::is_none")]
     pub apple_help_anchor: Option<String>,
     /// The name of the help file that will be opened in Help Viewer.
     ///
@@ -423,7 +405,7 @@ pub struct Help {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleHelpBookName"),
+        rename = "CFBundleHelpBookName",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_help_book_name: Option<String>,
@@ -435,7 +417,7 @@ pub struct Help {
     /// ## Framework
     /// * Core Foundation
     #[serde(
-        rename(serialize = "CFBundleHelpBookFolder"),
+        rename = "CFBundleHelpBookFolder",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_help_book_folder: Option<String>,
@@ -443,87 +425,86 @@ pub struct Help {
 
 /// App Category Type
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum AppCategoryType {
-    #[serde(rename(serialize = "public.app-category.business"))]
+    #[serde(rename = "public.app-category.business")]
     Business,
-    #[serde(rename(serialize = "public.app-category.developer-tools"))]
+    #[serde(rename = "public.app-category.developer-tools")]
     DeveloperTools,
-    #[serde(rename(serialize = "public.app-category.education"))]
+    #[serde(rename = "public.app-category.education")]
     Education,
-    #[serde(rename(serialize = "public.app-category.entertainment"))]
+    #[serde(rename = "public.app-category.entertainment")]
     Entertainment,
-    #[serde(rename(serialize = "public.app-category.finance"))]
+    #[serde(rename = "public.app-category.finance")]
     Finance,
-    #[serde(rename(serialize = "public.app-category.games"))]
+    #[serde(rename = "public.app-category.games")]
     Games,
-    #[serde(rename(serialize = "public.app-category.action-games"))]
+    #[serde(rename = "public.app-category.action-games")]
     ActionGames,
-    #[serde(rename(serialize = "public.app-category.adventure-games"))]
+    #[serde(rename = "public.app-category.adventure-games")]
     AdventureGames,
-    #[serde(rename(serialize = "public.app-category.arcade-games"))]
+    #[serde(rename = "public.app-category.arcade-games")]
     ArcadeGames,
-    #[serde(rename(serialize = "public.app-category.board-games"))]
+    #[serde(rename = "public.app-category.board-games")]
     BoardGames,
-    #[serde(rename(serialize = "public.app-category.card-games"))]
+    #[serde(rename = "public.app-category.card-games")]
     CardGames,
-    #[serde(rename(serialize = "public.app-category.casino-games"))]
+    #[serde(rename = "public.app-category.casino-games")]
     CasinoGames,
-    #[serde(rename(serialize = "public.app-category.dice-games"))]
+    #[serde(rename = "public.app-category.dice-games")]
     DiceGames,
-    #[serde(rename(serialize = "public.app-category.educational-games"))]
+    #[serde(rename = "public.app-category.educational-games")]
     EducationalGames,
-    #[serde(rename(serialize = "public.app-category.family-games"))]
+    #[serde(rename = "public.app-category.family-games")]
     FamilyGames,
-    #[serde(rename(serialize = "public.app-category.kids-games"))]
+    #[serde(rename = "public.app-category.kids-games")]
     KidsGames,
-    #[serde(rename(serialize = "public.app-category.music-games"))]
+    #[serde(rename = "public.app-category.music-games")]
     MusicGames,
-    #[serde(rename(serialize = "public.app-category.puzzle-games"))]
+    #[serde(rename = "public.app-category.puzzle-games")]
     PuzzleGames,
-    #[serde(rename(serialize = "public.app-category.racing-games"))]
+    #[serde(rename = "public.app-category.racing-games")]
     RacingGames,
-    #[serde(rename(serialize = "public.app-category.role-playing-games"))]
+    #[serde(rename = "public.app-category.role-playing-games")]
     RolePlayingGames,
-    #[serde(rename(serialize = "public.app-category.simulation-games"))]
+    #[serde(rename = "public.app-category.simulation-games")]
     SimulationGames,
-    #[serde(rename(serialize = "public.app-category.sports-games"))]
+    #[serde(rename = "public.app-category.sports-games")]
     SportsGames,
-    #[serde(rename(serialize = "public.app-category.strategy-games"))]
+    #[serde(rename = "public.app-category.strategy-games")]
     StrategyGames,
-    #[serde(rename(serialize = "public.app-category.trivia-games"))]
+    #[serde(rename = "public.app-category.trivia-games")]
     TriviaGames,
-    #[serde(rename(serialize = "public.app-category.word-games"))]
+    #[serde(rename = "public.app-category.word-games")]
     WordGames,
-    #[serde(rename(serialize = "public.app-category.graphics-design"))]
+    #[serde(rename = "public.app-category.graphics-design")]
     GraphicsDesign,
-    #[serde(rename(serialize = "public.app-category.healthcare-fitness"))]
+    #[serde(rename = "public.app-category.healthcare-fitness")]
     HealthcareFitness,
-    #[serde(rename(serialize = "public.app-category.lifestyle"))]
+    #[serde(rename = "public.app-category.lifestyle")]
     Lifestyle,
-    #[serde(rename(serialize = "public.app-category.medical"))]
+    #[serde(rename = "public.app-category.medical")]
     Medical,
-    #[serde(rename(serialize = "public.app-category.music"))]
+    #[serde(rename = "public.app-category.music")]
     Music,
-    #[serde(rename(serialize = "public.app-category.news"))]
+    #[serde(rename = "public.app-category.news")]
     News,
-    #[serde(rename(serialize = "public.app-category.photography"))]
+    #[serde(rename = "public.app-category.photography")]
     Photography,
-    #[serde(rename(serialize = "public.app-category.productivity"))]
+    #[serde(rename = "public.app-category.productivity")]
     Productivity,
-    #[serde(rename(serialize = "public.app-category.reference"))]
+    #[serde(rename = "public.app-category.reference")]
     Reference,
-    #[serde(rename(serialize = "public.app-category.social-networking"))]
+    #[serde(rename = "public.app-category.social-networking")]
     SocialNetworking,
-    #[serde(rename(serialize = "public.app-category.sports"))]
+    #[serde(rename = "public.app-category.sports")]
     Sports,
-    #[serde(rename(serialize = "public.app-category.travel"))]
+    #[serde(rename = "public.app-category.travel")]
     Travel,
-    #[serde(rename(serialize = "public.app-category.utilities"))]
+    #[serde(rename = "public.app-category.utilities")]
     Utilities,
-    #[serde(rename(serialize = "public.app-category.video"))]
+    #[serde(rename = "public.app-category.video")]
     Video,
-    #[serde(rename(serialize = "public.app-category.weather"))]
+    #[serde(rename = "public.app-category.weather")]
     Weather,
 }
 
@@ -549,24 +530,23 @@ impl Default for MinimumSystemVersionByArchitecture {
 
 /// Bundle Localizations
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum BundleLocalizations {
-    #[serde(rename(serialize = "zh"))]
+    #[serde(rename = "zh")]
     Zh,
-    #[serde(rename(serialize = "zh_CN"))]
+    #[serde(rename = "zh_CN")]
     ZhCN,
-    #[serde(rename(serialize = "zh_TW"))]
+    #[serde(rename = "zh_TW")]
     ZhTW,
-    #[serde(rename(serialize = "en"))]
+    #[serde(rename = "en")]
     En,
-    #[serde(rename(serialize = "fr"))]
+    #[serde(rename = "fr")]
     Fr,
-    #[serde(rename(serialize = "de"))]
+    #[serde(rename = "de")]
     De,
-    #[serde(rename(serialize = "it"))]
+    #[serde(rename = "it")]
     It,
-    #[serde(rename(serialize = "ja"))]
+    #[serde(rename = "ja")]
     Ja,
-    #[serde(rename(serialize = "ko"))]
+    #[serde(rename = "ko")]
     Ko,
 }

@@ -22,7 +22,7 @@ pub struct Networking {
     /// ## Framework
     /// * Network Extension
     #[serde(
-        rename(serialize = "com.apple.developer.networking.networkextension"),
+        rename = "com.apple.developer.networking.networkextension",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -40,7 +40,7 @@ pub struct Networking {
     /// ## Framework
     /// * Network Extension
     #[serde(
-        rename(serialize = "com.apple.developer.networking.vpn.api"),
+        rename = "com.apple.developer.networking.vpn.api",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -108,7 +108,7 @@ pub struct Networking {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.developer.associated-domains"),
+        rename = "com.apple.developer.associated-domains",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains: Option<Vec<String>>,
@@ -128,7 +128,7 @@ pub struct Networking {
     /// ## Framework
     /// * Network
     #[serde(
-        rename(serialize = "com.apple.developer.networking.multicast"),
+        rename = "com.apple.developer.networking.multicast",
         skip_serializing_if = "Option::is_none"
     )]
     pub networking_multicast: Option<bool>,
@@ -138,7 +138,7 @@ pub struct Networking {
     /// ## Framework
     /// * Security
     #[serde(
-        rename(serialize = "com.apple.developer.associated-domains.applinks.read-write"),
+        rename = "com.apple.developer.associated-domains.applinks.read-write",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains_applinks_read_write: Option<bool>,
@@ -146,47 +146,45 @@ pub struct Networking {
 
 /// Network Extensions
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum NetworkExtensions {
     /// The APIs you use to proxy DNS queries.
-    #[serde(rename(serialize = "dns-proxy"))]
+    #[serde(rename = "dns-proxy")]
     DnsProxy,
     /// The APIs you use to proxy TCP and UDP connections.
-    #[serde(rename(serialize = "app-proxy-provider"))]
+    #[serde(rename = "app-proxy-provider")]
     AppProxyProvider,
     /// The filter APIs you use to allow or deny network connections created by other apps on the system.
-    #[serde(rename(serialize = "content-filter-provider"))]
+    #[serde(rename = "content-filter-provider")]
     ContentFilterProvider,
     /// The APIs you use to tunnel IP packets to a remote network using any custom tunneling protocol.
-    #[serde(rename(serialize = "packet-tunnel-provider"))]
+    #[serde(rename = "packet-tunnel-provider")]
     PacketTunnelProvider,
     /// The APIs you use to proxy DNS queries, when signed with a Developer ID profile.
-    #[serde(rename(serialize = "dns-proxy-systemextension"))]
+    #[serde(rename = "dns-proxy-systemextension")]
     DnsProxySystemextension,
     /// The APIs you use to proxy TCP and UDP connections, when signed with a Developer ID profile.
-    #[serde(rename(serialize = "app-proxy-provider-systemextension"))]
+    #[serde(rename = "app-proxy-provider-systemextension")]
     AppProxyProviderSystemextension,
     /// The filter APIs you use to allow or deny network connections created by other apps on the system,
     /// when signed with a Developer ID profile.
-    #[serde(rename(serialize = "content-filter-provider-systemextension"))]
+    #[serde(rename = "content-filter-provider-systemextension")]
     ContentFilterProviderSystemExtensions,
     /// The APIs you use to tunnel IP packets to a remote network using any custom tunneling protocol,
     /// when signed with a Developer ID profile.
-    #[serde(rename(serialize = "packet-tunnel-provider-systemextension"))]
+    #[serde(rename = "packet-tunnel-provider-systemextension")]
     PacketTunnelProviderSystemExtension,
     /// The APIs you use to create and manage a system-wide DNS configuration.
-    #[serde(rename(serialize = "dns-settings"))]
+    #[serde(rename = "dns-settings")]
     DnsSettings,
     /// The APIs you use for providing functionality similar to Apple Push Notification Service when
     /// access to the wider internet is unavailable.
-    #[serde(rename(serialize = "app-push-provider"))]
+    #[serde(rename = "app-push-provider")]
     AppPushProvider,
 }
 
 /// Personal VPN
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum PersonalVPN {
-    #[serde(rename(serialize = "allow-vpn"))]
+    #[serde(rename = "allow-vpn")]
     AllowVpn,
 }

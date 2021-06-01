@@ -10,7 +10,7 @@ pub struct Sensors {
     /// ## Framework
     /// * SensorKit
     #[serde(
-        rename(serialize = "com.apple.developer.sensorkit.reader.allow"),
+        rename = "com.apple.developer.sensorkit.reader.allow",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -19,26 +19,25 @@ pub struct Sensors {
 
 /// Sensor Kit Reader Allow
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum SensorkitReaderAllow {
-    #[serde(rename(serialize = "on-wrist"))]
+    #[serde(rename = "on-wrist")]
     OnWrist,
-    #[serde(rename(serialize = "ambient-light-sensor"))]
+    #[serde(rename = "ambient-light-sensor")]
     AmbientLightSensor,
-    #[serde(rename(serialize = "motion-accelerometer"))]
+    #[serde(rename = "motion-accelerometer")]
     MotionAccelerometer,
-    #[serde(rename(serialize = "motion-rotation-rate"))]
+    #[serde(rename = "motion-rotation-rate")]
     MotionRotationRate,
-    #[serde(rename(serialize = "visits"))]
+    #[serde(rename = "visits")]
     Visits,
-    #[serde(rename(serialize = "pedometer"))]
+    #[serde(rename = "pedometer")]
     Pedometer,
-    #[serde(rename(serialize = "device-usage"))]
+    #[serde(rename = "device-usage")]
     DeviceUsage,
-    #[serde(rename(serialize = "messages-usage"))]
+    #[serde(rename = "messages-usage")]
     MessagesUsage,
-    #[serde(rename(serialize = "phone-usage"))]
+    #[serde(rename = "phone-usage")]
     PhoneUsage,
-    #[serde(rename(serialize = "keyboard-metrics"))]
+    #[serde(rename = "keyboard-metrics")]
     KeyboardMetrics,
 }

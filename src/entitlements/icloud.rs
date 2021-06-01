@@ -15,9 +15,7 @@ pub struct ICloud {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(
-            serialize = "com.apple.developer.icloud-container-development-container-identifiers"
-        ),
+        rename = "com.apple.developer.icloud-container-development-container-identifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_development_container_identifiers: Option<Vec<String>>,
@@ -32,7 +30,7 @@ pub struct ICloud {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.icloud-container-environment"),
+        rename = "com.apple.developer.icloud-container-environment",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -48,7 +46,7 @@ pub struct ICloud {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.icloud-container-identifiers"),
+        rename = "com.apple.developer.icloud-container-identifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_identifiers: Option<Vec<String>>,
@@ -65,7 +63,7 @@ pub struct ICloud {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.icloud-services"),
+        rename = "com.apple.developer.icloud-services",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -83,7 +81,7 @@ pub struct ICloud {
     /// ## Framework
     /// * Foundation
     #[serde(
-        rename(serialize = "com.apple.developer.ubiquity-kvstore-identifier"),
+        rename = "com.apple.developer.ubiquity-kvstore-identifier",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_key_value_store: Option<String>,
@@ -91,20 +89,18 @@ pub struct ICloud {
 
 /// iCloud Container Environment
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ICloudContainerEnvironment {
-    #[serde(rename(serialize = "Development"))]
+    #[serde(rename = "Development")]
     Development,
-    #[serde(rename(serialize = "Production"))]
+    #[serde(rename = "Production")]
     Production,
 }
 
 /// iCloud Services
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum ICloudServices {
-    #[serde(rename(serialize = "CloudDocuments"))]
+    #[serde(rename = "CloudDocuments")]
     CloudDocuments,
-    #[serde(rename(serialize = "CloudKit"))]
+    #[serde(rename = "CloudKit")]
     CloudKit,
 }

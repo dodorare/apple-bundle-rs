@@ -17,7 +17,7 @@ pub struct Hypervisor {
     /// ## Framework
     /// * Hypervisor
     #[serde(
-        rename(serialize = "com.apple.security.hypervisor"),
+        rename = "com.apple.security.hypervisor",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_hypervisor: Option<bool>,
@@ -36,7 +36,7 @@ pub struct Hypervisor {
         For deployment targets earlier than macOS 11, add both that and the com.apple.vm.hypervisor entitlement to your app."
     )]
     #[serde(
-        rename(serialize = "com.apple.vm.hypervisor"),
+        rename = "com.apple.vm.hypervisor",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_hypervisor: Option<bool>,
@@ -50,7 +50,7 @@ pub struct Hypervisor {
     /// ## Framework
     /// * Hypervisor
     #[serde(
-        rename(serialize = "com.apple.vm.device-access"),
+        rename = "com.apple.vm.device-access",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_device_access: Option<bool>,
@@ -68,7 +68,7 @@ pub struct Hypervisor {
     /// ## Framework
     /// * Hypervisor
     #[serde(
-        rename(serialize = "com.apple.vm.networking"),
+        rename = "com.apple.vm.networking",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_networking: Option<bool>,
@@ -82,7 +82,7 @@ pub struct Hypervisor {
     /// ## Framework
     /// * Hypervisor
     #[serde(
-        rename(serialize = "com.apple.security.virtualization"),
+        rename = "com.apple.security.virtualization",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_virtualization: Option<bool>,

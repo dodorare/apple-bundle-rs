@@ -26,7 +26,7 @@ pub struct PushNotifications {
     /// ## Framework
     /// * User Notifications
     #[serde(
-        rename(serialize = "aps-environment"),
+        rename = "aps-environment",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -46,7 +46,7 @@ pub struct PushNotifications {
     /// ## Framework
     /// * User Notifications
     #[serde(
-        rename(serialize = "com.apple.developer.aps-environment"),
+        rename = "com.apple.developer.aps-environment",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
@@ -96,7 +96,7 @@ pub struct PushNotifications {
     /// ## Framework
     /// * User Notifications
     #[serde(
-        rename(serialize = "com.apple.developer.usernotifications.filtering"),
+        rename = "com.apple.developer.usernotifications.filtering",
         skip_serializing_if = "Option::is_none"
     )]
     pub usernotifications_filtering: Option<bool>,
@@ -104,12 +104,11 @@ pub struct PushNotifications {
 
 /// APS Environment
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum APSEnvironment {
     /// The APNs development environment.
-    #[serde(rename(serialize = "development"))]
+    #[serde(rename = "development")]
     Development,
     /// The APNs production environment.
-    #[serde(rename(serialize = "production"))]
+    #[serde(rename = "production")]
     Production,
 }

@@ -14,7 +14,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "com.apple.developer.healthkit"),
+        rename = "com.apple.developer.healthkit",
         skip_serializing_if = "Option::is_none"
     )]
     pub healthkit: Option<bool>,
@@ -37,7 +37,7 @@ pub struct Health {
     /// ## Framework
     /// * HealthKit
     #[serde(
-        rename(serialize = "com.apple.developer.healthkit.access"),
+        rename = "com.apple.developer.healthkit.access",
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_vec_enum_option"
     )]
@@ -46,9 +46,8 @@ pub struct Health {
 
 /// Health Kit Capabilities
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
-#[serde(rename_all(deserialize = "kebab-case"))]
 pub enum HealthKitCapabilities {
     /// The app can request access to FHIR-backed clinical records.
-    #[serde(rename(serialize = "health-records"))]
+    #[serde(rename = "health-records")]
     HealthRecords,
 }

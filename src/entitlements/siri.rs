@@ -15,7 +15,7 @@ pub struct Siri {
     /// ## Framework
     /// * Intents
     #[serde(
-        rename(serialize = "com.apple.developer.siri"),
+        rename = "com.apple.developer.siri",
         skip_serializing_if = "Option::is_none"
     )]
     pub siri: Option<bool>,

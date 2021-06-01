@@ -24,7 +24,7 @@ pub struct Wallet {
     /// ## Framework
     /// * PassKit (Apple Pay and Wallet)
     #[serde(
-        rename(serialize = "com.apple.developer.pass-type-identifiers"),
+        rename = "com.apple.developer.pass-type-identifiers",
         skip_serializing_if = "Option::is_none"
     )]
     pub pass_type_ids: Option<Vec<String>>,
@@ -42,7 +42,7 @@ pub struct Wallet {
     /// ## Framework
     /// * PassKit (Apple Pay and Wallet)
     #[serde(
-        rename(serialize = "com.apple.developer.in-app-payments"),
+        rename = "com.apple.developer.in-app-payments",
         skip_serializing_if = "Option::is_none"
     )]
     pub merchant_ids: Option<Vec<String>>,

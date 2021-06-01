@@ -23,7 +23,7 @@ pub struct Contacts {
     /// ## Framework
     /// * Contacts
     #[serde(
-        rename(serialize = "com.apple.developer.contacts.notes"),
+        rename = "com.apple.developer.contacts.notes",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_audio: Option<bool>,
