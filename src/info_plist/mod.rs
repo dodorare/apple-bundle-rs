@@ -122,7 +122,7 @@ pub struct InfoPlist {
     #[serde(flatten)]
     pub contacts: Contacts,
     #[serde(flatten)]
-    pub face_id: FaceID,
+    pub face_id: FaceId,
     #[serde(flatten)]
     pub files_and_folders: FilesAndFolders,
     #[serde(flatten)]
@@ -154,14 +154,14 @@ pub struct InfoPlist {
     #[serde(flatten)]
     pub speech: Speech,
     #[serde(flatten)]
-    pub tv_resource: TVResource,
+    pub tv_resource: TvResource,
     #[serde(flatten)]
-    pub wi_fi: WiFI,
+    pub wi_fi: WiFi,
     // Data and Storage
     #[serde(flatten)]
     pub documents: Documents,
     #[serde(flatten)]
-    pub url_schemes: URLSchemes,
+    pub url_schemes: UrlSchemes,
     #[serde(flatten)]
     pub universal_type_identifiers: UniversalTypeIdentifiers,
     #[serde(flatten)]
@@ -169,7 +169,7 @@ pub struct InfoPlist {
     #[serde(flatten)]
     pub storage: Storage,
     #[serde(flatten)]
-    pub core_ml_models: CoreMLModels,
+    pub core_ml_models: CoreMlModels,
     #[serde(flatten)]
     pub java: Java,
     // App Services

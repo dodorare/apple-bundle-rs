@@ -178,7 +178,7 @@ pub struct Contacts {
 
 /// FaceID
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct FaceID {
+pub struct FaceId {
     /// A message that tells the user why the app is requesting the ability to
     /// authenticate with Face ID.
     ///
@@ -1246,7 +1246,7 @@ pub struct Speech {
 
 /// TV Resource
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct TVResource {
+pub struct TvResource {
     /// A message that tells the user why the app is requesting access to the user’s TV
     /// provider account.
     ///
@@ -1268,7 +1268,7 @@ pub struct TVResource {
 
 /// Wi-Fi
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
-pub struct WiFI {
+pub struct WiFi {
     /// A Boolean value indicating whether the app requires a Wi-Fi connection.
     ///
     /// ## Availability

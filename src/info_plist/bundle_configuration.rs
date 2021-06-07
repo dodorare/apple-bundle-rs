@@ -550,9 +550,9 @@ pub enum BundleLocalizations {
     #[serde(rename = "zh")]
     Zh,
     #[serde(rename = "zh_CN")]
-    ZhCN,
+    ZhCn,
     #[serde(rename = "zh_TW")]
-    ZhTW,
+    ZhTw,
     #[serde(rename = "en")]
     En,
     #[serde(rename = "fr")]

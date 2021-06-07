@@ -74,7 +74,7 @@ let file = std::fs::File::create(file_path).unwrap();
 plist::to_writer_xml(file, &properties).unwrap();
 ```
 
-Or parse any Info.plist file:
+Or parse any `Info.plist` file:
 ```rs
 pub const PLIST_FILE_EXAMPLE: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -112,7 +112,8 @@ pub const PLIST_FILE_EXAMPLE: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
 // Read from bytes
 let properties: InfoPlist = plist::from_bytes(&PLIST_FILE_EXAMPLE.as_bytes()).unwrap();
 // Or from file
-// let properties: InfoPlist = plist::from_file(&file_path).unwrap();
+let file_path = "/path/to/Info.plist";
+let properties: InfoPlist = plist::from_file(&file_path).unwrap();
 ```
 
 ### License

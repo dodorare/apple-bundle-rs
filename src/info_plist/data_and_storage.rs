@@ -87,7 +87,7 @@ pub struct Documents {
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub enum PersistentStoreTypeKey {
     #[serde(rename = "SQLite")]
-    SQLite,
+    SqLite,
     #[serde(rename = "XML")]
     Xml,
     #[serde(rename = "Binary")]
@@ -98,7 +98,7 @@ pub enum PersistentStoreTypeKey {
 
 /// URL Schemes
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
-pub struct URLSchemes {
+pub struct UrlSchemes {
     /// A list of URL schemes (http, ftp, and so on) supported by the app.
     ///
     /// ## Availability
@@ -110,7 +110,7 @@ pub struct URLSchemes {
     /// ## Framework
     /// * Core Foundation
     #[serde(rename = "CFBundleURLTypes", skip_serializing_if = "Option::is_none")]
-    pub bundle_url_types: Option<Vec<BundleURLTypes>>,
+    pub bundle_url_types: Option<Vec<BundleUrlTypes>>,
 }
 
 /// Bundle Document Types
@@ -236,7 +236,7 @@ pub enum BundleTypeRole {
     #[serde(rename = "Shell")]
     Shell,
     #[serde(rename = "QLGenerator")]
-    QLGenerator,
+    QlGenerator,
     #[serde(rename = "None")]
     None,
 }
@@ -256,7 +256,7 @@ pub enum HandlerRank {
 
 /// Bundle URL Types
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
-pub struct BundleURLTypes {
+pub struct BundleUrlTypes {
     /// The app’s role with respect to the type.
     ///
     /// ## Availability
@@ -960,7 +960,7 @@ pub struct ExceptionDomains {
         skip_serializing_if = "Option::is_none",
         serialize_with = "serialize_enum_option"
     )]
-    pub exception_minimum_tls_version: Option<ExceptionMinimumTLSVersion>,
+    pub exception_minimum_tls_version: Option<ExceptionMinimumTlsVersion>,
     /// A Boolean value indicating whether to override the perfect forward secrecy
     /// requirement.
     ///
@@ -1015,7 +1015,7 @@ pub struct ExceptionDomains {
 
 /// Exception Minimum TLS Version
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq)]
-pub enum ExceptionMinimumTLSVersion {
+pub enum ExceptionMinimumTlsVersion {
     /// Require a minimum TLS version of 1.0.
     #[serde(rename = "TLSv1.0")]
     TlSv10,
@@ -1097,12 +1097,12 @@ pub struct PinnedDomains {
         rename = "NSPinnedCAIdentities",
         skip_serializing_if = "Option::is_none"
     )]
-    pub pinned_ca_identities: Option<Vec<SPKISHA256BASE64>>,
+    pub pinned_ca_identities: Option<Vec<Spkisha256Base64>>,
 }
 
 /// SPKI-SHA256-BASE64
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
-pub struct SPKISHA256BASE64 {
+pub struct Spkisha256Base64 {
     /// The digest of an X.509 certificate’s Subject Public Key Info structure.
     ///
     /// You represent a pinned certificate using the Base64-encoded SHA-256 digest of an
@@ -1299,7 +1299,7 @@ pub enum InstallAction {
 
 /// Core ML Models
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
-pub struct CoreMLModels {
+pub struct CoreMlModels {
     /// A Boolean value indicating whether the app contains a Core ML model to optimize
     /// loading the model.
     ///

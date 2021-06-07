@@ -412,19 +412,19 @@ pub struct Intents {
 pub enum SupportedMediaCategories {
     /// Audiobooks
     #[serde(rename = "INMediaCategoryAudiobooks")]
-    INMediaCategoryAudiobooks,
+    InMediaCategoryAudiobooks,
     /// Music
     #[serde(rename = "INMediaCategoryMusic")]
-    INMediaCategoryMusic,
+    InMediaCategoryMusic,
     /// General
     #[serde(rename = "INMediaCategoryGeneral")]
-    INMediaCategoryGeneral,
+    InMediaCategoryGeneral,
     /// Podcasts
     #[serde(rename = "INMediaCategoryPodcasts")]
-    INMediaCategoryPodcasts,
+    InMediaCategoryPodcasts,
     /// Radio
     #[serde(rename = "INMediaCategoryRadio")]
-    INMediaCategoryRadio,
+    InMediaCategoryRadio,
 }
 
 /// Maps
@@ -449,29 +449,29 @@ pub struct Maps {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
 pub enum DirectionsApplicationSupportedModes {
     #[serde(rename = "MKDirectionsModePlane")]
-    MKDirectionsModePlane,
+    MkDirectionsModePlane,
     #[serde(rename = "MKDirectionsModeBike")]
-    MKDirectionsModeBike,
+    MkDirectionsModeBike,
     #[serde(rename = "MKDirectionsModeBus")]
-    MKDirectionsModeBus,
+    MkDirectionsModeBus,
     #[serde(rename = "MKDirectionsModeCar")]
-    MKDirectionsModeCar,
+    MkDirectionsModeCar,
     #[serde(rename = "MKDirectionsModeFerry")]
-    MKDirectionsModeFerry,
+    MkDirectionsModeFerry,
     #[serde(rename = "MKDirectionsModePedestrian")]
-    MKDirectionsModePedestrian,
+    MkDirectionsModePedestrian,
     #[serde(rename = "MKDirectionsModeRideShare")]
-    MKDirectionsModeRideShare,
+    MkDirectionsModeRideShare,
     #[serde(rename = "MKDirectionsModeStreetCar")]
-    MKDirectionsModeStreetCar,
+    MkDirectionsModeStreetCar,
     #[serde(rename = "MKDirectionsModeSubway")]
-    MKDirectionsModeSubway,
+    MkDirectionsModeSubway,
     #[serde(rename = "MKDirectionsModeTaxi")]
-    MKDirectionsModeTaxi,
+    MkDirectionsModeTaxi,
     #[serde(rename = "MKDirectionsModeTrain")]
-    MKDirectionsModeTrain,
+    MkDirectionsModeTrain,
     #[serde(rename = "MKDirectionsModeOther")]
-    MKDirectionsModeOther,
+    MkDirectionsModeOther,
 }
 
 /// NFC

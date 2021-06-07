@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: [main]
@@ -7,9 +6,7 @@ on:
     - '.github/workflows/ci.yml'
     - '**.rs'
     - '**.toml'
-
 jobs:
-
   test-and-check:
     name: Check code format
     runs-on: ubuntu-latest
@@ -23,7 +20,7 @@ jobs:
       - name: Check the format
         run: cargo +nightly fmt --all -- --check
       - name: Run clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings -A clippy::unnecessary-unwrap -A clippy::too-many-arguments
+        run: cargo clippy --all-targets --all-features -- -D warnings -A clippy::deprecated_semver
       - name: Check for deadlinks
         run: |
           cargo install cargo-deadlinks
