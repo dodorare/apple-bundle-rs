@@ -5,8 +5,10 @@ use serde::{Deserialize, Serialize};
 pub struct Siri {
     /// A Boolean value that indicates whether the app handles Siri requests.
     ///
-    /// The App Store requires the presence of this entitlement for iOS or watchOS apps containing Intents app extensions that handle any Siri requests other than shortcut requests.
-    /// To add the entitlement to your app, enable the Siri capability in Xcode.
+    /// The App Store requires the presence of this entitlement for iOS or watchOS apps
+    /// containing Intents app extensions that handle any Siri requests other than
+    /// shortcut requests. To add the entitlement to your app, enable the Siri
+    /// capability in Xcode.
     ///
     /// ## Availability
     /// * iOS 10.0+

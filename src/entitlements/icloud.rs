@@ -52,7 +52,8 @@ pub struct ICloud {
     pub icloud_container_identifiers: Option<Vec<String>>,
     /// The iCloud services used by the app.
     ///
-    /// To add this entitlement to your app, enable the iCloud capability and the iCloud Documents or CloudKit service in Xcode.
+    /// To add this entitlement to your app, enable the iCloud capability and the iCloud
+    /// Documents or CloudKit service in Xcode.
     ///
     /// ## Availability
     /// * iOS 3.0+
@@ -70,7 +71,8 @@ pub struct ICloud {
     pub icloud_services: Option<Vec<ICloudServices>>,
     /// The container identifier to use for iCloud key-value storage.
     ///
-    /// To add this entitlement to your app, enable the iCloud capability and “Key-value storage” service in Xcode.
+    /// To add this entitlement to your app, enable the iCloud capability and “Key-value
+    /// storage” service in Xcode.
     ///
     /// ## Availability
     /// * iOS 3.0+

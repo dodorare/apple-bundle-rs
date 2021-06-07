@@ -3,7 +3,8 @@ use serde::{Deserialize, Serialize};
 /// Deprecated Entitlements
 #[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
 pub struct DeprecatedEntitlements {
-    /// A Boolean value that indicates whether the app may provide directions beyond what Maps supports, such as subway routes, hiking trails, and bike paths.
+    /// A Boolean value that indicates whether the app may provide directions beyond what
+    /// Maps supports, such as subway routes, hiking trails, and bike paths.
     ///
     /// To add this entitlement to your app, enable the Maps capability in Xcode.
     ///
@@ -21,11 +22,14 @@ pub struct DeprecatedEntitlements {
         skip_serializing_if = "Option::is_none"
     )]
     pub maps: Option<bool>,
-    /// A Boolean value that indicates whether the app may exchange audio with other Inter-App Audio-enabled apps.
+    /// A Boolean value that indicates whether the app may exchange audio with other
+    /// Inter-App Audio-enabled apps.
     ///
-    /// Enabling Inter-App Audio allows your app to send and receive audio from other Inter-App Audio enabled apps and provides access to Audio Unit extensions.
+    /// Enabling Inter-App Audio allows your app to send and receive audio from other
+    /// Inter-App Audio enabled apps and provides access to Audio Unit extensions.
     ///
-    /// To add this entitlement to your app, enable the Inter-App Audio capability in Xcode.
+    /// To add this entitlement to your app, enable the Inter-App Audio capability in
+    /// Xcode.
     ///
     /// ## Availability
     /// * iOS 2.2–13.0
