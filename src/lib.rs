@@ -145,7 +145,7 @@ mod tests {
         let result = std::fs::read_to_string(&file_path).unwrap();
         assert_eq!(result, PLIST_TEST_EXAMPLE.replace("    ", "\t"));
         // TODO: Fix this. Should be equivalent. See `application_scene_manifest`.
-        let got_props: InfoPlist = plist::from_bytes(&result.as_bytes()).unwrap();
+        let got_props: InfoPlist = plist::from_bytes(result.as_bytes()).unwrap();
         assert_ne!(properties, got_props);
     }
 }
