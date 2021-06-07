@@ -11,8 +11,6 @@
 
 [AppleBundleResources]: https://developer.apple.com/documentation/bundleresources
 
-Install [apple-bundle](https://crates.io/crates/apple-bundle):
-
 ```toml
 # Cargo.toml
 [dependencies]
