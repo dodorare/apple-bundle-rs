@@ -46,6 +46,12 @@ fn serialize_vec_enum_option<S: Serializer, T: Serialize>(
     }
 }
 
+#[cfg(feature = "plist")]
+pub use plist::{
+    from_bytes, from_file, from_reader, from_reader_xml, to_file_binary, to_file_xml,
+    to_writer_binary, to_writer_xml,
+};
+
 #[cfg(test)]
 mod tests {
     use super::prelude::*;
@@ -140,12 +146,12 @@ mod tests {
         let file = std::fs::File::create(file_path).unwrap();
         // Write to Info.plist file
         plist::to_writer_xml(file, &properties).unwrap();
-
+        // Read Info.plist
         let file_path = dir.path().join(PLIST_FILE_NAME);
         let result = std::fs::read_to_string(&file_path).unwrap();
         assert_eq!(result, PLIST_TEST_EXAMPLE.replace("    ", "\t"));
-        // TODO: Fix this. Should be equivalent. See `application_scene_manifest`.
+        // Parse Info.plist
         let got_props: InfoPlist = plist::from_bytes(result.as_bytes()).unwrap();
-        assert_ne!(properties, got_props);
+        assert_eq!(properties, got_props);
     }
 }

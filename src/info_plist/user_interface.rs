@@ -32,7 +32,6 @@ pub struct MainUserInterface {
     /// ## Framework
     /// * UIKit
     #[serde(
-        flatten,
         rename = "UIApplicationSceneManifest",
         skip_serializing_if = "Option::is_none"
     )]
