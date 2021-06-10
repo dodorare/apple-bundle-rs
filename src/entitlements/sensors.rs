@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Sensors
@@ -12,7 +11,7 @@ pub struct Sensors {
     #[serde(
         rename = "com.apple.developer.sensorkit.reader.allow",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub sensorkit_reader_allow: Option<Vec<SensorkitReaderAllow>>,
 }

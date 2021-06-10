@@ -9,7 +9,6 @@ pub struct Hypervisor {
     /// The entitlement is required to use the Hypervisor APIs in any process.
     ///
     /// ### Important
-    ///
     /// If your app has a deployment target of macOS 10.15 or earlier, add the
     /// com.apple.vm.hypervisor entitlement to your app in addition to this entitlement.
     ///
@@ -20,6 +19,7 @@ pub struct Hypervisor {
     /// * Hypervisor
     #[serde(
         rename = "com.apple.security.hypervisor",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_hypervisor: Option<bool>,
@@ -40,6 +40,7 @@ pub struct Hypervisor {
     )]
     #[serde(
         rename = "com.apple.vm.hypervisor",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_hypervisor: Option<bool>,
@@ -55,6 +56,7 @@ pub struct Hypervisor {
     /// * Hypervisor
     #[serde(
         rename = "com.apple.vm.device-access",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_device_access: Option<bool>,
@@ -74,6 +76,7 @@ pub struct Hypervisor {
     /// * Hypervisor
     #[serde(
         rename = "com.apple.vm.networking",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub vm_networking: Option<bool>,
@@ -89,6 +92,7 @@ pub struct Hypervisor {
     /// * Hypervisor
     #[serde(
         rename = "com.apple.security.virtualization",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_virtualization: Option<bool>,

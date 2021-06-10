@@ -10,7 +10,6 @@
 //! * Bundle Resources
 
 use super::DefaultDictionary;
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// Car Play
@@ -23,6 +22,7 @@ pub struct CarPlay {
     /// * CarPlay
     #[serde(
         rename = "CPSupportsDashboardNavigationScene",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_dashboard_navigation_scene: Option<bool>,
@@ -33,6 +33,7 @@ pub struct CarPlay {
     /// * CarPlay
     #[serde(
         rename = "CPTemplateApplicationDashboardSceneSessionRoleApplication",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub template_application_dashboard: Option<Vec<TemplateApplicationDashboard>>,
@@ -43,6 +44,7 @@ pub struct CarPlay {
     /// * CarPlay
     #[serde(
         rename = "CPTemplateApplicationSceneSessionRoleApplication",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub template_application_scene_session_role: Option<Vec<TemplateApplicationSceneSessionRole>>,
@@ -148,7 +150,7 @@ pub struct ExposureNotification {
     #[serde(
         rename = "ENAPIVersion",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub version: Option<Version>,
     /// A string that specifies the region that the app supports.
@@ -167,7 +169,11 @@ pub struct ExposureNotification {
     ///
     /// ## Framework
     /// * Exposure Notification
-    #[serde(rename = "ENDeveloperRegion", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "ENDeveloperRegion",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub developer_region: Option<String>,
 }
 
@@ -230,6 +236,7 @@ pub struct PointerInteractions {
     /// * UIKit
     #[serde(
         rename = "UIApplicationSupportsIndirectInputEvents",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_supports_indirect_input_events: Option<bool>,
@@ -248,6 +255,7 @@ pub struct Games {
     /// * GameKit
     #[serde(
         rename = "GKGameCenterBadgingDisabled",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub game_center_badging_disabled: Option<bool>,
@@ -261,6 +269,7 @@ pub struct Games {
     /// * GameKit
     #[serde(
         rename = "GKShowChallengeBanners",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub show_challenge_banners: Option<bool>,
@@ -276,7 +285,7 @@ pub struct Games {
     #[serde(
         rename = "GCSupportedGameControllers",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub supported_game_controllers: Option<Vec<ProfileName>>,
     /// A Boolean value indicating whether the app supports a game controller.
@@ -293,6 +302,7 @@ pub struct Games {
     /// * Game Controller
     #[serde(
         rename = "GCSupportsControllerUserInteraction",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_controller_user_interaction: Option<bool>,
@@ -306,6 +316,7 @@ pub struct Games {
     /// * Game Controller
     #[serde(
         rename = "GCSupportsMultipleMicroGamepads",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_multiple_micro_gamepads: Option<bool>,
@@ -344,7 +355,11 @@ pub struct Intents {
     ///
     /// ## Framework
     /// * Intents
-    #[serde(rename = "INIntentsSupported", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "INIntentsSupported",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub intents_supported: Option<Vec<String>>,
     /// The names of the intent classes your app can’t handle when the user locks the
     /// device.
@@ -361,6 +376,7 @@ pub struct Intents {
     /// * Intents
     #[serde(
         rename = "INIntentsRestrictedWhileLocked",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub intents_restricted_while_locked: Option<Vec<String>>,
@@ -379,6 +395,7 @@ pub struct Intents {
     /// * Intents
     #[serde(
         rename = "INIntentsRestrictedWhileProtectedDataUnavailable",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub intents_restricted_while_protected_data_unavailable: Option<Vec<String>>,
@@ -402,7 +419,7 @@ pub struct Intents {
     #[serde(
         rename = "INSupportedMediaCategories",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub supported_media_categories: Option<Vec<SupportedMediaCategories>>,
 }
@@ -440,7 +457,7 @@ pub struct Maps {
     #[serde(
         rename = "MKDirectionsApplicationSupportedModes",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub directions_application_supported_modes: Option<Vec<DirectionsApplicationSupportedModes>>,
 }
@@ -489,6 +506,7 @@ pub struct NfcAppServices {
     /// * Core NFC
     #[serde(
         rename = "com.apple.developer.nfc.readersession.felica.systemcodes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_readersession_felica_systemcodes: Option<Vec<String>>,
@@ -501,6 +519,7 @@ pub struct NfcAppServices {
     /// * Core NFC
     #[serde(
         rename = "com.apple.developer.nfc.readersession.iso7816.select-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_readersession_iso7816_select_identifiers: Option<Vec<String>>,
@@ -522,6 +541,7 @@ pub struct Authentication {
     /// * Authentication Services
     #[serde(
         rename = "ASAccountAuthenticationModificationOptOutOfSecurityPromptsOnSignIn",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub account_authentication_modification_opt_out_of_security_prompts_on_sign_in: Option<bool>,
@@ -541,6 +561,7 @@ pub struct Authentication {
     /// * Authentication Services
     #[serde(
         rename = "ASWebAuthenticationSessionWebBrowserSupportCapabilities",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub web_authentication_session_web_browser_support_capabilities:
@@ -562,7 +583,11 @@ pub struct WebAuthenticationSession {
     ///
     /// ## Framework
     /// * Authentication Services
-    #[serde(rename = "IsSupported", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IsSupported",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub is_supported: Option<bool>,
     /// A Boolean that indicates whether the app supports ephemeral browsing when
     /// conducting authentication sessions.
@@ -588,6 +613,7 @@ pub struct WebAuthenticationSession {
     /// * Authentication Services
     #[serde(
         rename = "EphemeralBrowserSessionIsSupported",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub ephemeral_browser_session_is_supported: Option<bool>,
@@ -612,6 +638,7 @@ pub struct ExternalAccessories {
     /// * UIKit
     #[serde(
         rename = "UISupportedExternalAccessoryProtocols",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_external_accessory_protocols: Option<Vec<String>>,
@@ -632,6 +659,7 @@ pub struct ServiceManagement {
     /// * Service Management
     #[serde(
         rename = "SMAuthorizedClients",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub authorized_clients: Option<Vec<String>>,
@@ -647,6 +675,7 @@ pub struct ServiceManagement {
     /// * Service Management
     #[serde(
         rename = "SMPrivilegedExecutables",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub privileged_executables: Option<DefaultDictionary>,
@@ -663,7 +692,11 @@ pub struct InterprocessCommunication {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "XPCService", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "XPCService",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub service: Option<Service>,
 }
 
@@ -672,17 +705,27 @@ pub struct InterprocessCommunication {
 pub struct Service {
     #[serde(
         rename = "EnvironmentVariables",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub environment_variables: Option<DefaultDictionary>,
     #[serde(
         rename = "JoinExistingSession",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub join_existing_session: Option<bool>,
-    #[serde(rename = "RunLoopType", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "RunLoopType",
+        serialize_with = "crate::serialize_enum_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub run_loop_type: Option<RunLoopType>,
-    #[serde(rename = "ServiceType", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "ServiceType",
+        serialize_with = "crate::serialize_enum_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub service_type: Option<ServiceType>,
 }
 
@@ -721,7 +764,11 @@ pub struct Store {
     ///
     /// ## Framework
     /// * StoreKit
-    #[serde(rename = "SKAdNetworkItems", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "SKAdNetworkItems",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub ad_network_items: Option<Vec<AdNetworkItems>>,
 }
 
@@ -742,6 +789,7 @@ pub struct AdNetworkItems {
     /// * StoreKit
     #[serde(
         rename = "SKAdNetworkIdentifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub ad_network_identifier: Option<String>,

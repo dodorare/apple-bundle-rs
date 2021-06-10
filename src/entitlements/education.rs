@@ -1,4 +1,3 @@
-use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Education
@@ -24,7 +23,7 @@ pub struct Education {
     #[serde(
         rename = "com.apple.developer.ClassKit-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub classkit_environment: Option<ClassKitEnvironment>,
     /// A Boolean value that indicates whether an app may create an assessment session.
@@ -57,6 +56,7 @@ pub struct Education {
     /// * Automatic Assessment Configuration
     #[serde(
         rename = "com.apple.developer.automatic-assessment-configuration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub automatic_assessment_configuration: Option<bool>,

@@ -1,4 +1,3 @@
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// iCloud
@@ -16,6 +15,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.icloud-container-development-container-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_development_container_identifiers: Option<Vec<String>>,
@@ -32,7 +32,7 @@ pub struct ICloud {
     #[serde(
         rename = "com.apple.developer.icloud-container-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub icloud_container_environment: Option<ICloudContainerEnvironment>,
     /// The container identifiers for the iCloud production environment.
@@ -47,6 +47,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.icloud-container-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_identifiers: Option<Vec<String>>,
@@ -66,7 +67,7 @@ pub struct ICloud {
     #[serde(
         rename = "com.apple.developer.icloud-services",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub icloud_services: Option<Vec<ICloudServices>>,
     /// The container identifier to use for iCloud key-value storage.
@@ -84,6 +85,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.ubiquity-kvstore-identifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_key_value_store: Option<String>,

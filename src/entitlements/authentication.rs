@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Authentication
@@ -19,6 +18,7 @@ pub struct Authentication {
     /// * Authentication Services
     #[serde(
         rename = "com.apple.developer.authentication-services.autofill-credential-provider",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_fill_credential_provider: Option<bool>,
@@ -38,7 +38,7 @@ pub struct Authentication {
     #[serde(
         rename = "com.apple.developer.applesignin",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub sign_in_with_apple: Option<Vec<SignInWithAppleEntitlement>>,
 }

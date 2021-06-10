@@ -30,6 +30,7 @@ pub struct AppClips {
     /// * App Clip
     #[serde(
         rename = "com.apple.developer.parent-application-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub parent_application_identifiers: Option<Vec<String>>,
@@ -56,6 +57,7 @@ pub struct AppClips {
     /// * App Clip
     #[serde(
         rename = "com.apple.developer.on-demand-install-capable",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub on_demand_install_capable: Option<bool>,

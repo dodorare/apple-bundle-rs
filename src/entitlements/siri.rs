@@ -18,6 +18,7 @@ pub struct Siri {
     /// * Intents
     #[serde(
         rename = "com.apple.developer.siri",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub siri: Option<bool>,

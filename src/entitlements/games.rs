@@ -15,6 +15,7 @@ pub struct Games {
     /// * GameKit
     #[serde(
         rename = "com.apple.developer.game-center",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub game_center: Option<bool>,

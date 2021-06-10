@@ -1,4 +1,3 @@
-use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Security
@@ -16,7 +15,11 @@ pub struct Security {
     ///
     /// ## Framework
     /// * Security
-    #[serde(rename = "AppSandbox", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "AppSandbox",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub app_sandbox: Option<AppSandbox>,
     /// Manage security protections and resource access for your macOS apps.
     ///
@@ -46,7 +49,11 @@ pub struct Security {
     ///
     /// ## Framework
     /// * Security
-    #[serde(rename = "HardenedRuntime", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "HardenedRuntime",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub hardened_runtime: Option<HardenedRuntime>,
     /// A list of identifiers specifying the groups your app belongs to.
     ///
@@ -90,6 +97,7 @@ pub struct Security {
     /// * Foundation
     #[serde(
         rename = "com.apple.security.application-groups",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_groups: Option<Vec<String>>,
@@ -108,6 +116,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "keychain-access-groups",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub keychain_access_groups: Option<Vec<String>>,
@@ -127,7 +136,7 @@ pub struct Security {
     #[serde(
         rename = "com.apple.developer.default-data-protection",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub data_protection: Option<DataProtection>,
     /// The environment for an app that uses the App Attest service to validate itself
@@ -151,7 +160,7 @@ pub struct Security {
     #[serde(
         rename = "com.apple.developer.devicecheck.appattest-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub devicecheck_appattest: Option<DeviceCheckAppAttest>,
     /// A Boolean that indicates whether your app has access to smart card slots and smart
@@ -169,6 +178,7 @@ pub struct Security {
     /// * CryptoTokenKit
     #[serde(
         rename = "com.apple.security.smartcard",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_smartcard: Option<bool>,
@@ -189,6 +199,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.app-sandbox",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_sandbox: Option<bool>,
@@ -218,6 +229,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.network.server",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_network_server: Option<bool>,
@@ -246,6 +258,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.network.client",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub security_network_client: Option<bool>,
@@ -265,6 +278,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.camera",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera: Option<bool>,
@@ -280,6 +294,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.microphone",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub device_microphone: Option<bool>,
@@ -298,6 +313,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.usb",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub device_usb: Option<bool>,
@@ -313,6 +329,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.print",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub print: Option<bool>,
@@ -328,6 +345,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.bluetooth",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth: Option<bool>,
@@ -345,6 +363,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.addressbook",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub address_book: Option<bool>,
@@ -361,6 +380,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.location",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location: Option<bool>,
@@ -377,6 +397,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.calendars",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars: Option<bool>,
@@ -393,6 +414,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.files.user-selected.read-only",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_user_selected_read_only: Option<bool>,
@@ -409,6 +431,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.files.user-selected.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_user_selected_read_write: Option<bool>,
@@ -425,6 +448,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.files.downloads.read-only",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_downloads_read_only: Option<bool>,
@@ -441,6 +465,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.files.downloads.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub files_downloads_read_write: Option<bool>,
@@ -457,6 +482,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.pictures.read-only",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_pictures_read_only: Option<bool>,
@@ -473,6 +499,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.pictures.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_pictures_read_write: Option<bool>,
@@ -489,6 +516,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.music.read-only",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_music_read_only: Option<bool>,
@@ -505,6 +533,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.music.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_music_read_write: Option<bool>,
@@ -521,6 +550,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.movies.read-only",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_movies_read_only: Option<bool>,
@@ -537,6 +567,7 @@ pub struct AppSandbox {
     /// * Security
     #[serde(
         rename = "com.apple.security.assets.movies.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub assets_movies_read_write: Option<bool>,
@@ -550,6 +581,7 @@ pub struct AppSandbox {
     #[deprecated(since = "macOS 10.7–10.11")]
     #[serde(
         rename = "com.apple.security.files.all",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub all_files: Option<bool>,
@@ -590,6 +622,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.allow-jit",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_execution_of_jit_compiled_code: Option<bool>,
@@ -618,6 +651,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.allow-unsigned-executable-memory",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_unsigned_executable_memory: Option<bool>,
@@ -644,6 +678,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.allow-dyld-environment-variables",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allow_dyld_environment_variables: Option<bool>,
@@ -674,6 +709,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.disable-library-validation",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub disable_library_validation: Option<bool>,
@@ -708,6 +744,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.disable-executable-page-protection",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub disable_executable_memory_protection: Option<bool>,
@@ -740,6 +777,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.cs.debugger",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub debugging_tool: Option<bool>,
@@ -756,6 +794,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.audio-input",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub audioinput: Option<bool>,
@@ -772,6 +811,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.device.camera",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera: Option<bool>,
@@ -788,6 +828,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.location",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location: Option<bool>,
@@ -805,6 +846,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.addressbook",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub address_book: Option<bool>,
@@ -821,6 +863,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.calendars",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars: Option<bool>,
@@ -837,6 +880,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.personal-information.photos-library",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub photos_library: Option<bool>,
@@ -856,6 +900,7 @@ pub struct HardenedRuntime {
     /// * Security
     #[serde(
         rename = "com.apple.security.automation.apple-events",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_events: Option<bool>,

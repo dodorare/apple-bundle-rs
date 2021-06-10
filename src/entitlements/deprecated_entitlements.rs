@@ -19,6 +19,7 @@ pub struct DeprecatedEntitlements {
     )]
     #[serde(
         rename = "com.apple.developer.maps",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub maps: Option<bool>,
@@ -40,6 +41,10 @@ pub struct DeprecatedEntitlements {
         since = "iOS 2.2–13.0",
         note = "Inter-App Audio is deprecated in iOS 13 and is unavailable when running iPad apps in macOS."
     )]
-    #[serde(rename = "inter-app-audio", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "inter-app-audio",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub inter_app_audio: Option<bool>,
 }

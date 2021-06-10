@@ -46,9 +46,20 @@ fn serialize_vec_enum_option<S: Serializer, T: Serialize>(
     }
 }
 
+fn serialize_option<S, T>(value: &Option<T>, ser: S) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+    T: Serialize,
+{
+    value
+        .as_ref()
+        .expect(r#"`serialize_option` must be used with `skip_serializing_if = "Option::is_none"`"#)
+        .serialize(ser)
+}
+
 #[cfg(feature = "plist")]
 pub use plist::{
-    from_bytes, from_file, from_reader, from_reader_xml, to_file_binary, to_file_xml,
+    self, from_bytes, from_file, from_reader, from_reader_xml, to_file_binary, to_file_xml,
     to_writer_binary, to_writer_xml,
 };
 
@@ -64,6 +75,8 @@ mod tests {
 <dict>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.business</string>
     <key>CFBundleIdentifier</key>
     <string>com.test.test-id</string>
     <key>CFBundleName</key>
@@ -120,6 +133,7 @@ mod tests {
             },
             categorization: Categorization {
                 bundle_package_type: Some("APPL".to_owned()),
+                application_category_type: Some(AppCategoryType::Business),
                 ..Default::default()
             },
             launch_interface: LaunchInterface {

@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// TV
@@ -26,7 +25,7 @@ pub struct Tv {
     #[serde(
         rename = "com.apple.developer.user-management",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub user_management: Option<Vec<UserManagement>>,
     /// ## Availability
@@ -38,6 +37,7 @@ pub struct Tv {
     /// * Video Subscriber Account
     #[serde(
         rename = "com.apple.developer.video-subscriber-single-sign-on",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub video_subscriber_single_sign_on: Option<bool>,
@@ -50,6 +50,7 @@ pub struct Tv {
     /// * Video Subscriber Account
     #[serde(
         rename = "com.apple.smoot.subscriptionservice",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub smoot_subscriptionservice: Option<bool>,

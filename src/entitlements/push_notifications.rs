@@ -1,4 +1,3 @@
-use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Push Notifications
@@ -31,7 +30,7 @@ pub struct PushNotifications {
     #[serde(
         rename = "aps-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub aps_environment: Option<APSEnvironment>,
     /// The environment for push notifications in macOS apps.
@@ -55,7 +54,7 @@ pub struct PushNotifications {
     #[serde(
         rename = "com.apple.developer.aps-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub aps_environment_macos: Option<APSEnvironment>,
     /// Enable receiving notifications without displaying the notification to the user.
@@ -112,6 +111,7 @@ pub struct PushNotifications {
     /// * User Notifications
     #[serde(
         rename = "com.apple.developer.usernotifications.filtering",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub usernotifications_filtering: Option<bool>,

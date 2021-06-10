@@ -17,6 +17,7 @@ pub struct ExposureNotification {
     /// * Exposure Notification
     #[serde(
         rename = "com.apple.developer.exposure-notification",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub exposure_notification: Option<bool>,

@@ -15,7 +15,11 @@ pub struct System {
     ///
     /// ## Framework
     /// * Bundle resources
-    #[serde(rename = "System Extensions", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "System Extensions",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub system_extension: Option<SystemExtensions>,
     /// A Boolean that indicates whether the app can act as a user’s default mail client.
     ///
@@ -26,6 +30,7 @@ pub struct System {
     /// * Core Services
     #[serde(
         rename = "com.apple.developer.mail-client",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub mail_client: Option<bool>,
@@ -39,6 +44,7 @@ pub struct System {
     /// * Core Services
     #[serde(
         rename = "com.apple.developer.web-browser",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub web_browser: Option<bool>,
@@ -63,6 +69,7 @@ pub struct SystemExtensions {
     /// * System Extensions
     #[serde(
         rename = "com.apple.developer.system-extension.redistributable",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub system_extension_redistributable: Option<bool>,
@@ -83,6 +90,7 @@ pub struct SystemExtensions {
     /// * Endpoint Security
     #[serde(
         rename = "com.apple.developer.endpoint-security.client",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub endpoint_security_client: Option<bool>,
@@ -101,6 +109,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit: Option<bool>,
@@ -114,6 +123,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.family.networking",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_family_networking: Option<bool>,
@@ -130,6 +140,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.family.scsicontroller",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_family_scsi_controller: Option<bool>,
@@ -146,6 +157,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.family.serial",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_family_serial: Option<bool>,
@@ -180,6 +192,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.transport.pci",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_transport_pci: Option<Vec<DriverkitTransportPci>>,
@@ -196,6 +209,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.transport.usb",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_transport_usb: Option<Vec<DriverkitTransportUsb>>,
@@ -214,6 +228,7 @@ pub struct SystemExtensions {
     /// * DriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.userclient-access",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_userclient_access: Option<Vec<String>>,
@@ -227,6 +242,7 @@ pub struct SystemExtensions {
     /// * HIDDriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.family.hid.device",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_family_hid_device: Option<bool>,
@@ -240,6 +256,7 @@ pub struct SystemExtensions {
     /// * HIDDriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.family.hid.eventservice",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_family_hid_eventservice: Option<bool>,
@@ -256,6 +273,7 @@ pub struct SystemExtensions {
     /// * HIDDriverKit
     #[serde(
         rename = "com.apple.developer.driverkit.transport.hid",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub driverkit_transport_hid: Option<bool>,
@@ -268,6 +286,7 @@ pub struct SystemExtensions {
     /// * HIDDriverKit
     #[serde(
         rename = "com.apple.developer.hid.virtual.device",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub hid_virtual_device: Option<bool>,
@@ -287,7 +306,11 @@ pub struct DriverkitTransportPci {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "IOPCIMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOPCIMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub pci_match: Option<String>,
     /// A key to match PCI devices by vendor and device ID registers.
     ///
@@ -298,7 +321,11 @@ pub struct DriverkitTransportPci {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "IOPCIPrimaryMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOPCIPrimaryMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub primary_match: Option<String>,
     /// A key to match PCI devices by subsystem vendor ID and device ID registers.
     ///
@@ -311,6 +338,7 @@ pub struct DriverkitTransportPci {
     /// * DriverKit
     #[serde(
         rename = "IOPCISecondaryMatch",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub secondary_match: Option<String>,
@@ -324,7 +352,11 @@ pub struct DriverkitTransportPci {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "IOPCIClassMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOPCIClassMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub class_match: Option<String>,
 }
 
@@ -337,6 +369,7 @@ pub struct DriverkitTransportUsb {
     /// * DriverKit
     #[serde(
         rename = "bConfigurationValue",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub configuration_value: Option<String>,
@@ -345,83 +378,131 @@ pub struct DriverkitTransportUsb {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bDeviceClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bDeviceClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub device_class: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bDeviceProtocol", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bDeviceProtocol",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub device_protocol: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bDeviceSubClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bDeviceSubClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub device_sub_class: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bInterfaceClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bInterfaceClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub interface_class: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bInterfaceNumber", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bInterfaceNumber",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub interface_number: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bInterfaceProtocol", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bInterfaceProtocol",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub interface_protocol: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bInterfaceSubClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bInterfaceSubClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub interface_sub_class: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "bcdDevice", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "bcdDevice",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub device: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "idProduct", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "idProduct",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub product: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "idProductArray", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "idProductArray",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub product_array: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "idProductMask", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "idProductMask",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub product_mask: Option<String>,
     /// ## Availability
     /// * macOS 10.15+
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "idVendor", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "idVendor",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub vendor: Option<i32>,
 }

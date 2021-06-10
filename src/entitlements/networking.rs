@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Networking
@@ -29,7 +28,7 @@ pub struct Networking {
     #[serde(
         rename = "com.apple.developer.networking.networkextension",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub network_extensions: Option<Vec<NetworkExtensions>>,
     /// The API an app can use to create and control a custom system VPN configuration.
@@ -49,7 +48,7 @@ pub struct Networking {
     #[serde(
         rename = "com.apple.developer.networking.vpn.api",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub personal_vpn: Option<Vec<PersonalVPN>>,
     /// The associated domains for specific services, such as shared web credentials,
@@ -123,6 +122,7 @@ pub struct Networking {
     /// * Security
     #[serde(
         rename = "com.apple.developer.associated-domains",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains: Option<Vec<String>>,
@@ -145,6 +145,7 @@ pub struct Networking {
     /// * Network
     #[serde(
         rename = "com.apple.developer.networking.multicast",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub networking_multicast: Option<bool>,
@@ -155,6 +156,7 @@ pub struct Networking {
     /// * Security
     #[serde(
         rename = "com.apple.developer.associated-domains.applinks.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains_applinks_read_write: Option<bool>,

@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Wireless Interfaces
@@ -20,6 +19,7 @@ pub struct WirelessInterfaces {
     /// * System Configuration
     #[serde(
         rename = "com.apple.developer.networking.wifi-info",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub access_wifi_information: Option<bool>,
@@ -39,6 +39,7 @@ pub struct WirelessInterfaces {
     /// * External Accessory
     #[serde(
         rename = "com.apple.external-accessory.wireless-configuration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub wireless_accessory_configuration: Option<bool>,
@@ -57,6 +58,7 @@ pub struct WirelessInterfaces {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.networking.multipath",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub multipath: Option<bool>,
@@ -76,6 +78,7 @@ pub struct WirelessInterfaces {
     /// * Network Extension
     #[serde(
         rename = "com.apple.developer.networking.HotspotConfiguration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub hotspot_configuration: Option<bool>,
@@ -92,7 +95,7 @@ pub struct WirelessInterfaces {
     #[serde(
         rename = "com.apple.developer.nfc.readersession.formats",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub near_field_communication_tag_reader_session_formats:
         Option<Vec<NearFieldCommunicationTagReaderSessionFormats>>,
