@@ -1,6 +1,6 @@
 [package]
 name = "apple-bundle"
-version = "0.0.5"
+version = "0.1.0"
 authors = ["DodoRare Team <dodonotrare@gmail.com>"]
 description = "Apple BundleResources serializer and deserializer for Rust"
 repository = "https://github.com/dodorare/apple-bundle-rs"
