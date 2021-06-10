@@ -84,6 +84,7 @@ pub struct Identification {
     /// * WatchKit
     #[serde(
         rename = "WKAppBundleIdentifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_bundle_identifier: Option<String>,
@@ -100,6 +101,7 @@ pub struct Identification {
     /// * WatchKit
     #[serde(
         rename = "WKCompanionAppBundleIdentifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub companion_app_bundle_identifier: Option<String>,
@@ -142,6 +144,7 @@ pub struct Naming {
     /// Core Foundation
     #[serde(
         rename = "CFBundleDisplayName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_display_name: Option<String>,
@@ -251,6 +254,7 @@ pub struct BundleVersion {
     /// * Foundation
     #[serde(
         rename = "NSHumanReadableCopyright",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub human_readable_copyright: Option<String>,
@@ -271,6 +275,7 @@ pub struct OperatingSystemVersion {
     /// * Core Services
     #[serde(
         rename = "LSMinimumSystemVersion",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_system_version: Option<String>,
@@ -284,6 +289,7 @@ pub struct OperatingSystemVersion {
     /// * Core Services
     #[serde(
         rename = "LSMinimumSystemVersionByArchitecture",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub minimum_system_version_by_architecture: Option<MinimumSystemVersionByArchitecture>,
@@ -299,7 +305,11 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "MinimumOSVersion", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "MinimumOSVersion",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub minimum_os_version: Option<String>,
     /// A Boolean value indicating whether the app must run in iOS.
     ///
@@ -308,7 +318,11 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "LSRequiresIPhoneOS", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSRequiresIPhoneOS",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub requires_iphone_os: Option<bool>,
     /// A Boolean value that indicates whether the bundle is a watchOS app.
     ///
@@ -320,7 +334,11 @@ pub struct OperatingSystemVersion {
     ///
     /// ## Framework
     /// * WatchKit
-    #[serde(rename = "WKWatchKitApp", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "WKWatchKitApp",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub watch_kit_app: Option<bool>,
 }
 
@@ -385,6 +403,7 @@ pub struct Localization {
     /// Core Foundation
     #[serde(
         rename = "CFBundleAllowMixedLocalizations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_allow_mixed_localizations: Option<bool>,
@@ -407,6 +426,7 @@ pub struct Localization {
     /// * AppKit
     #[serde(
         rename = "TICapsLockLanguageSwitchCapable",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub caps_lock_language_switch_capable: Option<bool>,
@@ -422,7 +442,11 @@ pub struct Help {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFAppleHelpAnchor", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFAppleHelpAnchor",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub apple_help_anchor: Option<String>,
     /// The name of the help file that will be opened in Help Viewer.
     ///
@@ -433,6 +457,7 @@ pub struct Help {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleHelpBookName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_help_book_name: Option<String>,
@@ -445,6 +470,7 @@ pub struct Help {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleHelpBookFolder",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_help_book_folder: Option<String>,

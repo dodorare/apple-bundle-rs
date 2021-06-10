@@ -24,6 +24,7 @@ pub struct Documents {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleDocumentTypes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_document_types: Option<Vec<BundleDocumentTypes>>,
@@ -36,6 +37,7 @@ pub struct Documents {
     /// * Core Services
     #[serde(
         rename = "UISupportsDocumentBrowser",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_document_browser: Option<bool>,
@@ -49,6 +51,7 @@ pub struct Documents {
     /// * Core Services
     #[serde(
         rename = "LSSupportsOpeningDocumentsInPlace",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_opening_documents_in_place: Option<bool>,
@@ -78,6 +81,7 @@ pub struct Documents {
     /// * AppKit
     #[serde(
         rename = "NSDownloadsUbiquitousContents",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
@@ -108,7 +112,11 @@ pub struct UrlSchemes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleURLTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleURLTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_url_types: Option<Vec<BundleUrlTypes>>,
 }
 
@@ -127,6 +135,7 @@ pub struct BundleDocumentTypes {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleTypeIconFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_type_icon_file: Option<String>,
@@ -185,7 +194,11 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "LSItemContentTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSItemContentTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub item_content_types: Option<Vec<String>>,
     /// A Boolean value indicating whether the document is distributed as a bundle.
     ///
@@ -197,7 +210,11 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "LSTypeIsPackage", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSTypeIsPackage",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_is_package: Option<bool>,
     /// The subclass used to create instances of this document.
     ///
@@ -209,7 +226,11 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "NSDocumentClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSDocumentClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub document_class: Option<String>,
     /// The file types that this document can be exported to.
     ///
@@ -221,7 +242,11 @@ pub struct BundleDocumentTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "NSExportableTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSExportableTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub exportable_types: Option<Vec<String>>,
 }
 
@@ -266,7 +291,11 @@ pub struct BundleUrlTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleTypeRole", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleTypeRole",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_type_role: Option<BundleTypeRole>,
     /// The name of the icon image file, without the extension, to be used for this type.
     ///
@@ -280,6 +309,7 @@ pub struct BundleUrlTypes {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleURLIconFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_url_icon_file: Option<String>,
@@ -305,7 +335,11 @@ pub struct BundleUrlTypes {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleURLSchemes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleURLSchemes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_url_schemes: Option<Vec<String>>,
 }
 
@@ -322,6 +356,7 @@ pub struct UniversalTypeIdentifiers {
     /// * Core Services
     #[serde(
         rename = "UTExportedTypeDeclarations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub exported_type_declarations: Option<Vec<ExportedTypeDeclarations>>,
@@ -335,6 +370,7 @@ pub struct UniversalTypeIdentifiers {
     /// * Core Services
     #[serde(
         rename = "UTImportedTypeDeclarations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub imported_type_declarations: Option<Vec<ImportedTypeDeclarations>>,
@@ -361,7 +397,11 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeDescription", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeDescription",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
     ///
@@ -371,7 +411,11 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeIconFile", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeIconFile",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
     ///
@@ -381,7 +425,11 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeIconFiles", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeIconFiles",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
     ///
@@ -401,7 +449,11 @@ pub struct ExportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeReferenceURL", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeReferenceURL",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
     ///
@@ -436,7 +488,11 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeDescription", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeDescription",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_description: Option<String>,
     /// The bundle icon resource to associate with this type.
     ///
@@ -446,7 +502,11 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeIconFile", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeIconFile",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_icon_file: Option<String>,
     /// One or more bundle icon resources to associate with this type.
     ///
@@ -456,7 +516,11 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeIconFiles", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeIconFiles",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_icon_files: Option<Vec<String>>,
     /// The Uniform Type Identifier to assign to this type.
     ///
@@ -476,7 +540,11 @@ pub struct ImportedTypeDeclarations {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "UTTypeReferenceURL", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UTTypeReferenceURL",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub type_reference_url: Option<String>,
     /// A dictionary defining one or more equivalent type identifiers.
     ///
@@ -520,6 +588,7 @@ pub struct Network {
     /// * UIKit
     #[serde(
         rename = "NSAdvertisingAttributionReportEndpoint",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub advertising_attribution_report_endpoint: Option<String>,
@@ -583,6 +652,7 @@ pub struct Network {
     /// * Security
     #[serde(
         rename = "NSAppTransportSecurity",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_transport_security: Option<AppTransportSecurity>,
@@ -601,7 +671,11 @@ pub struct Network {
     ///
     /// ## Framework
     /// * Network
-    #[serde(rename = "NSBonjourServices", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSBonjourServices",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bonjour_services: Option<Vec<String>>,
     /// A Boolean value that indicates your app supports CloudKit Sharing.
     ///
@@ -630,7 +704,11 @@ pub struct Network {
     ///
     /// ## Framework
     /// * CloudKit
-    #[serde(rename = "CKSharingSupported", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CKSharingSupported",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub sharing_supported: Option<bool>,
 }
 
@@ -678,6 +756,7 @@ pub struct AppTransportSecurity {
     /// * Security
     #[serde(
         rename = "NSAllowsArbitraryLoads",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads: Option<bool>,
@@ -710,6 +789,7 @@ pub struct AppTransportSecurity {
     /// * Security
     #[serde(
         rename = "NSAllowsArbitraryLoadsForMedia",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads_for_media: Option<bool>,
@@ -744,6 +824,7 @@ pub struct AppTransportSecurity {
     /// * Security
     #[serde(
         rename = "NSAllowsArbitraryLoadsInWebContent",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_arbitrary_loads_in_web_content: Option<bool>,
@@ -782,6 +863,7 @@ pub struct AppTransportSecurity {
     /// * Security
     #[serde(
         rename = "NSAllowsLocalNetworking",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_local_networking: Option<bool>,
@@ -829,7 +911,11 @@ pub struct AppTransportSecurity {
     ///
     /// ## Framework
     /// * Security
-    #[serde(rename = "NSExceptionDomains", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSExceptionDomains",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub exception_domains: Option<ExceptionDomains>,
     /// A collection of certificates that App Transport Security expects when connecting
     /// to named domains.
@@ -871,7 +957,11 @@ pub struct AppTransportSecurity {
     ///
     /// ## Framework
     /// * Security
-    #[serde(rename = "NSPinnedDomains", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSPinnedDomains",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub pinned_domains: Option<PinnedDomains>,
 }
 
@@ -904,6 +994,7 @@ pub struct ExceptionDomains {
     /// * Security
     #[serde(
         rename = "NSIncludesSubdomains",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub includes_subdomains: Option<bool>,
@@ -936,6 +1027,7 @@ pub struct ExceptionDomains {
     /// * Security
     #[serde(
         rename = "NSExceptionAllowsInsecureHTTPLoads",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub exception_allows_insecure_http_loads: Option<bool>,
@@ -981,6 +1073,7 @@ pub struct ExceptionDomains {
     /// * Security
     #[serde(
         rename = "NSExceptionRequiresForwardSecrecy",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub exception_requires_forward_secrecy: Option<bool>,
@@ -1007,6 +1100,7 @@ pub struct ExceptionDomains {
     /// * Security
     #[serde(
         rename = "NSRequiresCertificateTransparency",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_certificate_transparency: Option<bool>,
@@ -1059,6 +1153,7 @@ pub struct PinnedDomains {
     /// * Security
     #[serde(
         rename = "NSIncludesSubdomains",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub includes_subdomains: Option<bool>,
@@ -1094,6 +1189,7 @@ pub struct PinnedDomains {
     /// * Security
     #[serde(
         rename = "NSPinnedCAIdentities",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub pinned_ca_identities: Option<Vec<Spkisha256Base64>>,
@@ -1123,7 +1219,11 @@ pub struct Spkisha256Base64 {
     ///
     /// ## Framework
     /// * Security
-    #[serde(rename = "SPKI-SHA256-BASE64", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "SPKI-SHA256-BASE64",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub spki_sha256_base64: Option<String>,
 }
 
@@ -1137,7 +1237,11 @@ pub struct Storage {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "APFiles", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "APFiles",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub files: Option<Files>,
     /// The base path to the files or directories the app installs.
     ///
@@ -1146,7 +1250,11 @@ pub struct Storage {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "APInstallerURL", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "APInstallerURL",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub installer_url: Option<String>,
     /// A Boolean value indicating whether the app continues working if the system purges
     /// the local storage.
@@ -1158,6 +1266,7 @@ pub struct Storage {
     /// * Foundation
     #[serde(
         rename = "NSSupportsPurgeableLocalStorage",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_purgeable_local_storage: Option<bool>,
@@ -1171,6 +1280,7 @@ pub struct Storage {
     /// * Core Services
     #[serde(
         rename = "LSFileQuarantineEnabled",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_quarantine_enabled: Option<bool>,
@@ -1185,6 +1295,7 @@ pub struct Storage {
     /// * UIKit
     #[serde(
         rename = "UIFileSharingEnabled",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_sharing_enabled: Option<bool>,
@@ -1198,6 +1309,7 @@ pub struct Storage {
     /// * Core Foundation
     #[serde(
         rename = "CSResourcesFileMapped",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub resources_file_mapped: Option<bool>,
@@ -1215,6 +1327,7 @@ pub struct Storage {
     /// * AppKit
     #[serde(
         rename = "NSDownloadsUbiquitousContents",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
@@ -1233,6 +1346,7 @@ pub struct Files {
     /// * AppKit
     #[serde(
         rename = "APDisplayedAsContainer",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub displayed_as_container: Option<bool>,
@@ -1312,6 +1426,7 @@ pub struct CoreMlModels {
     /// * Core Services
     #[serde(
         rename = "LSBundleContainsCoreMLmlmodelc",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_contains_core_ml_mlmodelc: Option<bool>,
@@ -1327,6 +1442,10 @@ pub struct Java {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "NSJavaRoot", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSJavaRoot",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub java_root: Option<String>,
 }

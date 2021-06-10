@@ -122,6 +122,7 @@ pub struct Networking {
     /// * Security
     #[serde(
         rename = "com.apple.developer.associated-domains",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains: Option<Vec<String>>,
@@ -144,6 +145,7 @@ pub struct Networking {
     /// * Network
     #[serde(
         rename = "com.apple.developer.networking.multicast",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub networking_multicast: Option<bool>,
@@ -154,6 +156,7 @@ pub struct Networking {
     /// * Security
     #[serde(
         rename = "com.apple.developer.associated-domains.applinks.read-write",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub associated_domains_applinks_read_write: Option<bool>,

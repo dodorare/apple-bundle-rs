@@ -15,6 +15,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.icloud-container-development-container-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_development_container_identifiers: Option<Vec<String>>,
@@ -46,6 +47,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.icloud-container-identifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_container_identifiers: Option<Vec<String>>,
@@ -83,6 +85,7 @@ pub struct ICloud {
     /// * Foundation
     #[serde(
         rename = "com.apple.developer.ubiquity-kvstore-identifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icloud_key_value_store: Option<String>,

@@ -32,7 +32,11 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "NSPrincipalClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSPrincipalClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub principal_class: Option<String>,
     /// The name of the class that implements the complication data source protocol.
     ///
@@ -47,6 +51,7 @@ pub struct Launch {
     /// * WatchKit
     #[serde(
         rename = "CLKComplicationPrincipalClass",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub complication_principal_class: Option<Vec<String>>,
@@ -81,7 +86,11 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "LSEnvironment", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSEnvironment",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub environment: Option<DefaultDictionary>,
     /// Application shortcut items.
     ///
@@ -92,6 +101,7 @@ pub struct Launch {
     /// * UIKit
     #[serde(
         rename = "UIApplicationShortcutItems",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_shortcut_items: Option<Vec<ApplicationShortcutItem>>,
@@ -102,21 +112,25 @@ pub struct Launch {
 pub struct ApplicationShortcutItem {
     #[serde(
         rename = "UIApplicationShortcutItemIconFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icon_file: Option<String>,
     #[serde(
         rename = "UIApplicationShortcutItemIconSymbolName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub symbol_name: Option<String>,
     #[serde(
         rename = "UIApplicationShortcutItemIconType",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub icon_type: Option<String>,
     #[serde(
         rename = "UIApplicationShortcutItemSubtitle",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub subtitle: Option<String>,
@@ -126,6 +140,7 @@ pub struct ApplicationShortcutItem {
     pub item_type: String,
     #[serde(
         rename = "UIApplicationShortcutItemUserInfo",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub user_info: Option<BTreeMap<String, String>>,
@@ -180,6 +195,7 @@ pub struct LaunchConditions {
     /// * Core Services
     #[serde(
         rename = "LSMultipleInstancesProhibited",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub multiple_instances_prohibited: Option<bool>,
@@ -220,6 +236,7 @@ pub struct LaunchConditions {
     /// * Core Services
     #[serde(
         rename = "LSRequiresNativeExecution",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_native_execution: Option<bool>,
@@ -239,6 +256,7 @@ pub struct LaunchConditions {
     /// * WatchKit
     #[serde(
         rename = "WKRunsIndependentlyOfCompanionApp",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub runs_independently_of_companion_app: Option<bool>,
@@ -254,7 +272,11 @@ pub struct LaunchConditions {
     ///
     /// ## Framework
     /// * WatchKit
-    #[serde(rename = "WKWatchOnly", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "WKWatchOnly",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub watch_only: Option<bool>,
     /// A Boolean value that indicates whether a watchOS app should opt out of
     /// automatically launching when its companion iOS app starts playing audio
@@ -270,6 +292,7 @@ pub struct LaunchConditions {
     /// * WatchKit
     #[serde(
         rename = "PUICAutoLaunchAudioOptOut",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_launch_audio_opt_out: Option<bool>,
@@ -300,7 +323,11 @@ pub struct ExtensionsAndServices {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "NSExtension", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSExtension",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub extension: Option<Extension>,
     /// The services provided by an app.
     ///
@@ -309,7 +336,11 @@ pub struct ExtensionsAndServices {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSServices", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSServices",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub services: Option<Vec<Service>>,
     /// The name of your watchOS app’s extension delegate.
     ///
@@ -325,6 +356,7 @@ pub struct ExtensionsAndServices {
     /// * WatchKit
     #[serde(
         rename = "WKExtensionDelegateClassName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_delegate_class_name: Option<String>,
@@ -340,6 +372,7 @@ pub struct ExtensionsAndServices {
     /// * UIKit
     #[serde(
         rename = "UIApplicationShortcutWidget",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_shortcut_widget: Option<String>,
@@ -355,7 +388,11 @@ pub struct AppClips {
     ///
     /// ## Framework
     /// * App Clip
-    #[serde(rename = "NSAppClip", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSAppClip",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub app_clip: Option<AppClip>,
 }
 
@@ -397,6 +434,7 @@ pub struct BackgroundExecution {
     /// * UIKit
     #[serde(
         rename(serialize = "UIDeviceFamily"),
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub ui_device_family: Option<Vec<u8>>,
@@ -431,6 +469,7 @@ pub struct BackgroundExecution {
     /// * Background Tasks
     #[serde(
         rename = "BGTaskSchedulerPermittedIdentifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub task_scheduler_permitted_identifiers: Option<Vec<String>>,
@@ -441,7 +480,11 @@ pub struct BackgroundExecution {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "LSBackgroundOnly", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSBackgroundOnly",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub background_only: Option<bool>,
 }
 
@@ -456,6 +499,7 @@ pub struct EndpointSecurity {
     /// * Endpoint Security
     #[serde(
         rename = "NSEndpointSecurityEarlyBoot",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub endpoint_security_early_boot: Option<bool>,
@@ -467,6 +511,7 @@ pub struct EndpointSecurity {
     /// * Endpoint Security
     #[serde(
         rename = "NSEndpointSecurityRebootRequired",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub endpoint_security_reboot_required: Option<bool>,
@@ -482,7 +527,11 @@ pub struct PluginSupport {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSDockTilePlugIn", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSDockTilePlugIn",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub dock_tile_plugin: Option<String>,
 }
 
@@ -498,6 +547,7 @@ pub struct PluginConfiguration {
     /// * Core Foundation
     #[serde(
         rename = "CFPlugInDynamicRegisterFunction",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_dynamic_register_function: Option<String>,
@@ -510,6 +560,7 @@ pub struct PluginConfiguration {
     /// * Core Foundation
     #[serde(
         rename = "CFPlugInDynamicRegistration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_dynamic_registration: Option<bool>,
@@ -520,7 +571,11 @@ pub struct PluginConfiguration {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFPlugInFactories", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFPlugInFactories",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub plugin_factories: Option<BTreeMap<String, String>>,
     /// One or more groups of interfaces supported by the plugin for static registration.
     ///
@@ -529,7 +584,11 @@ pub struct PluginConfiguration {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFPlugInTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFPlugInTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub plugin_types: Option<BTreeMap<String, String>>,
     /// The name of the function to call to unload the plugin code from memory.
     ///
@@ -540,6 +599,7 @@ pub struct PluginConfiguration {
     /// * Core Foundation
     #[serde(
         rename = "CFPlugInUnloadFunction",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub plugin_unload_function: Option<String>,
@@ -555,7 +615,11 @@ pub struct Termination {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "LSGetAppDiedEvents", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSGetAppDiedEvents",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub get_app_died_events: Option<bool>,
     /// A Boolean value indicating whether the system may terminate the app to log out or
     /// shut down more quickly.
@@ -567,6 +631,7 @@ pub struct Termination {
     /// * AppKit
     #[serde(
         rename = "NSSupportsSuddenTermination",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_sudden_termination: Option<bool>,
@@ -587,6 +652,7 @@ pub struct Termination {
     )]
     #[serde(
         rename = "UIApplicationExitsOnSuspend",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_exits_on_suspend: Option<bool>,
@@ -654,6 +720,7 @@ pub struct AppClip {
     /// * App Clip
     #[serde(
         rename = "NSAppClipRequestEphemeralUserNotification",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub request_ephemeral_user_notification: Option<bool>,
@@ -670,6 +737,7 @@ pub struct AppClip {
     /// * App Clip
     #[serde(
         rename = "NSAppClipRequestLocationConfirmation",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub request_location_confirmation: Option<bool>,
@@ -685,7 +753,11 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "IntentsSupported", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IntentsSupported",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub intents_supported: Option<Vec<String>>,
     /// A dictionary that specifies the minimum size of the floating window in which Final
     /// Cut Pro hosts the extension view.
@@ -697,6 +769,7 @@ pub struct Extension {
     /// * ProExtension
     #[serde(
         rename = "ProExtensionAttributes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_attributes: Option<BTreeMap<String, String>>,
@@ -714,6 +787,7 @@ pub struct Extension {
     /// * ProExtension
     #[serde(
         rename = "ProExtensionPrincipalClass",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_principal_class: Option<String>,
@@ -733,6 +807,7 @@ pub struct Extension {
     /// * ProExtension
     #[serde(
         rename = "ProExtensionPrincipalViewControllerClass",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub pro_extension_principal_view_controller_class: Option<String>,
@@ -752,7 +827,11 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * ProExtension
-    #[serde(rename = "ProExtensionUUID", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "ProExtensionUUID",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub pro_extension_uuid: Option<String>,
     /// Account Authentication Modification. The rules the system satisfies when
     /// generating a strong password for your extension during an automatic upgrade.
@@ -764,6 +843,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "ASAccountAuthenticationModificationPasswordGenerationRequirements",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub password_generation_requirements: Option<String>,
@@ -777,6 +857,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "ASAccountAuthenticationModificationSupportsStrongPasswordUpgrade",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_strong_password_upgrade: Option<bool>,
@@ -791,6 +872,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "ASAccountAuthenticationModificationSupportsUpgradeToSignInWithApple",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_upgrade_to_sign_in_with_apple: Option<bool>,
@@ -804,6 +886,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActionWantsFullScreenPresentation",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_action_wants_full_screen_presentation: Option<bool>,
@@ -817,6 +900,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "NSExtensionAttributes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_attributes: Option<ExtensionAttributes>,
@@ -835,6 +919,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "NSExtensionMainStoryboard",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_main_storyboard: Option<String>,
@@ -848,6 +933,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "NSExtensionOverridesHostUIAppearance",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_overrides_host_ui_appearance: Option<bool>,
@@ -880,6 +966,7 @@ pub struct Extension {
     /// * Foundation
     #[serde(
         rename = "NSExtensionPrincipalClass",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub extension_principal_class: Option<String>,
@@ -892,6 +979,7 @@ pub struct Extension {
     /// * Safari Services
     #[serde(
         rename = "SFSafariContentScript",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_content_script: Option<Vec<SafariContentScript>>,
@@ -904,6 +992,7 @@ pub struct Extension {
     /// * Safari Services
     #[serde(
         rename = "SFSafariContextMenu",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_context_menu: Option<Vec<SafariContextMenu>>,
@@ -914,7 +1003,11 @@ pub struct Extension {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "SFSafariStyleSheet", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "SFSafariStyleSheet",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub safari_style_sheet: Option<Vec<SafariStyleSheet>>,
     /// The items to add to the toolbar for a Safari extension.
     ///
@@ -925,6 +1018,7 @@ pub struct Extension {
     /// * Safari Services
     #[serde(
         rename = "SFSafariToolbarItem",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_toolbar_item: Option<SafariToolbarItem>,
@@ -937,6 +1031,7 @@ pub struct Extension {
     /// * Safari Services
     #[serde(
         rename = "SFSafariWebsiteAccess",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub safari_website_access: Option<SafariWebsiteAccess>,
@@ -952,7 +1047,11 @@ pub struct SafariWebsiteAccess {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Allowed Domains", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Allowed Domains",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub allowed_domains: Option<Vec<String>>,
     /// The level of a Safari extension’s website access.
     ///
@@ -961,7 +1060,11 @@ pub struct SafariWebsiteAccess {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Level", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Level",
+        serialize_with = "crate::serialize_enum_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub level: Option<SafariWebsiteAccessLevel>,
 }
 
@@ -987,7 +1090,11 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Action", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Action",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub action: Option<String>,
     /// The identifier for a Safari extension's toolbar item.
     ///
@@ -996,7 +1103,11 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Identifier", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Identifier",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub identifier: Option<String>,
     /// An image that represents a Safari extension's toolbar item.
     ///
@@ -1005,7 +1116,11 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Image", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Image",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub image: Option<String>,
     /// The label for the Safari extension's toolbar item.
     ///
@@ -1014,7 +1129,11 @@ pub struct SafariToolbarItem {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Label", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Label",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub label: Option<String>,
 }
 
@@ -1030,6 +1149,7 @@ pub struct SafariStyleSheet {
     /// * Safari Services
     #[serde(
         rename = "Allowed URL Patterns",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allowed_url_patterns: Option<Vec<String>>,
@@ -1042,6 +1162,7 @@ pub struct SafariStyleSheet {
     /// * Safari Services
     #[serde(
         rename = "Excluded URL Patterns",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub excluded_url_patterns: Option<Vec<String>>,
@@ -1053,7 +1174,11 @@ pub struct SafariStyleSheet {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Style Sheet", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Style Sheet",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub style_sheet: Option<String>,
 }
 
@@ -1068,7 +1193,11 @@ pub struct SafariContextMenu {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Command", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Command",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub command: Option<String>,
     /// The text to display for the context menu item.
     ///
@@ -1077,7 +1206,11 @@ pub struct SafariContextMenu {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Text", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Text",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub text: Option<String>,
 }
 
@@ -1093,6 +1226,7 @@ pub struct SafariContentScript {
     /// * Safari Services
     #[serde(
         rename = "Allowed URL Patterns",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allowed_url_patterns: Option<Vec<String>>,
@@ -1105,6 +1239,7 @@ pub struct SafariContentScript {
     /// * Safari Services
     #[serde(
         rename = "Excluded URL Patterns",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub excluded_url_patterns: Option<Vec<String>>,
@@ -1116,7 +1251,11 @@ pub struct SafariContentScript {
     ///
     /// ## Framework
     /// * Safari Services
-    #[serde(rename = "Script", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "Script",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub script: Option<String>,
 }
 
@@ -1206,6 +1345,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceAllowsFinderPreviewItem",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_finder_preview_item: Option<bool>,
@@ -1219,6 +1359,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceAllowsToolbarItem",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_toolbar_item: Option<bool>,
@@ -1232,6 +1373,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceAllowsTouchBarItem",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub allows_touch_bar_item: Option<bool>,
@@ -1255,6 +1397,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceFinderPreviewIconName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub finder_preview_icon_name: Option<String>,
@@ -1274,6 +1417,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceFinderPreviewLabel",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub finder_preview_label: Option<String>,
@@ -1299,6 +1443,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceToolbarIconFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub toolbar_icon_file: Option<String>,
@@ -1311,6 +1456,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceToolbarPaletteLabel",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub toolbar_palette_label: Option<String>,
@@ -1330,6 +1476,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceTouchBarBezelColorName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_bezel_color_name: Option<String>,
@@ -1352,6 +1499,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceTouchBarIconName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_icon_name: Option<String>,
@@ -1369,6 +1517,7 @@ pub struct ExtensionAttributes {
     /// * AppKit
     #[serde(
         rename = "NSExtensionServiceTouchBarLabel",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub touch_bar_label: Option<String>,
@@ -1382,6 +1531,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActionWantsFullScreenPresentation",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub action_wants_full_screen_presentation: Option<bool>,
@@ -1397,6 +1547,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionMainStoryboard",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard: Option<String>,
@@ -1410,6 +1561,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionOverridesHostUIAppearance",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub overrides_host_ui_appearance: Option<bool>,
@@ -1439,6 +1591,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionPrincipalClass",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub principal_class: Option<String>,
@@ -1452,6 +1605,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationRule",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub activation_rule: Option<ActivationRule>,
@@ -1465,6 +1619,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "NSExtensionJavaScriptPreprocessingFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub java_script_preprocessing_file: Option<String>,
@@ -1475,7 +1630,11 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "IntentsSupported", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IntentsSupported",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub intents_supported: Option<Vec<String>>,
     /// Types of media supported by an app extension’s media-playing intents.
     ///
@@ -1495,6 +1654,7 @@ pub struct ExtensionAttributes {
     /// * Foundation
     #[serde(
         rename = "SupportedMediaCategories",
+        serialize_with = "crate::serialize_vec_enum_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_media_categories: Option<Vec<MediaCategories>>,
@@ -1508,6 +1668,7 @@ pub struct ExtensionAttributes {
     /// * Photos
     #[serde(
         rename = "PHProjectExtensionDefinesProjectTypes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub project_extension_defines_project_types: Option<bool>,
@@ -1520,6 +1681,7 @@ pub struct ExtensionAttributes {
     /// * Photos
     #[serde(
         rename = "PHSupportedMediaTypes",
+        serialize_with = "crate::serialize_vec_enum_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supported_media_types: Option<Vec<MediaTypes>>,
@@ -1532,6 +1694,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "IDMessageFilterExtensionNetworkURL",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub id_message_filter_extension_network_url: Option<String>,
@@ -1545,6 +1708,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "ILClassificationExtensionSMSReportDestination",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub classification_extension_sms_report_destination: Option<String>,
@@ -1556,7 +1720,11 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "IsASCIICapable", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IsASCIICapable",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub is_ascii_capable: Option<String>,
     /// The contexts that an iMessage app or sticker pack supports.
     ///
@@ -1567,6 +1735,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "MSMessagesAppPresentationContextMessages",
+        serialize_with = "crate::serialize_vec_enum_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub messages_app_presentation_context_messages: Option<Vec<ContextMessages>>,
@@ -1579,6 +1748,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderActions",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_actions: Option<Vec<FileProviderAction>>,
@@ -1592,6 +1762,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderDocumentGroup",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_document_group: Option<String>,
@@ -1605,6 +1776,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderSupportsEnumeration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_supports_enumeration: Option<bool>,
@@ -1616,7 +1788,11 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "PrefersRightToLeft", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "PrefersRightToLeft",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub prefers_right_to_left: Option<bool>,
     /// The primary language for a keyboard extension.
     ///
@@ -1625,7 +1801,11 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "PrimaryLanguage", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "PrimaryLanguage",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub primary_language: Option<String>,
     /// A Boolean value indicating whether a custom keyboard uses a shared container and
     /// accesses the network.
@@ -1635,7 +1815,11 @@ pub struct ExtensionAttributes {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "RequestsOpenAccess", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "RequestsOpenAccess",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub requests_open_access: Option<bool>,
     /// The modes that a Document Picker extension supports.
     ///
@@ -1659,6 +1843,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UIDocumentPickerSupportedFileTypes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub document_picker_supported_file_types: Option<Vec<String>>,
@@ -1671,6 +1856,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UNNotificationExtensionCategory",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_category: Option<String>,
@@ -1684,6 +1870,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UNNotificationExtensionDefaultContentHidden",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_default_content_hidden: Option<bool>,
@@ -1697,6 +1884,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UNNotificationExtensionInitialContentSizeRatio",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_initial_content_size_ratio: Option<f32>,
@@ -1710,6 +1898,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UNNotificationExtensionOverridesDefaultTitle",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_overrides_default_title: Option<bool>,
@@ -1723,6 +1912,7 @@ pub struct ExtensionAttributes {
     /// * UIKit
     #[serde(
         rename = "UNNotificationExtensionUserInteractionEnabled",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub notification_extension_user_interaction_enabled: Option<bool>,
@@ -1754,6 +1944,7 @@ pub struct FileProviderAction {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderActionActivationRule",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub activation_rule: Option<String>,
@@ -1766,6 +1957,7 @@ pub struct FileProviderAction {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderActionIdentifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub identifier: Option<String>,
@@ -1779,6 +1971,7 @@ pub struct FileProviderAction {
     /// * UIKit
     #[serde(
         rename = "NSExtensionFileProviderActionName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub name: Option<String>,
@@ -1830,6 +2023,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationDictionaryVersion",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub dictionary_version: Option<i32>,
@@ -1843,6 +2037,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsAttachmentsWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_attachments_with_max_count: Option<i32>,
@@ -1856,6 +2051,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsAttachmentsWithMinCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_attachments_with_min_count: Option<i32>,
@@ -1869,6 +2065,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsFileWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_file_with_max_count: Option<i32>,
@@ -1882,6 +2079,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsImageWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_image_with_max_count: Option<i32>,
@@ -1895,6 +2093,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsMovieWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_movie_with_max_count: Option<i32>,
@@ -1908,6 +2107,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsText",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_text: Option<bool>,
@@ -1921,6 +2121,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsWebPageWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_web_page_with_max_count: Option<i32>,
@@ -1934,6 +2135,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationSupportsWebURLWithMaxCount",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_web_url_with_max_count: Option<i32>,
@@ -1948,6 +2150,7 @@ pub struct ActivationRule {
     /// * Foundation
     #[serde(
         rename = "NSExtensionActivationUsesStrictMatching",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub uses_strict_matching: Option<bool>,
@@ -1972,7 +2175,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSKeyEquivalent", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSKeyEquivalent",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub key_equivalent: Option<DefaultDictionary>,
     /// Text for a Services menu item.
     ///
@@ -1999,7 +2206,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSPortName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSPortName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub port_name: Option<String>,
     /// The data types that the service returns.
     ///
@@ -2008,7 +2219,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSReturnTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSReturnTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub return_types: Option<Vec<String>>,
     /// The data types that the service can read.
     ///
@@ -2017,7 +2232,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSSendTypes", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSSendTypes",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub send_types: Option<Vec<String>>,
     /// The amount of time, in milliseconds, that the system waits for a response from the
     /// service.
@@ -2027,7 +2246,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSTimeout", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSTimeout",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub timeout: Option<String>,
     /// A service-specific string value.
     ///
@@ -2036,7 +2259,11 @@ pub struct Service {
     ///
     /// ## Framework
     /// * AppKit
-    #[serde(rename = "NSUserData", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSUserData",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub user_data: Option<BTreeMap<String, String>>,
 }
 

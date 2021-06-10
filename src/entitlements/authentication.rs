@@ -18,6 +18,7 @@ pub struct Authentication {
     /// * Authentication Services
     #[serde(
         rename = "com.apple.developer.authentication-services.autofill-credential-provider",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub auto_fill_credential_provider: Option<bool>,

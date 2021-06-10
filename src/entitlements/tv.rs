@@ -37,6 +37,7 @@ pub struct Tv {
     /// * Video Subscriber Account
     #[serde(
         rename = "com.apple.developer.video-subscriber-single-sign-on",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub video_subscriber_single_sign_on: Option<bool>,
@@ -49,6 +50,7 @@ pub struct Tv {
     /// * Video Subscriber Account
     #[serde(
         rename = "com.apple.smoot.subscriptionservice",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub smoot_subscriptionservice: Option<bool>,

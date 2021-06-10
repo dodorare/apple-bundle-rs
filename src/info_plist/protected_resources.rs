@@ -490,6 +490,7 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename = "com.apple.developer.healthkit",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub healthkit: Option<bool>,
@@ -534,6 +535,7 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename = "NSHealthClinicalHealthRecordsShareUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_clinical_health_records_share_usage_description: Option<String>,
@@ -550,6 +552,7 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename = "NSHealthShareUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_share_usage_description: Option<String>,
@@ -566,6 +569,7 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename = "NSHealthUpdateUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_update_usage_description: Option<String>,
@@ -588,6 +592,7 @@ pub struct Health {
     /// * HealthKit
     #[serde(
         rename = "NSHealthRequiredReadAuthorizationTypeIdentifiers",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub health_required_read_authorization_type_identifiers: Option<Vec<String>>,
@@ -616,6 +621,7 @@ pub struct Home {
     /// * HomeKit
     #[serde(
         rename = "NSHomeKitUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub home_kit_usage_description: Option<String>,
@@ -649,6 +655,7 @@ pub struct Location {
     /// * Core Location
     #[serde(
         rename = "NSLocationAlwaysAndWhenInUseUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_always_and_when_in_use_usage_description: Option<String>,
@@ -672,6 +679,7 @@ pub struct Location {
     #[deprecated(since = "iOS 6.0–8.0")]
     #[serde(
         rename = "NSLocationUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_usage_description: Option<String>,
@@ -697,6 +705,7 @@ pub struct Location {
     /// * Core Location
     #[serde(
         rename = "NSLocationWhenInUseUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_when_in_use_usage_description: Option<String>,
@@ -726,6 +735,7 @@ pub struct Location {
     /// * Core Location
     #[serde(
         rename = "NSLocationTemporaryUsageDescriptionDictionary",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_temporary_usage_description_dictionary: Option<DefaultDictionary>,
@@ -762,6 +772,7 @@ pub struct Location {
     )]
     #[serde(
         rename = "NSLocationAlwaysUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_always_usage_description: Option<String>,
@@ -783,6 +794,7 @@ pub struct Location {
     /// * WidgetKit
     #[serde(
         rename = "NSWidgetWantsLocation",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub widget_wants_location: Option<bool>,
@@ -829,6 +841,7 @@ pub struct Location {
     /// * Core Location
     #[serde(
         rename = "NSLocationDefaultAccuracyReduced",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub location_default_accuracy_reduced: Option<bool>,
@@ -864,6 +877,7 @@ pub struct MediaPlayer {
     /// * Media Player
     #[serde(
         rename = "NSAppleMusicUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_music_usage_description: Option<String>,
@@ -889,6 +903,7 @@ pub struct Motion {
     /// * Core Motion
     #[serde(
         rename = "NSMotionUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub motion_usage_description: Option<String>,
@@ -905,6 +920,7 @@ pub struct Motion {
     /// * Core Motion
     #[serde(
         rename = "NSFallDetectionUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub fall_detection_usage_description: Option<String>,
@@ -929,6 +945,7 @@ pub struct Networking {
     /// * Network
     #[serde(
         rename = "NSLocalNetworkUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub local_network_usage_description: Option<String>,
@@ -950,6 +967,7 @@ pub struct Networking {
     /// * Nearby Interaction
     #[serde(
         rename = "NSNearbyInteractionAllowOnceUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub nearby_interaction_allow_once_usage_description: Option<String>,
@@ -972,6 +990,7 @@ pub struct Nfc {
     /// * Core NFC
     #[serde(
         rename = "NFCReaderUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub nfc_reader_usage_description: Option<String>,
@@ -996,6 +1015,7 @@ pub struct Photos {
     /// * Photos
     #[serde(
         rename = "NSPhotoLibraryAddUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub photo_library_add_usage_description: Option<String>,
@@ -1017,6 +1037,7 @@ pub struct Photos {
     /// * Photos
     #[serde(
         rename = "NSPhotoLibraryUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub photo_library_usage_description: Option<String>,
@@ -1034,6 +1055,7 @@ pub struct Scripting {
     /// * Foundation
     #[serde(
         rename = "NSAppleScriptEnabled",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_script_enabled: Option<bool>,
@@ -1081,6 +1103,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "NSUserTrackingUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub user_tracking_usage_description: Option<String>,
@@ -1103,6 +1126,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "NSAppleEventsUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub apple_events_usage_description: Option<String>,
@@ -1123,6 +1147,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "NSSystemAdministrationUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub system_administration_usage_description: Option<String>,
@@ -1152,6 +1177,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "ITSAppUsesNonExemptEncryption",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub app_uses_non_exempt_encryption: Option<bool>,
@@ -1171,6 +1197,7 @@ pub struct Security {
     /// * Security
     #[serde(
         rename = "ITSEncryptionExportComplianceCode",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub encryption_export_compliance_code: Option<String>,
@@ -1186,6 +1213,7 @@ pub struct Sensors {
     /// * SensorKit
     #[serde(
         rename = "NSSensorKitUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_usage_description: Option<String>,
@@ -1196,6 +1224,7 @@ pub struct Sensors {
     /// * SensorKit
     #[serde(
         rename = "NSSensorKitUsageDetail",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_usage_detail: Option<DefaultDictionary>,
@@ -1206,6 +1235,7 @@ pub struct Sensors {
     /// * SensorKit
     #[serde(
         rename = "NSSensorKitPrivacyPolicyURL",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub sensor_kit_privacy_policy_url: Option<String>,
@@ -1228,6 +1258,7 @@ pub struct Siri {
     /// * Intents
     #[serde(
         rename = "NSSiriUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub siri_usage_description: Option<String>,
@@ -1253,6 +1284,7 @@ pub struct Speech {
     /// * Speech
     #[serde(
         rename = "NSSpeechRecognitionUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub speech_recognition_usage_description: Option<String>,
@@ -1275,6 +1307,7 @@ pub struct TvResource {
     /// * TVUIKit
     #[serde(
         rename = "NSVideoSubscriberAccountUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub video_subscriber_account_usage_description: Option<String>,
@@ -1292,6 +1325,7 @@ pub struct WiFi {
     /// * UIKit
     #[serde(
         rename = "UIRequiresPersistentWiFi",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_persistent_wifi: Option<bool>,

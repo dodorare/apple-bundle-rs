@@ -62,7 +62,11 @@ pub struct DriverPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOKitPersonalities", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOKitPersonalities",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub kit_personalities: Option<KitPersonalities>,
 }
 
@@ -82,7 +86,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "IOUserClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOUserClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub user_class: Option<String>,
     /// The name of the class that your driver expects to provide the implementation for
     /// its provider object.
@@ -100,7 +108,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOProviderClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOProviderClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub provider_class: Option<String>,
     /// The name of the class to instantiate from your driver.
     ///
@@ -119,7 +131,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub class: Option<String>,
     /// The name of the class to instantiate when the system requires a client connection
     /// to the driver.
@@ -132,7 +148,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOUserClientClass", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOUserClientClass",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub user_client_class: Option<String>,
     /// The name that the system uses to facilitate communication between your driver and
     /// other clients.
@@ -147,7 +167,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * DriverKit
-    #[serde(rename = "IOUserServerName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOUserServerName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub user_server_name: Option<String>,
     /// The device-specific keys the system must match in order to use your driver.
     ///
@@ -161,7 +185,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOPropertyMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOPropertyMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub property_match: Option<DefaultDictionary>,
     /// One or more strings that contain the names of possible provider objects in the
     /// system registry.
@@ -183,7 +211,11 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IONameMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IONameMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub name_match: Option<Vec<String>>,
     /// One or more system-specific or device-specific resources that your driver
     /// requires.
@@ -203,28 +235,44 @@ pub struct KitPersonalities {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOResourceMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOResourceMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub resource_match: Option<String>,
     /// ## Availability
     /// * macOS 10.0+
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOParentMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOParentMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub parent_match: Option<DefaultDictionary>,
     /// ## Availability
     /// * macOS 10.0+
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOPathMatch", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOPathMatch",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub path_match: Option<String>,
     /// ## Availability
     /// * macOS 10.0+
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "IOMatchCategory", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "IOMatchCategory",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub match_category: Option<String>,
 }
 
@@ -253,6 +301,7 @@ pub struct KextDependencies {
     /// * Kernel
     #[serde(
         rename = "OSBundleCompatibleVersion",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_compatible_version: Option<String>,
@@ -275,7 +324,11 @@ pub struct KextDependencies {
     ///
     /// ## Framework
     /// * Kernel
-    #[serde(rename = "OSBundleLibraries", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "OSBundleLibraries",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_libraries: Option<DefaultDictionary>,
 }
 
@@ -294,6 +347,7 @@ pub struct ThunderboltCompatibility {
     /// * PCIDriverKit
     #[serde(
         rename = "IOPCITunnelCompatible",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub tunnel_compatible: Option<bool>,

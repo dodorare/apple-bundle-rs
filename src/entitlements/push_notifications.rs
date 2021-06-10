@@ -111,6 +111,7 @@ pub struct PushNotifications {
     /// * User Notifications
     #[serde(
         rename = "com.apple.developer.usernotifications.filtering",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub usernotifications_filtering: Option<bool>,

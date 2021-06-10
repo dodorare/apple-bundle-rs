@@ -56,6 +56,7 @@ pub struct Education {
     /// * Automatic Assessment Configuration
     #[serde(
         rename = "com.apple.developer.automatic-assessment-configuration",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub automatic_assessment_configuration: Option<bool>,

@@ -32,6 +32,7 @@ pub struct MainUserInterface {
     /// * UIKit
     #[serde(
         rename = "UIApplicationSceneManifest",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_scene_manifest: Option<ApplicationSceneManifest>,
@@ -44,6 +45,7 @@ pub struct MainUserInterface {
     /// * Foundation
     #[serde(
         rename = "NSMainStoryboardFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard_resource_file_base_name: Option<String>,
@@ -57,6 +59,7 @@ pub struct MainUserInterface {
     /// * UIKit
     #[serde(
         rename = "UIMainStoryboardFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub main_storyboard_file_base_name: Option<String>,
@@ -70,7 +73,11 @@ pub struct MainUserInterface {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "NSMainNibFile", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSMainNibFile",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub main_nib_file_base_name: Option<String>,
     /// A Boolean value indicating whether the app is an agent app that runs in the
     /// background and doesn't appear in the Dock.
@@ -80,7 +87,11 @@ pub struct MainUserInterface {
     ///
     /// ## Framework
     /// * Core Services
-    #[serde(rename = "LSUIElement", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "LSUIElement",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub application_is_agent: Option<bool>,
 }
 
@@ -98,7 +109,11 @@ pub struct LaunchInterface {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UILaunchScreen", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UILaunchScreen",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub launch_screen: Option<LaunchScreen>,
     /// The user interfaces to show while an app launches in response to different URL
     /// schemes.
@@ -123,7 +138,11 @@ pub struct LaunchInterface {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UILaunchScreens", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UILaunchScreens",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub launch_screens: Option<LaunchScreens>,
     /// The filename of the storyboard from which to generate the app’s launch image.
     ///
@@ -156,6 +175,7 @@ pub struct LaunchInterface {
     /// * UIKit
     #[serde(
         rename = "UILaunchStoryboards",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboards: Option<LaunchStoryboards>,
@@ -170,6 +190,7 @@ pub struct LaunchInterface {
     /// * Core Services
     #[serde(
         rename = "LSUIPresentationMode",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub presentation_mode: Option<u8>,
@@ -187,7 +208,11 @@ pub struct Icons {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleIcons", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleIcons",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_icons: Option<BundleIcons>,
     /// The names of the bundle’s icon image files.
     ///
@@ -198,7 +223,11 @@ pub struct Icons {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleIconFiles", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleIconFiles",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_icon_files: Option<Vec<String>>,
     /// The file containing the bundle's icon.
     ///
@@ -210,7 +239,11 @@ pub struct Icons {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleIconFile", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleIconFile",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_icon_file: Option<String>,
     /// The name of the asset that represents the app icon.
     ///
@@ -219,7 +252,11 @@ pub struct Icons {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleIconName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleIconName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_icon_name: Option<String>,
     /// A Boolean value indicating whether the app’s icon already contains a shine effect.
     ///
@@ -230,7 +267,11 @@ pub struct Icons {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UIPrerenderedIcon", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIPrerenderedIcon",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub prerendered_icon: Option<bool>,
 }
 
@@ -294,6 +335,7 @@ pub struct Styling {
     /// * UIKit
     #[serde(
         rename = "UIViewEdgeAntialiasing",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub view_edge_antialiasing: Option<bool>,
@@ -321,7 +363,11 @@ pub struct Styling {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UIViewGroupOpacity", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIViewGroupOpacity",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub view_group_opacity: Option<bool>,
     /// A Boolean value indicating whether the app requires fullscreen or not.
     ///
@@ -358,7 +404,11 @@ pub struct Styling {
     ///
     /// ## Framework
     /// * Foundation
-    #[serde(rename = "NSAccentColorName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSAccentColorName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub accent_color_name: Option<String>,
     /// The name of a color in an asset catalog to use for a widget’s configuration
     /// interface.
@@ -381,6 +431,7 @@ pub struct Styling {
     /// * WidgetKit
     #[serde(
         rename = "NSWidgetBackgroundColorName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub widget_background_color_name: Option<String>,
@@ -399,6 +450,7 @@ pub struct Fonts {
     /// * AppKit
     #[serde(
         rename = "ATSApplicationFontsPath",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_fonts_path: Option<String>,
@@ -412,7 +464,11 @@ pub struct Fonts {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UIAppFonts", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIAppFonts",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub app_fonts: Option<Vec<String>>,
 }
 
@@ -427,7 +483,11 @@ pub struct StatusBar {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UIStatusBarHidden", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIStatusBarHidden",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub status_bar_hidden: Option<bool>,
     /// The style of the status bar as the app launches.
     ///
@@ -453,6 +513,7 @@ pub struct StatusBar {
     /// * UIKit
     #[serde(
         rename = "UIStatusBarTintParameters",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub status_bar_tint_parameters: Option<StatusBarTintParameters>,
@@ -466,6 +527,7 @@ pub struct StatusBar {
     /// * UIKit
     #[serde(
         rename = "UIViewControllerBasedStatusBarAppearance",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub view_controller_based_status_bar_appearance: Option<bool>,
@@ -482,7 +544,11 @@ pub struct Preferences {
     ///
     /// ## Framework
     /// * Preference Panes
-    #[serde(rename = "NSPrefPaneIconFile", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "NSPrefPaneIconFile",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub pref_pane_icon_file: Option<String>,
     /// The name of a preference pane displayed beneath the preference pane icon in the
     /// System Preferences app.
@@ -494,6 +560,7 @@ pub struct Preferences {
     /// * Preference Panes
     #[serde(
         rename = "NSPrefPaneIconLabel",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub pref_pane_icon_label: Option<String>,
@@ -509,7 +576,11 @@ pub struct Graphics {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UIAppSupportsHDR", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIAppSupportsHDR",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub app_supports_hdr: Option<bool>,
     /// A Boolean value indicating whether the Cocoa app supports high-resolution
     /// displays.
@@ -524,6 +595,7 @@ pub struct Graphics {
     /// * Foundation
     #[serde(
         rename = "NSHighResolutionCapable",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub high_resolution_capable: Option<bool>,
@@ -536,6 +608,7 @@ pub struct Graphics {
     /// * Foundation
     #[serde(
         rename = "NSSupportsAutomaticGraphicsSwitching",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_automatic_graphics_switching: Option<bool>,
@@ -581,6 +654,7 @@ pub struct QuickLook {
     /// * QuickLook
     #[serde(
         rename = "QLNeedsToBeRunInMainThread",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub needs_to_be_run_in_main_thread: Option<bool>,
@@ -592,7 +666,11 @@ pub struct QuickLook {
     ///
     /// ## Framework
     /// * QuickLook
-    #[serde(rename = "QLPreviewHeight", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "QLPreviewHeight",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub preview_height: Option<f32>,
     /// A hint at the width, in points, of a Quick Look app's previews.
     ///
@@ -602,7 +680,11 @@ pub struct QuickLook {
     ///
     /// ## Framework
     /// * QuickLook
-    #[serde(rename = "QLPreviewWidth", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "QLPreviewWidth",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub preview_width: Option<f32>,
     /// A Boolean value indicating whether a Quick Look app's generator can handle
     /// concurrent thumbnail and preview requests.
@@ -615,6 +697,7 @@ pub struct QuickLook {
     /// * QuickLook
     #[serde(
         rename = "QLSupportsConcurrentRequests",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub supports_concurrent_requests: Option<bool>,
@@ -629,6 +712,7 @@ pub struct QuickLook {
     /// * QuickLook
     #[serde(
         rename = "QLThumbnailMinimumSize",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub thumbnail_minimum_size: Option<f32>,
@@ -649,7 +733,11 @@ pub struct DeprecatedKeys {
         since = "iOS 7.0–13.0, tvOS 9.0–13.0",
         note = "UILaunchImages has been deprecated; use Xcode launch storyboards instead."
     )]
-    #[serde(rename = "UILaunchImages", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UILaunchImages",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub launch_images: Option<Vec<LaunchImage>>,
 }
 
@@ -711,7 +799,11 @@ pub struct StatusBarTintParameters {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UINavigationBar", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UINavigationBar",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub navigation_bar: Option<NavigationBar>,
 }
 
@@ -733,7 +825,11 @@ pub struct NavigationBar {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "TintColor", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "TintColor",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub tint_color: Option<TintColor>,
 }
 
@@ -855,6 +951,7 @@ pub struct BundleIcons {
     /// * Core Foundation
     #[serde(
         rename = "CFBundleAlternateIcons",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_alternate_icons: Option<BTreeMap<String, AppIconReferenceName>>,
@@ -874,9 +971,17 @@ pub struct BundleIcons {
 /// App Icon Reference Name
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct AppIconReferenceName {
-    #[serde(rename = "CFBundleIconFiles", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleIconFiles",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_icon_files: Option<Vec<String>>,
-    #[serde(rename = "UIPrerenderedIcon", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIPrerenderedIcon",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub prerendered_icon: Option<bool>,
 }
 
@@ -904,7 +1009,11 @@ pub struct BundlePrimaryIcon {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleSymbolName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleSymbolName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_symbol_name: Option<String>,
     /// A Boolean value indicating whether the icon files already incorporate a shine
     /// effect.
@@ -939,7 +1048,11 @@ pub struct LaunchScreen {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UIColorName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIColorName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub color_name: Option<String>,
     /// The name of an image to display during app launch.
     ///
@@ -958,7 +1071,11 @@ pub struct LaunchScreen {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UIImageName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIImageName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub image_name: Option<String>,
     /// A Boolean that specifies whether the launch image should respect the safe area
     /// insets.
@@ -970,6 +1087,7 @@ pub struct LaunchScreen {
     /// * SwiftUI
     #[serde(
         rename = "UIImageRespectsSafeAreaInsets",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub image_respects_safe_area_insets: Option<bool>,
@@ -987,7 +1105,11 @@ pub struct LaunchScreen {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UINavigationBar", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UINavigationBar",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub navigation_bar: Option<Bar>,
     /// Tab bar visibility and configuration during launch.
     ///
@@ -1002,7 +1124,11 @@ pub struct LaunchScreen {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UITabBar", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UITabBar",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub tab_bar: Option<Bar>,
     /// When you provide a dictionary for this key, the system displays a toolbar during
     /// launch. You can optionally set the dictionary’s UIImageName key to define a
@@ -1015,7 +1141,11 @@ pub struct LaunchScreen {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UIToolbar", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIToolbar",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub toolbar: Option<Bar>,
 }
 
@@ -1033,7 +1163,11 @@ pub struct Bar {
     ///
     /// ## Framework
     /// * SwiftUI
-    #[serde(rename = "UIImageName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIImageName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub image_name: Option<String>,
 }
 
@@ -1057,6 +1191,7 @@ pub struct LaunchScreens {
     /// * SwiftUI
     #[serde(
         rename = "UILaunchScreenDefinitions",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_screen_definitions: Option<LaunchScreenDefinitions>,
@@ -1077,6 +1212,7 @@ pub struct LaunchScreens {
     /// * SwiftUI
     #[serde(
         rename = "UIURLToLaunchScreenAssociations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub url_to_launch_screen_associations: Option<BTreeMap<String, String>>,
@@ -1095,6 +1231,7 @@ pub struct LaunchScreens {
     /// * SwiftUI
     #[serde(
         rename = "UIDefaultLaunchScreen",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub default_launch_screen: Option<String>,
@@ -1110,7 +1247,11 @@ pub struct LaunchScreenDefinitions {
     /// configuration when storing a URL to configuration mapping as the value for the
     /// UIURLToLaunchScreenAssociations key, or when specifying a default configuration
     /// with the UIDefaultLaunchScreen key.
-    #[serde(rename = "UIColorName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UIColorName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub color_name: Option<String>,
     /// Launch Storyboards.
     ///
@@ -1128,16 +1269,19 @@ pub struct LaunchScreenDefinitions {
 pub struct LaunchStoryboards {
     #[serde(
         rename = "UIDefaultLaunchStoryboard",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub default_launch_storyboard: Option<String>,
     #[serde(
         rename = "UILaunchStoryboardDefinitions",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboard_definitions: Option<Vec<LaunchStoryboardDefinition>>,
     #[serde(
         rename = "UIURLToLaunchStoryboardAssociations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub url_to_launch_storyboard_associations: Option<BTreeMap<String, String>>,
@@ -1148,11 +1292,13 @@ pub struct LaunchStoryboards {
 pub struct LaunchStoryboardDefinition {
     #[serde(
         rename = "UILaunchStoryboardFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboard_file: Option<String>,
     #[serde(
         rename = "UILaunchStoryboardIdentifier",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboard_identifier: Option<String>,
@@ -1182,6 +1328,7 @@ pub struct ApplicationSceneManifest {
     /// * UIKit
     #[serde(
         rename = "UIApplicationSupportsMultipleScenes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub enable_multiple_windows: Option<bool>,
@@ -1195,6 +1342,7 @@ pub struct ApplicationSceneManifest {
     #[serde(
         flatten,
         rename = "UISceneConfigurations",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub scene_configurations: Option<SceneConfigurations>,
@@ -1218,6 +1366,7 @@ pub struct SceneConfigurations {
     #[serde(
         flatten,
         rename = "UIWindowSceneSessionRoleApplication",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub application_session_role: Option<WindowSceneSessionRole>,
@@ -1234,6 +1383,7 @@ pub struct SceneConfigurations {
     #[serde(
         flatten,
         rename = "UIWindowSceneSessionRoleExternalDisplay",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub external_display_session_role: Option<WindowSceneSessionRole>,
@@ -1251,6 +1401,7 @@ pub struct WindowSceneSessionRole {
     /// * UIKit
     #[serde(
         rename = "UISceneConfigurationName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub configuration_name: Option<String>,
@@ -1264,7 +1415,11 @@ pub struct WindowSceneSessionRole {
     ///
     /// ## Framework
     /// * UIKit
-    #[serde(rename = "UISceneClassName", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "UISceneClassName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub class_name: Option<String>,
     /// The name of the app-specific class that you want UIKit to instantiate and use as
     /// the scene delegate object.
@@ -1280,6 +1435,7 @@ pub struct WindowSceneSessionRole {
     /// * UIKit
     #[serde(
         rename = "UISceneDelegateClassName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub delegate_class_name: Option<String>,
@@ -1296,6 +1452,7 @@ pub struct WindowSceneSessionRole {
     /// * UIKit
     #[serde(
         rename = "UISceneStoryboardFile",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub storyboard_name: Option<String>,

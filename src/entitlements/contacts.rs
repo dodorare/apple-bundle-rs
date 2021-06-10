@@ -26,6 +26,7 @@ pub struct Contacts {
     /// * Contacts
     #[serde(
         rename = "com.apple.developer.contacts.notes",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub carplay_audio: Option<bool>,
