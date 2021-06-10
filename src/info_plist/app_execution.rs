@@ -376,6 +376,30 @@ pub struct BackgroundExecution {
         serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub ui_background_modes: Option<Vec<UiBackgroundMode>>,
+    /// Specifies the underlying hardware type on which this app is designed to run.
+    ///
+    /// ### Important
+    /// Do not insert this key manually into your Info.plist files. Xcode inserts
+    /// it automatically based on the value in the Targeted Device Family build setting.
+    /// You should use that build setting to change the value of the key.
+    ///
+    /// The value of this key is usually an integer but it can also be an array of integers.
+    /// Table 4 lists the possible integer values you can use and the corresponding devices.
+    ///
+    /// ### Values for the UIDeviceFamily key:
+    /// 1 (Default) The app runs on iPhone and iPod touch devices.
+    /// 2 The app runs on iPad devices.
+    ///
+    /// ## Availability
+    /// * iOS 3.2+
+    ///
+    /// ## Framework
+    /// * UIKit
+    #[serde(
+        rename(serialize = "UIDeviceFamily"),
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub ui_device_family: Option<Vec<u8>>,
     /// The services a watchOS app provides that require it to continue running in the
     /// background.
     ///
