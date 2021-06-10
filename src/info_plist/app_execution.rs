@@ -12,7 +12,6 @@
 //! ## Framework
 //! * Bundle Resources
 
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
@@ -69,7 +68,11 @@ pub struct Launch {
     ///
     /// ## Framework
     /// * Core Foundation
-    #[serde(rename = "CFBundleExecutable", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleExecutable",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_executable: Option<String>,
     /// Environment variables to set before launching the app.
     ///
@@ -164,7 +167,7 @@ pub struct LaunchConditions {
     #[serde(
         rename = "UIRequiredDeviceCapabilities",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub required_device_capabilities: Option<Vec<DeviceCapabilities>>,
     /// A Boolean value indicating whether more than one user can launch the app
@@ -199,7 +202,7 @@ pub struct LaunchConditions {
     #[serde(
         rename = "LSArchitecturePriority",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub architecture_priority: Option<ArchitecturePriority>,
     /// A Boolean value that indicates whether to require the execution of the app’s
@@ -281,7 +284,7 @@ pub struct LaunchConditions {
     #[serde(
         rename = "CLKComplicationSupportedFamilies",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub complication_supported_families: Option<Vec<ComplicationSupportedFamilies>>,
 }
@@ -370,7 +373,7 @@ pub struct BackgroundExecution {
     #[serde(
         rename = "UIBackgroundModes",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub ui_background_modes: Option<Vec<UiBackgroundMode>>,
     /// The services a watchOS app provides that require it to continue running in the
@@ -390,7 +393,7 @@ pub struct BackgroundExecution {
     #[serde(
         rename = "WKBackgroundModes",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub wk_background_modes: Option<Vec<WkBackgroundMode>>,
     /// An array of strings containing developer-specified task identifiers in reverse URL
@@ -835,7 +838,7 @@ pub struct Extension {
     #[serde(
         rename = "NSExtensionPointIdentifier",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub extension_point_identifier: Option<ExtensionPointIdentifier>,
     /// The custom class that implements an app extension’s primary view or functionality.
@@ -1260,7 +1263,7 @@ pub struct ExtensionAttributes {
     #[serde(
         rename = "NSExtensionServiceRoleType",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub role_type: Option<ExtensionServiceRoleType>,
     /// The image for an Action extension’s toolbar item.
@@ -1397,7 +1400,7 @@ pub struct ExtensionAttributes {
     #[serde(
         rename = "NSExtensionPointIdentifier",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub point_identifier: Option<ExtensionPointIdentifier>,
     /// This key is mutually exclusive with NSExtensionMainStoryboard. If the app
@@ -1620,7 +1623,7 @@ pub struct ExtensionAttributes {
     #[serde(
         rename = "UIDocumentPickerModes",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub document_picker_modes: Option<Vec<DocumentPickerModes>>,
     /// The Uniform Type Identifiers that a document picker extension supports.

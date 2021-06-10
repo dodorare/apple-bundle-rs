@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Health
@@ -43,7 +42,7 @@ pub struct Health {
     #[serde(
         rename = "com.apple.developer.healthkit.access",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub healthkit_access: Option<Vec<HealthKitCapabilities>>,
 }

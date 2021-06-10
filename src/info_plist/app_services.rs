@@ -10,7 +10,6 @@
 //! * Bundle Resources
 
 use super::DefaultDictionary;
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// Car Play
@@ -148,7 +147,7 @@ pub struct ExposureNotification {
     #[serde(
         rename = "ENAPIVersion",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub version: Option<Version>,
     /// A string that specifies the region that the app supports.
@@ -276,7 +275,7 @@ pub struct Games {
     #[serde(
         rename = "GCSupportedGameControllers",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub supported_game_controllers: Option<Vec<ProfileName>>,
     /// A Boolean value indicating whether the app supports a game controller.
@@ -402,7 +401,7 @@ pub struct Intents {
     #[serde(
         rename = "INSupportedMediaCategories",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub supported_media_categories: Option<Vec<SupportedMediaCategories>>,
 }
@@ -440,7 +439,7 @@ pub struct Maps {
     #[serde(
         rename = "MKDirectionsApplicationSupportedModes",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub directions_application_supported_modes: Option<Vec<DirectionsApplicationSupportedModes>>,
 }

@@ -1,4 +1,3 @@
-use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Security
@@ -127,7 +126,7 @@ pub struct Security {
     #[serde(
         rename = "com.apple.developer.default-data-protection",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub data_protection: Option<DataProtection>,
     /// The environment for an app that uses the App Attest service to validate itself
@@ -151,7 +150,7 @@ pub struct Security {
     #[serde(
         rename = "com.apple.developer.devicecheck.appattest-environment",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub devicecheck_appattest: Option<DeviceCheckAppAttest>,
     /// A Boolean that indicates whether your app has access to smart card slots and smart

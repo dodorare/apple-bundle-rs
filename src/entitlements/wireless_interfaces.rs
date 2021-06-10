@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Wireless Interfaces
@@ -92,7 +91,7 @@ pub struct WirelessInterfaces {
     #[serde(
         rename = "com.apple.developer.nfc.readersession.formats",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub near_field_communication_tag_reader_session_formats:
         Option<Vec<NearFieldCommunicationTagReaderSessionFormats>>,

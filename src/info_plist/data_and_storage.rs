@@ -7,7 +7,6 @@
 //! Add keys to your app’s Information Property List that declare your app’s data
 //! management capabilities.
 
-use crate::serialize_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Documents
@@ -63,7 +62,7 @@ pub struct Documents {
     #[serde(
         rename = "NSPersistentStoreTypeKey",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub persistent_store_type_key: Option<PersistentStoreTypeKey>,
     /// A Boolean value that indicates whether the system should download documents before
@@ -156,7 +155,7 @@ pub struct BundleDocumentTypes {
     #[serde(
         rename = "CFBundleTypeRole",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub bundle_type_role: Option<BundleTypeRole>,
     /// The ranking of this app among apps that declare themselves as editors or viewers
@@ -173,7 +172,7 @@ pub struct BundleDocumentTypes {
     #[serde(
         rename = "LSHandlerRank",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub handler_rank: Option<HandlerRank>,
     /// The document file types the app supports.
@@ -958,7 +957,7 @@ pub struct ExceptionDomains {
     #[serde(
         rename = "NSExceptionMinimumTLSVersion",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub exception_minimum_tls_version: Option<ExceptionMinimumTlsVersion>,
     /// A Boolean value indicating whether to override the perfect forward secrecy
@@ -1283,7 +1282,7 @@ pub struct Files {
     #[serde(
         rename = "APInstallAction",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub install_action: Option<InstallAction>,
 }

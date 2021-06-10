@@ -13,7 +13,6 @@
 //! ## Framework
 //! * Bundle Resources
 
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr};
 
@@ -144,6 +143,7 @@ pub struct LaunchInterface {
     /// * UIKit
     #[serde(
         rename = "UILaunchStoryboardName",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub launch_storyboard_name: Option<String>,
@@ -247,7 +247,7 @@ pub struct Orientation {
     #[serde(
         rename = "UIInterfaceOrientation",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub interface_orientation: Option<InterfaceOrientation>,
     /// The initial orientation of the app’s user interface.
@@ -260,7 +260,7 @@ pub struct Orientation {
     #[serde(
         rename = "UISupportedInterfaceOrientations",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub supported_interface_orientations: Option<Vec<InterfaceOrientation>>,
 }
@@ -279,7 +279,7 @@ pub struct Styling {
     #[serde(
         rename = "UIUserInterfaceStyle",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub user_interface_style: Option<UserInterfaceStyle>,
     /// A Boolean value indicating whether Core Animation layers use antialiasing when
@@ -308,7 +308,7 @@ pub struct Styling {
     #[serde(
         rename = "UIWhitePointAdaptivityStyle",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub white_point_adaptivity_style: Option<WhitePointAdaptivityStyle>,
     /// A Boolean value indicating whether Core Animation sublayers inherit the opacity of
@@ -332,6 +332,7 @@ pub struct Styling {
     /// * UIKit
     #[serde(
         rename = "UIRequiresFullScreen",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub requires_full_screen: Option<bool>,
@@ -438,7 +439,7 @@ pub struct StatusBar {
     #[serde(
         rename = "UIStatusBarStyle",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub status_bar_style: Option<StatusBarStyle>,
     /// The status bar tint.
@@ -548,7 +549,7 @@ pub struct Graphics {
     #[serde(
         rename = "GPUEjectPolicy",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub gpu_eject_policy: Option<GpuEjectPolicy>,
     /// The app's preference for whether it wants to use external graphics processors.
@@ -561,7 +562,7 @@ pub struct Graphics {
     #[serde(
         rename = "GPUSelectionPolicy",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub gpu_selection_policy: Option<GpuSelectionPolicy>,
 }

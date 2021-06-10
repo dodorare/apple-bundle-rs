@@ -10,7 +10,7 @@ edition = "2018"
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_plain = "0.3"
-plist = { version = "1.0.1", package = "creator-plist", optional = true }
+plist = { version = "1.1", optional = true }
 
 [features]
 default = ["plist"]

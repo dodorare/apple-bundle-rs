@@ -11,7 +11,6 @@
 //! The system displays this string when prompting the user, as described in Requesting
 //! Access to Protected Resources.
 
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Bluetooth
@@ -35,6 +34,7 @@ pub struct Bluetooth {
     /// * Core Bluetooth
     #[serde(
         rename = "NSBluetoothAlwaysUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth_always_usage_description: Option<String>,
@@ -62,6 +62,7 @@ pub struct Bluetooth {
     #[deprecated(since = "iOS 6.0–13.0")]
     #[serde(
         rename = "NSBluetoothPeripheralUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bluetooth_peripheral_usage_description: Option<String>,
@@ -86,6 +87,7 @@ pub struct CalendarAndReminders {
     /// * EventKit
     #[serde(
         rename = "NSCalendarsUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub calendars_usage_description: Option<String>,
@@ -103,6 +105,7 @@ pub struct CalendarAndReminders {
     /// * EventKit
     #[serde(
         rename = "NSRemindersUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub reminders_usage_description: Option<String>,
@@ -129,6 +132,7 @@ pub struct CameraAndMicrophone {
     /// * AVFoundation
     #[serde(
         rename = "NSCameraUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub camera_usage_description: Option<String>,
@@ -147,6 +151,7 @@ pub struct CameraAndMicrophone {
     /// * AVFoundation
     #[serde(
         rename = "NSMicrophoneUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub microphone_usage_description: Option<String>,
@@ -171,6 +176,7 @@ pub struct Contacts {
     /// * Contacts
     #[serde(
         rename = "NSContactsUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub contacts_usage_description: Option<String>,
@@ -192,6 +198,7 @@ pub struct FaceId {
     /// * Local Authentication
     #[serde(
         rename = "NSFaceIDUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub face_id_usage_description: Option<String>,
@@ -234,6 +241,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSDesktopFolderUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub desktop_folder_usage_description: Option<String>,
@@ -271,6 +279,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSDocumentsFolderUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub documents_folder_usage_description: Option<String>,
@@ -308,6 +317,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSDownloadsFolderUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub downloads_folder_usage_description: Option<String>,
@@ -342,6 +352,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSNetworkVolumesUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub network_volumes_usage_description: Option<String>,
@@ -375,6 +386,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSRemovableVolumesUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub removable_volumes_usage_description: Option<String>,
@@ -403,6 +415,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSFileProviderPresenceUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_presence_usage_description: Option<String>,
@@ -436,6 +449,7 @@ pub struct FilesAndFolders {
     /// * Foundation
     #[serde(
         rename = "NSFileProviderDomainUsageDescription",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub file_provider_domain_usage_description: Option<String>,
@@ -503,7 +517,7 @@ pub struct Health {
     #[serde(
         rename = "com.apple.developer.healthkit.access",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub healthkit_access: Option<Vec<HealthKitCapabilities>>,
     /// A message to the user that explains why the app requested permission to read

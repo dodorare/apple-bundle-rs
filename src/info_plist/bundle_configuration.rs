@@ -11,7 +11,6 @@
 //! ## Framework
 //! * Bundle Resources
 
-use crate::{serialize_enum_option, serialize_vec_enum_option};
 use serde::{Deserialize, Serialize};
 
 /// Categorization
@@ -34,6 +33,7 @@ pub struct Categorization {
     /// Core Foundation
     #[serde(
         rename = "CFBundlePackageType",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_package_type: Option<String>,
@@ -47,7 +47,7 @@ pub struct Categorization {
     #[serde(
         rename = "LSApplicationCategoryType",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_enum_option"
+        serialize_with = "crate::serialize_enum_option"
     )]
     pub application_category_type: Option<AppCategoryType>,
 }
@@ -121,7 +121,11 @@ pub struct Naming {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(rename = "CFBundleName")]
+    #[serde(
+        rename = "CFBundleName",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_name: Option<String>,
     /// The user-visible name for the bundle, used by Siri and visible on the iOS Home
     /// screen.
@@ -186,7 +190,11 @@ pub struct BundleVersion {
     ///
     /// ## Framework
     /// Core Foundation
-    #[serde(rename = "CFBundleVersion", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "CFBundleVersion",
+        serialize_with = "crate::serialize_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub bundle_version: Option<String>,
     /// The release or version number of the bundle.
     ///
@@ -212,6 +220,7 @@ pub struct BundleVersion {
     /// Core Foundation
     #[serde(
         rename = "CFBundleShortVersionString",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_short_version_string: Option<String>,
@@ -229,6 +238,7 @@ pub struct BundleVersion {
     /// Core Foundation
     #[serde(
         rename = "CFBundleInfoDictionaryVersion",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_info_dictionary_version: Option<String>,
@@ -342,6 +352,7 @@ pub struct Localization {
     /// Core Foundation
     #[serde(
         rename = "CFBundleDevelopmentRegion",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub bundle_development_region: Option<String>,
@@ -358,7 +369,7 @@ pub struct Localization {
     #[serde(
         rename = "CFBundleLocalizations",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub bundle_localizations: Option<Vec<BundleLocalizations>>,
     /// A Boolean value that indicates whether the bundle supports the retrieval of

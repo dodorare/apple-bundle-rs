@@ -1,4 +1,3 @@
-use crate::serialize_vec_enum_option;
 use serde::{Deserialize, Serialize};
 
 /// Networking
@@ -29,7 +28,7 @@ pub struct Networking {
     #[serde(
         rename = "com.apple.developer.networking.networkextension",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub network_extensions: Option<Vec<NetworkExtensions>>,
     /// The API an app can use to create and control a custom system VPN configuration.
@@ -49,7 +48,7 @@ pub struct Networking {
     #[serde(
         rename = "com.apple.developer.networking.vpn.api",
         skip_serializing_if = "Option::is_none",
-        serialize_with = "serialize_vec_enum_option"
+        serialize_with = "crate::serialize_vec_enum_option"
     )]
     pub personal_vpn: Option<Vec<PersonalVPN>>,
     /// The associated domains for specific services, such as shared web credentials,

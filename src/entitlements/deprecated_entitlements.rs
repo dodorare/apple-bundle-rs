@@ -19,6 +19,7 @@ pub struct DeprecatedEntitlements {
     )]
     #[serde(
         rename = "com.apple.developer.maps",
+        serialize_with = "crate::serialize_option",
         skip_serializing_if = "Option::is_none"
     )]
     pub maps: Option<bool>,
