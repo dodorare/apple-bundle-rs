@@ -17,6 +17,8 @@ pub mod info_plist;
 pub mod prelude {
     pub use super::entitlements::prelude::*;
     pub use super::info_plist::prelude::*;
+    #[cfg(feature = "plist")]
+    pub use plist;
 }
 #[cfg(feature = "plist")]
 pub use plist::{
