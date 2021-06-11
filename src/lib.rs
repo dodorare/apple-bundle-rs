@@ -11,15 +11,18 @@
 
 /// Entitlements
 pub mod entitlements;
-
 /// Information Property List
 pub mod info_plist;
-
 /// Prelude
 pub mod prelude {
     pub use super::entitlements::prelude::*;
     pub use super::info_plist::prelude::*;
 }
+#[cfg(feature = "plist")]
+pub use plist::{
+    self, from_bytes, from_file, from_reader, from_reader_xml, to_file_binary, to_file_xml,
+    to_writer_binary, to_writer_xml,
+};
 
 use serde::{ser::SerializeSeq, Serialize, Serializer};
 
@@ -56,12 +59,6 @@ where
         .expect(r#"`serialize_option` must be used with `skip_serializing_if = "Option::is_none"`"#)
         .serialize(ser)
 }
-
-#[cfg(feature = "plist")]
-pub use plist::{
-    self, from_bytes, from_file, from_reader, from_reader_xml, to_file_binary, to_file_xml,
-    to_writer_binary, to_writer_xml,
-};
 
 #[cfg(test)]
 mod tests {
@@ -134,7 +131,6 @@ mod tests {
             categorization: Categorization {
                 bundle_package_type: Some("APPL".to_owned()),
                 application_category_type: Some(AppCategoryType::Business),
-                ..Default::default()
             },
             launch_interface: LaunchInterface {
                 launch_storyboard_name: Some("LaunchScreen".to_owned()),

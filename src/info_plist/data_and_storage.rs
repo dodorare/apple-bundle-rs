@@ -86,6 +86,7 @@ pub struct Documents {
     )]
     pub downloads_ubiquitous_contents: Option<bool>,
 }
+
 /// Persistent Store Type Key
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub enum PersistentStoreTypeKey {

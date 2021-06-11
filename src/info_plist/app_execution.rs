@@ -420,8 +420,9 @@ pub struct BackgroundExecution {
     /// it automatically based on the value in the Targeted Device Family build setting.
     /// You should use that build setting to change the value of the key.
     ///
-    /// The value of this key is usually an integer but it can also be an array of integers.
-    /// Table 4 lists the possible integer values you can use and the corresponding devices.
+    /// The value of this key is usually an integer but it can also be an array of
+    /// integers. Table 4 lists the possible integer values you can use and the
+    /// corresponding devices.
     ///
     /// ### Values for the UIDeviceFamily key:
     /// 1 (Default) The app runs on iPhone and iPod touch devices.
