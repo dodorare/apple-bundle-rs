@@ -16,7 +16,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 /// Launch
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Launch {
     /// The name of the bundle’s main executable class.
     ///
@@ -108,7 +108,7 @@ pub struct Launch {
 }
 
 /// Application Shortcut Item
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ApplicationShortcutItem {
     #[serde(
         rename = "UIApplicationShortcutItemIconFile",
@@ -147,7 +147,7 @@ pub struct ApplicationShortcutItem {
 }
 
 /// Launch Conditions
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchConditions {
     /// The device-related features that your app requires to run.
     ///
@@ -301,7 +301,7 @@ pub struct LaunchConditions {
     /// To add this key to the information property list, enable the desired families in
     /// the WatchKit extension’s Complication Configuration settings.
     #[deprecated(
-        since = "watchOS 2.0–7.0",
+        since = "watchOS 2.0-7.0",
         note = "In watchOS 7 and later, use getComplicationDescriptors(handler:) to define the supported complication families."
     )]
     #[serde(
@@ -379,7 +379,7 @@ pub struct ExtensionsAndServices {
 }
 
 /// App Clips
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct AppClips {
     /// A collection of keys that an App Clip uses to get additional capabilities.
     ///
@@ -397,7 +397,7 @@ pub struct AppClips {
 }
 
 /// Background Execution
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct BackgroundExecution {
     /// Services provided by an app that require it to run in the background.
     ///
@@ -490,7 +490,7 @@ pub struct BackgroundExecution {
 }
 
 /// Endpoint Security
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct EndpointSecurity {
     ///
     /// ## Availability
@@ -519,7 +519,7 @@ pub struct EndpointSecurity {
 }
 
 /// Plugin Support
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct PluginSupport {
     /// The name of the app's plugin bundle.
     ///
@@ -537,7 +537,7 @@ pub struct PluginSupport {
 }
 
 /// Plugin Configuration
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct PluginConfiguration {
     /// The function to use when dynamically registering a plugin.
     ///
@@ -607,7 +607,7 @@ pub struct PluginConfiguration {
 }
 
 /// Termination
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Termination {
     /// A Boolean value indicating whether the app is notified when a child process dies.
     ///
@@ -647,8 +647,8 @@ pub struct Termination {
     /// ## Framework
     /// * UIKit
     #[deprecated(
-        since = "iOS 4.0–13.0, tvOS 9.0–13.0, watchOS 2.0–6.0",
-        note = "The system now automatically suspends apps leaving the foreground when they don’t require background execution.
+        since = "iOS 4.0-13.0, tvOS 9.0-13.0, watchOS 2.0-6.0",
+        note = "The system now automatically suspends apps leaving the foreground when they don't require background execution.
                 For more information, see About the Background Execution Sequence."
     )]
     #[serde(
@@ -660,7 +660,7 @@ pub struct Termination {
 }
 
 /// WK Background Mode
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum WkBackgroundMode {
     /// Allows an active workout session to run in the background.
     #[serde(rename = "workout-processing")]
@@ -682,7 +682,7 @@ pub enum WkBackgroundMode {
 }
 
 /// UI Background Mode
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum UiBackgroundMode {
     #[serde(rename = "audio")]
     Audio,
@@ -705,7 +705,7 @@ pub enum UiBackgroundMode {
 }
 
 /// App Clip
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct AppClip {
     /// A Boolean value that indicates whether an App Clip can schedule or receive
     /// notifications for a limited amount of time.
@@ -1039,7 +1039,7 @@ pub struct Extension {
 }
 
 /// Safari Website Access
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SafariWebsiteAccess {
     /// The domains that a Safari extension is allowed access to.
     ///
@@ -1070,7 +1070,7 @@ pub struct SafariWebsiteAccess {
 }
 
 /// Safari Website Access Level
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum SafariWebsiteAccessLevel {
     #[serde(rename = "None")]
     None,
@@ -1081,7 +1081,7 @@ pub enum SafariWebsiteAccessLevel {
 }
 
 /// Safari Toolbar Item
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SafariToolbarItem {
     /// The properties of an app extension's toolbar item that's been added to the Safari
     /// window.
@@ -1139,7 +1139,7 @@ pub struct SafariToolbarItem {
 }
 
 /// Safari Style Sheet
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SafariStyleSheet {
     /// The webpages that the script can be injected into.
     ///
@@ -1184,7 +1184,7 @@ pub struct SafariStyleSheet {
 }
 
 /// The context menu items for a Safari extension
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SafariContextMenu {
     /// The command to send to the app extension when the user selects the context menu
     /// item.
@@ -1216,7 +1216,7 @@ pub struct SafariContextMenu {
 }
 
 /// Safari Content Script
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SafariContentScript {
     /// The webpages that the script can be injected into.
     ///
@@ -1261,7 +1261,7 @@ pub struct SafariContentScript {
 }
 
 /// Extension Point Identifier
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ExtensionPointIdentifier {
     #[serde(rename = "com.apple.ui-services")]
     UiServices,
@@ -1920,7 +1920,7 @@ pub struct ExtensionAttributes {
 }
 
 /// Document Picker Modes
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum DocumentPickerModes {
     #[serde(rename = "UIDocumentPickerModeImport")]
     Import,
@@ -1933,7 +1933,7 @@ pub enum DocumentPickerModes {
 }
 
 /// File Provider Action
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct FileProviderAction {
     /// A predicate that determines whether a File Provider extension action appears in
     /// the context menu.
@@ -1979,7 +1979,7 @@ pub struct FileProviderAction {
 }
 
 /// Context Messages
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ContextMessages {
     #[serde(rename = "MSMessagesAppPresentationContextMessages")]
     Messages,
@@ -1988,7 +1988,7 @@ pub enum ContextMessages {
 }
 
 /// Media Types
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum MediaTypes {
     #[serde(rename = "Image")]
     Image,
@@ -1997,7 +1997,7 @@ pub enum MediaTypes {
 }
 
 /// Media Categories
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum MediaCategories {
     #[serde(rename = "INMediaCategoryAudiobooks")]
     Audiobooks,
@@ -2012,7 +2012,7 @@ pub enum MediaCategories {
 }
 
 /// Activation Rule
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ActivationRule {
     /// The version of the parent extension-activation rule dictionary.
     ///
@@ -2158,7 +2158,7 @@ pub struct ActivationRule {
 }
 
 /// Extension Service Role Type
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ExtensionServiceRoleType {
     #[serde(rename = "Editor")]
     Editor,
@@ -2167,7 +2167,7 @@ pub enum ExtensionServiceRoleType {
 }
 
 /// Service
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Service {
     /// A keyboard shortcut that invokes the service menu command.
     ///
@@ -2269,13 +2269,13 @@ pub struct Service {
 }
 
 /// Default Dictionary
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct DefaultDictionary {
     pub default: String,
 }
 
 /// Complication Supported Families
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ComplicationSupportedFamilies {
     #[serde(rename = "CLKComplicationFamilyModularSmall")]
     ModularSmall,
@@ -2302,7 +2302,7 @@ pub enum ComplicationSupportedFamilies {
 }
 
 /// Architecture Priority
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ArchitecturePriority {
     /// The 32-bit Intel architecture.
     #[serde(rename = "i386")]
@@ -2319,7 +2319,7 @@ pub enum ArchitecturePriority {
 }
 
 /// Device Capabilities
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum DeviceCapabilities {
     /// The presence of accelerometers. Use the Core Motion framework to receive
     /// accelerometer events. You don’t need to include this value if your app detects

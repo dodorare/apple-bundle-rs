@@ -17,7 +17,7 @@ use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, str::FromStr};
 
 /// Main User Interface
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct MainUserInterface {
     /// The information about the app's scene-based life-cycle support.
     ///
@@ -96,7 +96,7 @@ pub struct MainUserInterface {
 }
 
 /// Launch Interface
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchInterface {
     /// The user interface to show while an app launches.
     ///
@@ -197,7 +197,7 @@ pub struct LaunchInterface {
 }
 
 /// Icons
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Icons {
     /// Information about all of the icons used by the app.
     ///
@@ -276,7 +276,7 @@ pub struct Icons {
 }
 
 /// Orientation
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Orientation {
     /// The initial orientation of the app’s user interface.
     ///
@@ -307,7 +307,7 @@ pub struct Orientation {
 }
 
 /// Styling
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Styling {
     /// The user interface style for the app.
     ///
@@ -438,7 +438,7 @@ pub struct Styling {
 }
 
 /// Fonts
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Fonts {
     /// The location of a font file or directory of fonts in the bundle’s Resources
     /// folder.
@@ -534,7 +534,7 @@ pub struct StatusBar {
 }
 
 /// Preferences
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Preferences {
     /// The name of an image file used to represent a preference pane in the System
     /// Preferences app.
@@ -567,7 +567,7 @@ pub struct Preferences {
 }
 
 /// Graphics
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Graphics {
     /// A Boolean value indicating whether the app supports HDR mode on Apple TV 4K.
     ///
@@ -719,7 +719,7 @@ pub struct QuickLook {
 }
 
 /// Deprecated Keys
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct DeprecatedKeys {
     /// A dictionary containing information about launch images.
     ///
@@ -730,7 +730,7 @@ pub struct DeprecatedKeys {
     /// ## Framework
     /// * UIKit
     #[deprecated(
-        since = "iOS 7.0–13.0, tvOS 9.0–13.0",
+        since = "iOS 7.0-13.0, tvOS 9.0-13.0",
         note = "UILaunchImages has been deprecated; use Xcode launch storyboards instead."
     )]
     #[serde(
@@ -742,13 +742,13 @@ pub struct DeprecatedKeys {
 }
 
 /// Default Dictionary
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchImage {
     pub default: String,
 }
 
 /// GPU Eject Policy
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum GpuEjectPolicy {
     /// Set this value to allow macOS to quit and relaunch your app with another GPU.
     /// Your app can implement the application(_:willEncodeRestorableState:) method to
@@ -773,7 +773,7 @@ pub enum GpuEjectPolicy {
 }
 
 /// GPU Selection Policy
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum GpuSelectionPolicy {
     /// Metal tries to avoid creating contexts on external GPUs. For legacy OpenGL apps,
     /// OpenGL also avoids creating contexts using external GPUs. Set this option only
@@ -834,7 +834,7 @@ pub struct NavigationBar {
 }
 
 /// Bar Style
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum BarStyle {
     #[serde(rename = "UIBarStyleDefault")]
     Default,
@@ -860,7 +860,7 @@ pub struct TintColor {
 }
 
 /// Status Bar Style
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum StatusBarStyle {
     #[serde(rename = "UIStatusBarStyleDefault")]
     Default,
@@ -871,7 +871,7 @@ pub enum StatusBarStyle {
 }
 
 /// White Point Adaptivity Style
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum WhitePointAdaptivityStyle {
     #[serde(rename = "UIWhitePointAdaptivityStyleStandard")]
     Standard,
@@ -886,7 +886,7 @@ pub enum WhitePointAdaptivityStyle {
 }
 
 /// User Interface Style
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum UserInterfaceStyle {
     /// Set this value to adopt the systemwide user interface style, and observe any
     /// changes to that style. This is the default value, and provides the same
@@ -903,7 +903,7 @@ pub enum UserInterfaceStyle {
 }
 
 /// Interface Orientation
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum InterfaceOrientation {
     /// The app supports the display in portrait mode, with the device upright and the
     /// front camera at the top.
@@ -939,7 +939,7 @@ impl FromStr for InterfaceOrientation {
 }
 
 /// Bundle Icons
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct BundleIcons {
     ///
     /// ## Availability
@@ -969,7 +969,7 @@ pub struct BundleIcons {
 }
 
 /// App Icon Reference Name
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct AppIconReferenceName {
     #[serde(
         rename = "CFBundleIconFiles",
@@ -986,7 +986,7 @@ pub struct AppIconReferenceName {
 }
 
 /// Bundle Primary Icon
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct BundlePrimaryIcon {
     /// The names of a bundle’s icon files.
     ///
@@ -1030,7 +1030,7 @@ pub struct BundlePrimaryIcon {
 }
 
 /// Launch Screen
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchScreen {
     // Main Interface.
     /// The name of a color to use as the background color on the launch screen.
@@ -1150,7 +1150,7 @@ pub struct LaunchScreen {
 }
 
 /// Application Scene Manifest
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Bar {
     /// A custom image that replaces the navigation/tab/tool bar during launch.
     ///
@@ -1172,7 +1172,7 @@ pub struct Bar {
 }
 
 /// Launch Screens
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchScreens {
     // Launch Screen Definitions.
     /// A collection of launch screen configuration dictionaries.
@@ -1238,7 +1238,7 @@ pub struct LaunchScreens {
 }
 
 /// Launch Screen Definitions
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchScreenDefinitions {
     /// A unique name for the launch screen configuration.
     ///
@@ -1265,7 +1265,7 @@ pub struct LaunchScreenDefinitions {
 }
 
 /// Launch Storyboards
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchStoryboards {
     #[serde(
         rename = "UIDefaultLaunchStoryboard",
@@ -1288,7 +1288,7 @@ pub struct LaunchStoryboards {
 }
 
 /// Launch Storyboard Definition
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct LaunchStoryboardDefinition {
     #[serde(
         rename = "UILaunchStoryboardFile",
@@ -1305,7 +1305,7 @@ pub struct LaunchStoryboardDefinition {
 }
 
 /// Application Scene Manifest
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ApplicationSceneManifest {
     /// A Boolean value indicating whether the app supports two or more scenes
     /// simultaneously.
@@ -1349,7 +1349,7 @@ pub struct ApplicationSceneManifest {
 }
 
 /// Scene Configurations
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct SceneConfigurations {
     /// Scenes that you use to display content on the device's main screen and respond to
     /// user interactions.
@@ -1390,7 +1390,7 @@ pub struct SceneConfigurations {
 }
 
 /// Window Scene Session Role
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct WindowSceneSessionRole {
     /// The app-specific name you use to identify the scene.
     ///

@@ -13,7 +13,7 @@ use super::DefaultDictionary;
 use serde::{Deserialize, Serialize};
 
 /// Car Play
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct CarPlay {
     /// ## Availability
     /// * iOS 13.1+
@@ -51,7 +51,7 @@ pub struct CarPlay {
 }
 
 /// Template Application Dashboard
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct TemplateApplicationDashboard {
     /// ## Availability
     /// * iOS 13.1+
@@ -77,7 +77,7 @@ pub struct TemplateApplicationDashboard {
 }
 
 /// Class Name
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ClassName {
     #[serde(rename = "CPTemplateApplicationDashboardScene")]
     TemplateApplicationDashboardScene,
@@ -90,7 +90,7 @@ impl Default for ClassName {
 }
 
 /// Template Application Scene Session Role
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct TemplateApplicationSceneSessionRole {
     /// ## Availability
     /// * iOS 13.0+
@@ -116,7 +116,7 @@ pub struct TemplateApplicationSceneSessionRole {
 }
 
 /// Template Application
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum TemplateApplication {
     #[serde(rename = "CPTemplateApplicationScene")]
     Scene,
@@ -129,7 +129,7 @@ impl Default for TemplateApplication {
 }
 
 /// Exposure Notification
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ExposureNotification {
     /// A number that specifies the version of the API to use.
     ///
@@ -178,7 +178,7 @@ pub struct ExposureNotification {
 }
 
 /// Version
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum Version {
     /// Use version 1 of the API.
     #[serde(rename = "1")]
@@ -189,7 +189,7 @@ pub enum Version {
 }
 
 /// Pointer Interactions
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct PointerInteractions {
     /// A Boolean value indicating that the app generally supports indirect input
     /// mechanisms.
@@ -243,7 +243,7 @@ pub struct PointerInteractions {
 }
 
 /// Games
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Games {
     /// A Boolean value indicating whether GameKit can add badges to a turn-based game
     /// icon.
@@ -322,7 +322,7 @@ pub struct Games {
     pub supports_multiple_micro_gamepads: Option<bool>,
 }
 
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ProfileName {
     #[serde(rename = "ExtendedGamepad")]
     ExtendedGamepad,
@@ -331,7 +331,7 @@ pub enum ProfileName {
 }
 
 /// Intents
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Intents {
     /// The names of the intent classes your app handles directly.
     ///
@@ -425,7 +425,7 @@ pub struct Intents {
 }
 
 /// Supported Media Categories
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum SupportedMediaCategories {
     /// Audiobooks
     #[serde(rename = "INMediaCategoryAudiobooks")]
@@ -445,7 +445,7 @@ pub enum SupportedMediaCategories {
 }
 
 /// Maps
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Maps {
     /// The modes of transportation for which the app is capable of giving directions.
     ///
@@ -463,7 +463,7 @@ pub struct Maps {
 }
 
 /// Directions Application Supported Modes
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum DirectionsApplicationSupportedModes {
     #[serde(rename = "MKDirectionsModePlane")]
     MkDirectionsModePlane,
@@ -492,7 +492,7 @@ pub enum DirectionsApplicationSupportedModes {
 }
 
 /// NFC
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct NfcAppServices {
     /// A list of FeliCa system codes that the app supports.
     ///
@@ -526,7 +526,7 @@ pub struct NfcAppServices {
 }
 
 /// Authentication
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Authentication {
     /// A Boolean value that indicates the system shouldn’t show security recommendation
     /// prompts when users sign in using the app.
@@ -569,7 +569,7 @@ pub struct Authentication {
 }
 
 /// Web Authentication Session
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct WebAuthenticationSession {
     /// A Boolean that indicates whether the app acts as a browser that supports
     /// authentication sessions.
@@ -620,7 +620,7 @@ pub struct WebAuthenticationSession {
 }
 
 /// External Accessories
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ExternalAccessories {
     /// The protocols that the app uses to communicate with external accessory hardware.
     ///
@@ -645,7 +645,7 @@ pub struct ExternalAccessories {
 }
 
 /// Service Management
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct ServiceManagement {
     /// The Service Management clients authorized to add and remove tools.
     ///
@@ -682,7 +682,7 @@ pub struct ServiceManagement {
 }
 
 /// Interprocess Communication
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct InterprocessCommunication {
     /// ## Availability
     /// * iOS 6.0+
@@ -701,7 +701,7 @@ pub struct InterprocessCommunication {
 }
 
 /// Service
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Service {
     #[serde(
         rename = "EnvironmentVariables",
@@ -730,7 +730,7 @@ pub struct Service {
 }
 
 /// Run Loop Type
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum RunLoopType {
     #[serde(rename = "dispatch_main")]
     DispatchMain,
@@ -739,14 +739,14 @@ pub enum RunLoopType {
 }
 
 /// Service Type
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum ServiceType {
     #[serde(rename = "Application")]
     Application,
 }
 
 /// Store
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Store {
     /// An array of dictionaries containing a list of ad network identifiers.
     ///
@@ -773,7 +773,7 @@ pub struct Store {
 }
 
 /// Ad Network Items
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct AdNetworkItems {
     /// A string that contains an ad network identifier.
     ///

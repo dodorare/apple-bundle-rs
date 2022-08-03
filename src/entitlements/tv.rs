@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// TV
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Tv {
     /// The entitlement for distinguishing between multiple user accounts on Apple TV.
     ///
@@ -57,7 +57,7 @@ pub struct Tv {
 }
 
 /// User Management
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum UserManagement {
     /// The value that grants access to TVUserManager, so you can map your own profiles to
     /// users in the system.

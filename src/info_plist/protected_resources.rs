@@ -14,7 +14,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Bluetooth
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Bluetooth {
     /// A message that tells the user why the app needs access to Bluetooth.
     ///
@@ -59,7 +59,7 @@ pub struct Bluetooth {
     ///
     /// ## Framework
     /// * Core Bluetooth
-    #[deprecated(since = "iOS 6.0–13.0")]
+    #[deprecated(since = "iOS 6.0-13.0")]
     #[serde(
         rename = "NSBluetoothPeripheralUsageDescription",
         serialize_with = "crate::serialize_option",
@@ -71,7 +71,7 @@ pub struct Bluetooth {
 /// Calendar and Reminders
 ///
 /// [Accessing the Event Store](https://developer.apple.com/documentation/eventkit/accessing_the_event_store)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct CalendarAndReminders {
     /// A message that tells the user why the app is requesting access to the user’s
     /// calendar data.
@@ -116,7 +116,7 @@ pub struct CalendarAndReminders {
 /// ## Articles
 /// * [Requesting Authorization for Media Capture on iOS](https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/requesting_authorization_for_media_capture_on_ios)
 /// * [Requesting Authorization for Media Capture on macOS](https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture/requesting_authorization_for_media_capture_on_macos)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct CameraAndMicrophone {
     /// A message that tells the user why the app is requesting access to the device’s
     /// camera.
@@ -160,7 +160,7 @@ pub struct CameraAndMicrophone {
 /// Contacts
 ///
 /// [Requesting Authorization to Access Contacts](https://developer.apple.com/documentation/contacts/requesting_authorization_to_access_contacts)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Contacts {
     /// A message that tells the user why the app is requesting access to the user’s
     /// contacts.
@@ -183,7 +183,7 @@ pub struct Contacts {
 }
 
 /// FaceID
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct FaceId {
     /// A message that tells the user why the app is requesting the ability to
     /// authenticate with Face ID.
@@ -205,7 +205,7 @@ pub struct FaceId {
 }
 
 /// Files and Folders
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct FilesAndFolders {
     /// A message that tells the user why the app needs access to the user’s Desktop
     /// folder.
@@ -456,7 +456,7 @@ pub struct FilesAndFolders {
 }
 
 /// Game Center
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct GameCenter {
     /// A message that tells the user why the app needs access to their Game Center
     /// friends list.
@@ -476,7 +476,7 @@ pub struct GameCenter {
 /// Health
 ///
 /// [Setting Up HealthKit](https://developer.apple.com/documentation/healthkit/setting_up_healthkit)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Health {
     /// A Boolean value that indicates whether the app may request user authorization to
     /// access health and activity data that appears in the Health app.
@@ -601,7 +601,7 @@ pub struct Health {
 /// Home
 ///
 /// [Enabling HomeKit in Your App](https://developer.apple.com/documentation/homekit/enabling_homekit_in_your_app)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Home {
     /// A message that tells the user why the app is requesting access to the user’s
     /// HomeKit configuration data.
@@ -630,7 +630,7 @@ pub struct Home {
 /// Location
 ///
 /// [Choosing the Location Services Authorization to Request](https://developer.apple.com/documentation/corelocation/choosing_the_location_services_authorization_to_request)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Location {
     /// A message that tells the user why the app is requesting access to the user’s
     /// location information at all times.
@@ -676,7 +676,7 @@ pub struct Location {
     ///
     /// ## Framework
     /// * Core Location
-    #[deprecated(since = "iOS 6.0–8.0")]
+    #[deprecated(since = "iOS 6.0-8.0")]
     #[serde(
         rename = "NSLocationUsageDescription",
         serialize_with = "crate::serialize_option",
@@ -767,7 +767,7 @@ pub struct Location {
     /// ## Framework
     /// * Core Location
     #[deprecated(
-        since = "iOS 8.0–10.0",
+        since = "iOS 8.0-10.0",
         note = "For apps deployed to targets in iOS 11 and later, use NSLocationAlwaysAndWhenInUseUsageDescription instead."
     )]
     #[serde(
@@ -848,7 +848,7 @@ pub struct Location {
 }
 
 /// DefaultDictionary
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct DefaultDictionary {
     pub default: String,
 }
@@ -856,7 +856,7 @@ pub struct DefaultDictionary {
 /// Media Player
 ///
 /// [Requesting Access to Apple Music Library](https://developer.apple.com/documentation/storekit/skcloudservicecontroller/requesting_access_to_apple_music_library)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct MediaPlayer {
     /// A message that tells the user why the app is requesting access to the user’s media
     /// library.
@@ -884,7 +884,7 @@ pub struct MediaPlayer {
 }
 
 /// Motion
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Motion {
     /// A message that tells the user why the app is requesting access to the device’s
     /// motion data.
@@ -927,7 +927,7 @@ pub struct Motion {
 }
 
 /// Networking
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Networking {
     /// A message that tells the user why the app is requesting access to the local
     /// network.
@@ -974,7 +974,7 @@ pub struct Networking {
 }
 
 /// NFC
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Nfc {
     /// A message that tells the user why the app is requesting access to the device’s NFC
     /// hardware.
@@ -999,7 +999,7 @@ pub struct Nfc {
 /// Photos
 ///
 /// [Delivering a Great Privacy Experience in Your Photos App](https://developer.apple.com/documentation/photokit/delivering_a_great_privacy_experience_in_your_photos_app)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Photos {
     /// A message that tells the user why the app is requesting add-only access to the
     /// user’s photo library.
@@ -1044,7 +1044,7 @@ pub struct Photos {
 }
 
 /// Scripting
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Scripting {
     /// A Boolean value indicating whether AppleScript is enabled.
     ///
@@ -1062,7 +1062,7 @@ pub struct Scripting {
 }
 
 /// Security
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Security {
     /// A message that informs the user why an app is requesting permission to use data
     /// for tracking the user or the device.
@@ -1204,7 +1204,7 @@ pub struct Security {
 }
 
 /// Sensors
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Sensors {
     /// ## Availability
     /// * iOS 14.0+
@@ -1244,7 +1244,7 @@ pub struct Sensors {
 /// Siri
 ///
 /// [Requesting Authorization to Use SiriKit](https://developer.apple.com/documentation/sirikit/requesting_authorization_to_use_sirikit)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Siri {
     /// A message that tells the user why the app is requesting to send user data to Siri.
     ///
@@ -1267,7 +1267,7 @@ pub struct Siri {
 /// Speech
 ///
 /// [Asking Permission to Use Speech Recognition](https://developer.apple.com/documentation/speech/asking_permission_to_use_speech_recognition)
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Speech {
     /// A message that tells the user why the app is requesting to send user data to
     /// Apple’s speech recognition servers.
@@ -1291,7 +1291,7 @@ pub struct Speech {
 }
 
 /// TV Resource
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct TvResource {
     /// A message that tells the user why the app is requesting access to the user’s TV
     /// provider account.
@@ -1314,7 +1314,7 @@ pub struct TvResource {
 }
 
 /// Wi-Fi
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct WiFi {
     /// A Boolean value indicating whether the app requires a Wi-Fi connection.
     ///
@@ -1332,7 +1332,7 @@ pub struct WiFi {
 }
 
 /// Health Kit Capabilities
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum HealthKitCapabilities {
     /// The app can request access to FHIR-backed clinical records.
     #[serde(rename = "health-records")]

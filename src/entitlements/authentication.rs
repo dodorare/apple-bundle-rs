@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Authentication
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Authentication {
     /// A Boolean value that indicates whether the app may, with user permission, provide
     /// user names and passwords for AutoFill in Safari and other apps.
@@ -44,7 +44,7 @@ pub struct Authentication {
 }
 
 /// Sign in with Apple Entitlement
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum SignInWithAppleEntitlement {
     /// The value used for normal operation.
     #[serde(rename = "Default")]

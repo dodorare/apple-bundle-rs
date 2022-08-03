@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Sensors
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Sensors {
     /// ## Availability
     /// * iOS 14.0+
@@ -17,7 +17,7 @@ pub struct Sensors {
 }
 
 /// Sensor Kit Reader Allow
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum SensorkitReaderAllow {
     #[serde(rename = "on-wrist")]
     OnWrist,

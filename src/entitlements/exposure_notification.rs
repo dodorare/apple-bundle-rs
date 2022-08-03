@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Exposure Notification
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct ExposureNotification {
     /// A Boolean value that indicates whether the app may use exposure notification.
     ///

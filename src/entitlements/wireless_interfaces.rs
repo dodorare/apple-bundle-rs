@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Wireless Interfaces
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct WirelessInterfaces {
     /// A Boolean value indicating whether your app can access information about the
     /// connected Wi-Fi network.
@@ -102,7 +102,7 @@ pub struct WirelessInterfaces {
 }
 
 /// Near Field Communication Tag Reader Session Formats
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub enum NearFieldCommunicationTagReaderSessionFormats {
     /// Allows read and write access to a tag using NFCTagReaderSession.
     #[serde(rename = "TAG")]

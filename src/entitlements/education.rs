@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Education
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Education {
     /// The ClassKit development or production environment for an education app that works
     /// with the Schoolwork app.
@@ -63,7 +63,7 @@ pub struct Education {
 }
 
 /// ClassKit Environment Entitlement
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum ClassKitEnvironment {
     /// The environment used to develop and test your app locally, without requiring a
     /// Managed Apple ID issued by an educational institution.

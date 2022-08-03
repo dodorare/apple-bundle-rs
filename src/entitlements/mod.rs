@@ -78,7 +78,7 @@ use serde::{Deserialize, Serialize};
 
 /// Entitlements.
 /// https://developer.apple.com/documentation/bundleresources/entitlements
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Entitlements {
     /// Authentication
     #[serde(flatten)]

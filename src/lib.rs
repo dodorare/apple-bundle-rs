@@ -98,7 +98,7 @@ mod tests {
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     <key>UIRequiresFullScreen</key>
-    <false />
+    <false/>
     <key>CFBundleExecutable</key>
     <string>test</string>
 </dict>

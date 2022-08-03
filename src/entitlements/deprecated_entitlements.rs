@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Deprecated Entitlements
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct DeprecatedEntitlements {
     /// A Boolean value that indicates whether the app may provide directions beyond what
     /// Maps supports, such as subway routes, hiking trails, and bike paths.
@@ -14,7 +14,7 @@ pub struct DeprecatedEntitlements {
     /// ## Framework
     /// * MapKit
     #[deprecated(
-        since = "macOS 10.9–10.11",
+        since = "macOS 10.9-10.11",
         note = "Using Maps no longer requires an entitlement."
     )]
     #[serde(
@@ -38,7 +38,7 @@ pub struct DeprecatedEntitlements {
     /// ## Framework
     /// * AVFoundation
     #[deprecated(
-        since = "iOS 2.2–13.0",
+        since = "iOS 2.2-13.0",
         note = "Inter-App Audio is deprecated in iOS 13 and is unavailable when running iPad apps in macOS."
     )]
     #[serde(

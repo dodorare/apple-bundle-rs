@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Push Notifications
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct PushNotifications {
     /// The environment for push notifications.
     ///
@@ -118,7 +118,7 @@ pub struct PushNotifications {
 }
 
 /// APS Environment
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum APSEnvironment {
     /// The APNs development environment.
     #[serde(rename = "development")]

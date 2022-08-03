@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// System
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct System {
     /// A Boolean value that indicates whether your app has permission to activate or
     /// deactivate system extensions.
@@ -51,7 +51,7 @@ pub struct System {
 }
 
 /// System Extensions
-#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Eq, Debug)]
 pub struct SystemExtensions {
     /// A Boolean value that indicates whether other development teams may distribute a
     /// system extension you create.
@@ -293,7 +293,7 @@ pub struct SystemExtensions {
 }
 
 /// Driver Kit Transport PCI
-#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Eq, Debug)]
 pub struct DriverkitTransportPci {
     /// A key to match PCI devices by vendor and device ID registers or subsystem
     /// registers.
@@ -360,7 +360,7 @@ pub struct DriverkitTransportPci {
     pub class_match: Option<String>,
 }
 
-#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Debug)]
+#[derive(Serialize, Deserialize, Default, Clone, PartialEq, Eq, Debug)]
 pub struct DriverkitTransportUsb {
     /// ## Availability
     /// * macOS 10.15+

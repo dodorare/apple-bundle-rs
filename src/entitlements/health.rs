@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Health
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Health {
     /// A Boolean value that indicates whether the app may request user authorization to
     /// access health and activity data that appears in the Health app.
@@ -49,7 +49,7 @@ pub struct Health {
 }
 
 /// Health Kit Capabilities
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum HealthKitCapabilities {
     /// The app can request access to FHIR-backed clinical records.
     #[serde(rename = "health-records")]

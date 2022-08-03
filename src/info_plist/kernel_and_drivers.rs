@@ -6,7 +6,7 @@ use super::DefaultDictionary;
 use serde::{Deserialize, Serialize};
 
 /// Driver Personalities
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct DriverPersonalities {
     /// One or more groups of attributes that tell the system about the devices your
     /// driver supports.
@@ -71,7 +71,7 @@ pub struct DriverPersonalities {
 }
 
 /// Kit Personalities
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct KitPersonalities {
     /// The name of your driver’s main class, which is the entry point for interacting
     /// with your driver’s code.
@@ -277,7 +277,7 @@ pub struct KitPersonalities {
 }
 
 /// Kext Dependencies
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct KextDependencies {
     /// The backward limit of compatibility for the current driver.
     ///
@@ -333,7 +333,7 @@ pub struct KextDependencies {
 }
 
 /// Thunderbolt Compatibility
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct ThunderboltCompatibility {
     /// A Boolean value that indicates whether your driver supports Thunderbolt devices.
     ///

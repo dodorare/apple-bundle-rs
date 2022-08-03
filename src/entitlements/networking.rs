@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Networking
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Networking {
     /// The APIs an app can use to customize networking features.
     ///
@@ -163,7 +163,7 @@ pub struct Networking {
 }
 
 /// Network Extensions
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum NetworkExtensions {
     /// The APIs you use to proxy DNS queries.
     #[serde(rename = "dns-proxy")]
@@ -204,7 +204,7 @@ pub enum NetworkExtensions {
 }
 
 /// Personal VPN
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum PersonalVPN {
     #[serde(rename = "allow-vpn")]
     AllowVpn,

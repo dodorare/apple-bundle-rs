@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Hypervisor
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Hypervisor {
     /// A Boolean value that indicates whether the app creates and manages virtual
     /// machines.
@@ -34,7 +34,7 @@ pub struct Hypervisor {
     /// ## Framework
     /// * Hypervisor
     #[deprecated(
-        since = "macOS 10.10–11.0",
+        since = "macOS 10.10-11.0",
         note = "For apps with a deployment target of macOS 11 and later, use com.apple.security.hypervisor instead.
         For deployment targets earlier than macOS 11, add both that and the com.apple.vm.hypervisor entitlement to your app."
     )]

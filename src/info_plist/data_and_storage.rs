@@ -10,7 +10,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Documents
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Documents {
     /// The document types supported by the bundle.
     ///
@@ -88,7 +88,7 @@ pub struct Documents {
 }
 
 /// Persistent Store Type Key
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub enum PersistentStoreTypeKey {
     #[serde(rename = "SQLite")]
     SqLite,
@@ -101,7 +101,7 @@ pub enum PersistentStoreTypeKey {
 }
 
 /// URL Schemes
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct UrlSchemes {
     /// A list of URL schemes (http, ftp, and so on) supported by the app.
     ///
@@ -122,7 +122,7 @@ pub struct UrlSchemes {
 }
 
 /// Bundle Document Types
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct BundleDocumentTypes {
     /// The icon to associate with the document type.
     ///
@@ -252,7 +252,7 @@ pub struct BundleDocumentTypes {
 }
 
 /// Bundle Type Role
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum BundleTypeRole {
     #[serde(rename = "Editor")]
     Editor,
@@ -267,7 +267,7 @@ pub enum BundleTypeRole {
 }
 
 /// Handler Rank
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum HandlerRank {
     #[serde(rename = "Owner")]
     Owner,
@@ -280,7 +280,7 @@ pub enum HandlerRank {
 }
 
 /// Bundle URL Types
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct BundleUrlTypes {
     /// The app’s role with respect to the type.
     ///
@@ -345,7 +345,7 @@ pub struct BundleUrlTypes {
 }
 
 /// Universal Type Identifiers
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct UniversalTypeIdentifiers {
     /// The uniform type identifiers owned and exported by the app.
     ///
@@ -378,7 +378,7 @@ pub struct UniversalTypeIdentifiers {
 }
 
 /// Exported Type Declarations
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct ExportedTypeDeclarations {
     /// The Uniform Type Identifier types that this type conforms to.
     ///
@@ -469,7 +469,7 @@ pub struct ExportedTypeDeclarations {
 }
 
 /// Imported Type Declarations
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct ImportedTypeDeclarations {
     /// The Uniform Type Identifier types that this type conforms to.
     ///
@@ -560,13 +560,13 @@ pub struct ImportedTypeDeclarations {
 }
 
 /// Default Dictionary
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct DefaultDictionary {
     pub default: String,
 }
 
 /// Network
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Network {
     /// The URL where Private Click Measurement sends event attribution information.
     ///
@@ -714,7 +714,7 @@ pub struct Network {
 }
 
 /// App Transport Security
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct AppTransportSecurity {
     /// A Boolean value indicating whether App Transport Security restrictions are
     /// disabled for all network connections.
@@ -967,7 +967,7 @@ pub struct AppTransportSecurity {
 }
 
 /// Exception Domains
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct ExceptionDomains {
     /// A Boolean value that indicates whether to extend the configuration to subdomains
     /// of the given domain.
@@ -1108,7 +1108,7 @@ pub struct ExceptionDomains {
 }
 
 /// Exception Minimum TLS Version
-#[derive(Deserialize, Serialize, Clone, Debug, PartialEq)]
+#[derive(Deserialize, Serialize, Clone, Debug, PartialEq, Eq)]
 pub enum ExceptionMinimumTlsVersion {
     /// Require a minimum TLS version of 1.0.
     #[serde(rename = "TLSv1.0")]
@@ -1125,7 +1125,7 @@ pub enum ExceptionMinimumTlsVersion {
 }
 
 /// Pinned Domains
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct PinnedDomains {
     /// A Boolean value that indicates whether to extend the configuration to subdomains
     /// of the given domain.
@@ -1197,7 +1197,7 @@ pub struct PinnedDomains {
 }
 
 /// SPKI-SHA256-BASE64
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Spkisha256Base64 {
     /// The digest of an X.509 certificate’s Subject Public Key Info structure.
     ///
@@ -1229,7 +1229,7 @@ pub struct Spkisha256Base64 {
 }
 
 /// Storage
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Storage {
     /// Describes the files or directories the app installs on the system.
     ///
@@ -1335,7 +1335,7 @@ pub struct Storage {
 }
 
 /// Files
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Files {
     /// A Boolean value indicating whether the file or a folder icon is displayed in the
     /// Info window.
@@ -1403,7 +1403,7 @@ pub struct Files {
 }
 
 /// Install Action
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum InstallAction {
     #[serde(rename = "Copy")]
     Copy,
@@ -1412,7 +1412,7 @@ pub enum InstallAction {
 }
 
 /// Core ML Models
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct CoreMlModels {
     /// A Boolean value indicating whether the app contains a Core ML model to optimize
     /// loading the model.
@@ -1434,7 +1434,7 @@ pub struct CoreMlModels {
 }
 
 /// Java
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
 pub struct Java {
     /// The root directory for the app’s Java class files.
     ///

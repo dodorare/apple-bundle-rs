@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Security
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Security {
     /// Restrict access to system resources and user data in macOS apps to contain damage
     /// if an app becomes compromised.
@@ -185,7 +185,7 @@ pub struct Security {
 }
 
 /// App Sandbox
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct AppSandbox {
     /// A Boolean value that indicates whether the app may use access control technology
     /// to contain damage to the system and user data if an app is compromised.
@@ -578,7 +578,7 @@ pub struct AppSandbox {
     ///
     /// ## Framework
     /// * Security
-    #[deprecated(since = "macOS 10.7–10.11")]
+    #[deprecated(since = "macOS 10.7-10.11")]
     #[serde(
         rename = "com.apple.security.files.all",
         serialize_with = "crate::serialize_option",
@@ -588,7 +588,7 @@ pub struct AppSandbox {
 }
 
 /// Hardened Runtime
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct HardenedRuntime {
     /// A Boolean value that indicates whether the app may create writable and executable
     /// memory using the MAP_JIT flag.
@@ -907,7 +907,7 @@ pub struct HardenedRuntime {
 }
 
 /// Data Protection
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum DataProtection {
     #[serde(rename = "NSFileProtectionCompleteUnlessOpen")]
     FileProtectionCompleteUnlessOpen,
@@ -920,7 +920,7 @@ pub enum DataProtection {
 }
 
 /// Device Check App Attest
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum DeviceCheckAppAttest {
     /// The App Attest sandbox environment that you use to test a device without affecting
     /// its risk metrics. Keys you create in the sandbox environment don’t work in the

@@ -14,7 +14,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Categorization
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Categorization {
     /// The type of bundle.
     ///
@@ -53,7 +53,7 @@ pub struct Categorization {
 }
 
 /// Identification
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Identification {
     /// A unique identifier for a bundle.
     ///
@@ -108,7 +108,7 @@ pub struct Identification {
 }
 
 /// Naming
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Naming {
     /// A user-visible short name for the bundle.
     ///
@@ -163,7 +163,7 @@ pub struct Naming {
 }
 
 /// Bundle Version
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct BundleVersion {
     /// The version of the build that identifies an iteration of the bundle.
     ///
@@ -261,7 +261,7 @@ pub struct BundleVersion {
 }
 
 /// Operating System Version
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct OperatingSystemVersion {
     /// The minimum operating system version required for the app to run.
     ///
@@ -343,7 +343,7 @@ pub struct OperatingSystemVersion {
 }
 
 /// Localization
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Localization {
     /// The default language and region for the bundle, as a language ID.
     ///
@@ -433,7 +433,7 @@ pub struct Localization {
 }
 
 /// Help
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Help {
     /// The name of the bundle’s HTML help file.
     ///
@@ -477,7 +477,7 @@ pub struct Help {
 }
 
 /// App Category Type
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum AppCategoryType {
     #[serde(rename = "public.app-category.business")]
     Business,
@@ -562,7 +562,7 @@ pub enum AppCategoryType {
 }
 
 /// Operating System Version
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub struct MinimumSystemVersionByArchitecture {
     pub i386: String,
     pub ppc: String,
@@ -582,7 +582,7 @@ impl Default for MinimumSystemVersionByArchitecture {
 }
 
 /// Bundle Localizations
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub enum BundleLocalizations {
     #[serde(rename = "zh")]
     Zh,

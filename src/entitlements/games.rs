@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Games
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Games {
     /// A Boolean value that indicates whether users of the app may see and compare
     /// achievements on a leaderboard, invite friends, and start multiplayer games.

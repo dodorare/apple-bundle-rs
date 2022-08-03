@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Home Automation
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct HomeAutomation {
     /// A Boolean value that indicates whether users of the app may manage
     /// HomeKit-compatible accessories.

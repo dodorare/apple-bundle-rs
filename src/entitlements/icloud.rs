@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// iCloud
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct ICloud {
     /// The container identifiers for the iCloud development environment.
     ///
@@ -92,7 +92,7 @@ pub struct ICloud {
 }
 
 /// iCloud Container Environment
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum ICloudContainerEnvironment {
     #[serde(rename = "Development")]
     Development,
@@ -101,7 +101,7 @@ pub enum ICloudContainerEnvironment {
 }
 
 /// iCloud Services
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, Eq)]
 pub enum ICloudServices {
     #[serde(rename = "CloudDocuments")]
     CloudDocuments,

@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Car Play
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct CarPlay {
     /// ## Availability
     /// * iOS 14.0+
@@ -74,7 +74,7 @@ pub struct CarPlay {
     ///
     /// ## Framework
     /// * CarPlay
-    #[deprecated(since = "iOS 12.0–14.0")]
+    #[deprecated(since = "iOS 12.0-14.0")]
     #[serde(
         rename = "com.apple.developer.carplay-messaging",
         serialize_with = "crate::serialize_option",
@@ -86,7 +86,7 @@ pub struct CarPlay {
     ///
     /// ## Framework
     /// * CarPlay
-    #[deprecated(since = "iOS 12.0–14.0")]
+    #[deprecated(since = "iOS 12.0-14.0")]
     #[serde(
         rename = "com.apple.developer.playable-content",
         serialize_with = "crate::serialize_option",

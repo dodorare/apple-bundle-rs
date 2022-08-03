@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 /// Siri
-#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Clone, Default, Debug, PartialEq, Eq)]
 pub struct Siri {
     /// A Boolean value that indicates whether the app handles Siri requests.
     ///
