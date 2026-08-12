@@ -1,3 +1,5 @@
+#![allow(clippy::doc_lazy_continuation)]
+
 //! # Apple Bundle Resources
 //!
 //! Resources located in an app, framework, or plugin bundle.
@@ -14,6 +16,7 @@ pub mod entitlements;
 /// Information Property List
 pub mod info_plist;
 /// Prelude
+#[allow(ambiguous_glob_reexports)]
 pub mod prelude {
     pub use super::entitlements::prelude::*;
     pub use super::info_plist::prelude::*;
@@ -165,5 +168,22 @@ mod tests {
         // Parse Info.plist
         let got_props: InfoPlist = plist::from_bytes(result.as_bytes()).unwrap();
         assert_eq!(properties, got_props);
+    }
+
+    #[test]
+    fn default_dictionary_reexports_share_one_type() {
+        let dictionary = crate::info_plist::app_execution::DefaultDictionary {
+            default: "value".to_owned(),
+        };
+        let _: crate::info_plist::data_and_storage::DefaultDictionary = dictionary.clone();
+        let _: crate::info_plist::protected_resources::DefaultDictionary = dictionary;
+    }
+
+    #[test]
+    fn opengl_es_3_capability_uses_its_own_plist_value() {
+        assert_eq!(
+            serde_plain::to_string(&DeviceCapabilities::Opengles3).unwrap(),
+            "opengles-3"
+        );
     }
 }

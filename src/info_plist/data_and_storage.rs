@@ -559,11 +559,8 @@ pub struct ImportedTypeDeclarations {
     pub type_tag_specification: DefaultDictionary,
 }
 
-/// Default Dictionary
-#[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]
-pub struct DefaultDictionary {
-    pub default: String,
-}
+/// A dictionary containing a default value.
+pub use super::app_execution::DefaultDictionary;
 
 /// Network
 #[derive(Serialize, Deserialize, Clone, Debug, Default, PartialEq, Eq)]

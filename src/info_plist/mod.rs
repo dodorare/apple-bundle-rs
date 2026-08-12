@@ -40,6 +40,7 @@ pub mod kernel_and_drivers;
 pub mod protected_resources;
 pub mod user_interface;
 
+#[allow(ambiguous_glob_reexports)]
 pub mod prelude {
     pub use super::app_execution::*;
     pub use super::app_services::*;

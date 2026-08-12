@@ -77,16 +77,11 @@ pub struct TemplateApplicationDashboard {
 }
 
 /// Class Name
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub enum ClassName {
     #[serde(rename = "CPTemplateApplicationDashboardScene")]
+    #[default]
     TemplateApplicationDashboardScene,
-}
-
-impl Default for ClassName {
-    fn default() -> Self {
-        Self::TemplateApplicationDashboardScene
-    }
 }
 
 /// Template Application Scene Session Role
@@ -116,16 +111,11 @@ pub struct TemplateApplicationSceneSessionRole {
 }
 
 /// Template Application
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub enum TemplateApplication {
     #[serde(rename = "CPTemplateApplicationScene")]
+    #[default]
     Scene,
-}
-
-impl Default for TemplateApplication {
-    fn default() -> Self {
-        Self::Scene
-    }
 }
 
 /// Exposure Notification

@@ -2268,7 +2268,7 @@ pub struct Service {
     pub user_data: Option<BTreeMap<String, String>>,
 }
 
-/// Default Dictionary
+/// A dictionary containing a default value.
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct DefaultDictionary {
     pub default: String,
@@ -2405,7 +2405,7 @@ pub enum DeviceCapabilities {
     #[serde(rename = "opengles-2")]
     Opengles2,
     /// The OpenGL ES 3.0 interface. Available in iOS 7.0 and later.
-    #[serde(rename = "opengles-2")]
+    #[serde(rename = "opengles-3")]
     Opengles3,
     /// Peer-to-peer connectivity over a Bluetooth network. Available in iOS 3.1 and
     /// later.

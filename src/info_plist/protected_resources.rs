@@ -13,6 +13,9 @@
 
 use serde::{Deserialize, Serialize};
 
+/// A dictionary containing a default value.
+pub use super::app_execution::DefaultDictionary;
+
 /// Bluetooth
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Bluetooth {
@@ -845,12 +848,6 @@ pub struct Location {
         skip_serializing_if = "Option::is_none"
     )]
     pub location_default_accuracy_reduced: Option<bool>,
-}
-
-/// DefaultDictionary
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
-pub struct DefaultDictionary {
-    pub default: String,
 }
 
 /// Media Player

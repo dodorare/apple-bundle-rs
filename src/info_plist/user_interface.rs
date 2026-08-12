@@ -834,18 +834,13 @@ pub struct NavigationBar {
 }
 
 /// Bar Style
-#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub enum BarStyle {
     #[serde(rename = "UIBarStyleDefault")]
+    #[default]
     Default,
     #[serde(rename = "UIBarStyleBlack")]
     Black,
-}
-
-impl Default for BarStyle {
-    fn default() -> Self {
-        Self::Default
-    }
 }
 
 /// Tint Color
