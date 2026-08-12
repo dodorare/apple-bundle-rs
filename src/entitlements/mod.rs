@@ -15,7 +15,7 @@
 //! your developer account, and other project information to apply a final set of
 //! entitlements to your app.
 //!
-//! Official documentation: https://developer.apple.com/documentation/bundleresources/entitlements
+//! Official documentation: <https://developer.apple.com/documentation/bundleresources/entitlements>
 //!
 //! ## Availability
 //! * iOS 2.0+
@@ -77,7 +77,7 @@ use prelude::*;
 use serde::{Deserialize, Serialize};
 
 /// Entitlements.
-/// https://developer.apple.com/documentation/bundleresources/entitlements
+/// <https://developer.apple.com/documentation/bundleresources/entitlements>
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq, Default)]
 pub struct Entitlements {
     /// Authentication

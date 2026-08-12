@@ -17,7 +17,7 @@ pub struct Contacts {
     /// entitlement’s type to Boolean, and the corresponding value to YES.
     /// Before you can submit an app with this entitlement to the App Store, you must
     /// first get permission to use the entitlement.
-    /// Request permission at https://developer.apple.com/contact/request/contact-note-field.
+    /// Request permission at <https://developer.apple.com/contact/request/contact-note-field>.
     ///
     /// ## Availability
     /// * iOS 13.0+

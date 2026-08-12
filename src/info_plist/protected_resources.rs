@@ -814,7 +814,7 @@ pub struct Location {
     ///
     /// <!-- Info.plist -->
     /// <key>NSLocationDefaultAccuracyReduced</key>
-    /// <true/>
+    /// `<true/>`
     ///
     /// When this key is set to true, all Core Location services (location updates, visit
     /// monitoring, significant location change, fence monitoring) receive service at the

@@ -1,34 +1,48 @@
 name: CI
+
 on:
   push:
     branches: [main]
     paths:
-    - '.github/workflows/ci.yml'
-    - '**.rs'
-    - '**.toml'
+      - ".github/workflows/ci.yml"
+      - "**.rs"
+      - "**.toml"
   pull_request:
     paths:
-    - '.github/workflows/ci.yml'
-    - '**.rs'
-    - '**.toml'
+      - ".github/workflows/ci.yml"
+      - "**.rs"
+      - "**.toml"
+
+permissions:
+  contents: read
+
 jobs:
   test-and-check:
-    name: Check code format
+    name: Checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: nightly
-          components: rustfmt, clippy
-          override: true
-      - name: Check the format
+      - uses: actions/checkout@v5
+      - name: Install nightly toolchain
+        run: rustup toolchain install nightly --profile minimal --component clippy,rustfmt
+      - name: Check formatting
         run: cargo +nightly fmt --all -- --check
-      - name: Run clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings -A clippy::deprecated_semver
-      - name: Check for deadlinks
+      - name: Check all features
+        run: cargo +nightly check --all-targets --all-features --future-incompat-report
+      - name: Check without default features
+        run: cargo +nightly check --all-targets --no-default-features
+      - name: Lint
+        run: cargo +nightly clippy --all-targets --all-features -- -D warnings -A clippy::deprecated_semver
+      - name: Check documentation warnings
+        run: cargo +nightly doc --all-features --no-deps
+        env:
+          RUSTDOCFLAGS: -D warnings
+      - name: Check local documentation links
         run: |
-          cargo install cargo-deadlinks
-          cargo deadlinks --check-http
-      - name: Run tests
-        run: cargo test --no-fail-fast
+          cargo install cargo-deadlinks --locked
+          cargo +nightly deadlinks
+        env:
+          RUST_LOG: error
+      - name: Test all features
+        run: cargo +nightly test --all-features --no-fail-fast
+      - name: Test without default features
+        run: cargo +nightly test --no-default-features --no-fail-fast

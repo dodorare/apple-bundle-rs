@@ -9,7 +9,7 @@
 //! that may be accessed at runtime, such as images, audio files, user interface files,
 //! and property lists.
 //!
-//! Official documentation: https://developer.apple.com/documentation/bundleresources
+//! Official documentation: <https://developer.apple.com/documentation/bundleresources>
 
 /// Entitlements
 pub mod entitlements;
@@ -69,8 +69,10 @@ where
 mod tests {
     use super::prelude::*;
 
+    #[cfg(feature = "plist")]
     pub const PLIST_FILE_NAME: &str = "Info.plist";
 
+    #[cfg(feature = "plist")]
     pub const PLIST_TEST_EXAMPLE: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -107,6 +109,7 @@ mod tests {
 </dict>
 </plist>"#;
 
+    #[cfg(feature = "plist")]
     #[test]
     fn test_plist_equality() {
         let dir = tempfile::tempdir().unwrap();

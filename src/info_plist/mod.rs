@@ -21,7 +21,7 @@
 //! the value associated with the CFBundleIdentifier key. You can obtain the value for an
 //! arbitrary key using the object(forInfoDictionaryKey:) method.
 //!
-//! Official documentation: https://developer.apple.com/documentation/bundleresources/information_property_list
+//! Official documentation: <https://developer.apple.com/documentation/bundleresources/information_property_list>
 //!
 //! ## Availability
 //! * iOS 2.0+
@@ -57,7 +57,7 @@ use serde::{Deserialize, Serialize};
 
 /// Information property list
 ///
-/// https://developer.apple.com/documentation/bundleresources/information_property_list
+/// <https://developer.apple.com/documentation/bundleresources/information_property_list>
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Default)]
 pub struct InfoPlist {
     // Bundle Configuration
